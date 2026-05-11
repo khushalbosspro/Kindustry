@@ -1,0 +1,1695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kindustry — Gaming Universe</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════
+   THEME VARIABLES — 4 COMPLETE THEMES
+═══════════════════════════════════════ */
+:root {
+  /* DARK NEON */
+  --bg:#05070f; --bg2:#090c1a; --bg3:#0d1128;
+  --surface:rgba(9,12,26,0.9);
+  --primary:#4f8ef7; --pr:79,142,247;
+  --accent:#a855f7;  --ac:168,85,247;
+  --accent2:#06b6d4;
+  --neon:#7c3aed;
+  --text:#e8eaf6; --dim:#8892b0; --faint:#3a4060;
+  --border:rgba(79,142,247,0.18);
+  --border-h:rgba(79,142,247,0.5);
+  --nav-bg:rgba(5,7,15,0.94);
+  --card-glow:rgba(79,142,247,0.12);
+  --hero-grad:radial-gradient(ellipse 80% 55% at 50% -5%,rgba(79,142,247,0.18),transparent 65%),radial-gradient(ellipse 55% 70% at 85% 55%,rgba(168,85,247,0.12),transparent 55%),radial-gradient(ellipse 40% 55% at 15% 75%,rgba(124,58,237,0.1),transparent 55%);
+  --orb1-c:rgba(79,142,247,0.12); --orb2-c:rgba(168,85,247,0.1);
+  --input-bg:rgba(255,255,255,0.04);
+  --scanline:rgba(0,0,0,0.025);
+  --shadow:0 20px 60px rgba(0,0,0,0.5);
+  --trans:all 0.3s cubic-bezier(.4,0,.2,1);
+}
+
+/* ── WHITE + RED THEME ── */
+body.theme-red {
+  --bg:#fafafa; --bg2:#f4f4f6; --bg3:#ffffff;
+  --surface:rgba(255,255,255,0.94);
+  --primary:#dc2626; --pr:220,38,38;
+  --accent:#b91c1c;  --ac:185,28,28;
+  --accent2:#ef4444;
+  --neon:#991b1b;
+  --text:#111111; --dim:#555555; --faint:#aaaaaa;
+  --border:rgba(220,38,38,0.18);
+  --border-h:rgba(220,38,38,0.55);
+  --nav-bg:rgba(255,255,255,0.96);
+  --card-glow:rgba(220,38,38,0.08);
+  --hero-grad:radial-gradient(ellipse 80% 55% at 50% -5%,rgba(220,38,38,0.1),transparent 65%),radial-gradient(ellipse 55% 70% at 85% 55%,rgba(185,28,28,0.07),transparent 55%),radial-gradient(ellipse 40% 55% at 15% 75%,rgba(239,68,68,0.06),transparent 55%);
+  --orb1-c:rgba(220,38,38,0.1); --orb2-c:rgba(185,28,28,0.08);
+  --input-bg:rgba(0,0,0,0.03);
+  --scanline:transparent;
+  --shadow:0 20px 60px rgba(220,38,38,0.1);
+}
+
+/* ── DARK NEON (default) ── already in :root */
+
+/* ── CYBER RGB ── */
+body.theme-cyber {
+  --bg:#020505; --bg2:#050d08; --bg3:#071008;
+  --surface:rgba(5,13,8,0.92);
+  --primary:#00e676; --pr:0,230,118;
+  --accent:#e040fb;  --ac:224,64,251;
+  --accent2:#00e5ff;
+  --neon:#00c853;
+  --text:#e8fff0; --dim:#6dbf85; --faint:#2d5e3a;
+  --border:rgba(0,230,118,0.2);
+  --border-h:rgba(0,230,118,0.55);
+  --nav-bg:rgba(2,5,5,0.96);
+  --card-glow:rgba(0,230,118,0.08);
+  --hero-grad:radial-gradient(ellipse 80% 55% at 50% -5%,rgba(0,230,118,0.15),transparent 65%),radial-gradient(ellipse 55% 70% at 85% 55%,rgba(224,64,251,0.08),transparent 55%);
+  --orb1-c:rgba(0,230,118,0.1); --orb2-c:rgba(224,64,251,0.08);
+  --input-bg:rgba(0,255,136,0.03);
+  --scanline:rgba(0,255,136,0.015);
+  --shadow:0 20px 60px rgba(0,230,118,0.08);
+}
+
+/* ── WHITE PRO (blue) ── */
+body.theme-white {
+  --bg:#eef2ff; --bg2:#e4eaff; --bg3:#ffffff;
+  --surface:rgba(255,255,255,0.92);
+  --primary:#2563eb; --pr:37,99,235;
+  --accent:#7c3aed;  --ac:124,58,237;
+  --accent2:#0891b2;
+  --neon:#4338ca;
+  --text:#0f172a; --dim:#475569; --faint:#94a3b8;
+  --border:rgba(37,99,235,0.18);
+  --border-h:rgba(37,99,235,0.5);
+  --nav-bg:rgba(238,242,255,0.96);
+  --card-glow:rgba(37,99,235,0.08);
+  --hero-grad:radial-gradient(ellipse 80% 55% at 50% -5%,rgba(147,210,255,0.5),transparent 60%),radial-gradient(ellipse 55% 70% at 85% 55%,rgba(124,58,237,0.1),transparent 55%),linear-gradient(175deg,#dbeafe,#ede9fe 50%,#e0f2fe);
+  --orb1-c:rgba(147,210,255,0.5); --orb2-c:rgba(124,58,237,0.15);
+  --input-bg:rgba(0,0,0,0.03);
+  --scanline:transparent;
+  --shadow:0 20px 60px rgba(37,99,235,0.12);
+}
+
+/* ═══════════════════════════════════════
+   BASE
+═══════════════════════════════════════ */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--bg);color:var(--text);
+  font-family:'Rajdhani',sans-serif;font-size:16px;
+  overflow-x:hidden;cursor:none;
+  -webkit-tap-highlight-color:transparent;
+  transition:background 0.45s ease,color 0.45s ease;
+}
+@media(pointer:coarse){body{cursor:auto;}}
+body::after{
+  content:'';position:fixed;inset:0;
+  background:repeating-linear-gradient(0deg,transparent,transparent 2px,var(--scanline) 2px,var(--scanline) 4px);
+  pointer-events:none;z-index:9990;
+}
+
+/* ═══════════════════════════════════════
+   CURSOR
+═══════════════════════════════════════ */
+#cur,#cur-ring{position:fixed;top:0;left:0;pointer-events:none;z-index:99999;will-change:transform;}
+#cur{
+  width:9px;height:9px;border-radius:50%;background:var(--primary);
+  box-shadow:0 0 14px var(--primary),0 0 28px rgba(var(--pr),0.4);
+  z-index:100000;transition:width .15s,height .15s,background .2s,box-shadow .2s;
+}
+#cur-ring{
+  width:32px;height:32px;border-radius:50%;
+  border:1.5px solid rgba(var(--pr),0.5);
+  transition:width .2s,height .2s,border-color .25s;
+}
+#cur.big{width:5px;height:5px;}
+#cur-ring.big{width:46px;height:46px;border-color:rgba(var(--ac),0.7);}
+@media(pointer:coarse){#cur,#cur-ring{display:none;}}
+
+/* ═══════════════════════════════════════
+   LOADER
+═══════════════════════════════════════ */
+#loader{
+  position:fixed;inset:0;z-index:999999;
+  background:linear-gradient(135deg,#030508,#05070f);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  overflow:hidden;
+  transition:opacity .8s ease,visibility .8s ease;
+}
+#loader.out{opacity:0;visibility:hidden;pointer-events:none;}
+.ld-glow{position:absolute;width:700px;height:700px;background:radial-gradient(circle,rgba(79,142,247,.22),rgba(168,85,247,.08) 50%,transparent 70%);filter:blur(60px);animation:ldGlow 5s ease-in-out infinite;}
+.ld-ring{position:absolute;width:200px;height:200px;border:1px solid rgba(79,142,247,0.3);border-radius:50%;animation:ldSpin 5s linear infinite;}
+.ld-ring::before{content:'';position:absolute;top:-3px;left:50%;width:6px;height:6px;background:#4f8ef7;border-radius:50%;box-shadow:0 0 12px #4f8ef7,0 0 24px #4f8ef7;transform:translateX(-50%);}
+.ld-logo{
+  font-family:'Orbitron',monospace;font-size:clamp(34px,6vw,78px);font-weight:900;letter-spacing:10px;
+  background:linear-gradient(135deg,#fff,#4f8ef7,#a855f7);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  position:relative;z-index:2;filter:drop-shadow(0 0 28px rgba(79,142,247,.65));
+  animation:ldLogoIn 1.7s cubic-bezier(.16,1,.3,1) both;
+}
+.ld-sub{margin-top:18px;font-size:10px;letter-spacing:5px;color:#4a5270;animation:ldPulse 2s infinite;position:relative;z-index:2;}
+.ld-bar{position:absolute;bottom:60px;width:180px;height:2px;background:rgba(79,142,247,.15);border-radius:2px;overflow:hidden;}
+.ld-bar::after{content:'';display:block;height:100%;background:linear-gradient(90deg,#4f8ef7,#a855f7);border-radius:2px;animation:ldBar 2.1s ease both;}
+@keyframes ldGlow{0%,100%{transform:scale(1);}50%{transform:scale(1.1) translateY(-10px);}}
+@keyframes ldSpin{to{transform:rotate(360deg);}}
+@keyframes ldLogoIn{from{opacity:0;letter-spacing:20px;filter:blur(20px) drop-shadow(0 0 0 transparent);}to{opacity:1;letter-spacing:10px;filter:drop-shadow(0 0 28px rgba(79,142,247,.65));}}
+@keyframes ldPulse{0%,100%{opacity:1;}50%{opacity:.3;}}
+@keyframes ldBar{from{width:0%;}to{width:100%;}}
+
+/* ═══════════════════════════════════════
+   PARTICLES
+═══════════════════════════════════════ */
+#pts{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden;}
+.pt{position:absolute;border-radius:50%;will-change:transform;animation:ptUp linear infinite;}
+@keyframes ptUp{from{transform:translateY(110vh);opacity:0;}15%{opacity:.8;}85%{opacity:.5;}to{transform:translateY(-10vh);opacity:0;}}
+
+/* ═══════════════════════════════════════
+   NAV
+═══════════════════════════════════════ */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:1000;height:68px;
+  display:flex;align-items:center;justify-content:space-between;padding:0 56px;
+  background:var(--nav-bg);backdrop-filter:blur(28px) saturate(1.5);
+  border-bottom:1px solid var(--border);transition:var(--trans);
+}
+.logo{
+  font-family:'Orbitron',monospace;font-size:20px;font-weight:900;letter-spacing:4px;
+  background:linear-gradient(135deg,var(--primary),var(--accent));
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  text-decoration:none;transition:filter .25s;
+}
+.logo:hover{filter:brightness(1.25);}
+.nav-links{display:flex;gap:2px;list-style:none;align-items:center;}
+.nav-links a{
+  color:var(--dim);text-decoration:none;font-family:'Rajdhani',sans-serif;
+  font-weight:600;font-size:12px;letter-spacing:2px;text-transform:uppercase;
+  padding:8px 13px;border-radius:5px;transition:var(--trans);position:relative;
+}
+.nav-links a:hover,.nav-links a.active{color:var(--primary);background:rgba(var(--pr),0.08);}
+.nav-links a::after{content:'';position:absolute;bottom:4px;left:13px;right:13px;height:1px;background:var(--primary);transform:scaleX(0);transform-origin:center;transition:transform .25s;}
+.nav-links a:hover::after,.nav-links a.active::after{transform:scaleX(1);}
+.nav-discord-btn{
+  background:linear-gradient(135deg,#5865F2,#7289da) !important;
+  color:white !important;-webkit-text-fill-color:white !important;
+  padding:8px 16px !important;border-radius:6px;font-size:12px !important;letter-spacing:1.5px;
+  box-shadow:0 0 18px rgba(88,101,242,0.4);transition:var(--trans);
+}
+.nav-discord-btn::after{display:none !important;}
+.nav-discord-btn:hover{box-shadow:0 4px 28px rgba(88,101,242,0.6) !important;transform:translateY(-1px);}
+.nav-right{display:flex;align-items:center;gap:8px;}
+
+/* User button in nav */
+.nav-user-btn{
+  display:flex;align-items:center;gap:8px;
+  background:rgba(var(--pr),0.1);border:1px solid var(--border);
+  color:var(--text);border-radius:20px;padding:5px 12px 5px 5px;
+  cursor:pointer;transition:var(--trans);font-size:13px;font-weight:600;
+}
+.nav-user-btn:hover{border-color:var(--border-h);background:rgba(var(--pr),0.15);}
+.nav-avatar{
+  width:26px;height:26px;border-radius:50%;
+  background:linear-gradient(135deg,var(--primary),var(--accent));
+  display:flex;align-items:center;justify-content:center;font-size:12px;
+}
+.nav-login-btn{
+  background:rgba(var(--pr),0.1);border:1px solid var(--border);
+  color:var(--primary);border-radius:6px;padding:7px 14px;
+  cursor:pointer;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;
+  transition:var(--trans);
+}
+.nav-login-btn:hover{background:rgba(var(--pr),0.18);border-color:var(--border-h);}
+.settings-btn{
+  width:36px;height:36px;border-radius:7px;
+  background:rgba(var(--pr),0.08);border:1px solid var(--border);
+  color:var(--dim);display:flex;align-items:center;justify-content:center;
+  cursor:pointer;font-size:15px;transition:var(--trans);
+}
+.settings-btn:hover{color:var(--primary);border-color:var(--border-h);background:rgba(var(--pr),0.14);}
+.mob-btn{
+  display:none;background:rgba(var(--pr),0.08);border:1px solid var(--border);
+  color:var(--primary);padding:7px 11px;border-radius:6px;font-size:18px;cursor:pointer;
+}
+
+/* ═══════════════════════════════════════
+   AUTH MODAL
+═══════════════════════════════════════ */
+.modal-overlay{
+  position:fixed;inset:0;z-index:50000;
+  background:rgba(0,0,0,0.75);backdrop-filter:blur(8px);
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;visibility:hidden;transition:var(--trans);padding:20px;
+}
+.modal-overlay.open{opacity:1;visibility:visible;}
+.modal-box{
+  background:var(--bg2);border:1px solid var(--border);border-radius:16px;
+  padding:40px;width:100%;max-width:440px;
+  position:relative;box-shadow:var(--shadow);
+  transform:scale(0.95);transition:transform .3s cubic-bezier(.16,1,.3,1);
+}
+.modal-overlay.open .modal-box{transform:scale(1);}
+.modal-close{
+  position:absolute;top:16px;right:16px;
+  background:rgba(var(--pr),0.08);border:1px solid var(--border);
+  color:var(--dim);width:30px;height:30px;border-radius:6px;
+  cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;transition:var(--trans);
+}
+.modal-close:hover{color:var(--primary);border-color:var(--border-h);}
+.modal-logo{
+  font-family:'Orbitron',monospace;font-size:20px;font-weight:900;letter-spacing:3px;
+  background:linear-gradient(135deg,var(--primary),var(--accent));
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  margin-bottom:6px;
+}
+.modal-title{font-family:'Orbitron',monospace;font-size:18px;font-weight:700;margin-bottom:6px;}
+.modal-sub{font-size:13px;color:var(--dim);margin-bottom:28px;line-height:1.5;}
+
+.auth-btn{
+  width:100%;display:flex;align-items:center;justify-content:center;gap:12px;
+  padding:13px 20px;border-radius:8px;border:1px solid var(--border);
+  background:var(--surface);color:var(--text);
+  font-family:'Rajdhani',sans-serif;font-size:14px;font-weight:700;letter-spacing:1px;
+  cursor:pointer;transition:var(--trans);margin-bottom:12px;
+}
+.auth-btn:hover{border-color:var(--border-h);background:rgba(var(--pr),0.06);transform:translateY(-1px);box-shadow:var(--shadow);}
+.auth-btn .ab-icon{font-size:20px;width:24px;text-align:center;}
+.auth-divider{text-align:center;color:var(--faint);font-size:12px;letter-spacing:2px;text-transform:uppercase;margin:16px 0;}
+.auth-note{font-size:11px;color:var(--faint);text-align:center;margin-top:16px;line-height:1.6;}
+
+/* Username picker */
+.uname-input{
+  width:100%;background:var(--input-bg);border:1px solid var(--border);
+  border-radius:8px;padding:13px 16px;color:var(--text);
+  font-family:'Rajdhani',sans-serif;font-size:16px;letter-spacing:1px;
+  outline:none;transition:var(--trans);margin-bottom:8px;
+}
+.uname-input:focus{border-color:var(--primary);box-shadow:0 0 0 3px rgba(var(--pr),0.12);}
+.uname-hint{font-size:11px;color:var(--faint);margin-bottom:20px;}
+.uname-err{font-size:12px;color:#ef4444;margin-bottom:14px;display:none;}
+
+/* User Dropdown */
+.user-dropdown{
+  position:fixed;top:76px;right:56px;z-index:5000;
+  background:var(--bg2);border:1px solid var(--border);border-radius:12px;
+  padding:8px;min-width:200px;box-shadow:var(--shadow);
+  opacity:0;visibility:hidden;transform:translateY(-8px);transition:var(--trans);
+}
+.user-dropdown.open{opacity:1;visibility:visible;transform:translateY(0);}
+.ud-header{padding:12px 14px 10px;border-bottom:1px solid var(--border);margin-bottom:6px;}
+.ud-name{font-family:'Orbitron',monospace;font-size:13px;font-weight:700;margin-bottom:2px;}
+.ud-tag{font-size:11px;color:var(--dim);}
+.ud-item{
+  display:flex;align-items:center;gap:10px;padding:9px 14px;border-radius:7px;
+  color:var(--dim);font-size:13px;font-weight:600;letter-spacing:.5px;
+  cursor:pointer;transition:var(--trans);text-decoration:none;
+}
+.ud-item:hover{background:rgba(var(--pr),0.08);color:var(--primary);}
+.ud-item.danger:hover{background:rgba(239,68,68,.1);color:#ef4444;}
+
+/* ═══════════════════════════════════════
+   SETTINGS PANEL
+═══════════════════════════════════════ */
+.set-overlay{
+  position:fixed;inset:0;z-index:9000;
+  background:rgba(0,0,0,0.55);backdrop-filter:blur(6px);
+  opacity:0;visibility:hidden;transition:var(--trans);
+}
+.set-overlay.open{opacity:1;visibility:visible;}
+.set-panel{
+  position:fixed;right:-330px;top:0;bottom:0;width:300px;
+  background:var(--bg2);border-left:1px solid var(--border);
+  padding:26px 20px;z-index:9001;overflow-y:auto;
+  transition:right .38s cubic-bezier(.4,0,.2,1);
+}
+.set-overlay.open .set-panel{right:0;}
+.set-close{
+  position:absolute;top:16px;right:16px;
+  width:29px;height:29px;border-radius:6px;
+  background:rgba(var(--pr),0.08);border:1px solid var(--border);
+  color:var(--dim);cursor:pointer;font-size:13px;
+  display:flex;align-items:center;justify-content:center;transition:var(--trans);
+}
+.set-close:hover{color:var(--primary);border-color:var(--border-h);}
+.set-title{font-family:'Orbitron',monospace;font-size:15px;font-weight:700;margin-bottom:24px;color:var(--text);}
+.set-label{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);margin-bottom:12px;display:block;}
+.set-div{height:1px;background:var(--border);margin:18px 0;}
+.theme-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;}
+.th-btn{
+  border:1.5px solid var(--border);border-radius:9px;padding:10px 6px;
+  cursor:pointer;background:transparent;display:flex;flex-direction:column;align-items:center;gap:5px;transition:var(--trans);
+}
+.th-btn:hover{border-color:var(--border-h);transform:translateY(-2px);}
+.th-btn.on{border-color:var(--primary);background:rgba(var(--pr),0.08);}
+.th-swatch{width:36px;height:36px;border-radius:6px;}
+.th-label{font-size:9px;letter-spacing:1px;text-transform:uppercase;color:var(--dim);font-weight:700;}
+.set-link{
+  display:flex;align-items:center;gap:10px;padding:10px 13px;
+  border-radius:7px;border:1px solid var(--border);background:rgba(var(--pr),0.05);
+  color:var(--dim);text-decoration:none;font-size:12px;font-weight:600;
+  letter-spacing:1px;text-transform:uppercase;transition:var(--trans);margin-bottom:8px;
+}
+.set-link:hover{border-color:var(--border-h);color:var(--primary);}
+
+/* ═══════════════════════════════════════
+   PAGES
+═══════════════════════════════════════ */
+.page{display:none;min-height:100vh;}
+.page.active{display:block;animation:pgIn .35s cubic-bezier(.4,0,.2,1);}
+@keyframes pgIn{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:translateY(0);}}
+
+/* ═══════════════════════════════════════
+   HERO
+═══════════════════════════════════════ */
+.hero{
+  min-height:100vh;position:relative;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;overflow:hidden;padding:100px 24px 160px;
+}
+.hero-bg{position:absolute;inset:0;z-index:0;background:var(--hero-grad),var(--bg);transition:background .5s ease;}
+.hero-grid{
+  position:absolute;inset:0;z-index:0;
+  background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);
+  background-size:64px 64px;animation:gridDrift 25s linear infinite;
+  mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black 20%,transparent 75%);
+}
+@keyframes gridDrift{0%{background-position:0 0;}100%{background-position:64px 64px;}}
+.orb{position:absolute;border-radius:50%;filter:blur(90px);will-change:transform;animation:orbDrift 10s ease-in-out infinite;}
+.orb1{width:480px;height:480px;top:-110px;right:-80px;background:var(--orb1-c);animation-delay:0s;}
+.orb2{width:320px;height:320px;bottom:-80px;left:-60px;background:var(--orb2-c);animation-delay:3.5s;}
+.orb3{width:220px;height:220px;top:45%;left:18%;background:rgba(var(--ac),0.06);animation-delay:7s;}
+@keyframes orbDrift{0%,100%{transform:translate(0,0) scale(1);}50%{transform:translate(18px,-18px) scale(1.05);}}
+
+.hero-content{position:relative;z-index:2;max-width:860px;}
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:9px;
+  background:rgba(var(--pr),0.1);border:1px solid rgba(var(--pr),0.28);
+  border-radius:100px;padding:6px 18px;font-size:11px;letter-spacing:3px;
+  text-transform:uppercase;color:var(--primary);margin-bottom:26px;
+  animation:fadeInDown .8s ease both;
+}
+.hero-eyebrow-dot{width:6px;height:6px;background:var(--accent2);border-radius:50%;box-shadow:0 0 8px var(--accent2);animation:blink 2.2s ease-in-out infinite;}
+@keyframes blink{0%,100%{opacity:1;}50%{opacity:.2;}}
+.hero-title{
+  font-family:'Orbitron',monospace;font-size:clamp(44px,7.5vw,94px);
+  font-weight:900;line-height:1;letter-spacing:-1px;margin-bottom:8px;
+  animation:fadeInUp .8s ease .15s both;
+}
+.hero-title-main{
+  display:block;
+  background:linear-gradient(140deg,var(--text) 0%,var(--primary) 55%,var(--accent) 100%);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+}
+body.theme-red .hero-title-main,body.theme-white .hero-title-main{
+  background:linear-gradient(140deg,var(--text) 0%,var(--primary) 55%,var(--accent) 100%);
+  -webkit-background-clip:text;background-clip:text;
+}
+.hero-title-sub{
+  display:block;font-size:.4em;letter-spacing:9px;font-weight:400;
+  color:var(--dim);-webkit-text-fill-color:var(--dim);margin-top:12px;
+}
+.hero-quote{
+  font-family:'Inter',sans-serif;font-size:14px;font-style:italic;font-weight:300;
+  color:var(--dim);letter-spacing:.4px;margin-bottom:20px;
+  animation:fadeInUp .8s ease .3s both;
+}
+.hero-quote b{color:var(--primary);font-weight:500;font-style:normal;}
+.hero-desc{font-size:17px;color:var(--dim);max-width:520px;margin:0 auto 34px;line-height:1.75;font-weight:300;animation:fadeInUp .8s ease .4s both;}
+.hero-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;animation:fadeInUp .8s ease .55s both;}
+.hero-pillars{
+  position:absolute;bottom:40px;left:0;right:0;z-index:2;
+  display:flex;justify-content:center;gap:40px;flex-wrap:wrap;
+  animation:fadeInUp .8s ease .8s both;
+}
+.pillar{display:flex;flex-direction:column;align-items:center;gap:4px;}
+.pillar-icon{font-size:20px;}
+.pillar-lbl{font-family:'Orbitron',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);}
+.scroll-hint{
+  position:absolute;bottom:14px;left:50%;transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:5px;
+  color:var(--faint);font-size:9px;letter-spacing:3px;text-transform:uppercase;
+  animation:fadeInUp 1s ease 1.2s both;
+}
+.scroll-track{width:20px;height:32px;border:1px solid var(--border);border-radius:10px;display:flex;justify-content:center;padding-top:5px;}
+.scroll-thumb{width:3px;height:7px;background:var(--primary);border-radius:3px;animation:scrollBob 2s ease-in-out infinite;}
+@keyframes scrollBob{0%,100%{opacity:1;transform:translateY(0);}50%{opacity:.3;transform:translateY(5px);}}
+
+/* ═══════════════════════════════════════
+   BUTTONS
+═══════════════════════════════════════ */
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:12px 26px;border-radius:7px;border:none;cursor:pointer;
+  font-family:'Rajdhani',sans-serif;font-size:13px;font-weight:700;
+  letter-spacing:2px;text-transform:uppercase;text-decoration:none;
+  transition:var(--trans);position:relative;overflow:hidden;
+}
+.btn::after{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.15),transparent);transition:left .45s;}
+.btn:hover::after{left:100%;}
+.btn-p{background:linear-gradient(135deg,var(--primary),var(--neon));color:white;box-shadow:0 4px 22px rgba(var(--pr),.3);}
+.btn-p:hover{transform:translateY(-2px);box-shadow:0 8px 34px rgba(var(--pr),.45);}
+.btn-dc{background:linear-gradient(135deg,#5865F2,#7289da);color:white;box-shadow:0 4px 22px rgba(88,101,242,.35);}
+.btn-dc:hover{transform:translateY(-2px);box-shadow:0 8px 34px rgba(88,101,242,.55);}
+.btn-ol{background:transparent;color:var(--primary);border:1.5px solid rgba(var(--pr),.4);}
+.btn-ol:hover{background:rgba(var(--pr),.08);border-color:var(--primary);transform:translateY(-2px);}
+.sm{padding:7px 14px;font-size:11px;border-radius:5px;border:none;cursor:pointer;font-family:'Rajdhani',sans-serif;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;transition:var(--trans);}
+.sm-p{background:linear-gradient(135deg,var(--primary),var(--neon));color:white;}
+.sm-p:hover{opacity:.85;transform:translateY(-1px);}
+.sm-dc{background:linear-gradient(135deg,#5865F2,#7289da);color:white;box-shadow:0 2px 12px rgba(88,101,242,.3);}
+.sm-dc:hover{box-shadow:0 4px 20px rgba(88,101,242,.5);transform:translateY(-1px);}
+.sm:disabled{opacity:.32;cursor:not-allowed;transform:none !important;}
+
+/* ═══════════════════════════════════════
+   SECTIONS + CARDS
+═══════════════════════════════════════ */
+section{padding:88px 56px;max-width:1280px;margin:0 auto;}
+.sec-ey{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--primary);margin-bottom:10px;display:flex;align-items:center;gap:12px;}
+.sec-ey::before{content:'';width:28px;height:1px;background:var(--primary);}
+.sec-title{font-family:'Orbitron',monospace;font-size:clamp(24px,3.5vw,42px);font-weight:700;line-height:1.1;background:linear-gradient(135deg,var(--text),var(--dim));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+.sec-hdr{margin-bottom:44px;}
+.sec-div{height:1px;margin:0 56px;background:linear-gradient(90deg,transparent,var(--border) 30%,var(--border) 70%,transparent);}
+
+.card{
+  background:var(--surface);border:1px solid var(--border);border-radius:12px;
+  backdrop-filter:blur(16px);transition:var(--trans);position:relative;overflow:hidden;
+}
+.card::before{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;background:linear-gradient(90deg,transparent,var(--primary),transparent);opacity:0;transition:opacity .3s;}
+.card:hover{border-color:var(--border-h);box-shadow:var(--shadow);}
+.card:hover::before{opacity:1;}
+body.theme-red .card,.body.theme-white .card{box-shadow:0 4px 24px rgba(0,0,0,.06);}
+body.theme-red .card:hover,body.theme-white .card:hover{box-shadow:0 12px 48px rgba(var(--pr),.15);}
+
+/* FEATURE CARDS */
+.features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.feature-card{padding:28px;cursor:pointer;text-decoration:none;color:inherit;display:block;}
+.feature-card:hover{transform:translateY(-5px);}
+.feature-card:hover .fc-title{color:var(--accent);}
+.fc-icon{font-size:32px;margin-bottom:13px;display:block;transition:transform .3s;}
+.feature-card:hover .fc-icon{transform:scale(1.1);}
+.fc-title{font-family:'Orbitron',monospace;font-size:13px;font-weight:700;letter-spacing:1px;color:var(--primary);margin-bottom:9px;transition:color .3s;}
+.fc-text{font-size:14px;color:var(--dim);line-height:1.7;font-weight:300;}
+.fc-arrow{position:absolute;top:16px;right:18px;font-size:13px;color:var(--primary);opacity:0;transform:translate(-4px,4px);transition:var(--trans);}
+.feature-card:hover .fc-arrow{opacity:1;transform:translate(0,0);}
+
+/* PRODUCT CARDS */
+.store-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.pc-thumb{height:150px;background:linear-gradient(135deg,var(--bg3),var(--bg2));display:flex;align-items:center;justify-content:center;font-size:50px;position:relative;overflow:hidden;}
+.pc-thumb::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,transparent 50%,var(--surface));}
+.pc-badge{position:absolute;top:9px;right:9px;z-index:2;background:linear-gradient(135deg,var(--primary),var(--neon));color:white;font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:3px 9px;border-radius:100px;}
+.pc-body{padding:16px;}
+.pc-name{font-family:'Orbitron',monospace;font-size:12px;font-weight:700;margin-bottom:5px;}
+.pc-desc{font-size:13px;color:var(--dim);margin-bottom:12px;line-height:1.5;}
+.pc-foot{display:flex;align-items:center;justify-content:space-between;}
+.pc-price.cs{font-size:10px;color:var(--dim);letter-spacing:2px;text-transform:uppercase;}
+
+/* TOURNAMENT CARDS */
+.t-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;}
+.t-card{padding:24px;}
+.t-card:hover{transform:translateY(-3px);}
+.t-card::after{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(to bottom,var(--primary),var(--accent));opacity:0;transition:opacity .3s;}
+.t-card:hover::after{opacity:1;}
+.t-badge{display:inline-block;font-size:10px;letter-spacing:2px;text-transform:uppercase;padding:3px 11px;border-radius:100px;margin-bottom:12px;font-weight:700;}
+.t-badge.open{background:rgba(34,197,94,.15);color:#22c55e;border:1px solid rgba(34,197,94,.3);}
+.t-badge.soon{background:rgba(var(--pr),.12);color:var(--primary);border:1px solid rgba(var(--pr),.28);}
+.t-name{font-family:'Orbitron',monospace;font-size:14px;font-weight:700;margin-bottom:7px;}
+.t-game{font-size:13px;color:var(--accent);margin-bottom:11px;font-weight:600;}
+.t-prize{font-family:'Orbitron',monospace;font-size:15px;font-weight:700;background:linear-gradient(135deg,#7dd3fc,var(--accent));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:12px;}
+.t-meta{display:flex;gap:18px;margin-bottom:16px;}
+.t-mi{font-size:12px;color:var(--dim);}
+.t-mi strong{display:block;font-family:'Orbitron',monospace;font-size:13px;color:var(--primary);margin-bottom:1px;}
+
+/* GIVEAWAY CARDS */
+.gw-featured{border-radius:14px;padding:48px;margin-bottom:36px;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;background:linear-gradient(135deg,rgba(var(--ac),.1),rgba(var(--pr),.07));border:1px solid rgba(var(--ac),.28);position:relative;overflow:hidden;}
+.gw-featured::before{content:'';position:absolute;top:-90px;right:-90px;width:280px;height:280px;background:radial-gradient(circle,rgba(var(--ac),.15),transparent);border-radius:50%;}
+.gw-prize-icon{font-size:76px;text-align:center;display:block;filter:drop-shadow(0 0 18px rgba(var(--ac),.5));animation:gwFloat 4s ease-in-out infinite;}
+@keyframes gwFloat{0%,100%{transform:translateY(0);}50%{transform:translateY(-11px);}}
+.gw-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.gw-card{padding:22px;text-align:center;}
+.gw-card:hover{transform:translateY(-3px);}
+.gw-icon{font-size:36px;margin-bottom:11px;display:block;}
+.gw-title{font-family:'Orbitron',monospace;font-size:12px;font-weight:700;margin-bottom:7px;}
+.gw-end{font-size:11px;color:var(--dim);margin-bottom:12px;}
+.gw-note{font-size:10px;letter-spacing:2px;color:var(--accent);margin-bottom:12px;text-transform:uppercase;}
+
+/* ABOUT */
+.about-split{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;margin-bottom:64px;}
+.about-text h2{font-family:'Orbitron',monospace;font-size:clamp(20px,3vw,32px);font-weight:700;margin-bottom:16px;background:linear-gradient(135deg,var(--text),var(--primary));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+.about-text p{font-size:15px;color:var(--dim);line-height:1.8;margin-bottom:14px;font-weight:300;}
+.about-visual{border-radius:16px;height:290px;display:flex;align-items:center;justify-content:center;font-size:84px;background:linear-gradient(135deg,var(--bg3),var(--bg2));border:1px solid var(--border);position:relative;overflow:hidden;}
+.about-visual::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 50%,rgba(var(--pr),.15),transparent 70%);}
+.team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+.team-card{padding:24px 16px;text-align:center;}
+.team-card:hover{transform:translateY(-3px);}
+.team-av{width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--neon));margin:0 auto 12px;display:flex;align-items:center;justify-content:center;font-size:24px;}
+.team-name{font-family:'Orbitron',monospace;font-size:12px;font-weight:700;margin-bottom:4px;}
+.team-role{font-size:11px;color:var(--primary);letter-spacing:1px;text-transform:uppercase;margin-bottom:8px;}
+.team-yt{font-size:11px;color:var(--dim);text-decoration:none;display:inline-flex;align-items:center;gap:4px;padding:3px 8px;border-radius:4px;border:1px solid transparent;transition:var(--trans);}
+.team-yt:hover{color:#ef4444;border-color:rgba(239,68,68,.3);background:rgba(239,68,68,.06);}
+.yt-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.yt-card{padding:24px;display:flex;flex-direction:column;align-items:center;text-align:center;text-decoration:none;color:inherit;transition:var(--trans);}
+.yt-card:hover{border-color:rgba(239,68,68,.4);transform:translateY(-3px);box-shadow:0 12px 40px rgba(239,68,68,.1);}
+.yt-icon{font-size:34px;margin-bottom:9px;}
+.yt-type{font-size:9px;letter-spacing:2px;color:var(--dim);text-transform:uppercase;margin-bottom:4px;}
+.yt-name{font-family:'Orbitron',monospace;font-size:12px;font-weight:700;margin-bottom:6px;}
+.yt-handle{font-size:11px;color:#ef4444;opacity:.8;}
+.val-row{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:48px;}
+.val-card{padding:24px;text-align:center;}
+.val-icon{font-size:32px;margin-bottom:10px;display:block;}
+.val-name{font-family:'Orbitron',monospace;font-size:12px;font-weight:700;margin-bottom:7px;}
+.val-desc{font-size:13px;color:var(--dim);}
+
+/* CONTACT */
+.contact-split{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:start;}
+.contact-info h3{font-family:'Orbitron',monospace;font-size:18px;font-weight:700;margin-bottom:12px;}
+.contact-info p{font-size:14px;color:var(--dim);line-height:1.75;margin-bottom:24px;}
+.socs{display:flex;flex-direction:column;gap:9px;}
+.soc-l{display:flex;align-items:center;gap:13px;padding:12px 16px;border-radius:9px;text-decoration:none;color:var(--text);transition:var(--trans);}
+.soc-l:hover{transform:translateX(4px);}
+.soc-l.dc:hover{border-color:rgba(88,101,242,.5);background:rgba(88,101,242,.06);}
+.soc-l.yt:hover{border-color:rgba(239,68,68,.4);background:rgba(239,68,68,.05);}
+.soc-l.em:hover{border-color:var(--border-h);background:rgba(var(--pr),.05);}
+.soc-icon{font-size:19px;}
+.soc-name{font-weight:700;font-size:14px;}
+.soc-handle{font-size:11px;color:var(--dim);}
+.contact-form-wrap{padding:30px;}
+.fg{margin-bottom:15px;}
+.fl{display:block;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);margin-bottom:7px;font-weight:600;}
+.fi,.ft{width:100%;background:var(--input-bg);border:1px solid var(--border);border-radius:6px;padding:11px 14px;color:var(--text);font-family:'Rajdhani',sans-serif;font-size:14px;outline:none;transition:var(--trans);}
+.fi:focus,.ft:focus{border-color:var(--primary);box-shadow:0 0 0 3px rgba(var(--pr),.1);}
+.ft{height:110px;resize:vertical;}
+
+/* DISCORD BANNER */
+.dc-banner{margin:0 56px 56px;border-radius:16px;padding:52px;text-align:center;position:relative;overflow:hidden;background:linear-gradient(135deg,rgba(88,101,242,.16),rgba(88,101,242,.08));border:1px solid rgba(88,101,242,.38);}
+.dc-banner::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 80% at 50% 0%,rgba(88,101,242,.22),transparent 65%);}
+.dc-icon{font-size:42px;margin-bottom:14px;display:block;animation:dcFloat 3s ease-in-out infinite;}
+@keyframes dcFloat{0%,100%{transform:translateY(0);}50%{transform:translateY(-7px);}}
+
+/* ═══ ABOUT PAGE ENHANCED ═══ */
+.about-hero-banner{
+  position:relative;height:340px;overflow:hidden;
+  display:flex;align-items:center;justify-content:center;
+  margin-top:68px;
+}
+#aboutStars{position:absolute;inset:0;width:100%;height:100%;}
+.about-banner-content{position:relative;z-index:2;text-align:center;}
+.about-banner-tag{
+  font-size:11px;letter-spacing:4px;text-transform:uppercase;
+  color:var(--primary);margin-bottom:14px;
+  display:inline-flex;align-items:center;gap:10px;
+}
+.about-banner-tag::before,.about-banner-tag::after{content:'';width:30px;height:1px;background:var(--primary);}
+.about-banner-title{
+  font-family:'Orbitron',monospace;font-size:clamp(40px,7vw,80px);
+  font-weight:900;line-height:1;
+  background:linear-gradient(135deg,var(--text),var(--primary),var(--accent));
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  margin-bottom:14px;
+}
+.about-banner-title span{color:var(--primary);-webkit-text-fill-color:var(--primary);}
+.about-banner-sub{font-style:italic;color:var(--dim);font-size:15px;letter-spacing:.5px;}
+.ab-orb1,.ab-orb2{position:absolute;border-radius:50%;filter:blur(80px);animation:orbDrift 10s ease-in-out infinite;}
+.ab-orb1{width:400px;height:400px;top:-100px;right:-60px;background:rgba(var(--pr),.12);}
+.ab-orb2{width:280px;height:280px;bottom:-80px;left:-40px;background:rgba(var(--ac),.09);animation-delay:4s;}
+
+/* ABOUT VISUAL enhanced */
+.about-visual{border-radius:16px;height:320px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--bg3),var(--bg2));border:1px solid var(--border);position:relative;overflow:hidden;}
+.about-visual::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 50%,rgba(var(--pr),.15),transparent 70%);}
+.av-inner{position:relative;z-index:1;display:flex;align-items:center;justify-content:center;}
+.av-emoji{font-size:72px;filter:drop-shadow(0 0 28px rgba(var(--pr),.6));animation:avFloat 4s ease-in-out infinite;display:block;}
+@keyframes avFloat{0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);}}
+.av-ring{position:absolute;border-radius:50%;border:1px solid rgba(var(--pr),.2);animation:avRingSpin linear infinite;}
+.av-ring1{width:130px;height:130px;animation-duration:12s;}
+.av-ring2{width:190px;height:190px;animation-duration:18s;animation-direction:reverse;border-color:rgba(var(--ac),.15);}
+.av-ring3{width:250px;height:250px;animation-duration:25s;border-style:dashed;border-color:rgba(var(--pr),.1);}
+@keyframes avRingSpin{to{transform:rotate(360deg);}}
+.av-float-badge{
+  position:absolute;background:var(--surface);border:1px solid var(--border);
+  border-radius:100px;padding:5px 12px;font-size:11px;font-weight:700;
+  color:var(--primary);white-space:nowrap;letter-spacing:.5px;
+  animation:badgeFloat 5s ease-in-out infinite;
+}
+.ab1{top:10px;right:-30px;animation-delay:0s;}
+.ab2{bottom:30px;right:-20px;animation-delay:1.5s;}
+.ab3{top:50%;left:-20px;transform:translateY(-50%);animation-delay:3s;}
+@keyframes badgeFloat{0%,100%{transform:translateY(0);}50%{transform:translateY(-6px);}}
+.ab2{animation-name:badgeFloat2;}
+.ab3{animation-name:badgeFloat3;}
+@keyframes badgeFloat2{0%,100%{transform:translateY(0);}50%{transform:translateY(6px);}}
+@keyframes badgeFloat3{0%,100%{transform:translateY(-50%);}50%{transform:translateY(calc(-50% - 6px));}}
+
+/* MISSION STRIP */
+.mission-strip{
+  display:flex;align-items:stretch;
+  background:var(--surface);border:1px solid var(--border);border-radius:12px;
+  margin:40px 0;overflow:hidden;
+}
+.ms-item{flex:1;padding:24px 20px;text-align:center;}
+.ms-icon{font-size:28px;margin-bottom:8px;}
+.ms-label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);margin-bottom:6px;}
+.ms-val{font-family:'Orbitron',monospace;font-size:12px;font-weight:700;color:var(--text);}
+.ms-div{width:1px;background:var(--border);flex-shrink:0;}
+
+/* TEAM BADGES */
+.team-badges{display:flex;gap:5px;justify-content:center;margin:8px 0;}
+.tbadge{font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:3px 8px;border-radius:100px;}
+.tbadge.gold{background:rgba(245,158,11,.15);color:#f59e0b;border:1px solid rgba(245,158,11,.3);}
+.tbadge.red{background:rgba(220,38,38,.15);color:#dc2626;border:1px solid rgba(220,38,38,.3);}
+.tbadge.blue{background:rgba(59,130,246,.15);color:#3b82f6;border:1px solid rgba(59,130,246,.3);}
+.tbadge.purple{background:rgba(168,85,247,.15);color:#a855f7;border:1px solid rgba(168,85,247,.3);}
+.tbadge.green{background:rgba(34,197,94,.15);color:#22c55e;border:1px solid rgba(34,197,94,.3);}
+
+/* YT CARDS enhanced */
+.yt-card{position:relative;}
+.yt-glow{position:absolute;inset:0;border-radius:12px;background:radial-gradient(circle at 50% 0%,rgba(239,68,68,.08),transparent 70%);opacity:0;transition:opacity .3s;}
+.yt-card:hover .yt-glow{opacity:1;}
+.yt-cta{font-size:11px;color:var(--primary);letter-spacing:1px;margin-top:10px;opacity:0;transform:translateY(4px);transition:all .25s;}
+.yt-card:hover .yt-cta{opacity:1;transform:translateY(0);}
+
+/* CONTACT STRIP */
+.contact-strip{
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px;
+  background:linear-gradient(135deg,rgba(var(--pr),.08),rgba(var(--ac),.06));
+  border:1px solid var(--border);border-radius:12px;padding:28px 32px;margin:40px 0;
+}
+.cs-email-btn{
+  display:inline-flex;align-items:center;gap:10px;
+  background:linear-gradient(135deg,var(--primary),var(--neon));
+  color:white;text-decoration:none;padding:12px 24px;border-radius:8px;
+  font-family:'Rajdhani',sans-serif;font-size:14px;font-weight:700;letter-spacing:1px;
+  transition:var(--trans);box-shadow:0 4px 20px rgba(var(--pr),.3);
+}
+.cs-email-btn:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(var(--pr),.45);}
+
+/* VAL CARDS enhanced */
+.val-icon-wrap{width:56px;height:56px;border-radius:12px;background:rgba(var(--pr),.1);border:1px solid rgba(var(--pr),.2);display:flex;align-items:center;justify-content:center;margin:0 auto 14px;}
+.val-card{padding:28px;text-align:center;}
+.val-card:hover{transform:translateY(-4px);}
+
+/* QUOTE */
+.kin-quote{
+  font-family:'Inter',sans-serif;font-size:18px;font-style:italic;font-weight:300;
+  color:var(--dim);text-align:center;padding:20px 40px;
+  border-left:3px solid var(--primary);margin:0 auto;max-width:700px;
+  background:rgba(var(--pr),.04);border-radius:0 8px 8px 0;
+}
+.kin-quote b{color:var(--primary);font-style:normal;font-weight:600;}
+
+/* TAB ROW */
+.tab-row{display:flex;gap:4px;margin-bottom:36px;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:5px;width:fit-content;}
+.tab-btn{padding:9px 24px;border-radius:5px;border:none;background:transparent;color:var(--dim);font-family:'Rajdhani',sans-serif;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:var(--trans);}
+.tab-btn.active,.tab-btn:hover{background:linear-gradient(135deg,var(--primary),var(--neon));color:white;}
+
+/* STORE HERO */
+.t-hero{border-radius:16px;padding:48px;margin-bottom:36px;text-align:center;position:relative;overflow:hidden;background:linear-gradient(135deg,rgba(var(--pr),.08),rgba(var(--ac),.07));border:1px solid var(--border);}
+.t-hero::before{content:'🏆';position:absolute;font-size:170px;opacity:.04;top:-15px;right:-10px;pointer-events:none;}
+
+/* MISC */
+.cs-tag{display:inline-block;background:rgba(var(--ac),.12);border:1px solid rgba(var(--ac),.28);color:var(--accent);font-size:9px;letter-spacing:2px;text-transform:uppercase;padding:2px 8px;border-radius:100px;margin-left:6px;vertical-align:middle;}
+.reveal{opacity:0;transform:translateY(36px);transition:opacity .65s cubic-bezier(.16,1,.3,1),transform .65s cubic-bezier(.16,1,.3,1);}
+.reveal.vis{opacity:1;transform:translateY(0);}
+@keyframes fadeInDown{from{opacity:0;transform:translateY(-16px);}to{opacity:1;transform:translateY(0);}}
+@keyframes fadeInUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
+
+/* FOOTER */
+footer{border-top:1px solid var(--border);padding:32px 56px;display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:20px;}
+.ft-brand a{font-family:'Orbitron',monospace;font-size:16px;font-weight:900;letter-spacing:3px;background:linear-gradient(135deg,var(--primary),var(--accent));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none;display:inline-block;margin-bottom:6px;}
+.ft-quote{font-size:11px;color:var(--faint);font-style:italic;margin-bottom:12px;}
+.ft-yts{display:flex;flex-wrap:wrap;gap:8px;}
+.ft-yt{font-size:10px;color:var(--dim);text-decoration:none;display:inline-flex;align-items:center;gap:4px;padding:4px 9px;border-radius:5px;border:1px solid transparent;transition:var(--trans);}
+.ft-yt:hover{color:#ef4444;border-color:rgba(239,68,68,.28);background:rgba(239,68,68,.06);}
+.ft-links{display:flex;flex-direction:column;align-items:flex-end;gap:6px;}
+.ft-nav{display:flex;flex-wrap:wrap;gap:16px;justify-content:flex-end;margin-bottom:8px;}
+.ft-nav a{font-size:11px;color:var(--dim);text-decoration:none;letter-spacing:1px;text-transform:uppercase;transition:var(--trans);}
+.ft-nav a:hover{color:var(--primary);}
+.ft-copy{font-size:11px;color:var(--faint);}
+
+/* ═══════════════════════════════════════
+   PROFILE PAGE
+═══════════════════════════════════════ */
+.profile-hero{
+  padding:120px 56px 60px;max-width:1280px;margin:0 auto;
+  display:grid;grid-template-columns:280px 1fr;gap:40px;align-items:start;
+}
+.profile-card{padding:32px;text-align:center;position:sticky;top:90px;}
+.profile-av-wrap{position:relative;width:100px;margin:0 auto 16px;}
+.profile-av{
+  width:100px;height:100px;border-radius:50%;
+  background:linear-gradient(135deg,var(--primary),var(--accent));
+  display:flex;align-items:center;justify-content:center;font-size:40px;margin:0 auto;
+  box-shadow:0 0 30px rgba(var(--pr),.3);
+}
+.profile-av-ring{position:absolute;inset:-4px;border-radius:50%;border:2px solid var(--primary);opacity:.4;animation:ringPulse 3s ease-in-out infinite;}
+@keyframes ringPulse{0%,100%{opacity:.4;transform:scale(1);}50%{opacity:.8;transform:scale(1.05);}}
+.profile-name{font-family:'Orbitron',monospace;font-size:18px;font-weight:700;margin-bottom:4px;}
+.profile-tag{font-size:12px;color:var(--dim);margin-bottom:4px;letter-spacing:1px;}
+.profile-since{font-size:11px;color:var(--faint);}
+.profile-badge-row{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin:14px 0;}
+.p-badge{padding:4px 10px;border-radius:100px;font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;}
+.p-badge.member{background:rgba(var(--pr),.12);color:var(--primary);border:1px solid rgba(var(--pr),.25);}
+.p-badge.gaming{background:rgba(var(--ac),.12);color:var(--accent);border:1px solid rgba(var(--ac),.25);}
+.profile-stats-mini{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px;}
+.psm{padding:12px;border-radius:8px;text-align:center;}
+.psm-val{font-family:'Orbitron',monospace;font-size:18px;font-weight:700;color:var(--primary);}
+.psm-lbl{font-size:10px;color:var(--dim);letter-spacing:1px;text-transform:uppercase;}
+
+.profile-right{}
+.profile-tabs{display:flex;gap:4px;margin-bottom:28px;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:5px;width:fit-content;}
+.ptab{padding:8px 20px;border-radius:5px;border:none;background:transparent;color:var(--dim);font-family:'Rajdhani',sans-serif;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;transition:var(--trans);}
+.ptab.on{background:linear-gradient(135deg,var(--primary),var(--neon));color:white;}
+.ptab-content{display:none;}
+.ptab-content.on{display:block;}
+.achiev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+.achiev{padding:16px;text-align:center;}
+.achiev.locked{opacity:.4;filter:grayscale(1);}
+.achiev-icon{font-size:28px;margin-bottom:7px;display:block;}
+.achiev-name{font-size:11px;font-weight:700;font-family:'Orbitron',monospace;margin-bottom:4px;}
+.achiev-desc{font-size:10px;color:var(--dim);}
+
+/* ═══════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════ */
+@media(max-width:960px){
+  nav{padding:0 20px;}
+  .mob-btn{display:block;}
+  .nav-links{display:none;position:absolute;top:68px;left:12px;right:12px;flex-direction:column;background:var(--nav-bg);backdrop-filter:blur(28px);padding:14px;border:1px solid var(--border);border-radius:12px;gap:2px;}
+  .nav-links.open{display:flex;}
+  .nav-links a{padding:10px 14px;width:100%;}
+  .user-dropdown{right:16px;}
+  section{padding:56px 20px;}
+  .sec-div{margin:0 20px;}
+  .dc-banner{margin:0 20px 40px;}
+  .features-grid,.store-grid,.gw-grid,.yt-grid,.val-row{grid-template-columns:1fr;}
+  .t-grid,.about-split,.contact-split{grid-template-columns:1fr;}
+  .team-grid{grid-template-columns:repeat(2,1fr);}
+  .gw-featured{grid-template-columns:1fr;gap:24px;}
+  .hero-pillars{gap:20px;flex-wrap:wrap;position:static;margin-top:40px;}
+  .hero-btns{flex-direction:column;align-items:center;}
+  .btn{width:100%;max-width:290px;justify-content:center;}
+  footer{padding:28px 20px;flex-direction:column;}
+  .ft-links{align-items:flex-start;}
+  .ft-nav{justify-content:flex-start;}
+  .profile-hero{grid-template-columns:1fr;padding:100px 20px 40px;}
+  .profile-card{position:static;}
+  .achiev-grid{grid-template-columns:repeat(2,1fr);}
+}
+@media(max-width:600px){
+  .hero-title{font-size:clamp(34px,9vw,56px);}
+  .team-grid{grid-template-columns:1fr 1fr;}
+}
+</style>
+</head>
+<body>
+
+<!-- LOADER -->
+<div id="loader">
+  <div class="ld-glow"></div>
+  <div class="ld-ring"></div>
+  <div class="ld-logo">KINDUSTRY</div>
+  <div class="ld-sub">INITIALIZING GAMING UNIVERSE...</div>
+  <div class="ld-bar"></div>
+</div>
+
+<!-- PARTICLES -->
+<div id="pts"></div>
+
+<!-- CURSOR -->
+<div id="cur"></div>
+<div id="cur-ring"></div>
+
+<!-- ════ AUTH MODAL ════ -->
+<div class="modal-overlay" id="authModal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeAuth()">✕</button>
+
+    <!-- Step 1: Login options -->
+    <div id="authStep1">
+      <div class="modal-logo">KINDUSTRY</div>
+      <div class="modal-title">Welcome Back</div>
+      <div class="modal-sub">Sign in to access your profile, tournament history, and exclusive member perks.</div>
+      <button class="auth-btn" onclick="doLogin('Google')">
+        <span class="ab-icon">🇬</span> Continue with Google
+      </button>
+      <button class="auth-btn" onclick="doLogin('Facebook')">
+        <span class="ab-icon">📘</span> Continue with Facebook
+      </button>
+      <button class="auth-btn" onclick="doLogin('Discord')">
+        <span class="ab-icon">💬</span> Continue with Discord
+      </button>
+      <button class="auth-btn" onclick="doLogin('Twitter')">
+        <span class="ab-icon">🐦</span> Continue with X / Twitter
+      </button>
+      <div class="auth-note">By signing in you agree to our Terms of Service.<br>Your account stays logged in until you sign out.</div>
+    </div>
+
+    <!-- Step 2: Username picker -->
+    <div id="authStep2" style="display:none;">
+      <div class="modal-logo">KINDUSTRY</div>
+      <div class="modal-title">Choose Your Username</div>
+      <div class="modal-sub">Pick a unique username for your Kindustry profile. This is how other players will find you.</div>
+      <input type="text" class="uname-input" id="unameInput" placeholder="GamerTag123" maxlength="12" oninput="validateUname()">
+      <div class="uname-hint">Up to 12 characters. Letters and numbers only.</div>
+      <div class="uname-err" id="unameErr">Username can only contain letters and numbers.</div>
+      <button class="btn btn-p" style="width:100%;justify-content:center;" id="unameSubmit" onclick="submitUsername()" disabled>Claim Username →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ════ USER DROPDOWN ════ -->
+<div class="user-dropdown" id="userDropdown">
+  <div class="ud-header">
+    <div class="ud-name" id="dd-name">—</div>
+    <div class="ud-tag" id="dd-tag">Kindustry Member</div>
+  </div>
+  <a href="#" class="ud-item" onclick="showPage('profile');closeDropdown();return false;">👤 My Profile</a>
+  <a href="#" class="ud-item" onclick="showPage('achievements');closeDropdown();return false;">🏆 Achievements</a>
+  <div class="ud-item danger" onclick="signOut()">🚪 Sign Out</div>
+  <div class="ud-item danger" onclick="deleteAccount()">🗑 Delete Account</div>
+</div>
+
+<!-- ════ SETTINGS ════ -->
+<div class="set-overlay" id="setOverlay" onclick="outsideSet(event)">
+  <div class="set-panel">
+    <button class="set-close" onclick="closeSet()">✕</button>
+    <div class="set-title">⚙ Customize</div>
+    <span class="set-label">Theme</span>
+    <div class="theme-grid">
+      <button class="th-btn on" id="tb-dark" onclick="setTheme('dark')">
+        <div class="th-swatch" style="background:linear-gradient(135deg,#05070f,#4f8ef7 60%,#a855f7);border:1px solid rgba(79,142,247,.4);"></div>
+        <div class="th-label">Dark Neon</div>
+      </button>
+      <button class="th-btn" id="tb-red" onclick="setTheme('red')">
+        <div class="th-swatch" style="background:linear-gradient(135deg,#fff5f5,#dc2626 60%,#b91c1c);border:1px solid rgba(220,38,38,.4);"></div>
+        <div class="th-label">White + Red</div>
+      </button>
+      <button class="th-btn" id="tb-cyber" onclick="setTheme('cyber')">
+        <div class="th-swatch" style="background:linear-gradient(135deg,#000,#00e676 60%,#e040fb);border:1px solid rgba(0,230,118,.4);"></div>
+        <div class="th-label">Cyber RGB</div>
+      </button>
+      <button class="th-btn" id="tb-white" onclick="setTheme('white')">
+        <div class="th-swatch" style="background:linear-gradient(135deg,#eef2ff,#2563eb 60%,#7c3aed);border:1px solid rgba(37,99,235,.4);"></div>
+        <div class="th-label">White Pro</div>
+      </button>
+    </div>
+    <div class="set-div"></div>
+    <span class="set-label">Quick Links</span>
+    <a href="https://discord.gg/CBqWUKScfF" target="_blank" class="set-link" style="background:rgba(88,101,242,.1);border-color:rgba(88,101,242,.3);color:#7289da;">💬 Join Discord</a>
+    <a href="https://youtube.com/@officialkindustry" target="_blank" class="set-link" style="background:rgba(239,68,68,.08);border-color:rgba(239,68,68,.25);color:#ef4444;">▶ Kindustry YouTube</a>
+    <div class="set-div"></div>
+    <div style="font-size:11px;color:var(--dim);line-height:1.7;">More options coming — effects toggles, font size, UI preferences.</div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="logo" onclick="showPage('home');return false;">KINDUSTRY</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#" onclick="showPage('home');return false;"         id="nl-home"        class="active">Home</a></li>
+    <li><a href="#" onclick="showPage('store');return false;"        id="nl-store"        >Store</a></li>
+    <li><a href="#" onclick="showPage('tournaments');return false;"  id="nl-tournaments"  >Tournaments</a></li>
+    <li><a href="#" onclick="showPage('giveaways');return false;"    id="nl-giveaways"    >Giveaways</a></li>
+    <li><a href="#" onclick="showPage('about');return false;"        id="nl-about"        >About</a></li>
+    <li><a href="#" onclick="showPage('contact');return false;"      id="nl-contact"      >Contact</a></li>
+    <li><a href="https://discord.gg/CBqWUKScfF" target="_blank" class="nav-discord-btn">💬 Discord</a></li>
+  </ul>
+  <div class="nav-right">
+    <div id="navAuthArea">
+      <button class="nav-login-btn" onclick="openAuth()">Sign In</button>
+    </div>
+    <button class="settings-btn" onclick="openSet()">⚙</button>
+    <button class="mob-btn" onclick="toggleNav()">☰</button>
+  </div>
+</nav>
+
+<!-- ════════════════════ HOME ════════════════════ -->
+<div class="page active" id="page-home">
+  <div class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+    <div class="orb orb1"></div><div class="orb orb2"></div><div class="orb orb3"></div>
+    <div class="hero-content">
+      <div class="hero-eyebrow"><div class="hero-eyebrow-dot"></div>The Gaming Universe</div>
+      <h1 class="hero-title">
+        <span class="hero-title-main">KINDUSTRY</span>
+        <span class="hero-title-sub">Play. Compete. Dominate.</span>
+      </h1>
+      <p class="hero-quote">"Kindustry — <b>where everything forges into greatness.</b>"</p>
+      <p class="hero-desc">Your gateway to competitive gaming, exclusive tournaments, epic giveaways, and a community built for those who live to play.</p>
+      <div class="hero-btns">
+        <a href="https://discord.gg/CBqWUKScfF" target="_blank" class="btn btn-dc">💬 Join Our Discord</a>
+        <a href="#" onclick="showPage('tournaments');return false;" class="btn btn-ol">View Tournaments</a>
+      </div>
+    </div>
+    <div class="hero-pillars">
+      <div class="pillar"><div class="pillar-icon">🏆</div><div class="pillar-lbl">Competitive Esports</div></div>
+      <div class="pillar"><div class="pillar-icon">🎮</div><div class="pillar-lbl">Community Driven</div></div>
+      <div class="pillar"><div class="pillar-icon">💡</div><div class="pillar-lbl">Creative Innovation</div></div>
+      <div class="pillar"><div class="pillar-icon">📺</div><div class="pillar-lbl">Content & Culture</div></div>
+      <div class="pillar"><div class="pillar-icon">⚡</div><div class="pillar-lbl">24/7 Active</div></div>
+    </div>
+    <div class="scroll-hint"><div class="scroll-track"><div class="scroll-thumb"></div></div>Scroll</div>
+  </div>
+
+  <section>
+    <div class="sec-hdr reveal"><div class="sec-ey">What We Offer</div><h2 class="sec-title">Everything a gamer needs</h2></div>
+    <div class="features-grid">
+      <a class="feature-card card reveal" href="#" onclick="showPage('tournaments');return false;"><div class="fc-arrow">↗</div><span class="fc-icon">🏆</span><div class="fc-title">Monthly Tournaments</div><p class="fc-text">Free-entry tournaments every month across multiple games. Compete for glory and exclusive rewards.</p></a>
+      <a class="feature-card card reveal" href="#" onclick="showPage('giveaways');return false;"><div class="fc-arrow">↗</div><span class="fc-icon">🎁</span><div class="fc-title">Epic Giveaways</div><p class="fc-text">Regular giveaways of Discord roles, game passes, and exclusive merch for our community.</p></a>
+      <a class="feature-card card reveal" href="#" onclick="showPage('store');return false;"><div class="fc-arrow">↗</div><span class="fc-icon">🛒</span><div class="fc-title">Kindustry Store</div><p class="fc-text">Exclusive merch, Discord roles, and limited drops. Online and real-life store coming soon.</p></a>
+      <a class="feature-card card reveal" href="https://discord.gg/CBqWUKScfF" target="_blank"><div class="fc-arrow">↗</div><span class="fc-icon">🎮</span><div class="fc-title">Gaming Community</div><p class="fc-text">Find teammates, share clips, get news, and be part of something bigger on our Discord.</p></a>
+      <a class="feature-card card reveal" href="https://youtube.com/@officialkindustry" target="_blank"><div class="fc-arrow">↗</div><span class="fc-icon">📺</span><div class="fc-title">YouTube Content</div><p class="fc-text">Tournament VODs, highlights, and gaming content on our official Kindustry channel.</p></a>
+      <a class="feature-card card reveal" href="#" onclick="showPage('about');return false;"><div class="fc-arrow">↗</div><span class="fc-icon">⚔️</span><div class="fc-title">Esports Team — GODK</div><p class="fc-text">Our competitive esports team GODK is forming. Tryouts coming — think you have what it takes?</p></a>
+    </div>
+  </section>
+
+  <section style="padding-top:0;padding-bottom:40px;">
+    <div class="kin-quote reveal">"Kindustry — <b>where everything forges into greatness.</b>"</div>
+  </section>
+
+  <div class="dc-banner reveal">
+    <div style="position:relative;z-index:1;">
+      <span class="dc-icon">💬</span>
+      <h3 style="font-family:'Orbitron',monospace;font-size:24px;font-weight:700;margin-bottom:10px;">Join the Kindustry Discord</h3>
+      <p style="color:var(--dim);max-width:460px;margin:0 auto 24px;line-height:1.75;">Tournaments, giveaways, team finding, exclusive perks — all in one server.</p>
+      <a href="https://discord.gg/CBqWUKScfF" target="_blank" class="btn btn-dc">Join Now — It's Free</a>
+    </div>
+  </div>
+
+  <div class="sec-div" style="margin-top:56px;"></div>
+  <footer>
+    <div class="ft-brand">
+      <a href="#" onclick="showPage('home');return false;">KINDUSTRY</a>
+      <div class="ft-quote">"where everything forges into greatness"</div>
+      <div class="ft-yts">
+        <a href="https://youtube.com/@officialkindustry" target="_blank" class="ft-yt">▶ Kindustry</a>
+        <a href="https://youtube.com/@godkteam" target="_blank" class="ft-yt">▶ God K Team</a>
+        <a href="https://youtube.com/@khushalbosspro" target="_blank" class="ft-yt">▶ KhushalBossPro</a>
+      </div>
+    </div>
+    <div class="ft-links">
+      <div class="ft-nav">
+        <a href="#" onclick="showPage('store');return false;">Store</a>
+        <a href="#" onclick="showPage('tournaments');return false;">Tournaments</a>
+        <a href="https://discord.gg/CBqWUKScfF" target="_blank">Discord</a>
+        <a href="#" onclick="showPage('contact');return false;">Contact</a>
+      </div>
+      <div class="ft-copy">© 2026 Kindustry. All rights reserved.</div>
+    </div>
+  </footer>
+</div>
+
+<!-- ════════════════════ STORE ════════════════════ -->
+<div class="page" id="page-store">
+  <section style="padding-top:110px;">
+    <div class="sec-hdr reveal"><div class="sec-ey">Kindustry Shop</div><h2 class="sec-title">The Store</h2></div>
+    <div class="tab-row">
+      <button class="tab-btn active" onclick="storeTab(this,'online')">Online Store</button>
+      <button class="tab-btn" onclick="storeTab(this,'reallife')">Real Life Store</button>
+    </div>
+    <div id="store-online">
+      <div style="background:rgba(var(--pr),.07);border:1px solid rgba(var(--pr),.2);border-radius:8px;padding:13px 18px;margin-bottom:24px;font-size:13px;color:var(--dim);">🔒 Store setup in progress. <a href="https://discord.gg/CBqWUKScfF" target="_blank" style="color:var(--primary);">Join Discord</a> to purchase roles manually.</div>
+      <div class="store-grid">
+        <div class="card reveal" style="cursor:default;"><div class="pc-thumb">👑<span class="pc-badge">Popular</span></div><div class="pc-body"><div class="pc-name">VIP Discord Role</div><div class="pc-desc">Private channels, early giveaway entries, and exclusive member perks.</div><div class="pc-foot"><div class="pc-price cs">Coming Soon</div><button class="sm sm-p" disabled>Preview</button></div></div></div>
+        <div class="card reveal" style="cursor:default;"><div class="pc-thumb">⚔️<span class="pc-badge">New</span></div><div class="pc-body"><div class="pc-name">Elite Member Role</div><div class="pc-desc">Priority tournament registration, premium badge, and exclusive perks.</div><div class="pc-foot"><div class="pc-price cs">Coming Soon</div><button class="sm sm-p" disabled>Preview</button></div></div></div>
+        <div class="card reveal" style="cursor:default;"><div class="pc-thumb">🎯</div><div class="pc-body"><div class="pc-name">Tournament Pass</div><div class="pc-desc">Secure your spot in any upcoming Kindustry tournament instantly.</div><div class="pc-foot"><div class="pc-price cs">Coming Soon</div><button class="sm sm-p" disabled>Preview</button></div></div></div>
+        <div class="card reveal" style="cursor:default;"><div class="pc-thumb">💎<span class="pc-badge">Limited</span></div><div class="pc-body"><div class="pc-name">Founder's Pack</div><div class="pc-desc">Permanent founder role, name in credits, and all future perks.</div><div class="pc-foot"><div class="pc-price cs">Coming Soon</div><button class="sm sm-p" disabled>Preview</button></div></div></div>
+        <div class="card reveal" style="cursor:default;"><div class="pc-thumb">🎮</div><div class="pc-body"><div class="pc-name">In-Game Items <span class="cs-tag">Soon</span></div><div class="pc-desc">Marketplace for skins, in-game items, and exclusive digital drops.</div><div class="pc-foot"><div class="pc-price cs">Coming Soon</div><button class="sm sm-p" disabled>Notify</button></div></div></div>
+        <div class="card reveal" style="cursor:default;"><div class="pc-thumb">🌟</div><div class="pc-body"><div class="pc-name">Monthly Sub</div><div class="pc-desc">Rotating perks, exclusive entries, and member-only content monthly.</div><div class="pc-foot"><div class="pc-price cs">Coming Soon</div><button class="sm sm-p" disabled>Subscribe</button></div></div></div>
+      </div>
+    </div>
+    <div id="store-reallife" style="display:none;">
+      <div style="text-align:center;padding:52px 0;">
+        <div style="font-size:72px;margin-bottom:16px;animation:gwFloat 4s ease-in-out infinite;display:inline-block;">👕</div>
+        <h3 style="font-family:'Orbitron',monospace;font-size:22px;font-weight:700;margin-bottom:10px;">Real Life Store</h3>
+        <p style="color:var(--dim);max-width:440px;margin:0 auto 26px;line-height:1.75;">Shirts, hoodies, custom drops, and brand collabs. Official Kindustry merch coming soon.</p>
+        <a href="https://discord.gg/CBqWUKScfF" target="_blank" class="btn btn-dc">Get Notified on Discord</a>
+      </div>
+    </div>
+  </section>
+  <div class="sec-div"></div>
+  <footer><div class="ft-brand"><a href="#" onclick="showPage('home');return false;">KINDUSTRY</a><div class="ft-quote">"where everything forges into greatness"</div></div><div class="ft-links"><div class="ft-nav"><a href="#" onclick="showPage('home');return false;">Home</a><a href="https://discord.gg/CBqWUKScfF" target="_blank">Discord</a></div><div class="ft-copy">© 2026 Kindustry.</div></div></footer>
+</div>
+
+<!-- ════════════════════ TOURNAMENTS ════════════════════ -->
+<div class="page" id="page-tournaments">
+  <section style="padding-top:110px;">
+    <div class="sec-hdr reveal"><div class="sec-ey">Compete & Win</div><h2 class="sec-title">Tournaments</h2></div>
+    <div class="t-hero reveal">
+      <div style="position:relative;z-index:1;">
+        <div style="font-size:12px;letter-spacing:3px;color:var(--accent);text-transform:uppercase;margin-bottom:10px;">Kindustry Monthly Series</div>
+        <h3 style="font-family:'Orbitron',monospace;font-size:28px;font-weight:900;margin-bottom:10px;">Free. Community. Competitive.</h3>
+        <p style="color:var(--dim);max-width:460px;margin:0 auto 24px;line-height:1.75;">Monthly free-to-enter tournaments. Register via Discord and compete for glory.</p>
+        <a href="https://discord.gg/CBqWUKScfF" target="_blank" class="btn btn-dc">💬 Register via Discord</a>
+      </div>
+    </div>
+    <div class="t-grid">
+      <div class="t-card card reveal">
+        <div class="t-badge open">Upcoming</div>
+        <div class="t-name">Roblox Parkour Cup #1</div>
+        <div class="t-game">🟥 Roblox — Parkour</div>
+        <div class="t-prize">Official Kindustry Event</div>
+        <div class="t-meta">
+          <div class="t-mi"><strong>June 2026</strong>Date</div>
+          <div class="t-mi"><strong>32</strong>Players</div>
+          <div class="t-mi"><strong>Free</strong>Entry</div>
+        </div>
+        <a href="https://discord.gg/CBqWUKScfF" target="_blank" class="sm sm-dc">Register on Discord</a>
+      </div>
+      <div class="t-card card reveal">
+        <div class="t-badge soon">Coming Soon</div>
+        <div class="t-name">Minecraft Survival Games</div>
+        <div class="t-game">⛏️ Minecraft</div>
+        <div class="t-prize">Official Kindustry Event</div>
+        <div class="t-meta">
+          <div class="t-mi"><strong>July 2026</strong>Date</div>
+          <div class="t-mi"><strong>16</strong>Players</div>
+          <div class="t-mi"><strong>Free</strong>Entry</div>
+        </div>
+        <a href="https://discord.gg/CBqWUKScfF" target="_blank" class="sm sm-dc">Get Notified</a>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:40px;" class="reveal">
+      <p style="color:var(--dim);margin-bottom:14px;font-size:14px;">All tournaments are free to enter. Winners earn Discord roles and bragging rights 🏆</p>
+      <a href="https://discord.gg/CBqWUKScfF" target="_blank" class="btn btn-dc">All Updates on Discord</a>
+    </div>
+  </section>
+  <div class="sec-div"></div>
+  <footer><div class="ft-brand"><a href="#" onclick="showPage('home');return false;">KINDUSTRY</a><div class="ft-quote">"where everything forges into greatness"</div></div><div class="ft-links"><div class="ft-nav"><a href="#" onclick="showPage('home');return false;">Home</a><a href="https://discord.gg/CBqWUKScfF" target="_blank">Discord</a></div><div class="ft-copy">© 2026 Kindustry.</div></div></footer>
+</div>
+
+<!-- ════════════════════ GIVEAWAYS ════════════════════ -->
+<div class="page" id="page-giveaways">
+  <section style="padding-top:110px;">
+    <div class="sec-hdr reveal"><div class="sec-ey">Win Big</div><h2 class="sec-title">Giveaways</h2></div>
+    <div class="gw-featured reveal">
+      <div style="position:relative;z-index:1;">
+        <div class="t-badge open" style="margin-bottom:14px;">🔥 Active</div>
+        <h3 style="font-family:'Orbitron',monospace;font-size:24px;font-weight:700;margin-bottom:10px;">Kindustry Launch Giveaway</h3>
+        <p style="color:var(--dim);line-height:1.75;margin-bottom:18px;font-size:14px;">Discord Nitro + VIP Role to 3 winners. Join Discord and follow YouTube to enter.</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:20px;">
+          <div style="background:rgba(255,255,255,.05);padding:10px 15px;border-radius:8px;border:1px solid var(--border);"><div style="font-size:9px;letter-spacing:2px;color:var(--dim);text-transform:uppercase;margin-bottom:3px;">Prize</div><div style="font-family:'Orbitron',monospace;font-size:13px;font-weight:700;color:var(--primary);">Nitro + VIP Role</div></div>
+          <div style="background:rgba(255,255,255,.05);padding:10px 15px;border-radius:8px;border:1px solid var(--border);"><div style="font-size:9px;letter-spacing:2px;color:var(--dim);text-transform:uppercase;margin-bottom:3px;">Winners</div><div style="font-family:'Orbitron',monospace;font-size:13px;font-weight:700;color:var(--accent);">3 People</div></div>
+          <div style="background:rgba(255,255,255,.05);padding:10px 15px;border-radius:8px;border:1px solid var(--border);"><div style="font-size:9px;letter-spacing:2px;color:var(--dim);text-transform:uppercase;margin-bottom:3px;">Ends</div><div style="font-family:'Orbitron',monospace;font-size:13px;font-weight:700;color:#fbbf24;">May 31, 2026</div></div>
+        </div>
+        <a href="https://discord.gg/CBqWUKScfF" target="_blank" class="btn btn-dc">Enter Giveaway</a>
+      </div>
+      <div style="text-align:center;position:relative;z-index:1;">
+        <span class="gw-prize-icon">🎁</span>
+        <div style="font-family:'Orbitron',monospace;font-size:11px;color:var(--primary);letter-spacing:2px;margin-top:10px;">3 Lucky Winners</div>
+      </div>
+    </div>
+    <div class="sec-hdr reveal" style="margin-top:48px;"><div class="sec-ey">More Drops</div><h2 class="sec-title" style="font-size:22px;">Upcoming Giveaways</h2></div>
+    <div class="gw-grid">
+      <div class="gw-card card reveal"><span class="gw-icon">🎮</span><div class="gw-title">Game of the Month</div><div class="gw-end">Ends: June 15, 2026</div><div class="gw-note">Coming Soon</div><a href="https://discord.gg/CBqWUKScfF" target="_blank" class="sm sm-dc">Enter</a></div>
+      <div class="gw-card card reveal"><span class="gw-icon">💎</span><div class="gw-title">VIP Role Draw</div><div class="gw-end">Monthly Draw</div><div class="gw-note">Discord Only</div><a href="https://discord.gg/CBqWUKScfF" target="_blank" class="sm sm-dc">Join Discord</a></div>
+      <div class="gw-card card reveal"><span class="gw-icon">👕</span><div class="gw-title">Merch Drop <span class="cs-tag">Soon</span></div><div class="gw-end">When merch launches</div><div class="gw-note">Stay Tuned</div><button class="sm sm-p" disabled>Notify Me</button></div>
+    </div>
+    <div class="card reveal" style="padding:30px;margin-top:40px;text-align:center;">
+      <div style="font-size:26px;margin-bottom:10px;">📢</div>
+      <h3 style="font-family:'Orbitron',monospace;font-size:16px;font-weight:700;margin-bottom:18px;">How to Enter</h3>
+      <div style="display:flex;gap:18px;justify-content:center;flex-wrap:wrap;">
+        <div style="text-align:center;max-width:135px;"><div style="font-size:22px;margin-bottom:7px;">1️⃣</div><div style="font-size:13px;font-weight:700;margin-bottom:3px;">Join Discord</div><div style="font-size:11px;color:var(--dim);">All giveaways happen there</div></div>
+        <div style="text-align:center;max-width:135px;"><div style="font-size:22px;margin-bottom:7px;">2️⃣</div><div style="font-size:13px;font-weight:700;margin-bottom:3px;">Follow YouTube</div><div style="font-size:11px;color:var(--dim);">Subscribe and stay active</div></div>
+        <div style="text-align:center;max-width:135px;"><div style="font-size:22px;margin-bottom:7px;">3️⃣</div><div style="font-size:13px;font-weight:700;margin-bottom:3px;">React in Server</div><div style="font-size:11px;color:var(--dim);">Click the giveaway reaction</div></div>
+        <div style="text-align:center;max-width:135px;"><div style="font-size:22px;margin-bottom:7px;">4️⃣</div><div style="font-size:13px;font-weight:700;margin-bottom:3px;">Win & Collect</div><div style="font-size:11px;color:var(--dim);">Winners announced on draw date</div></div>
+      </div>
+    </div>
+  </section>
+  <div class="sec-div"></div>
+  <footer><div class="ft-brand"><a href="#" onclick="showPage('home');return false;">KINDUSTRY</a><div class="ft-quote">"where everything forges into greatness"</div></div><div class="ft-links"><div class="ft-nav"><a href="#" onclick="showPage('home');return false;">Home</a><a href="https://discord.gg/CBqWUKScfF" target="_blank">Discord</a></div><div class="ft-copy">© 2026 Kindustry.</div></div></footer>
+</div>
+
+<!-- ════════════════════ ABOUT ════════════════════ -->
+<div class="page" id="page-about">
+
+  <!-- ABOUT HERO BANNER with stars -->
+  <div class="about-hero-banner">
+    <canvas id="aboutStars"></canvas>
+    <div class="about-banner-content">
+      <div class="about-banner-tag">Our Story</div>
+      <h1 class="about-banner-title">We Are <span>Kindustry</span></h1>
+      <p class="about-banner-sub">"where everything forges into greatness"</p>
+    </div>
+    <div class="about-banner-orb ab-orb1"></div>
+    <div class="about-banner-orb ab-orb2"></div>
+  </div>
+
+  <section style="padding-top:60px;">
+
+    <!-- STORY SPLIT -->
+    <div class="about-split">
+      <div class="about-text reveal">
+        <h2>Building the future of gaming communities.</h2>
+        <p>Kindustry started as a Discord server with one idea — a space where gamers compete, connect, and grow together. No gatekeeping. No toxicity. Just pure gaming passion.</p>
+        <p>We run free monthly tournaments, give back through giveaways, and are building a full gaming ecosystem — digital stores, real-life merch, and competitive esports. Think Epic Games meets Steam, built from India for the world.</p>
+        <p>Our esports arm, <strong style="color:var(--accent);">Team GODK</strong>, is actively forming. We're assembling a squad to compete nationally. Tryouts coming very soon.</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:22px;">
+          <a href="https://discord.gg/CBqWUKScfF" target="_blank" class="btn btn-dc">💬 Join the Community</a>
+          <a href="https://youtube.com/@officialkindustry" target="_blank" class="btn btn-ol">▶ Our YouTube</a>
+        </div>
+      </div>
+      <div class="about-visual reveal">
+        <div class="av-inner">
+          <span class="av-emoji">🎮</span>
+          <div class="av-ring av-ring1"></div>
+          <div class="av-ring av-ring2"></div>
+          <div class="av-ring av-ring3"></div>
+          <div class="av-float-badge ab1">🏆 Esports</div>
+          <div class="av-float-badge ab2">🎁 Giveaways</div>
+          <div class="av-float-badge ab3">💬 Community</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MISSION STRIP -->
+    <div class="mission-strip reveal">
+      <div class="ms-item"><div class="ms-icon">🎯</div><div class="ms-label">Our Mission</div><div class="ms-val">Unite gamers, build legends</div></div>
+      <div class="ms-div"></div>
+      <div class="ms-item"><div class="ms-icon">🌍</div><div class="ms-label">Our Reach</div><div class="ms-val">India & growing globally</div></div>
+      <div class="ms-div"></div>
+      <div class="ms-item"><div class="ms-icon">⚡</div><div class="ms-label">Our Energy</div><div class="ms-val">24/7 active community</div></div>
+      <div class="ms-div"></div>
+      <div class="ms-item"><div class="ms-icon">🔥</div><div class="ms-label">Our Vibe</div><div class="ms-val">Competitive & inclusive</div></div>
+    </div>
+
+    <div class="sec-div" style="margin:0 0 48px;"></div>
+
+    <!-- TEAM -->
+    <div class="sec-hdr reveal"><div class="sec-ey">The Team</div><h2 class="sec-title">Who's Behind Kindustry</h2></div>
+    <div class="team-grid">
+      <div class="team-card card reveal">
+        <div class="team-av" style="background:linear-gradient(135deg,#f59e0b,#dc2626);">👑</div>
+        <div class="team-name">KhushalBossPro</div>
+        <div class="team-role">Founder & CEO</div>
+        <div class="team-badges"><span class="tbadge gold">Founder</span><span class="tbadge red">CEO</span></div>
+        <a href="https://youtube.com/@khushalbosspro" target="_blank" class="team-yt">▶ YouTube</a>
+      </div>
+      <div class="team-card card reveal">
+        <div class="team-av" style="background:linear-gradient(135deg,#06b6d4,#3b82f6);">⚙️</div>
+        <div class="team-name">Dev Team</div>
+        <div class="team-role">Tech & Web</div>
+        <div class="team-badges"><span class="tbadge blue">Tech</span></div>
+      </div>
+      <div class="team-card card reveal">
+        <div class="team-av" style="background:linear-gradient(135deg,#a855f7,#ec4899);">🎨</div>
+        <div class="team-name">Creative</div>
+        <div class="team-role">Design & Media</div>
+        <div class="team-badges"><span class="tbadge purple">Creative</span></div>
+      </div>
+      <div class="team-card card reveal">
+        <div class="team-av" style="background:linear-gradient(135deg,#22c55e,#06b6d4);">🏆</div>
+        <div class="team-name">Events</div>
+        <div class="team-role">Tournaments & Giveaways</div>
+        <div class="team-badges"><span class="tbadge green">Events</span></div>
+      </div>
+    </div>
+    <p style="text-align:center;color:var(--dim);margin-top:16px;font-size:13px;">Want to join the team? <a href="mailto:officialkindustry@gmail.com" style="color:var(--primary);">officialkindustry@gmail.com</a></p>
+
+    <!-- YOUTUBE CHANNELS -->
+    <div style="margin-top:60px;">
+      <div class="sec-hdr reveal"><div class="sec-ey">Our Channels</div><h2 class="sec-title">Find Us on YouTube</h2></div>
+      <div class="yt-grid">
+        <a href="https://youtube.com/@officialkindustry" target="_blank" class="yt-card card reveal">
+          <div class="yt-glow"></div>
+          <div class="yt-icon">📺</div><div class="yt-type">Official Channel</div>
+          <div class="yt-name">Official Kindustry</div><div class="yt-handle">@officialkindustry</div>
+          <div class="yt-cta">Visit Channel →</div>
+        </a>
+        <a href="https://youtube.com/@godkteam" target="_blank" class="yt-card card reveal">
+          <div class="yt-glow"></div>
+          <div class="yt-icon">⚔️</div><div class="yt-type">Esports Team</div>
+          <div class="yt-name">God K Team</div><div class="yt-handle">@godkteam</div>
+          <div class="yt-cta">Visit Channel →</div>
+        </a>
+        <a href="https://youtube.com/@khushalbosspro" target="_blank" class="yt-card card reveal">
+          <div class="yt-glow"></div>
+          <div class="yt-icon">👑</div><div class="yt-type">Owner / CEO</div>
+          <div class="yt-name">KhushalBossPro</div><div class="yt-handle">@khushalbosspro</div>
+          <div class="yt-cta">Visit Channel →</div>
+        </a>
+      </div>
+    </div>
+
+    <!-- CONTACT STRIP -->
+    <div class="contact-strip reveal">
+      <div class="cs-left">
+        <div style="font-family:'Orbitron',monospace;font-size:18px;font-weight:700;margin-bottom:6px;">Get in Touch</div>
+        <div style="color:var(--dim);font-size:14px;">For business, collabs, or partnerships:</div>
+      </div>
+      <a href="mailto:officialkindustry@gmail.com" class="cs-email-btn">
+        <span>📧</span> officialkindustry@gmail.com
+      </a>
+    </div>
+
+    <!-- VALUES -->
+    <div class="val-row">
+      <div class="val-card card reveal">
+        <div class="val-icon-wrap"><span class="val-icon">🇮🇳</span></div>
+        <div class="val-name">Made in India</div>
+        <div class="val-desc">Built from Hyderabad with heart, growing globally with ambition.</div>
+      </div>
+      <div class="val-card card reveal">
+        <div class="val-icon-wrap"><span class="val-icon">💜</span></div>
+        <div class="val-name">Community First</div>
+        <div class="val-desc">Every feature, event, and decision is made for our members — always.</div>
+      </div>
+      <div class="val-card card reveal">
+        <div class="val-icon-wrap"><span class="val-icon">🚀</span></div>
+        <div class="val-name">Always Growing</div>
+        <div class="val-desc">New tournaments, content drops, and features every single month.</div>
+      </div>
+    </div>
+
+  </section>
+  <div class="sec-div"></div>
+  <footer><div class="ft-brand"><a href="#" onclick="showPage('home');return false;">KINDUSTRY</a><div class="ft-quote">"where everything forges into greatness"</div><div class="ft-yts"><a href="https://youtube.com/@officialkindustry" target="_blank" class="ft-yt">▶ Kindustry</a><a href="https://youtube.com/@godkteam" target="_blank" class="ft-yt">▶ God K Team</a><a href="https://youtube.com/@khushalbosspro" target="_blank" class="ft-yt">▶ KhushalBossPro</a></div></div><div class="ft-links"><div class="ft-nav"><a href="#" onclick="showPage('home');return false;">Home</a><a href="https://discord.gg/CBqWUKScfF" target="_blank">Discord</a></div><div class="ft-copy">© 2026 Kindustry. All rights reserved.</div></div></footer>
+</div>
+
+<!-- ════════════════════ CONTACT ════════════════════ -->
+<div class="page" id="page-contact">
+  <section style="padding-top:110px;">
+    <div class="sec-hdr reveal"><div class="sec-ey">Get in Touch</div><h2 class="sec-title">Contact Us</h2></div>
+    <div class="contact-split">
+      <div class="reveal">
+        <div class="contact-info"><h3>Let's talk.</h3><p>Sponsorship, collab, or support? Reach out through any platform. We respond within 24–48 hours — fastest on Discord.</p></div>
+        <div class="socs">
+          <a href="https://discord.gg/CBqWUKScfF" target="_blank" class="soc-l card dc"><span class="soc-icon">💬</span><div><div class="soc-name">Discord</div><div class="soc-handle">discord.gg/CBqWUKScfF · Fastest</div></div></a>
+          <a href="https://youtube.com/@officialkindustry" target="_blank" class="soc-l card yt"><span class="soc-icon">📺</span><div><div class="soc-name">Official Kindustry</div><div class="soc-handle">@officialkindustry</div></div></a>
+          <a href="https://youtube.com/@godkteam" target="_blank" class="soc-l card yt"><span class="soc-icon">⚔️</span><div><div class="soc-name">God K Team</div><div class="soc-handle">@godkteam</div></div></a>
+          <a href="https://youtube.com/@khushalbosspro" target="_blank" class="soc-l card yt"><span class="soc-icon">👑</span><div><div class="soc-name">KhushalBossPro (CEO)</div><div class="soc-handle">@khushalbosspro</div></div></a>
+          <a href="mailto:officialkindustry@gmail.com" class="soc-l card em"><span class="soc-icon">📧</span><div><div class="soc-name">Email</div><div class="soc-handle">officialkindustry@gmail.com</div></div></a>
+        </div>
+      </div>
+      <div class="contact-form-wrap card reveal">
+        <h3 style="font-family:'Orbitron',monospace;font-size:16px;font-weight:700;margin-bottom:22px;">Send a Message</h3>
+        <div class="fg"><label class="fl">Your Name</label><input type="text" class="fi" placeholder="GamerTag or real name"></div>
+        <div class="fg"><label class="fl">Email</label><input type="email" class="fi" placeholder="your@email.com"></div>
+        <div class="fg"><label class="fl">Subject</label><input type="text" class="fi" placeholder="Partnership, Support, Collab..."></div>
+        <div class="fg"><label class="fl">Message</label><textarea class="ft" placeholder="Tell us what's on your mind..."></textarea></div>
+        <button class="btn btn-p" style="width:100%;justify-content:center;" onclick="submitForm()">Send Message</button>
+        <p style="font-size:11px;color:var(--dim);margin-top:9px;text-align:center;">Fastest response on Discord.</p>
+      </div>
+    </div>
+  </section>
+  <div class="sec-div"></div>
+  <footer><div class="ft-brand"><a href="#" onclick="showPage('home');return false;">KINDUSTRY</a><div class="ft-quote">"where everything forges into greatness"</div><div class="ft-yts"><a href="https://youtube.com/@officialkindustry" target="_blank" class="ft-yt">▶ Kindustry</a><a href="https://youtube.com/@godkteam" target="_blank" class="ft-yt">▶ God K Team</a><a href="https://youtube.com/@khushalbosspro" target="_blank" class="ft-yt">▶ KhushalBossPro</a></div></div><div class="ft-links"><div class="ft-nav"><a href="#" onclick="showPage('home');return false;">Home</a><a href="https://discord.gg/CBqWUKScfF" target="_blank">Discord</a></div><div class="ft-copy">© 2026 Kindustry. All rights reserved.</div></div></footer>
+</div>
+
+<!-- ════════════════════ PROFILE ════════════════════ -->
+<div class="page" id="page-profile">
+  <div class="profile-hero">
+    <div class="profile-card card">
+      <div class="profile-av-wrap">
+        <div class="profile-av" id="profileAv">👑</div>
+        <div class="profile-av-ring"></div>
+      </div>
+      <div class="profile-name" id="profileName">—</div>
+      <div class="profile-tag">Kindustry Member</div>
+      <div class="profile-since" id="profileSince"></div>
+      <div class="profile-badge-row">
+        <div class="p-badge member">Member</div>
+        <div class="p-badge gaming">Gamer</div>
+      </div>
+      <div class="profile-stats-mini">
+        <div class="psm card"><div class="psm-val">0</div><div class="psm-lbl">Tournaments</div></div>
+        <div class="psm card"><div class="psm-val">0</div><div class="psm-lbl">Wins</div></div>
+        <div class="psm card"><div class="psm-val">0</div><div class="psm-lbl">Giveaways</div></div>
+        <div class="psm card"><div class="psm-val">🆕</div><div class="psm-lbl">Rank</div></div>
+      </div>
+      <div style="margin-top:16px;display:flex;flex-direction:column;gap:8px;">
+        <a href="https://discord.gg/CBqWUKScfF" target="_blank" class="btn btn-dc" style="font-size:12px;padding:10px;">💬 Discord</a>
+      </div>
+    </div>
+    <div class="profile-right">
+      <div class="profile-tabs">
+        <button class="ptab on" onclick="pTab(this,'overview')">Overview</button>
+        <button class="ptab" onclick="pTab(this,'achievements')">Achievements</button>
+        <button class="ptab" onclick="pTab(this,'settings-tab')">Settings</button>
+      </div>
+
+      <div class="ptab-content on" id="pt-overview">
+        <div class="card" style="padding:28px;margin-bottom:16px;">
+          <h3 style="font-family:'Orbitron',monospace;font-size:15px;font-weight:700;margin-bottom:12px;color:var(--primary);">Welcome to Kindustry!</h3>
+          <p style="color:var(--dim);font-size:14px;line-height:1.7;">Your profile is set up. Join tournaments, enter giveaways, and earn achievements as you climb the Kindustry ranks.</p>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+          <div class="card" style="padding:20px;"><div style="font-size:11px;letter-spacing:2px;color:var(--dim);text-transform:uppercase;margin-bottom:8px;">Recent Activity</div><div style="font-size:13px;color:var(--dim);">No activity yet. <a href="https://discord.gg/CBqWUKScfF" target="_blank" style="color:var(--primary);">Join Discord →</a></div></div>
+          <div class="card" style="padding:20px;"><div style="font-size:11px;letter-spacing:2px;color:var(--dim);text-transform:uppercase;margin-bottom:8px;">Next Tournament</div><div style="font-family:'Orbitron',monospace;font-size:13px;font-weight:700;color:var(--primary);">Roblox Parkour Cup</div><div style="font-size:11px;color:var(--dim);margin-top:4px;">June 2026 · Free Entry</div></div>
+        </div>
+      </div>
+
+      <div class="ptab-content" id="pt-achievements">
+        <div class="achiev-grid">
+          <div class="achiev card" style="padding:16px;text-align:center;"><span class="achiev-icon">🎮</span><div class="achiev-name">First Login</div><div class="achiev-desc">Joined Kindustry</div></div>
+          <div class="achiev card locked" style="padding:16px;text-align:center;"><span class="achiev-icon">🏆</span><div class="achiev-name">Competitor</div><div class="achiev-desc">Enter a tournament</div></div>
+          <div class="achiev card locked" style="padding:16px;text-align:center;"><span class="achiev-icon">👑</span><div class="achiev-name">Champion</div><div class="achiev-desc">Win a tournament</div></div>
+          <div class="achiev card locked" style="padding:16px;text-align:center;"><span class="achiev-icon">🎁</span><div class="achiev-name">Lucky One</div><div class="achiev-desc">Win a giveaway</div></div>
+          <div class="achiev card locked" style="padding:16px;text-align:center;"><span class="achiev-icon">💎</span><div class="achiev-name">VIP</div><div class="achiev-desc">Get VIP role</div></div>
+          <div class="achiev card locked" style="padding:16px;text-align:center;"><span class="achiev-icon">⚔️</span><div class="achiev-name">GODK</div><div class="achiev-desc">Join the esports team</div></div>
+        </div>
+      </div>
+
+      <div class="ptab-content" id="pt-settings-tab">
+        <div class="card" style="padding:28px;">
+          <h3 style="font-family:'Orbitron',monospace;font-size:14px;font-weight:700;margin-bottom:20px;">Account Settings</h3>
+          <div class="fg"><label class="fl">Display Username</label><input type="text" class="fi" id="profileUnameInput" placeholder="Your username" maxlength="12"></div>
+          <button class="btn btn-p" style="margin-bottom:20px;" onclick="saveUname()">Save Username</button>
+          <div style="border-top:1px solid var(--border);padding-top:20px;margin-top:4px;">
+            <h4 style="font-family:'Orbitron',monospace;font-size:12px;font-weight:700;color:#ef4444;margin-bottom:12px;">Danger Zone</h4>
+            <button class="btn" style="background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.3);color:#ef4444;margin-right:10px;" onclick="signOut()">Sign Out</button>
+            <button class="btn" style="background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.3);color:#ef4444;" onclick="deleteAccount()">Delete Account</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+'use strict';
+
+/* ════ SUPABASE ════ */
+const SUPA_URL = 'https://uzrfmnzgiulesfqfueft.supabase.co';
+const SUPA_KEY = 'sb_publishable_ITrJ9r2tTxWZVEvCQB6V-w_rPFgTaim';
+const supa = supabase.createClient(SUPA_URL, SUPA_KEY);
+
+/* ════ STAR CANVAS (About page) ════ */
+function initAboutStars() {
+  const canvas = document.getElementById('aboutStars');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let W, H, stars = [], animId;
+
+  function resize() {
+    W = canvas.width  = canvas.offsetWidth;
+    H = canvas.height = canvas.offsetHeight;
+  }
+
+  function makeStar() {
+    return {
+      x: Math.random() * W,
+      y: Math.random() * H,
+      r: Math.random() * 1.4 + 0.2,
+      o: Math.random(),
+      speed: Math.random() * 0.4 + 0.1,
+      twinkleSpeed: Math.random() * 0.02 + 0.005,
+      twinkleDir: 1
+    };
+  }
+
+  function init() {
+    resize();
+    stars = [];
+    for (let i = 0; i < 160; i++) stars.push(makeStar());
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    stars.forEach(s => {
+      s.o += s.twinkleSpeed * s.twinkleDir;
+      if (s.o >= 1 || s.o <= 0.1) s.twinkleDir *= -1;
+      s.y -= s.speed * 0.3;
+      if (s.y < -2) { s.y = H + 2; s.x = Math.random() * W; }
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(255,255,255,${s.o * 0.9})`;
+      ctx.shadowBlur = 4;
+      ctx.shadowColor = 'rgba(150,180,255,0.8)';
+      ctx.fill();
+    });
+    animId = requestAnimationFrame(draw);
+  }
+
+  window.addEventListener('resize', () => { resize(); });
+  init();
+  draw();
+}
+
+/* Run stars when about page is shown */
+document.addEventListener('DOMContentLoaded', () => {
+  if (document.getElementById('page-about').classList.contains('active')) initAboutStars();
+});
+
+/* ════ LOADER ════ */
+window.addEventListener('load', () => {
+  setTimeout(() => document.getElementById('loader').classList.add('out'), 2400);
+});
+
+/* ════ PARTICLES ════ */
+(function(){
+  const c = document.getElementById('pts');
+  for(let i=0;i<30;i++){
+    const p = document.createElement('div');
+    p.className = 'pt';
+    const s = 1.5 + Math.random()*2;
+    p.style.cssText = `left:${Math.random()*100}vw;width:${s}px;height:${s}px;background:rgba(var(--pr),.4);animation-duration:${10+Math.random()*14}s;animation-delay:${Math.random()*14}s;`;
+    c.appendChild(p);
+  }
+})();
+
+/* ════ CURSOR ════ */
+const $c = document.getElementById('cur');
+const $r = document.getElementById('cur-ring');
+let mX=window.innerWidth/2, mY=window.innerHeight/2, rX=mX, rY=mY;
+
+if(window.matchMedia('(pointer:fine)').matches){
+  document.addEventListener('mousemove', e => { mX=e.clientX; mY=e.clientY; });
+  (function loop(){
+    rX += (mX-rX)*.12; rY += (mY-rY)*.12;
+    $c.style.transform = `translate(${mX}px,${mY}px) translate(-50%,-50%)`;
+    $r.style.transform = `translate(${rX}px,${rY}px) translate(-50%,-50%)`;
+    requestAnimationFrame(loop);
+  })();
+  document.addEventListener('mouseenter', e => {
+    if(e.target.closest('a,button,input,textarea,.feature-card,.card')){$c.classList.add('big');$r.classList.add('big');}
+  }, true);
+  document.addEventListener('mouseleave', e => {
+    if(e.target.closest('a,button,input,textarea,.feature-card,.card')){$c.classList.remove('big');$r.classList.remove('big');}
+  }, true);
+}
+
+/* ════ 3D TILT ════ */
+if(window.matchMedia('(pointer:fine)').matches){
+  document.querySelectorAll('.feature-card,.t-card').forEach(el => {
+    el.addEventListener('mousemove', e => {
+      const r=el.getBoundingClientRect();
+      const x=((e.clientX-r.left)/r.width-.5)*8;
+      const y=((e.clientY-r.top)/r.height-.5)*-8;
+      el.style.transform = `perspective(800px) rotateX(${y}deg) rotateY(${x}deg) translateY(-5px)`;
+    });
+    el.addEventListener('mouseleave', () => { el.style.transform=''; });
+  });
+}
+
+/* ════ RADIAL LIGHT ════ */
+document.querySelectorAll('.feature-card,.t-card').forEach(el => {
+  el.addEventListener('mousemove', e => {
+    const r=el.getBoundingClientRect();
+    el.style.background = `radial-gradient(circle at ${e.clientX-r.left}px ${e.clientY-r.top}px, rgba(var(--pr),.1), var(--surface) 55%)`;
+  });
+  el.addEventListener('mouseleave', () => { el.style.background=''; });
+});
+
+/* ════ AUTH STATE ════ */
+const UNAME_KEY = 'kin_username';
+
+async function getSupaUser() {
+  const { data } = await supa.auth.getSession();
+  return data?.session?.user || null;
+}
+
+function getSavedUsername() {
+  return localStorage.getItem(UNAME_KEY) || '';
+}
+
+async function updateNavAuth() {
+  const u = await getSupaUser();
+  const area = document.getElementById('navAuthArea');
+  if (u) {
+    const uname = getSavedUsername() || u.email?.split('@')[0] || 'Gamer';
+    area.innerHTML = `<div class="nav-user-btn" onclick="toggleDropdown()"><div class="nav-avatar">👤</div>${uname}</div>`;
+    document.getElementById('dd-name').textContent = uname;
+    document.getElementById('dd-tag').textContent = u.app_metadata?.provider ? `via ${u.app_metadata.provider}` : 'Kindustry Member';
+    document.getElementById('profileName').textContent = uname;
+    const d = new Date(u.created_at || Date.now());
+    document.getElementById('profileSince').textContent = `Member since ${d.toLocaleDateString('en-US',{month:'long',year:'numeric'})}`;
+    const inp = document.getElementById('profileUnameInput');
+    if (inp) inp.value = uname;
+    // Check if username chosen yet
+    if (!getSavedUsername()) {
+      // Show username picker
+      document.getElementById('authModal').classList.add('open');
+      document.getElementById('authStep1').style.display = 'none';
+      document.getElementById('authStep2').style.display = 'block';
+    }
+  } else {
+    area.innerHTML = `<button class="nav-login-btn" onclick="openAuth()">Sign In</button>`;
+  }
+}
+
+/* AUTH MODAL */
+function openAuth() {
+  document.getElementById('authModal').classList.add('open');
+  document.getElementById('authStep1').style.display = 'block';
+  document.getElementById('authStep2').style.display = 'none';
+}
+function closeAuth() { document.getElementById('authModal').classList.remove('open'); }
+document.getElementById('authModal').addEventListener('click', e => {
+  if (e.target === document.getElementById('authModal')) closeAuth();
+});
+
+/* REAL SUPABASE OAUTH */
+async function doLogin(provider) {
+  const providerMap = { Google:'google', Facebook:'facebook', Discord:'discord', Twitter:'twitter' };
+  const p = providerMap[provider];
+  if (!p) return;
+  const { error } = await supa.auth.signInWithOAuth({
+    provider: p,
+    options: { redirectTo: window.location.href }
+  });
+  if (error) {
+    alert(`Login failed: ${error.message}\n\nMake sure ${provider} is enabled in your Supabase Auth settings.`);
+  }
+}
+
+/* USERNAME PICKER */
+function validateUname() {
+  const v = document.getElementById('unameInput').value;
+  const ok = /^[a-zA-Z0-9]{1,12}$/.test(v);
+  const err = document.getElementById('unameErr');
+  const btn = document.getElementById('unameSubmit');
+  if (v.length === 0) { err.style.display='none'; btn.disabled=true; return; }
+  if (!ok) { err.style.display='block'; btn.disabled=true; }
+  else { err.style.display='none'; btn.disabled=false; }
+}
+
+async function submitUsername() {
+  const v = document.getElementById('unameInput').value.trim();
+  if (!/^[a-zA-Z0-9]{1,12}$/.test(v)) return;
+  localStorage.setItem(UNAME_KEY, v);
+  closeAuth();
+  await updateNavAuth();
+  showPage('profile');
+}
+
+/* DROPDOWN */
+function toggleDropdown() { document.getElementById('userDropdown').classList.toggle('open'); }
+function closeDropdown()  { document.getElementById('userDropdown').classList.remove('open'); }
+document.addEventListener('click', e => {
+  if (!e.target.closest('.nav-user-btn') && !e.target.closest('#userDropdown')) closeDropdown();
+});
+
+async function signOut() {
+  if (!confirm('Sign out of Kindustry?')) return;
+  await supa.auth.signOut();
+  localStorage.removeItem(UNAME_KEY);
+  await updateNavAuth();
+  closeDropdown();
+  showPage('home');
+}
+
+async function deleteAccount() {
+  if (!confirm('Delete your Kindustry account? This cannot be undone.')) return;
+  await supa.auth.signOut();
+  localStorage.removeItem(UNAME_KEY);
+  await updateNavAuth();
+  closeDropdown();
+  showPage('home');
+}
+
+async function saveUname() {
+  const v = document.getElementById('profileUnameInput').value.trim();
+  if (!/^[a-zA-Z0-9]{1,12}$/.test(v)) { alert('Username must be 1–12 letters or numbers only.'); return; }
+  localStorage.setItem(UNAME_KEY, v);
+  await updateNavAuth();
+  alert('Username updated!');
+}
+
+/* PROFILE TABS */
+function pTab(btn, id){
+  document.querySelectorAll('.ptab').forEach(b=>b.classList.remove('on'));
+  document.querySelectorAll('.ptab-content').forEach(c=>c.classList.remove('on'));
+  btn.classList.add('on');
+  document.getElementById('pt-'+id).classList.add('on');
+}
+
+/* ════ SETTINGS ════ */
+function openSet(){ document.getElementById('setOverlay').classList.add('open'); }
+function closeSet(){ document.getElementById('setOverlay').classList.remove('open'); }
+function outsideSet(e){ if(e.target===document.getElementById('setOverlay')) closeSet(); }
+
+/* ════ THEME ════ */
+function setTheme(t){
+  document.body.classList.remove('theme-red','theme-cyber','theme-white');
+  if(t !== 'dark') document.body.classList.add('theme-'+t);
+  localStorage.setItem('kin-theme', t);
+  document.querySelectorAll('.th-btn').forEach(b=>b.classList.remove('on'));
+  const btn = document.getElementById('tb-'+t);
+  if(btn) btn.classList.add('on');
+}
+(function(){ setTheme(localStorage.getItem('kin-theme') || 'dark'); })();
+
+/* ════ PAGE NAV ════ */
+async function showPage(name) {
+  const u = await getSupaUser();
+  if (name === 'profile' && !u) { openAuth(); return; }
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+  document.getElementById('page-' + name).classList.add('active');
+  const el = document.getElementById('nl-' + name);
+  if (el) el.classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  document.getElementById('navLinks').classList.remove('open');
+  setTimeout(observeReveals, 50);
+  if (name === 'about') setTimeout(initAboutStars, 100);
+}
+
+/* ════ MOBILE NAV ════ */
+function toggleNav(){ document.getElementById('navLinks').classList.toggle('open'); }
+
+/* ════ STORE TABS ════ */
+function storeTab(btn, tab){
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('store-online').style.display  = tab==='online' ? 'block' : 'none';
+  document.getElementById('store-reallife').style.display = tab==='reallife' ? 'block' : 'none';
+}
+
+/* ════ SCROLL REVEAL ════ */
+let ro;
+function observeReveals(){
+  if(ro) ro.disconnect();
+  ro = new IntersectionObserver(entries => {
+    entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('vis'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal:not(.vis)').forEach(el => ro.observe(el));
+}
+observeReveals();
+
+/* ════ CONTACT FORM ════ */
+function submitForm(){ alert('Thanks! For fastest response, DM us on Discord: discord.gg/CBqWUKScfF'); }
+
+/* ════ INIT ════ */
+(async function init() {
+  // Handle OAuth redirect — Supabase auto-handles session from URL hash
+  await supa.auth.getSession();
+  await updateNavAuth();
+  observeReveals();
+
+  // Listen for auth state changes (login/logout)
+  supa.auth.onAuthStateChange(async (event, session) => {
+    await updateNavAuth();
+    if (event === 'SIGNED_IN' && !getSavedUsername()) {
+      // Show username picker after OAuth redirect
+      document.getElementById('authModal').classList.add('open');
+      document.getElementById('authStep1').style.display = 'none';
+      document.getElementById('authStep2').style.display = 'block';
+      document.getElementById('unameInput').value = '';
+      document.getElementById('unameErr').style.display = 'none';
+      document.getElementById('unameSubmit').disabled = true;
+    }
+  });
+})();
+</script>
+</body>
+</html>
