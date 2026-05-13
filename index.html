@@ -4,6 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Kindustry — Gaming Universe</title>
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "wqam6qwa0b");
+</script>
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 /* ═══════════════════════════════════════
@@ -48,6 +55,27 @@ body.theme-red {
   --input-bg:rgba(0,0,0,0.03);
   --scanline:transparent;
   --shadow:0 20px 60px rgba(220,38,38,0.1);
+}
+
+
+/* ── GOLD CHAMPIONSHIP THEME ── */
+body.theme-gold {
+  --bg:#08060a; --bg2:#100d14; --bg3:#18141e;
+  --surface:rgba(16,13,20,0.92);
+  --primary:#f59e0b; --pr:245,158,11;
+  --accent:#dc2626;  --ac:220,38,38;
+  --accent2:#fbbf24;
+  --neon:#d97706;
+  --text:#fef3c7; --dim:#a78650; --faint:#4a3a20;
+  --border:rgba(245,158,11,0.2);
+  --border-h:rgba(245,158,11,0.55);
+  --nav-bg:rgba(8,6,10,0.96);
+  --card-glow:rgba(245,158,11,0.1);
+  --hero-grad:radial-gradient(ellipse 80% 55% at 50% -5%,rgba(245,158,11,0.18),transparent 65%),radial-gradient(ellipse 55% 70% at 85% 55%,rgba(220,38,38,0.12),transparent 55%),radial-gradient(ellipse 40% 55% at 15% 75%,rgba(251,191,36,0.08),transparent 55%);
+  --orb1-c:rgba(245,158,11,0.14); --orb2-c:rgba(220,38,38,0.1);
+  --input-bg:rgba(245,158,11,0.04);
+  --scanline:rgba(0,0,0,0.03);
+  --shadow:0 20px 60px rgba(245,158,11,0.15);
 }
 
 /* ── DARK NEON (default) ── already in :root */
@@ -685,6 +713,261 @@ body.theme-red .card:hover,body.theme-white .card:hover{box-shadow:0 12px 48px r
 .val-card{padding:28px;text-align:center;}
 .val-card:hover{transform:translateY(-4px);}
 
+/* ═══ GLOWING PILL NAVBAR ═══ */
+.nav-links a.active {
+  background: rgba(var(--pr),0.12) !important;
+  color: var(--primary) !important;
+  border-radius: 20px !important;
+  box-shadow: 0 0 14px rgba(var(--pr),0.25), inset 0 0 10px rgba(var(--pr),0.08);
+}
+.nav-links a {
+  border-radius: 20px;
+  padding: 7px 16px;
+}
+.nav-links a:hover {
+  border-radius: 20px !important;
+  box-shadow: 0 0 10px rgba(var(--pr),0.15);
+}
+/* Floating glass nav on scroll */
+nav {
+  border-radius: 0 0 16px 16px;
+}
+nav.scrolled {
+  top: 8px;
+  left: 16px;
+  right: 16px;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+}
+
+/* ═══ LEADERBOARD PAGE ═══ */
+.lb-hero {
+  padding: 120px 56px 40px;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+.lb-filters {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+}
+.lb-filter-btn {
+  padding: 8px 20px;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--dim);
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: var(--trans);
+}
+.lb-filter-btn.on, .lb-filter-btn:hover {
+  background: rgba(var(--pr),0.1);
+  border-color: var(--border-h);
+  color: var(--primary);
+  box-shadow: 0 0 12px rgba(var(--pr),0.15);
+}
+.lb-table {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+}
+.lb-header {
+  display: grid;
+  grid-template-columns: 60px 1fr 120px 120px 100px;
+  padding: 14px 24px;
+  background: rgba(var(--pr),0.06);
+  border-bottom: 1px solid var(--border);
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--dim);
+  font-weight: 700;
+}
+.lb-row {
+  display: grid;
+  grid-template-columns: 60px 1fr 120px 120px 100px;
+  padding: 16px 24px;
+  border-bottom: 1px solid var(--border);
+  align-items: center;
+  transition: var(--trans);
+  position: relative;
+}
+.lb-row:last-child { border-bottom: none; }
+.lb-row:hover { background: rgba(var(--pr),0.04); }
+.lb-row.gold-row { background: rgba(245,158,11,0.06); }
+.lb-row.silver-row { background: rgba(156,163,175,0.05); }
+.lb-row.bronze-row { background: rgba(180,120,60,0.05); }
+.lb-rank {
+  font-family: 'Orbitron', monospace;
+  font-size: 16px;
+  font-weight: 900;
+  color: var(--dim);
+}
+.lb-rank.r1 { color: #f59e0b; text-shadow: 0 0 12px rgba(245,158,11,0.5); }
+.lb-rank.r2 { color: #9ca3af; }
+.lb-rank.r3 { color: #b47c3c; }
+.lb-player {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.lb-avatar {
+  width: 42px; height: 42px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+  border: 2px solid transparent;
+  overflow: hidden;
+}
+.lb-avatar img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+.lb-row.gold-row .lb-avatar { border-color: #f59e0b; box-shadow: 0 0 12px rgba(245,158,11,0.4); }
+.lb-row.silver-row .lb-avatar { border-color: #9ca3af; }
+.lb-row.bronze-row .lb-avatar { border-color: #b47c3c; }
+.lb-name { font-family: 'Orbitron', monospace; font-size: 13px; font-weight: 700; }
+.lb-tag  { font-size: 11px; color: var(--dim); margin-top: 2px; }
+.lb-stat { font-family: 'Orbitron', monospace; font-size: 14px; font-weight: 700; color: var(--primary); }
+.lb-badge-wrap { display: flex; gap: 5px; flex-wrap: wrap; }
+.lb-badge {
+  font-size: 9px; font-weight: 700; letter-spacing: 1px;
+  padding: 3px 8px; border-radius: 100px; text-transform: uppercase;
+}
+.lb-badge.champ { background: rgba(245,158,11,.15); color: #f59e0b; border: 1px solid rgba(245,158,11,.3); }
+.lb-badge.active { background: rgba(34,197,94,.12); color: #22c55e; border: 1px solid rgba(34,197,94,.25); }
+.lb-badge.new    { background: rgba(var(--pr),.12); color: var(--primary); border: 1px solid rgba(var(--pr),.25); }
+.lb-empty {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--dim);
+}
+.lb-empty-icon { font-size: 48px; margin-bottom: 14px; display: block; }
+.lb-empty-title { font-family: 'Orbitron', monospace; font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+
+/* LB Stats bar */
+.lb-stats-row {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 14px;
+  margin-bottom: 32px;
+}
+.lb-stat-card {
+  padding: 20px;
+  text-align: center;
+  border-radius: 12px;
+}
+.lb-stat-val { font-family: 'Orbitron', monospace; font-size: 26px; font-weight: 900; color: var(--primary); }
+.lb-stat-lbl { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--dim); margin-top: 4px; }
+
+/* ═══ PFP UPLOAD ═══ */
+.pfp-upload-wrap { position: relative; cursor: pointer; width: 100px; margin: 0 auto; }
+.pfp-upload-overlay {
+  position: absolute; inset: 0;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.55);
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; transition: opacity .25s;
+  font-size: 22px;
+}
+.pfp-upload-wrap:hover .pfp-upload-overlay { opacity: 1; }
+#pfpInput { display: none; }
+.pfp-upload-hint { font-size: 10px; color: var(--dim); text-align: center; margin-top: 8px; letter-spacing: 1px; }
+
+/* ═══ EMAIL LOGIN ═══ */
+.email-form { margin-top: 4px; }
+.email-input {
+  width: 100%;
+  background: var(--input-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px 16px;
+  color: var(--text);
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 15px;
+  outline: none;
+  transition: var(--trans);
+  margin-bottom: 10px;
+}
+.email-input:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(var(--pr),0.1); }
+.email-toggle { font-size: 12px; color: var(--primary); cursor: pointer; text-align: center; margin-top: 8px; }
+.email-toggle:hover { text-decoration: underline; }
+.forgot-link { font-size: 11px; color: var(--dim); cursor: pointer; text-align: right; display: block; margin-bottom: 12px; transition: color .2s; }
+.forgot-link:hover { color: var(--primary); }
+
+/* ═══ DELETE CONFIRM ═══ */
+.delete-confirm-input {
+  width: 100%;
+  background: rgba(239,68,68,0.05);
+  border: 1px solid rgba(239,68,68,0.3);
+  border-radius: 8px;
+  padding: 11px 14px;
+  color: var(--text);
+  font-family: 'Orbitron', monospace;
+  font-size: 14px;
+  letter-spacing: 2px;
+  outline: none;
+  transition: var(--trans);
+  margin: 12px 0;
+  text-align: center;
+}
+.delete-confirm-input:focus { border-color: #ef4444; box-shadow: 0 0 0 3px rgba(239,68,68,0.1); }
+
+/* ═══ MOBILE SIDE DRAWER ═══ */
+.mob-drawer-overlay {
+  position: fixed; inset: 0; z-index: 2000;
+  background: rgba(0,0,0,0.6); backdrop-filter: blur(4px);
+  opacity: 0; visibility: hidden; transition: var(--trans);
+}
+.mob-drawer-overlay.open { opacity: 1; visibility: visible; }
+.mob-drawer {
+  position: fixed; left: -280px; top: 0; bottom: 0; width: 260px;
+  background: var(--bg2); border-right: 1px solid var(--border);
+  padding: 28px 20px; z-index: 2001;
+  transition: left .35s cubic-bezier(.4,0,.2,1);
+  display: flex; flex-direction: column; gap: 4px;
+}
+.mob-drawer-overlay.open .mob-drawer { left: 0; }
+.mob-drawer-logo {
+  font-family: 'Orbitron', monospace; font-size: 18px; font-weight: 900;
+  letter-spacing: 3px;
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  margin-bottom: 28px;
+}
+.mob-drawer a {
+  display: flex; align-items: center; gap: 12px;
+  padding: 12px 14px; border-radius: 10px;
+  color: var(--dim); text-decoration: none;
+  font-family: 'Rajdhani', sans-serif; font-weight: 600;
+  font-size: 14px; letter-spacing: 1.5px; text-transform: uppercase;
+  transition: var(--trans);
+}
+.mob-drawer a:hover, .mob-drawer a.active {
+  background: rgba(var(--pr),0.1);
+  color: var(--primary);
+  box-shadow: 0 0 12px rgba(var(--pr),0.1);
+}
+.mob-drawer-icon { font-size: 18px; width: 22px; text-align: center; }
+
+/* Responsive lb */
+@media(max-width:760px){
+  .lb-header,.lb-row { grid-template-columns: 44px 1fr 80px; }
+  .lb-header :nth-child(4),.lb-row :nth-child(4),
+  .lb-header :nth-child(5),.lb-row :nth-child(5) { display: none; }
+  .lb-stats-row { grid-template-columns: 1fr 1fr; }
+  .lb-hero { padding: 100px 20px 40px; }
+}
+
 /* QUOTE */
 .kin-quote{
   font-family:'Inter',sans-serif;font-size:18px;font-style:italic;font-weight:300;
@@ -838,6 +1121,14 @@ footer{border-top:1px solid var(--border);padding:32px 56px;display:flex;align-i
       <button class="auth-btn" onclick="doLogin('Twitter')">
         <span class="ab-icon">🐦</span> Continue with X / Twitter
       </button>
+      <div class="auth-divider">or sign in with email</div>
+      <div class="email-form" id="emailLoginForm">
+        <input type="email" class="email-input" id="emailInput" placeholder="your@email.com">
+        <input type="password" class="email-input" id="passwordInput" placeholder="Password" style="display:none;">
+        <span class="forgot-link" id="forgotLink" style="display:none;" onclick="forgotPassword()">Forgot password?</span>
+        <button class="btn btn-p" style="width:100%;justify-content:center;margin-bottom:8px;" id="emailLoginBtn" onclick="doEmailLogin()">Continue with Email</button>
+        <div class="email-toggle" id="emailModeToggle" onclick="toggleEmailMode()">Don't have an account? Sign up</div>
+      </div>
       <div class="auth-note">By signing in you agree to our Terms of Service.<br>Your account stays logged in until you sign out.</div>
     </div>
 
@@ -889,6 +1180,10 @@ footer{border-top:1px solid var(--border);padding:32px 56px;display:flex;align-i
         <div class="th-swatch" style="background:linear-gradient(135deg,#eef2ff,#2563eb 60%,#7c3aed);border:1px solid rgba(37,99,235,.4);"></div>
         <div class="th-label">White Pro</div>
       </button>
+      <button class="th-btn" id="tb-gold" onclick="setTheme('gold')">
+        <div class="th-swatch" style="background:linear-gradient(135deg,#08060a,#f59e0b 60%,#dc2626);border:1px solid rgba(245,158,11,.4);"></div>
+        <div class="th-label">Championship</div>
+      </button>
     </div>
     <div class="set-div"></div>
     <span class="set-label">Quick Links</span>
@@ -896,6 +1191,23 @@ footer{border-top:1px solid var(--border);padding:32px 56px;display:flex;align-i
     <a href="https://youtube.com/@officialkindustry" target="_blank" class="set-link" style="background:rgba(239,68,68,.08);border-color:rgba(239,68,68,.25);color:#ef4444;">▶ Kindustry YouTube</a>
     <div class="set-div"></div>
     <div style="font-size:11px;color:var(--dim);line-height:1.7;">More options coming — effects toggles, font size, UI preferences.</div>
+  </div>
+</div>
+
+<!-- MOBILE SIDE DRAWER -->
+<div class="mob-drawer-overlay" id="mobDrawer" onclick="closeMobDrawer(event)">
+  <div class="mob-drawer">
+    <div class="mob-drawer-logo">KINDUSTRY</div>
+    <a href="#" onclick="showPage('home');closeMobDrawerDirect();return false;" id="md-home"><span class="mob-drawer-icon">🏠</span>Home</a>
+    <a href="#" onclick="showPage('store');closeMobDrawerDirect();return false;" id="md-store"><span class="mob-drawer-icon">🛒</span>Store</a>
+    <a href="#" onclick="showPage('tournaments');closeMobDrawerDirect();return false;" id="md-tournaments"><span class="mob-drawer-icon">🏆</span>Tournaments</a>
+    <a href="#" onclick="showPage('giveaways');closeMobDrawerDirect();return false;" id="md-giveaways"><span class="mob-drawer-icon">🎁</span>Giveaways</a>
+    <a href="#" onclick="showPage('leaderboard');closeMobDrawerDirect();return false;" id="md-leaderboard"><span class="mob-drawer-icon">📊</span>Leaderboard</a>
+    <a href="#" onclick="showPage('about');closeMobDrawerDirect();return false;" id="md-about"><span class="mob-drawer-icon">⚔️</span>About</a>
+    <a href="#" onclick="showPage('contact');closeMobDrawerDirect();return false;" id="md-contact"><span class="mob-drawer-icon">📧</span>Contact</a>
+    <div style="margin-top:auto;padding-top:20px;border-top:1px solid var(--border);">
+      <a href="https://discord.gg/CBqWUKScfF" target="_blank" style="background:linear-gradient(135deg,#5865F2,#7289da);color:white;-webkit-text-fill-color:white;justify-content:center;box-shadow:0 4px 14px rgba(88,101,242,.4);">💬 Join Discord</a>
+    </div>
   </div>
 </div>
 
@@ -907,6 +1219,7 @@ footer{border-top:1px solid var(--border);padding:32px 56px;display:flex;align-i
     <li><a href="#" onclick="showPage('store');return false;"        id="nl-store"        >Store</a></li>
     <li><a href="#" onclick="showPage('tournaments');return false;"  id="nl-tournaments"  >Tournaments</a></li>
     <li><a href="#" onclick="showPage('giveaways');return false;"    id="nl-giveaways"    >Giveaways</a></li>
+    <li><a href="#" onclick="showPage('leaderboard');return false;" id="nl-leaderboard"  >Leaderboard</a></li>
     <li><a href="#" onclick="showPage('about');return false;"        id="nl-about"        >About</a></li>
     <li><a href="#" onclick="showPage('contact');return false;"      id="nl-contact"      >Contact</a></li>
     <li><a href="https://discord.gg/CBqWUKScfF" target="_blank" class="nav-discord-btn">💬 Discord</a></li>
@@ -916,7 +1229,7 @@ footer{border-top:1px solid var(--border);padding:32px 56px;display:flex;align-i
       <button class="nav-login-btn" onclick="openAuth()">Sign In</button>
     </div>
     <button class="settings-btn" onclick="openSet()">⚙</button>
-    <button class="mob-btn" onclick="toggleNav()">☰</button>
+    <button class="mob-btn" onclick="openMobDrawer()">☰</button>
   </div>
 </nav>
 
@@ -1140,7 +1453,7 @@ footer{border-top:1px solid var(--border);padding:32px 56px;display:flex;align-i
       <div class="about-text reveal">
         <h2>Building the future of gaming communities.</h2>
         <p>Kindustry started as a Discord server with one idea — a space where gamers compete, connect, and grow together. No gatekeeping. No toxicity. Just pure gaming passion.</p>
-        <p>We run free monthly tournaments, give back through giveaways, and are building a full gaming ecosystem — digital stores, real-life merch, and competitive esports. Think Epic Games meets Steam, built from India for the world.</p>
+        <p>We run free monthly tournaments, give back through giveaways, and are building a full gaming ecosystem — digital stores, real-life merch, and competitive esports. Think Epic Games meets Steam, built for the world.</p>
         <p>Our esports arm, <strong style="color:var(--accent);">Team GODK</strong>, is actively forming. We're assembling a squad to compete nationally. Tryouts coming very soon.</p>
         <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:22px;">
           <a href="https://discord.gg/CBqWUKScfF" target="_blank" class="btn btn-dc">💬 Join the Community</a>
@@ -1164,7 +1477,7 @@ footer{border-top:1px solid var(--border);padding:32px 56px;display:flex;align-i
     <div class="mission-strip reveal">
       <div class="ms-item"><div class="ms-icon">🎯</div><div class="ms-label">Our Mission</div><div class="ms-val">Unite gamers, build legends</div></div>
       <div class="ms-div"></div>
-      <div class="ms-item"><div class="ms-icon">🌍</div><div class="ms-label">Our Reach</div><div class="ms-val">India & growing globally</div></div>
+      <div class="ms-item"><div class="ms-icon">🌍</div><div class="ms-label">Our Reach</div><div class="ms-val">Global & growing fast</div></div>
       <div class="ms-div"></div>
       <div class="ms-item"><div class="ms-icon">⚡</div><div class="ms-label">Our Energy</div><div class="ms-val">24/7 active community</div></div>
       <div class="ms-div"></div>
@@ -1244,8 +1557,8 @@ footer{border-top:1px solid var(--border);padding:32px 56px;display:flex;align-i
     <div class="val-row">
       <div class="val-card card reveal">
         <div class="val-icon-wrap"><span class="val-icon">🇮🇳</span></div>
-        <div class="val-name">Made in India</div>
-        <div class="val-desc">Built from Hyderabad with heart, growing globally with ambition.</div>
+        <div class="val-name">Born Global</div>
+        <div class="val-desc">Built for the world, powered by passion and community.</div>
       </div>
       <div class="val-card card reveal">
         <div class="val-icon-wrap"><span class="val-icon">💜</span></div>
@@ -1294,14 +1607,68 @@ footer{border-top:1px solid var(--border);padding:32px 56px;display:flex;align-i
   <footer><div class="ft-brand"><a href="#" onclick="showPage('home');return false;">KINDUSTRY</a><div class="ft-quote">"where everything forges into greatness"</div><div class="ft-yts"><a href="https://youtube.com/@officialkindustry" target="_blank" class="ft-yt">▶ Kindustry</a><a href="https://youtube.com/@godkteam" target="_blank" class="ft-yt">▶ God K Team</a><a href="https://youtube.com/@khushalbosspro" target="_blank" class="ft-yt">▶ KhushalBossPro</a></div></div><div class="ft-links"><div class="ft-nav"><a href="#" onclick="showPage('home');return false;">Home</a><a href="https://discord.gg/CBqWUKScfF" target="_blank">Discord</a></div><div class="ft-copy">© 2026 Kindustry. All rights reserved.</div></div></footer>
 </div>
 
+<!-- ════════════════════ LEADERBOARD ════════════════════ -->
+<div class="page" id="page-leaderboard">
+  <div class="lb-hero">
+    <div class="sec-hdr reveal">
+      <div class="sec-ey">Hall of Fame</div>
+      <h2 class="sec-title">Leaderboard</h2>
+    </div>
+
+    <!-- Stats bar -->
+    <div class="lb-stats-row">
+      <div class="lb-stat-card card reveal"><div class="lb-stat-val" id="lb-total-players">—</div><div class="lb-stat-lbl">Total Players</div></div>
+      <div class="lb-stat-card card reveal"><div class="lb-stat-val">2</div><div class="lb-stat-lbl">Tournaments</div></div>
+      <div class="lb-stat-card card reveal"><div class="lb-stat-val">0</div><div class="lb-stat-lbl">Champions</div></div>
+      <div class="lb-stat-card card reveal"><div class="lb-stat-val">🔥</div><div class="lb-stat-lbl">Season 1</div></div>
+    </div>
+
+    <!-- Filters -->
+    <div class="lb-filters">
+      <button class="lb-filter-btn on" onclick="lbFilter(this,'all')">All Players</button>
+      <button class="lb-filter-btn" onclick="lbFilter(this,'champions')">Champions</button>
+      <button class="lb-filter-btn" onclick="lbFilter(this,'active')">Most Active</button>
+    </div>
+
+    <!-- Table -->
+    <div class="lb-table reveal">
+      <div class="lb-header">
+        <div>#</div>
+        <div>Player</div>
+        <div>Tournaments</div>
+        <div>Wins</div>
+        <div>Badges</div>
+      </div>
+      <div id="lbBody">
+        <!-- Populated by JS -->
+      </div>
+    </div>
+
+    <!-- Join CTA -->
+    <div style="text-align:center;margin-top:40px;" class="reveal">
+      <div style="font-family:'Orbitron',monospace;font-size:18px;font-weight:700;margin-bottom:10px;">Want to appear here?</div>
+      <p style="color:var(--dim);margin-bottom:20px;font-size:14px;">Sign in, join a tournament, and compete your way to the top!</p>
+      <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
+        <button class="btn btn-p" onclick="openAuth()">Sign In to Join</button>
+        <a href="https://discord.gg/CBqWUKScfF" target="_blank" class="btn btn-dc">💬 Register on Discord</a>
+      </div>
+    </div>
+  </div>
+  <div class="sec-div"></div>
+  <footer><div class="ft-brand"><a href="#" onclick="showPage('home');return false;">KINDUSTRY</a><div class="ft-quote">"where everything forges into greatness"</div></div><div class="ft-links"><div class="ft-nav"><a href="#" onclick="showPage('home');return false;">Home</a><a href="https://discord.gg/CBqWUKScfF" target="_blank">Discord</a></div><div class="ft-copy">© 2026 Kindustry. All rights reserved.</div></div></footer>
+</div>
+
 <!-- ════════════════════ PROFILE ════════════════════ -->
 <div class="page" id="page-profile">
   <div class="profile-hero">
     <div class="profile-card card">
-      <div class="profile-av-wrap">
+      <div class="pfp-upload-wrap" onclick="document.getElementById('pfpInput').click()">
         <div class="profile-av" id="profileAv">👑</div>
+        <div class="pfp-upload-overlay">📷</div>
         <div class="profile-av-ring"></div>
+        <input type="file" id="pfpInput" accept="image/*" onchange="uploadPfp(this)">
       </div>
+      <div class="pfp-upload-hint">Click to change photo</div>
       <div class="profile-name" id="profileName">—</div>
       <div class="profile-tag">Kindustry Member</div>
       <div class="profile-since" id="profileSince"></div>
@@ -1354,9 +1721,10 @@ footer{border-top:1px solid var(--border);padding:32px 56px;display:flex;align-i
           <div class="fg"><label class="fl">Display Username</label><input type="text" class="fi" id="profileUnameInput" placeholder="Your username" maxlength="12"></div>
           <button class="btn btn-p" style="margin-bottom:20px;" onclick="saveUname()">Save Username</button>
           <div style="border-top:1px solid var(--border);padding-top:20px;margin-top:4px;">
-            <h4 style="font-family:'Orbitron',monospace;font-size:12px;font-weight:700;color:#ef4444;margin-bottom:12px;">Danger Zone</h4>
-            <button class="btn" style="background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.3);color:#ef4444;margin-right:10px;" onclick="signOut()">Sign Out</button>
-            <button class="btn" style="background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.3);color:#ef4444;" onclick="deleteAccount()">Delete Account</button>
+            <h4 style="font-family:'Orbitron',monospace;font-size:12px;font-weight:700;color:#ef4444;margin-bottom:8px;">Danger Zone</h4>
+            <p style="font-size:12px;color:var(--dim);margin-bottom:12px;">These actions are permanent and cannot be undone.</p>
+            <button class="btn" style="background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.3);color:#ef4444;margin-right:8px;margin-bottom:8px;" onclick="signOut()">🚪 Sign Out</button>
+            <button class="btn" style="background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.3);color:#ef4444;" onclick="deleteAccount()">🗑 Delete Account</button>
           </div>
         </div>
       </div>
@@ -1491,7 +1859,7 @@ document.querySelectorAll('.feature-card,.t-card').forEach(el => {
 });
 
 /* ════ AUTH STATE ════ */
-const UNAME_KEY = 'kin_username';
+
 
 async function getSupaUser() {
   const { data } = await supa.auth.getSession();
@@ -1499,14 +1867,15 @@ async function getSupaUser() {
 }
 
 function getSavedUsername() {
-  return localStorage.getItem(UNAME_KEY) || '';
+  const keys = Object.keys(localStorage).filter(k=>k.startsWith('kin_uname_')); return keys.length ? localStorage.getItem(keys[0]) || '' : '';
 }
 
 async function updateNavAuth() {
   const u = await getSupaUser();
   const area = document.getElementById('navAuthArea');
   if (u) {
-    const uname = getSavedUsername() || u.email?.split('@')[0] || 'Gamer';
+    const userKey = `kin_uname_${u.id}`;
+    const uname = localStorage.getItem(userKey) || u.email?.split('@')[0] || 'Gamer';
     area.innerHTML = `<div class="nav-user-btn" onclick="toggleDropdown()"><div class="nav-avatar">👤</div>${uname}</div>`;
     document.getElementById('dd-name').textContent = uname;
     document.getElementById('dd-tag').textContent = u.app_metadata?.provider ? `via ${u.app_metadata.provider}` : 'Kindustry Member';
@@ -1515,13 +1884,6 @@ async function updateNavAuth() {
     document.getElementById('profileSince').textContent = `Member since ${d.toLocaleDateString('en-US',{month:'long',year:'numeric'})}`;
     const inp = document.getElementById('profileUnameInput');
     if (inp) inp.value = uname;
-    // Check if username chosen yet
-    if (!getSavedUsername()) {
-      // Show username picker
-      document.getElementById('authModal').classList.add('open');
-      document.getElementById('authStep1').style.display = 'none';
-      document.getElementById('authStep2').style.display = 'block';
-    }
   } else {
     area.innerHTML = `<button class="nav-login-btn" onclick="openAuth()">Sign In</button>`;
   }
@@ -1543,9 +1905,11 @@ async function doLogin(provider) {
   const providerMap = { Google:'google', Facebook:'facebook', Discord:'discord', Twitter:'twitter' };
   const p = providerMap[provider];
   if (!p) return;
+  // Always redirect back to the domain the user is currently on
+  const redirectTo = window.location.origin;
   const { error } = await supa.auth.signInWithOAuth({
     provider: p,
-    options: { redirectTo: window.location.href }
+    options: { redirectTo }
   });
   if (error) {
     alert(`Login failed: ${error.message}\n\nMake sure ${provider} is enabled in your Supabase Auth settings.`);
@@ -1553,20 +1917,49 @@ async function doLogin(provider) {
 }
 
 /* USERNAME PICKER */
+const BAD_WORDS = ['niger','nigger','nigga','nigg','rapist','rape','raping','hitler','nazi','porn','porno','sex','fuck','fucker','fucking','shit','shitter','ass','arse','bitch','cunt','dick','pussy','whore','fag','faggot','retard','retarded','kill','killing','killme','suicide','slave','racist','n1gg','n1gger','f4g','sh1t','fuk','phuck','b1tch','d1ck','cum','jizz','penis','vagina','nonce','pedo','pedophile','terrorist','jihad','bastard'];
+
+function containsBadWord(val) {
+  const lower = val.toLowerCase().replace(/[^a-z0-9]/g,'');
+  return BAD_WORDS.some(w => lower.includes(w));
+}
+
 function validateUname() {
   const v = document.getElementById('unameInput').value;
   const ok = /^[a-zA-Z0-9]{1,12}$/.test(v);
   const err = document.getElementById('unameErr');
   const btn = document.getElementById('unameSubmit');
   if (v.length === 0) { err.style.display='none'; btn.disabled=true; return; }
-  if (!ok) { err.style.display='block'; btn.disabled=true; }
-  else { err.style.display='none'; btn.disabled=false; }
+  if (!ok) { err.textContent='Only letters and numbers allowed (max 12).'; err.style.display='block'; btn.disabled=true; return; }
+  if (containsBadWord(v)) { err.textContent='This username is not allowed.'; err.style.display='block'; btn.disabled=true; return; }
+  err.style.display='none'; btn.disabled=false;
 }
 
 async function submitUsername() {
   const v = document.getElementById('unameInput').value.trim();
   if (!/^[a-zA-Z0-9]{1,12}$/.test(v)) return;
-  localStorage.setItem(UNAME_KEY, v);
+  if (containsBadWord(v)) { document.getElementById('unameErr').textContent='This username is not allowed.'; document.getElementById('unameErr').style.display='block'; return; }
+  const btn = document.getElementById('unameSubmit');
+  btn.textContent = 'Checking...'; btn.disabled = true;
+  // Check uniqueness in Supabase
+  try {
+    const { data, error } = await supa.from('usernames').select('username').eq('username', v.toLowerCase()).maybeSingle();
+    if (data) {
+      document.getElementById('unameErr').textContent = 'Username already taken — choose another.';
+      document.getElementById('unameErr').style.display = 'block';
+      btn.textContent = 'Claim Username →'; btn.disabled = false;
+      return;
+    }
+  } catch(e) { console.log('Username check skipped:', e); }
+  const u2 = await getSupaUser();
+  if (u2) {
+    // Save to Supabase usernames table
+    try {
+      await supa.from('usernames').upsert({ username: v.toLowerCase(), user_id: u2.id });
+    } catch(e) { console.log('Username save skipped:', e); }
+    localStorage.setItem('kin_uname_' + u2.id, v);
+  }
+  btn.textContent = 'Claim Username →'; btn.disabled = false;
   closeAuth();
   await updateNavAuth();
   showPage('profile');
@@ -1581,26 +1974,52 @@ document.addEventListener('click', e => {
 
 async function signOut() {
   if (!confirm('Sign out of Kindustry?')) return;
-  await supa.auth.signOut();
-  localStorage.removeItem(UNAME_KEY);
-  await updateNavAuth();
   closeDropdown();
-  showPage('home');
+  await supa.auth.signOut({ scope: 'global' });
+  Object.keys(localStorage).filter(k=>k.startsWith('kin_uname_')).forEach(k=>localStorage.removeItem(k));
+  window.location.reload();
 }
 
 async function deleteAccount() {
-  if (!confirm('Delete your Kindustry account? This cannot be undone.')) return;
-  await supa.auth.signOut();
-  localStorage.removeItem(UNAME_KEY);
-  await updateNavAuth();
+  // First confirmation
+  const first = confirm('⚠️ Are you sure you want to delete your Kindustry account?\n\nThis will permanently remove your profile and cannot be undone.');
+  if (!first) return;
+  // Second confirmation — type DELETE
+  const modal = document.createElement('div');
+  modal.style.cssText = 'position:fixed;inset:0;z-index:99999;background:rgba(0,0,0,0.8);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;padding:20px;';
+  modal.innerHTML = `
+    <div style="background:var(--bg2);border:1px solid rgba(239,68,68,.4);border-radius:16px;padding:36px;max-width:400px;width:100%;text-align:center;">
+      <div style="font-size:40px;margin-bottom:14px;">⚠️</div>
+      <div style="font-family:'Orbitron',monospace;font-size:18px;font-weight:700;color:#ef4444;margin-bottom:10px;">Delete Account</div>
+      <p style="color:var(--dim);font-size:13px;line-height:1.6;margin-bottom:20px;">This will permanently delete your account and all your data. Type <strong style="color:#ef4444;letter-spacing:2px;">DELETE</strong> to confirm.</p>
+      <input type="text" id="deleteConfirmInput" placeholder="Type DELETE here" class="delete-confirm-input">
+      <div style="display:flex;gap:12px;justify-content:center;margin-top:8px;">
+        <button onclick="this.closest('div[style]').remove()" style="padding:10px 24px;border-radius:7px;border:1px solid var(--border);background:transparent;color:var(--dim);cursor:pointer;font-family:'Rajdhani',sans-serif;font-weight:700;font-size:13px;">Cancel</button>
+        <button id="confirmDeleteBtn" onclick="confirmDelete(this)" style="padding:10px 24px;border-radius:7px;border:none;background:rgba(239,68,68,.2);color:#ef4444;cursor:pointer;font-family:'Rajdhani',sans-serif;font-weight:700;font-size:13px;border:1px solid rgba(239,68,68,.4);">Confirm Delete</button>
+      </div>
+    </div>`;
+  document.body.appendChild(modal);
   closeDropdown();
-  showPage('home');
+}
+
+async function confirmDelete(btn) {
+  const val = document.getElementById('deleteConfirmInput').value.trim();
+  if (val !== 'DELETE') {
+    document.getElementById('deleteConfirmInput').style.borderColor = '#ef4444';
+    document.getElementById('deleteConfirmInput').placeholder = 'Must type DELETE exactly';
+    return;
+  }
+  btn.closest('div[style*="position:fixed"]').remove();
+  await supa.auth.signOut({ scope: 'global' });
+  Object.keys(localStorage).filter(k=>k.startsWith('kin_uname_')).forEach(k=>localStorage.removeItem(k));
+  window.location.reload();
 }
 
 async function saveUname() {
   const v = document.getElementById('profileUnameInput').value.trim();
   if (!/^[a-zA-Z0-9]{1,12}$/.test(v)) { alert('Username must be 1–12 letters or numbers only.'); return; }
-  localStorage.setItem(UNAME_KEY, v);
+  const u2 = await getSupaUser();
+  if (u2) localStorage.setItem('kin_uname_' + u2.id, v);
   await updateNavAuth();
   alert('Username updated!');
 }
@@ -1620,7 +2039,7 @@ function outsideSet(e){ if(e.target===document.getElementById('setOverlay')) clo
 
 /* ════ THEME ════ */
 function setTheme(t){
-  document.body.classList.remove('theme-red','theme-cyber','theme-white');
+  document.body.classList.remove('theme-red','theme-cyber','theme-white','theme-gold');
   if(t !== 'dark') document.body.classList.add('theme-'+t);
   localStorage.setItem('kin-theme', t);
   document.querySelectorAll('.th-btn').forEach(b=>b.classList.remove('on'));
@@ -1638,10 +2057,21 @@ async function showPage(name) {
   document.getElementById('page-' + name).classList.add('active');
   const el = document.getElementById('nl-' + name);
   if (el) el.classList.add('active');
+  // Update mobile drawer active state
+  document.querySelectorAll('.mob-drawer a').forEach(a => a.classList.remove('active'));
+  const md = document.getElementById('md-' + name);
+  if (md) md.classList.add('active');
   window.scrollTo({ top: 0, behavior: 'smooth' });
   document.getElementById('navLinks').classList.remove('open');
   setTimeout(observeReveals, 50);
   if (name === 'about') setTimeout(initAboutStars, 100);
+  if (name === 'leaderboard') setTimeout(() => renderLeaderboard('all'), 100);
+  // Update pfp on profile
+  if (name === 'profile' && u) {
+    const pfp = getUserPfp(u.id);
+    const av = document.getElementById('profileAv');
+    if (pfp && av) av.innerHTML = `<img src="${pfp}" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">`;
+  }
 }
 
 /* ════ MOBILE NAV ════ */
@@ -1667,29 +2097,272 @@ function observeReveals(){
 observeReveals();
 
 /* ════ CONTACT FORM ════ */
-function submitForm(){ alert('Thanks! For fastest response, DM us on Discord: discord.gg/CBqWUKScfF'); }
+async function submitForm() {
+  const name = document.querySelector('.fi[placeholder="GamerTag or real name"]')?.value?.trim();
+  const email = document.querySelector('.fi[placeholder="your@email.com"]')?.value?.trim();
+  const subject = document.querySelector('.fi[placeholder="Partnership, Support, Collab..."]')?.value?.trim();
+  const message = document.querySelector('.ft')?.value?.trim();
+  if (!name || !email || !message) { alert('Please fill in your name, email and message.'); return; }
+  const btn = document.querySelector('button[onclick="submitForm()"]');
+  const origText = btn.textContent;
+  btn.textContent = 'Sending...'; btn.disabled = true;
+  try {
+    const res = await fetch('https://formspree.io/f/xykovjky', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({ name, email, subject, message })
+    });
+    if (res.ok) {
+      btn.textContent = '✅ Message Sent!';
+      btn.style.background = 'linear-gradient(135deg,#22c55e,#16a34a)';
+      document.querySelectorAll('.fi,.ft').forEach(i => i.value = '');
+      setTimeout(() => { btn.textContent = origText; btn.style.background = ''; btn.disabled = false; }, 4000);
+    } else {
+      throw new Error('Failed');
+    }
+  } catch(e) {
+    alert('Message failed to send. Please email us at officialkindustry@gmail.com or contact us on Discord!');
+    btn.textContent = origText; btn.disabled = false;
+  }
+}
+
+/* ════ SCROLLING FLOATING NAV ════ */
+window.addEventListener('scroll', () => {
+  const n = document.querySelector('nav');
+  if (window.scrollY > 60) n.classList.add('scrolled');
+  else n.classList.remove('scrolled');
+}, { passive: true });
+
+/* ════ MOBILE DRAWER ════ */
+function openMobDrawer() { document.getElementById('mobDrawer').classList.add('open'); }
+function closeMobDrawerDirect() { document.getElementById('mobDrawer').classList.remove('open'); }
+function closeMobDrawer(e) { if(e.target===document.getElementById('mobDrawer')) closeMobDrawerDirect(); }
+
+/* ════ EMAIL LOGIN ════ */
+let emailMode = 'login'; // or 'signup'
+
+function toggleEmailMode() {
+  const passInput = document.getElementById('passwordInput');
+  const forgotLink = document.getElementById('forgotLink');
+  const btn = document.getElementById('emailLoginBtn');
+  const toggle = document.getElementById('emailModeToggle');
+  if (emailMode === 'login') {
+    emailMode = 'signup';
+    passInput.style.display = 'block';
+    forgotLink.style.display = 'none';
+    btn.textContent = 'Create Account';
+    toggle.textContent = 'Already have an account? Sign in';
+  } else {
+    emailMode = 'login';
+    passInput.style.display = 'none';
+    forgotLink.style.display = 'block';
+    btn.textContent = 'Sign in with Email';
+    toggle.textContent = "Don't have an account? Sign up";
+  }
+}
+
+// Show password field when email typed
+document.addEventListener('DOMContentLoaded', () => {
+  const ei = document.getElementById('emailInput');
+  if (ei) ei.addEventListener('input', () => {
+    if (emailMode === 'login') {
+      const pf = document.getElementById('passwordInput');
+      const fl = document.getElementById('forgotLink');
+      if (ei.value.length > 3) { pf.style.display='block'; fl.style.display='block'; }
+    }
+  });
+});
+
+async function doEmailLogin() {
+  const email = document.getElementById('emailInput').value.trim();
+  const pass  = document.getElementById('passwordInput').value;
+  if (!email) { alert('Please enter your email.'); return; }
+  if (!pass)  { alert('Please enter your password.'); return; }
+
+  if (emailMode === 'signup') {
+    const { error } = await supa.auth.signUp({ email, password: pass });
+    if (error) { alert('Sign up failed: ' + error.message); return; }
+    alert('✅ Account created! Check your email to confirm your account, then sign in.');
+  } else {
+    const { error } = await supa.auth.signInWithPassword({ email, password: pass });
+    if (error) { alert('Sign in failed: ' + error.message); return; }
+    closeAuth();
+    await updateNavAuth();
+  }
+}
+
+async function forgotPassword() {
+  const email = document.getElementById('emailInput').value.trim();
+  if (!email) { alert('Enter your email first, then click Forgot Password.'); return; }
+  const { error } = await supa.auth.resetPasswordForEmail(email, {
+    redirectTo: window.location.origin
+  });
+  if (error) alert('Error: ' + error.message);
+  else alert('✅ Password reset email sent! Check your inbox.');
+}
+
+/* ════ PFP UPLOAD ════ */
+async function uploadPfp(input) {
+  const file = input.files[0];
+  if (!file) return;
+  if (file.size > 2 * 1024 * 1024) { alert('Image must be under 2MB'); return; }
+  const u = await getSupaUser();
+  if (!u) { alert('Please sign in first.'); return; }
+
+  // Show preview immediately while uploading
+  const reader = new FileReader();
+  reader.onload = async (e) => {
+    const preview = e.target.result;
+    const av = document.getElementById('profileAv');
+    if (av) av.innerHTML = `<img src="${preview}" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">`;
+
+    // Try Supabase Storage upload
+    try {
+      const ext = file.name.split('.').pop();
+      const path = `${u.id}.${ext}`;
+      const { data, error } = await supa.storage.from('avatars').upload(path, file, { upsert: true, contentType: file.type });
+      if (!error) {
+        const { data: urlData } = supa.storage.from('avatars').getPublicUrl(path);
+        const publicUrl = urlData.publicUrl + '?t=' + Date.now();
+        localStorage.setItem(`kin_pfp_${u.id}`, publicUrl);
+        if (av) av.innerHTML = `<img src="${publicUrl}" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">`;
+        // Update leaderboard table with pfp url
+        await supa.from('leaderboard').update({ pfp_url: publicUrl }).eq('username', localStorage.getItem('kin_uname_' + u.id));
+        console.log('✅ PFP uploaded to Supabase Storage');
+      } else {
+        // Fall back to localStorage base64
+        localStorage.setItem(`kin_pfp_${u.id}`, preview);
+        console.log('Storage upload failed, saved locally:', error.message);
+      }
+    } catch(e) {
+      localStorage.setItem(`kin_pfp_${u.id}`, preview);
+      console.log('Storage error, saved locally:', e);
+    }
+    updateLeaderboardAvatars();
+  };
+  reader.readAsDataURL(file);
+}
+
+function getUserPfp(userId) {
+  return localStorage.getItem(`kin_pfp_${userId}`) || null;
+}
+
+function updateLeaderboardAvatars() {
+  // Refresh leaderboard to show new pfp
+  renderLeaderboard(currentLbFilter);
+}
+
+/* ════ LEADERBOARD ════ */
+let currentLbFilter = 'all';
+
+// Demo data — in production this comes from Supabase database
+const lbDemoData = [
+  { rank:1, name:'KhushalBossPro', tag:'Founder & CEO', tournaments:2, wins:2, badges:['champ','active'], pfp:null },
+  { rank:2, name:'ProGamer99',     tag:'Elite Member',   tournaments:2, wins:1, badges:['active'],         pfp:null },
+  { rank:3, name:'NightWolf',      tag:'Competitor',     tournaments:1, wins:0, badges:['new'],            pfp:null },
+  { rank:4, name:'StarPlayer',     tag:'Member',         tournaments:1, wins:0, badges:['new'],            pfp:null },
+  { rank:5, name:'GhostRider',     tag:'Member',         tournaments:1, wins:0, badges:['active'],         pfp:null },
+];
+
+async function renderLeaderboard(filter) {
+  currentLbFilter = filter;
+  const body = document.getElementById('lbBody');
+  if (!body) return;
+  body.innerHTML = '<div class="lb-empty"><span class="lb-empty-icon">⏳</span><div class="lb-empty-title">Loading...</div></div>';
+
+  let data = [];
+  // Try Supabase first
+  try {
+    let query = supa.from('leaderboard').select('*').order('wins', { ascending: false }).order('tournaments', { ascending: false });
+    const { data: lbData, error } = await query;
+    if (!error && lbData && lbData.length > 0) {
+      data = lbData.map((p, i) => ({
+        rank: i + 1,
+        name: p.username,
+        tag: p.tag || 'Member',
+        tournaments: p.tournaments || 0,
+        wins: p.wins || 0,
+        badges: p.badges || [],
+        pfp: p.pfp_url || null
+      }));
+    }
+  } catch(e) { console.log('Leaderboard DB fetch failed, using demo data'); }
+
+  // Fall back to demo data if Supabase empty or failed
+  if (data.length === 0) data = lbDemoData.map((p,i) => ({...p}));
+
+  // Apply filters
+  if (filter === 'champions') data = data.filter(p => p.badges.includes('champ'));
+  if (filter === 'active')    data = data.sort((a,b) => b.tournaments - a.tournaments);
+
+  const totalEl = document.getElementById('lb-total-players');
+  if (totalEl) totalEl.textContent = data.length;
+
+  if (data.length === 0) {
+    body.innerHTML = '<div class="lb-empty"><span class="lb-empty-icon">🏆</span><div class="lb-empty-title">No players yet</div><div style="color:var(--dim);font-size:13px;">Be the first to compete!</div></div>';
+    return;
+  }
+
+  const rowClass = ['','gold-row','silver-row','bronze-row'];
+  const rankClass = ['','r1','r2','r3'];
+  const medals = ['','🥇','🥈','🥉'];
+
+  body.innerHTML = data.map((p, i) => {
+    const rank = p.rank || (i+1);
+    const rc = rowClass[rank] || '';
+    const rkc = rankClass[rank] || '';
+    const medal = medals[rank] || rank;
+    const pfpHtml = p.pfp
+      ? `<img src="${p.pfp}" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">`
+      : p.name.charAt(0).toUpperCase();
+    const badgesHtml = (p.badges||[]).map(b => `<span class="lb-badge ${b}">${b}</span>`).join('');
+    return `<div class="lb-row ${rc}">
+      <div class="lb-rank ${rkc}">${medal}</div>
+      <div class="lb-player">
+        <div class="lb-avatar">${pfpHtml}</div>
+        <div><div class="lb-name">${p.name}</div><div class="lb-tag">${p.tag}</div></div>
+      </div>
+      <div class="lb-stat">${p.tournaments}</div>
+      <div class="lb-stat">${p.wins}</div>
+      <div class="lb-badge-wrap">${badgesHtml}</div>
+    </div>`;
+  }).join('');
+}
+
+function lbFilter(btn, filter) {
+  document.querySelectorAll('.lb-filter-btn').forEach(b => b.classList.remove('on'));
+  btn.classList.add('on');
+  renderLeaderboard(filter);
+}
 
 /* ════ INIT ════ */
 (async function init() {
-  // Handle OAuth redirect — Supabase auto-handles session from URL hash
   await supa.auth.getSession();
   await updateNavAuth();
   observeReveals();
 
-  // Listen for auth state changes (login/logout)
   supa.auth.onAuthStateChange(async (event, session) => {
-    await updateNavAuth();
-    if (event === 'SIGNED_IN' && !getSavedUsername()) {
-      // Show username picker after OAuth redirect
-      document.getElementById('authModal').classList.add('open');
-      document.getElementById('authStep1').style.display = 'none';
-      document.getElementById('authStep2').style.display = 'block';
-      document.getElementById('unameInput').value = '';
-      document.getElementById('unameErr').style.display = 'none';
-      document.getElementById('unameSubmit').disabled = true;
+    if (event === 'SIGNED_IN') {
+      const userId = session?.user?.id;
+      if (userId) {
+        const userKey = `kin_uname_${userId}`;
+        const savedUname = localStorage.getItem(userKey);
+        if (!savedUname) {
+          document.getElementById('authModal').classList.add('open');
+          document.getElementById('authStep1').style.display = 'none';
+          document.getElementById('authStep2').style.display = 'block';
+          document.getElementById('unameInput').value = '';
+          document.getElementById('unameErr').style.display = 'none';
+          document.getElementById('unameSubmit').disabled = true;
+        }
+      }
+      await updateNavAuth();
+    } else if (event === 'SIGNED_OUT') {
+      await updateNavAuth();
     }
   });
 })();
+
 </script>
 </body>
 </html>
