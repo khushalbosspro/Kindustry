@@ -18,14 +18,10 @@
 <link rel="canonical" href="https://kindustry.in">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Kindustry — Gaming Universe</title>
-<script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "wqam6qwa0b");
-</script>
+
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<!-- Cloudflare Web Analytics — activate in Cloudflare Pages dashboard → Analytics tab, paste token below -->
+<!-- <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token":"YOUR_CF_TOKEN"}'></script> -->
 <style>
 /* ═══════════════════════════════════════
    THEME VARIABLES — 4 COMPLETE THEMES
@@ -2791,7 +2787,7 @@ window._supabaseReady = false;
 </script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" 
   onload="window._supabaseReady=true;"
-  onerror="console.warn('Supabase CDN failed, auth features unavailable');">
+  onerror="console.warn('Supabase CDN failed');window._supabaseReady=false;hideLoader();">
 </script>
 <script>
 'use strict';
@@ -2864,9 +2860,9 @@ function hideLoader() {
   if(l) l.classList.add('out');
 }
 // Primary: after page load
-window.addEventListener('load', () => setTimeout(hideLoader, 2200));
-// Fallback 1: if load event never fires (CDN fail)
-setTimeout(hideLoader, 4000);
+window.addEventListener('load', () => setTimeout(hideLoader, 1800));
+// Fallback 1: faster fallback for local file testing
+setTimeout(hideLoader, 2500);
 // Fallback 2: on any user interaction
 document.addEventListener('click', hideLoader, { once: true });
 document.addEventListener('keydown', hideLoader, { once: true });
