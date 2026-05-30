@@ -2,20 +2,6 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="description" content="Kindustry — The ultimate gaming community. Compete in free tournaments, win epic giveaways, join our Discord, and be part of the next generation of gaming.">
-<meta name="keywords" content="Kindustry, gaming, esports, tournaments, giveaways, GODK, gaming community, competitive gaming">
-<meta name="author" content="Kindustry">
-<meta name="robots" content="index, follow">
-<meta property="og:title" content="Kindustry — Gaming Universe">
-<meta property="og:description" content="Compete in free tournaments, win epic giveaways, and join the Kindustry gaming community.">
-<meta property="og:url" content="https://kindustry.in">
-<meta property="og:type" content="website">
-<meta property="og:image" content="https://kindustry.in/og-image.png">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Kindustry — Gaming Universe">
-<meta name="twitter:description" content="Compete in free tournaments, win epic giveaways, and join the Kindustry gaming community.">
-<meta name="twitter:image" content="https://kindustry.in/og-image.png">
-<link rel="canonical" href="https://kindustry.in">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Kindustry — Gaming Universe</title>
 <script type="text/javascript">
@@ -91,752 +77,6 @@ body.theme-gold {
   --scanline:rgba(0,0,0,0.03);
   --shadow:0 20px 60px rgba(245,158,11,0.15);
 }
-
-
-/* ── VENOM THEME ── */
-body.theme-venom {
-  --bg:#050505; --bg2:#0a0a0a; --bg3:#111111;
-  --surface:rgba(10,10,10,0.95);
-  --primary:#e8e8e8; --pr:232,232,232;
-  --accent:#ff2d2d; --ac:255,45,45;
-  --accent2:#cc0000;
-  --neon:#ff1111;
-  --text:#f0f0f0; --dim:#777777; --faint:#2a2a2a;
-  --border:rgba(232,232,232,0.12);
-  --border-h:rgba(232,232,232,0.35);
-  --nav-bg:rgba(5,5,5,0.97);
-  --card-glow:rgba(232,232,232,0.05);
-  --hero-grad:
-    radial-gradient(ellipse 80% 55% at 50% -5%,rgba(200,200,200,0.07),transparent 60%),
-    radial-gradient(ellipse 55% 70% at 90% 50%,rgba(255,45,45,0.08),transparent 55%),
-    radial-gradient(ellipse 40% 55% at 10% 80%,rgba(255,45,45,0.06),transparent 55%);
-  --orb1-c:rgba(200,200,200,0.06); --orb2-c:rgba(255,45,45,0.08);
-  --input-bg:rgba(255,255,255,0.03);
-  --scanline:rgba(0,0,0,0.04);
-  --shadow:0 20px 60px rgba(0,0,0,0.8);
-}
-
-/* Venom background — deep black with subtle dark tendrils */
-body.theme-venom {
-  background:#050505;
-}
-body.theme-venom::before {
-  content:'';position:fixed;inset:0;z-index:-1;
-  background:
-    radial-gradient(ellipse 70% 50% at 50% -10%,rgba(60,60,60,0.25),transparent 55%),
-    radial-gradient(ellipse 40% 60% at 95% 50%,rgba(255,30,30,0.06),transparent 50%),
-    radial-gradient(ellipse 35% 50% at 5% 80%,rgba(255,30,30,0.05),transparent 50%),
-    radial-gradient(ellipse 60% 40% at 50% 110%,rgba(30,30,30,0.4),transparent 55%);
-  pointer-events:none;
-}
-
-/* Venom cards — dark glass with white shimmer */
-body.theme-venom .card{
-  background:linear-gradient(145deg,rgba(255,255,255,0.04) 0%,rgba(255,255,255,0.01) 50%,rgba(255,255,255,0.03) 100%) !important;
-  border:1px solid rgba(255,255,255,0.08) !important;
-  box-shadow:0 4px 24px rgba(0,0,0,0.6),0 0 0 1px rgba(255,255,255,0.03),inset 0 1px 0 rgba(255,255,255,0.06) !important;
-}
-body.theme-venom .card:hover{
-  border-color:rgba(255,255,255,0.18) !important;
-  box-shadow:0 8px 40px rgba(0,0,0,0.7),0 0 20px rgba(255,255,255,0.04),inset 0 1px 0 rgba(255,255,255,0.1) !important;
-  transform:translateY(-4px);
-}
-
-/* Venom logo — white glow */
-body.theme-venom .logo{
-  color:#ffffff !important;
-  text-shadow:0 0 20px rgba(255,255,255,0.4),0 0 60px rgba(255,255,255,0.1) !important;
-  -webkit-text-fill-color:#ffffff !important;
-}
-
-/* Venom hero title */
-body.theme-venom .hero-title-main{
-  background:linear-gradient(135deg,#ffffff 0%,#aaaaaa 40%,#ffffff 60%,#888888 100%) !important;
-  -webkit-background-clip:text !important;
-  -webkit-text-fill-color:transparent !important;
-  filter:drop-shadow(0 0 30px rgba(255,255,255,0.2)) !important;
-}
-
-/* Venom primary button */
-body.theme-venom .btn-p{
-  background:linear-gradient(135deg,#1a1a1a,#333333) !important;
-  border:1px solid rgba(255,255,255,0.2) !important;
-  color:#ffffff !important;
-  box-shadow:0 0 20px rgba(255,255,255,0.08),inset 0 1px 0 rgba(255,255,255,0.1) !important;
-}
-body.theme-venom .btn-p:hover{
-  background:linear-gradient(135deg,#2a2a2a,#444444) !important;
-  box-shadow:0 0 35px rgba(255,255,255,0.15),inset 0 1px 0 rgba(255,255,255,0.15) !important;
-  transform:translateY(-2px) !important;
-}
-
-/* Venom accent — red tongue */
-body.theme-venom .hero-title-sub,
-body.theme-venom .sec-ey{color:#ff2d2d !important;}
-
-/* Venom nav */
-body.theme-venom nav{
-  background:rgba(3,3,3,0.98) !important;
-  border-bottom:1px solid rgba(255,255,255,0.06) !important;
-}
-body.theme-venom nav.scrolled{
-  background:rgba(3,3,3,0.99) !important;
-  box-shadow:0 4px 32px rgba(0,0,0,0.9) !important;
-}
-
-/* Venom scrollbar */
-body.theme-venom::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.12);}
-body.theme-venom::-webkit-scrollbar-thumb:hover{background:rgba(255,255,255,0.22);}
-
-/* Venom orbs */
-body.theme-venom .orb1{background:radial-gradient(circle,rgba(80,80,80,0.15),transparent 70%) !important;filter:blur(80px) !important;}
-body.theme-venom .orb2{background:radial-gradient(circle,rgba(255,30,30,0.1),transparent 70%) !important;filter:blur(80px) !important;}
-body.theme-venom .orb3{background:radial-gradient(circle,rgba(40,40,40,0.2),transparent 70%) !important;filter:blur(80px) !important;}
-
-/* ── TEAL THEME ── */
-body.theme-teal{
-  --bg:#010f0f; --bg2:#021818; --bg3:#032020;
-  --surface:rgba(2,18,18,0.95);
-  --primary:#2dd4bf; --pr:45,212,191;
-  --accent:#06b6d4; --ac:6,182,212;
-  --accent2:#0891b2;
-  --neon:#14b8a6;
-  --text:#e0fffe; --dim:#5eaca4; --faint:#1a3a38;
-  --border:rgba(45,212,191,0.15);
-  --border-h:rgba(45,212,191,0.4);
-  --nav-bg:rgba(1,12,12,0.96);
-  --input-bg:rgba(45,212,191,0.04);
-}
-body.theme-teal{background:#010f0f;}
-body.theme-teal::before{
-  content:'';position:fixed;inset:0;z-index:-1;
-  background:
-    radial-gradient(ellipse 60% 50% at 50% -10%,rgba(20,184,166,0.18),transparent 55%),
-    radial-gradient(ellipse 40% 60% at 95% 40%,rgba(6,182,212,0.12),transparent 50%),
-    radial-gradient(ellipse 35% 50% at 5% 80%,rgba(45,212,191,0.10),transparent 50%),
-    radial-gradient(ellipse 50% 40% at 50% 110%,rgba(8,145,178,0.15),transparent 55%);
-  pointer-events:none;
-}
-body.theme-teal .card{
-  background:linear-gradient(145deg,rgba(45,212,191,0.06) 0%,rgba(6,182,212,0.02) 50%,rgba(45,212,191,0.04) 100%) !important;
-  border:1px solid rgba(45,212,191,0.15) !important;
-  box-shadow:0 4px 24px rgba(0,0,0,0.5),0 0 0 1px rgba(45,212,191,0.04),inset 0 1px 0 rgba(45,212,191,0.08) !important;
-}
-body.theme-teal .card:hover{
-  border-color:rgba(45,212,191,0.35) !important;
-  box-shadow:0 8px 40px rgba(0,0,0,0.6),0 0 30px rgba(45,212,191,0.08),inset 0 1px 0 rgba(45,212,191,0.12) !important;
-  transform:translateY(-4px);
-}
-body.theme-teal .logo{
-  color:#2dd4bf !important;
-  text-shadow:0 0 20px rgba(45,212,191,0.5),0 0 60px rgba(45,212,191,0.2) !important;
-  -webkit-text-fill-color:#2dd4bf !important;
-}
-body.theme-teal .hero-title-main{
-  background:linear-gradient(135deg,#2dd4bf 0%,#06b6d4 40%,#2dd4bf 70%,#0891b2 100%) !important;
-  -webkit-background-clip:text !important;
-  -webkit-text-fill-color:transparent !important;
-  filter:drop-shadow(0 0 30px rgba(45,212,191,0.35)) !important;
-}
-body.theme-teal .btn-p{
-  background:linear-gradient(135deg,rgba(45,212,191,0.15),rgba(6,182,212,0.2)) !important;
-  border:1px solid rgba(45,212,191,0.3) !important;
-  color:#2dd4bf !important;
-  box-shadow:0 0 20px rgba(45,212,191,0.1),inset 0 1px 0 rgba(45,212,191,0.15) !important;
-}
-body.theme-teal .btn-p:hover{
-  background:linear-gradient(135deg,rgba(45,212,191,0.25),rgba(6,182,212,0.3)) !important;
-  box-shadow:0 0 35px rgba(45,212,191,0.25) !important;
-}
-body.theme-teal nav{
-  background:rgba(1,10,10,0.97) !important;
-  border-bottom:1px solid rgba(45,212,191,0.1) !important;
-}
-body.theme-teal nav.scrolled{
-  box-shadow:0 4px 32px rgba(45,212,191,0.08) !important;
-}
-body.theme-teal .orb1{background:radial-gradient(circle,rgba(45,212,191,0.18),transparent 70%) !important;filter:blur(80px) !important;}
-body.theme-teal .orb2{background:radial-gradient(circle,rgba(6,182,212,0.14),transparent 70%) !important;filter:blur(80px) !important;}
-body.theme-teal .orb3{background:radial-gradient(circle,rgba(8,145,178,0.12),transparent 70%) !important;filter:blur(80px) !important;}
-body.theme-glass {
-  --bg:#ffffff;
-  --bg2:#f8faff;
-  --bg3:#ffffff;
-  --surface:rgba(255,255,255,0.18);
-  --primary:#5b6ef5;
-  --pr:91,110,245;
-  --accent:#a855f7;
-  --ac:168,85,247;
-  --accent2:#06b6d4;
-  --neon:#4f46e5;
-  --text:#1a1a2e;
-  --dim:#6b7280;
-  --faint:#c4c9d4;
-  --border:rgba(255,255,255,0.6);
-  --border-h:rgba(255,255,255,0.95);
-  --nav-bg:rgba(255,255,255,0.25);
-  --card-glow:rgba(255,255,255,0.3);
-  --hero-grad:
-    radial-gradient(ellipse 100% 80% at 20% -10%,rgba(120,100,255,0.12),transparent 55%),
-    radial-gradient(ellipse 80% 70% at 85% 15%,rgba(80,180,255,0.1),transparent 55%),
-    radial-gradient(ellipse 60% 60% at 50% 110%,rgba(180,80,255,0.08),transparent 55%),
-    #ffffff;
-  --orb1-c:rgba(120,100,255,0.1);
-  --orb2-c:rgba(80,180,255,0.08);
-  --input-bg:rgba(255,255,255,0.5);
-  --scanline:transparent;
-  --shadow:0 20px 80px rgba(91,110,245,0.12);
-}
-
-/* ── GLASS BACKGROUND ── */
-body.theme-glass {
-  background: #e8eaff !important;
-}
-body.theme-glass::before {
-  content:'';
-  position:fixed;inset:0;z-index:-1;
-  background:
-    radial-gradient(ellipse 60% 50% at 5% 5%,rgba(100,80,255,0.55),transparent 55%),
-    radial-gradient(ellipse 50% 45% at 95% 5%,rgba(40,150,255,0.48),transparent 55%),
-    radial-gradient(ellipse 45% 55% at 50% 110%,rgba(180,50,255,0.42),transparent 55%),
-    radial-gradient(ellipse 40% 35% at 80% 55%,rgba(255,80,200,0.35),transparent 55%),
-    radial-gradient(ellipse 35% 40% at 15% 72%,rgba(60,210,255,0.30),transparent 55%),
-    radial-gradient(ellipse 30% 30% at 50% 50%,rgba(140,100,255,0.12),transparent 60%);
-  pointer-events:none;
-}
-
-/* ── GLASS CARDS — Juicy Bubble style ── */
-body.theme-glass .card, body.theme-glass .feature-card {
-  border-radius: 24px !important;
-}
-body.theme-glass .card {
-  background:
-    linear-gradient(
-      145deg,
-      rgba(255,255,255,0.52) 0%,
-      rgba(200,210,255,0.18) 30%,
-      rgba(180,160,255,0.08) 60%,
-      rgba(255,255,255,0.28) 100%
-    ) !important;
-  backdrop-filter: blur(32px) saturate(2.2) brightness(1.08) !important;
-  -webkit-backdrop-filter: blur(32px) saturate(2.2) brightness(1.08) !important;
-  border: 1.5px solid rgba(255,255,255,0.65) !important;
-  border-radius: 24px !important;
-  box-shadow:
-    0 2px 4px rgba(0,0,0,0.03),
-    0 8px 32px rgba(100,80,255,0.12),
-    0 20px 60px rgba(0,0,0,0.06),
-    inset 0 2px 0 rgba(255,255,255,0.95),
-    inset 0 -1px 0 rgba(200,180,255,0.25),
-    inset 1px 0 0 rgba(255,255,255,0.7),
-    inset -1px 0 0 rgba(200,180,255,0.3) !important;
-  position: relative;
-  overflow: hidden;
-}
-
-/* Top gloss shine — fat juicy bubble highlight */
-body.theme-glass .card::before {
-  content: '' !important;
-  position: absolute !important;
-  top: 0 !important; left: 3% !important; right: 3% !important;
-  height: 45% !important;
-  background: linear-gradient(
-    to bottom,
-    rgba(255,255,255,0.90) 0%,
-    rgba(255,255,255,0.35) 40%,
-    rgba(255,255,255,0) 100%
-  ) !important;
-  border-radius: 50% 50% 0 0 / 40px !important;
-  pointer-events: none !important;
-  z-index: 0 !important;
-  opacity: 1 !important;
-}
-
-/* Bottom color glow — makes it feel like light refracts through */
-body.theme-glass .card::after {
-  content: '' !important;
-  position: absolute !important;
-  bottom: 0 !important; left: 8% !important; right: 8% !important;
-  height: 35% !important;
-  background: linear-gradient(
-    to top,
-    rgba(140,100,255,0.18) 0%,
-    rgba(100,160,255,0.10) 50%,
-    transparent 100%
-  ) !important;
-  border-radius: 0 0 50% 50% / 0 0 24px 24px !important;
-  pointer-events: none !important;
-  z-index: 0 !important;
-}
-
-body.theme-glass .card > * { position: relative; z-index: 1; }
-
-body.theme-glass .card:hover {
-  background:
-    linear-gradient(
-      145deg,
-      rgba(255,255,255,0.75) 0%,
-      rgba(210,220,255,0.28) 30%,
-      rgba(190,170,255,0.14) 60%,
-      rgba(255,255,255,0.45) 100%
-    ) !important;
-  border-color: rgba(255,255,255,0.90) !important;
-  box-shadow:
-    0 2px 4px rgba(0,0,0,0.02),
-    0 12px 40px rgba(100,80,255,0.20),
-    0 28px 70px rgba(0,0,0,0.08),
-    inset 0 2px 0 rgba(255,255,255,1),
-    inset 0 -1px 0 rgba(200,180,255,0.40),
-    inset 1px 0 0 rgba(255,255,255,0.85),
-    inset -1px 0 0 rgba(200,180,255,0.45) !important;
-  transform: translateY(-6px) scale(1.015) !important;
-}
-
-/* ── GLASS NAV ── */
-body.theme-glass nav {
-  background: rgba(255,255,255,0.25) !important;
-  backdrop-filter: blur(40px) saturate(1.8) !important;
-  -webkit-backdrop-filter: blur(40px) saturate(1.8) !important;
-  border-bottom: 1px solid rgba(255,255,255,0.6) !important;
-  box-shadow:
-    0 1px 0 rgba(255,255,255,0.8),
-    0 4px 24px rgba(0,0,0,0.04),
-    inset 0 1px 0 rgba(255,255,255,0.7) !important;
-}
-body.theme-glass nav.scrolled {
-  background: rgba(255,255,255,0.3) !important;
-  border-radius: 16px !important;
-  box-shadow:
-    0 8px 32px rgba(0,0,0,0.06),
-    inset 0 1px 0 rgba(255,255,255,0.9),
-    inset 0 -1px 0 rgba(255,255,255,0.4) !important;
-}
-
-/* ── GLASS BUTTONS ── */
-body.theme-glass .btn-p {
-  background: linear-gradient(135deg,rgba(91,110,245,0.85),rgba(79,70,229,0.85)) !important;
-  backdrop-filter: blur(20px) !important;
-  border: 1px solid rgba(255,255,255,0.5) !important;
-  border-top-color: rgba(255,255,255,0.8) !important;
-  color: white !important;
-  box-shadow:
-    0 4px 20px rgba(91,110,245,0.3),
-    inset 0 2px 0 rgba(255,255,255,0.35),
-    inset 0 -1px 0 rgba(0,0,0,0.1) !important;
-}
-body.theme-glass .btn-p:hover {
-  box-shadow:
-    0 8px 32px rgba(91,110,245,0.45),
-    inset 0 2px 0 rgba(255,255,255,0.4) !important;
-}
-body.theme-glass .btn-dc {
-  background: linear-gradient(135deg,rgba(88,101,242,0.85),rgba(114,137,218,0.85)) !important;
-  border: 1px solid rgba(255,255,255,0.5) !important;
-  border-top-color: rgba(255,255,255,0.8) !important;
-  box-shadow:
-    0 4px 20px rgba(88,101,242,0.3),
-    inset 0 2px 0 rgba(255,255,255,0.35) !important;
-}
-body.theme-glass .btn-ol {
-  background: rgba(255,255,255,0.5) !important;
-  border: 1px solid rgba(255,255,255,0.85) !important;
-  color: var(--primary) !important;
-  backdrop-filter: blur(10px) !important;
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.9) !important;
-}
-body.theme-glass .btn-ol:hover {
-  background: rgba(255,255,255,0.7) !important;
-  border-color: rgba(255,255,255,1) !important;
-}
-
-/* ── GLASS PANELS ── */
-body.theme-glass .set-panel,
-body.theme-glass .modal-box,
-body.theme-glass .user-dropdown,
-body.theme-glass .mob-drawer {
-  background: rgba(255,255,255,0.4) !important;
-  backdrop-filter: blur(48px) saturate(1.8) !important;
-  -webkit-backdrop-filter: blur(48px) saturate(1.8) !important;
-  border-color: rgba(255,255,255,0.8) !important;
-  box-shadow:
-    0 24px 60px rgba(0,0,0,0.08),
-    inset 0 1px 0 rgba(255,255,255,0.9),
-    inset 1px 0 0 rgba(255,255,255,0.6) !important;
-}
-
-/* ── GLASS INPUTS ── */
-body.theme-glass .fi,
-body.theme-glass .ft,
-body.theme-glass .email-input,
-body.theme-glass .uname-input,
-body.theme-glass .delete-confirm-input {
-  background: rgba(255,255,255,0.7) !important;
-  border: 1px solid rgba(255,255,255,0.9) !important;
-  color: var(--text) !important;
-  backdrop-filter: blur(10px) !important;
-  box-shadow: inset 0 2px 4px rgba(0,0,0,0.04), inset 0 1px 0 rgba(255,255,255,0.8) !important;
-}
-body.theme-glass .fi:focus,
-body.theme-glass .ft:focus,
-body.theme-glass .email-input:focus,
-body.theme-glass .uname-input:focus {
-  border-color: rgba(91,110,245,0.6) !important;
-  background: rgba(255,255,255,0.85) !important;
-  box-shadow: 0 0 0 3px rgba(91,110,245,0.12), inset 0 1px 0 rgba(255,255,255,0.9) !important;
-}
-
-/* ── GLASS LOGO & TEXT ── */
-body.theme-glass .logo {
-  background: linear-gradient(135deg,#4f46e5,#7c3aed,#2563eb) !important;
-  -webkit-background-clip: text !important;
-  background-clip: text !important;
-  -webkit-text-fill-color: transparent !important;
-}
-body.theme-glass .hero-title-main {
-  background: linear-gradient(135deg,#1a1a2e 0%,#4f46e5 50%,#7c3aed 100%) !important;
-  -webkit-background-clip: text !important;
-  background-clip: text !important;
-  -webkit-text-fill-color: transparent !important;
-  filter: drop-shadow(0 2px 8px rgba(91,110,245,0.2)) !important;
-}
-
-/* ── GLASS NAV LINKS ── */
-body.theme-glass .nav-links a {
-  color: rgba(30,30,60,0.7) !important;
-}
-body.theme-glass .nav-links a.active {
-  background: rgba(255,255,255,0.7) !important;
-  color: #4f46e5 !important;
-  box-shadow:
-    0 2px 12px rgba(91,110,245,0.15),
-    inset 0 1px 0 rgba(255,255,255,1) !important;
-  border-radius: 20px !important;
-}
-body.theme-glass .nav-links a:hover {
-  background: rgba(255,255,255,0.5) !important;
-  color: #4f46e5 !important;
-}
-
-/* ── GLASS HERO EYEBROW ── */
-body.theme-glass .hero-eyebrow {
-  background: rgba(255,255,255,0.6) !important;
-  backdrop-filter: blur(20px) !important;
-  border: 1px solid rgba(255,255,255,0.9) !important;
-  border-top-color: rgba(255,255,255,1) !important;
-  color: #4f46e5 !important;
-  box-shadow: inset 0 1px 0 rgba(255,255,255,1), 0 4px 12px rgba(91,110,245,0.1) !important;
-}
-
-/* ── GLASS LB TABLE ── */
-body.theme-glass .lb-table {
-  background: linear-gradient(160deg,rgba(255,255,255,0.45),rgba(255,255,255,0.15),rgba(255,255,255,0.3)) !important;
-  backdrop-filter: blur(40px) saturate(2) !important;
-  border: 1.5px solid rgba(255,255,255,0.65) !important;
-  border-radius: 20px !important;
-  box-shadow: inset 0 1.5px 0 rgba(255,255,255,0.9), 0 12px 40px rgba(91,110,245,0.08) !important;
-  overflow: hidden !important;
-}
-body.theme-glass .lb-row:hover {
-  background: rgba(255,255,255,0.35) !important;
-}
-body.theme-glass .lb-header {
-  background: rgba(255,255,255,0.3) !important;
-  backdrop-filter: blur(10px) !important;
-}
-
-/* ── GLASS STORE TABS ── */
-body.theme-glass .tab-row, body.theme-glass .profile-tabs {
-  background: rgba(255,255,255,0.5) !important;
-  backdrop-filter: blur(20px) !important;
-  border-color: rgba(255,255,255,0.85) !important;
-  box-shadow: inset 0 1px 0 rgba(255,255,255,1) !important;
-}
-body.theme-glass .tab-btn.active, body.theme-glass .ptab.on {
-  background: rgba(255,255,255,0.85) !important;
-  color: #4f46e5 !important;
-  box-shadow: inset 0 1px 0 rgba(255,255,255,1), 0 2px 8px rgba(91,110,245,0.1) !important;
-}
-
-/* ── GLASS SECTION TITLES ── */
-body.theme-glass .sec-title {
-  background: linear-gradient(135deg,#1a1a2e,#4f46e5) !important;
-  -webkit-background-clip: text !important;
-  background-clip: text !important;
-  -webkit-text-fill-color: transparent !important;
-}
-body.theme-glass .sec-ey {
-  color: #4f46e5 !important;
-}
-body.theme-glass .sec-ey::before {
-  background: #4f46e5 !important;
-}
-
-/* ── GLASS DISCORD BANNER ── */
-body.theme-glass .dc-banner {
-  background: rgba(255,255,255,0.2) !important;
-  backdrop-filter: blur(28px) !important;
-  border: 1px solid rgba(255,255,255,0.6) !important;
-  border-top-color: rgba(255,255,255,0.85) !important;
-  box-shadow:
-    inset 0 1.5px 0 rgba(255,255,255,0.8),
-    0 8px 32px rgba(0,0,0,0.04) !important;
-}
-
-/* ── GLASS SCROLLBAR ── */
-body.theme-glass ::-webkit-scrollbar { width:6px; }
-body.theme-glass ::-webkit-scrollbar-track { background:rgba(255,255,255,0.3); }
-body.theme-glass ::-webkit-scrollbar-thumb { background:rgba(91,110,245,0.3);border-radius:3px; }
-body.theme-glass ::-webkit-scrollbar-thumb:hover { background:rgba(91,110,245,0.5); }
-
-/* Footer glass fix */
-body.theme-glass footer {
-  background: rgba(255,255,255,0.2) !important;
-  backdrop-filter: blur(20px) !important;
-  border-top-color: rgba(255,255,255,0.6) !important;
-}
-body.theme-glass .ft-brand a, body.theme-glass .logo {
-  background: linear-gradient(135deg,#4f46e5,#7c3aed) !important;
-  -webkit-background-clip: text !important; background-clip: text !important;
-  -webkit-text-fill-color: transparent !important;
-}
-/* Orbs glass theme - vivid so they show through cards */
-body.theme-glass .orb1 { background: rgba(91,110,245,0.55) !important; filter: blur(70px) !important; }
-body.theme-glass .orb2 { background: rgba(180,50,237,0.45) !important; filter: blur(70px) !important; }
-body.theme-glass .orb3 { background: rgba(6,182,212,0.38) !important; filter: blur(70px) !important; }
-
-
-/* ── COTTON CANDY THEME ── */
-body.theme-candy {
-  --bg:#fff0f8;
-  --bg2:#ffe4f2;
-  --bg3:#ffffff;
-  --surface:rgba(255,255,255,0.85);
-  --primary:#e8449a;
-  --pr:232,68,154;
-  --accent:#c026d3;
-  --ac:192,38,211;
-  --accent2:#f472b6;
-  --neon:#db2777;
-  --text:#3b0a2a;
-  --dim:#9d5080;
-  --faint:#f5c6e0;
-  --border:rgba(232,68,154,0.2);
-  --border-h:rgba(232,68,154,0.55);
-  --nav-bg:rgba(255,240,248,0.92);
-  --card-glow:rgba(232,68,154,0.08);
-  --hero-grad:
-    radial-gradient(ellipse 90% 60% at 50% -10%,rgba(255,182,220,0.5),transparent 60%),
-    radial-gradient(ellipse 60% 70% at 85% 50%,rgba(192,38,211,0.12),transparent 55%),
-    radial-gradient(ellipse 50% 60% at 10% 80%,rgba(244,114,182,0.15),transparent 55%),
-    linear-gradient(160deg,#fff0f8,#ffe4f2,#fdf2ff);
-  --orb1-c:rgba(255,182,220,0.4);
-  --orb2-c:rgba(192,38,211,0.15);
-  --input-bg:rgba(255,255,255,0.8);
-  --scanline:transparent;
-  --shadow:0 20px 60px rgba(232,68,154,0.15);
-}
-
-/* Candy background */
-body.theme-candy {
-  background: linear-gradient(135deg,#fff0f8,#fce7f3,#fdf4ff) !important;
-}
-body.theme-candy::after { opacity:0 !important; }
-
-/* Candy cards */
-body.theme-candy .card {
-  background: rgba(255,255,255,0.88) !important;
-  border: 1px solid rgba(232,68,154,0.15) !important;
-  box-shadow: 0 4px 24px rgba(232,68,154,0.08), 0 1px 4px rgba(0,0,0,0.04), inset 0 1px 0 rgba(255,255,255,1) !important;
-}
-body.theme-candy .card:hover {
-  border-color: rgba(232,68,154,0.35) !important;
-  box-shadow: 0 12px 48px rgba(232,68,154,0.18), 0 4px 16px rgba(0,0,0,0.06), inset 0 1px 0 rgba(255,255,255,1) !important;
-  transform: translateY(-4px) !important;
-}
-body.theme-candy .card::before {
-  background: linear-gradient(90deg,transparent,rgba(232,68,154,0.06),transparent) !important;
-  opacity: 1 !important;
-}
-
-/* Candy nav */
-body.theme-candy nav {
-  background: rgba(255,240,248,0.94) !important;
-  border-bottom: 1px solid rgba(232,68,154,0.15) !important;
-  backdrop-filter: blur(28px) !important;
-  box-shadow: 0 4px 20px rgba(232,68,154,0.06) !important;
-}
-body.theme-candy nav.scrolled {
-  background: rgba(255,245,250,0.96) !important;
-  box-shadow: 0 8px 32px rgba(232,68,154,0.1) !important;
-}
-
-/* Candy logo */
-body.theme-candy .logo {
-  background: linear-gradient(135deg,#e8449a,#c026d3,#f472b6) !important;
-  -webkit-background-clip: text !important;
-  background-clip: text !important;
-  -webkit-text-fill-color: transparent !important;
-}
-
-/* Candy hero title */
-body.theme-candy .hero-title-main {
-  background: linear-gradient(135deg,#3b0a2a 0%,#e8449a 55%,#c026d3 100%) !important;
-  -webkit-background-clip: text !important;
-  background-clip: text !important;
-  -webkit-text-fill-color: transparent !important;
-}
-
-/* Candy buttons */
-body.theme-candy .btn-p {
-  background: linear-gradient(135deg,#e8449a,#db2777) !important;
-  box-shadow: 0 4px 20px rgba(232,68,154,0.35) !important;
-}
-body.theme-candy .btn-p:hover {
-  box-shadow: 0 8px 32px rgba(232,68,154,0.5) !important;
-}
-body.theme-candy .btn-ol {
-  border-color: rgba(232,68,154,0.4) !important;
-  color: #e8449a !important;
-}
-body.theme-candy .btn-ol:hover {
-  background: rgba(232,68,154,0.08) !important;
-  border-color: #e8449a !important;
-}
-body.theme-candy .sm-p {
-  background: linear-gradient(135deg,#e8449a,#db2777) !important;
-}
-
-/* Candy nav links */
-body.theme-candy .nav-links a:hover,
-body.theme-candy .nav-links a.active {
-  color: #e8449a !important;
-  background: rgba(232,68,154,0.08) !important;
-  box-shadow: 0 0 14px rgba(232,68,154,0.2) !important;
-}
-body.theme-candy .nav-links a.active::after,
-body.theme-candy .nav-links a:hover::after {
-  background: #e8449a !important;
-}
-
-/* Candy eyebrow */
-body.theme-candy .hero-eyebrow {
-  background: rgba(232,68,154,0.1) !important;
-  border-color: rgba(232,68,154,0.3) !important;
-  color: #e8449a !important;
-}
-
-/* Candy section tag */
-body.theme-candy .sec-ey { color: #e8449a !important; }
-body.theme-candy .sec-ey::before { background: #e8449a !important; }
-body.theme-candy .sec-title {
-  background: linear-gradient(135deg,#3b0a2a,#e8449a) !important;
-  -webkit-background-clip: text !important;
-  background-clip: text !important;
-  -webkit-text-fill-color: transparent !important;
-}
-
-/* Candy feature cards highlight */
-body.theme-candy .fc-title { color: #e8449a !important; }
-body.theme-candy .feature-card:hover .fc-title { color: #c026d3 !important; }
-
-/* Candy tab buttons */
-body.theme-candy .tab-btn.active,
-body.theme-candy .tab-btn:hover,
-body.theme-candy .ptab.on {
-  background: linear-gradient(135deg,#e8449a,#db2777) !important;
-  color: white !important;
-}
-
-/* Candy leaderboard */
-body.theme-candy .lb-row.gold-row { background: rgba(232,68,154,0.06) !important; }
-
-/* Candy discord banner */
-body.theme-candy .dc-banner {
-  background: linear-gradient(135deg,rgba(232,68,154,0.1),rgba(192,38,211,0.08)) !important;
-  border-color: rgba(232,68,154,0.25) !important;
-}
-
-/* Candy panels */
-body.theme-candy .set-panel,
-body.theme-candy .modal-box,
-body.theme-candy .user-dropdown,
-body.theme-candy .mob-drawer {
-  background: rgba(255,240,248,0.97) !important;
-  border-color: rgba(232,68,154,0.2) !important;
-  box-shadow: 0 24px 60px rgba(232,68,154,0.12) !important;
-}
-
-/* Candy inputs */
-body.theme-candy .fi,
-body.theme-candy .ft,
-body.theme-candy .email-input,
-body.theme-candy .uname-input {
-  background: rgba(255,255,255,0.9) !important;
-  border-color: rgba(232,68,154,0.2) !important;
-}
-body.theme-candy .fi:focus,
-body.theme-candy .ft:focus,
-body.theme-candy .email-input:focus,
-body.theme-candy .uname-input:focus {
-  border-color: #e8449a !important;
-  box-shadow: 0 0 0 3px rgba(232,68,154,0.12) !important;
-}
-
-/* Candy footer */
-body.theme-candy footer {
-  border-top-color: rgba(232,68,154,0.15) !important;
-}
-body.theme-candy .ft-brand a {
-  background: linear-gradient(135deg,#e8449a,#c026d3) !important;
-  -webkit-background-clip: text !important;
-  background-clip: text !important;
-  -webkit-text-fill-color: transparent !important;
-}
-
-/* Candy scrollbar */
-body.theme-candy ::-webkit-scrollbar-thumb {
-  background: rgba(232,68,154,0.3) !important;
-}
-body.theme-candy ::-webkit-scrollbar-thumb:hover {
-  background: rgba(232,68,154,0.5) !important;
-}
-
-/* Candy orbs */
-body.theme-candy .orb1 { background: rgba(255,182,220,0.45) !important; }
-body.theme-candy .orb2 { background: rgba(192,38,211,0.18) !important; }
-body.theme-candy .orb3 { background: rgba(244,114,182,0.15) !important; }
-
-/* Candy giveaway featured */
-body.theme-candy .gw-featured {
-  background: linear-gradient(135deg,rgba(232,68,154,0.1),rgba(192,38,211,0.07)) !important;
-  border-color: rgba(232,68,154,0.25) !important;
-}
-
-/* Candy t-badge */
-body.theme-candy .t-badge.soon {
-  background: rgba(232,68,154,0.12) !important;
-  color: #e8449a !important;
-  border-color: rgba(232,68,154,0.3) !important;
-}
-
-/* Auth button hover */
-body.theme-candy .auth-btn:hover {
-  border-color: rgba(232,68,154,0.4) !important;
-  background: rgba(232,68,154,0.05) !important;
-}
-
-/* Candy lb filter */
-body.theme-candy .lb-filter-btn.on,
-body.theme-candy .lb-filter-btn:hover {
-  background: rgba(232,68,154,0.1) !important;
-  border-color: rgba(232,68,154,0.4) !important;
-  color: #e8449a !important;
-  box-shadow: 0 0 12px rgba(232,68,154,0.15) !important;
-}
-
-/* Candy settings active */
-body.theme-candy .th-btn.on { border-color: #e8449a !important; background: rgba(232,68,154,0.08) !important; }
-body.theme-candy .settings-btn:hover { color: #e8449a !important; border-color: rgba(232,68,154,0.4) !important; }
 
 /* ── DARK NEON (default) ── already in :root */
 
@@ -958,10 +198,9 @@ body::after{
 ═══════════════════════════════════════ */
 nav{
   position:fixed;top:0;left:0;right:0;z-index:1000;height:68px;
-  display:flex;align-items:center;justify-content:space-between;padding:0 32px;
+  display:flex;align-items:center;justify-content:space-between;padding:0 56px;
   background:var(--nav-bg);backdrop-filter:blur(28px) saturate(1.5);
   border-bottom:1px solid var(--border);transition:var(--trans);
-  overflow:hidden;
 }
 .logo{
   font-family:'Orbitron',monospace;font-size:20px;font-weight:900;letter-spacing:4px;
@@ -970,118 +209,55 @@ nav{
   text-decoration:none;transition:filter .25s;
 }
 .logo:hover{filter:brightness(1.25);}
-.nav-links{display:flex;gap:2px;list-style:none;align-items:center;flex-shrink:1;min-width:0;}
+.nav-links{display:flex;gap:2px;list-style:none;align-items:center;}
 .nav-links a{
   color:var(--dim);text-decoration:none;font-family:'Rajdhani',sans-serif;
   font-weight:600;font-size:12px;letter-spacing:2px;text-transform:uppercase;
-  padding:8px 14px;border-radius:8px;transition:var(--trans);position:relative;
+  padding:8px 13px;border-radius:5px;transition:var(--trans);position:relative;
 }
-.nav-links a:hover,.nav-links a.active{
-  color:var(--primary);
-  background:rgba(var(--pr),0.1);
-  box-shadow:0 2px 12px rgba(var(--pr),0.15), inset 0 1px 0 rgba(255,255,255,0.08);
-}
+.nav-links a:hover,.nav-links a.active{color:var(--primary);background:rgba(var(--pr),0.08);}
 .nav-links a::after{content:'';position:absolute;bottom:4px;left:13px;right:13px;height:1px;background:var(--primary);transform:scaleX(0);transform-origin:center;transition:transform .25s;}
 .nav-links a:hover::after,.nav-links a.active::after{transform:scaleX(1);}
 .nav-discord-btn{
   background:linear-gradient(135deg,#5865F2,#7289da) !important;
   color:white !important;-webkit-text-fill-color:white !important;
-  padding:8px 18px !important;border-radius:20px;font-size:11px !important;
-  letter-spacing:1.5px;font-weight:700;
-  box-shadow:0 0 16px rgba(88,101,242,0.35),inset 0 1px 0 rgba(255,255,255,0.2);
-  transition:var(--trans);border:1px solid rgba(255,255,255,0.15) !important;
-  white-space:nowrap;
+  padding:8px 16px !important;border-radius:6px;font-size:12px !important;letter-spacing:1.5px;
+  box-shadow:0 0 18px rgba(88,101,242,0.4);transition:var(--trans);
 }
 .nav-discord-btn::after{display:none !important;}
-.nav-discord-btn:hover{box-shadow:0 4px 24px rgba(88,101,242,0.6) !important;transform:translateY(-2px);}
-.nav-right{display:flex;align-items:center;gap:6px;flex-shrink:0;}
+.nav-discord-btn:hover{box-shadow:0 4px 28px rgba(88,101,242,0.6) !important;transform:translateY(-1px);}
+.nav-right{display:flex;align-items:center;gap:8px;}
 
-/* ── ICON BUTTONS — all same size square ── */
-.nav-icon-btn{
-  width:34px;height:34px;border-radius:8px;flex-shrink:0;
-  background:rgba(var(--pr),0.07);border:1px solid var(--border);
+/* User button in nav */
+.nav-user-btn{
+  display:flex;align-items:center;gap:8px;
+  background:rgba(var(--pr),0.1);border:1px solid var(--border);
+  color:var(--text);border-radius:20px;padding:5px 12px 5px 5px;
+  cursor:pointer;transition:var(--trans);font-size:13px;font-weight:600;
+}
+.nav-user-btn:hover{border-color:var(--border-h);background:rgba(var(--pr),0.15);}
+.nav-avatar{
+  width:26px;height:26px;border-radius:50%;
+  background:linear-gradient(135deg,var(--primary),var(--accent));
+  display:flex;align-items:center;justify-content:center;font-size:12px;
+}
+.nav-login-btn{
+  background:rgba(var(--pr),0.1);border:1px solid var(--border);
+  color:var(--primary);border-radius:6px;padding:7px 14px;
+  cursor:pointer;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;
+  transition:var(--trans);
+}
+.nav-login-btn:hover{background:rgba(var(--pr),0.18);border-color:var(--border-h);}
+.settings-btn{
+  width:36px;height:36px;border-radius:7px;
+  background:rgba(var(--pr),0.08);border:1px solid var(--border);
   color:var(--dim);display:flex;align-items:center;justify-content:center;
   cursor:pointer;font-size:15px;transition:var(--trans);
 }
-.nav-icon-btn:hover{color:var(--primary);border-color:var(--border-h);background:rgba(var(--pr),0.14);transform:translateY(-1px);}
-
-/* Apply icon-btn style to all icon buttons */
-.settings-btn{width:34px;height:34px;border-radius:8px;flex-shrink:0;background:rgba(var(--pr),0.07);border:1px solid var(--border);color:var(--dim);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:15px;transition:var(--trans);}
-.settings-btn:hover{color:var(--primary);border-color:var(--border-h);background:rgba(var(--pr),0.14);transform:translateY(-1px);}
-.theme-toggle-btn{width:34px;height:34px;border-radius:8px;flex-shrink:0;background:rgba(var(--pr),0.07);border:1px solid var(--border);color:var(--dim);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:15px;transition:var(--trans);}
-.theme-toggle-btn:hover{color:var(--primary);border-color:var(--border-h);background:rgba(var(--pr),0.14);transform:translateY(-1px);}
-.mob-btn{display:none;width:34px;height:34px;border-radius:8px;flex-shrink:0;background:rgba(var(--pr),0.07);border:1px solid var(--border);color:var(--primary);font-size:16px;cursor:pointer;align-items:center;justify-content:center;transition:var(--trans);}
-.mob-btn:hover{background:rgba(var(--pr),0.14);border-color:var(--border-h);}
-
-/* ── SOUND BUTTON — pill with label, collapses to icon ── */
-.sound-btn{
-  display:flex;align-items:center;gap:5px;
-  height:34px;padding:0 12px;border-radius:8px;flex-shrink:0;
-  background:rgba(var(--pr),0.07);border:1px solid var(--border);
-  color:var(--dim);cursor:pointer;font-size:13px;
-  font-family:'Rajdhani',sans-serif;font-weight:700;letter-spacing:.5px;
-  transition:var(--trans);white-space:nowrap;
-}
-.sound-btn:hover{background:rgba(var(--pr),0.14);border-color:var(--border-h);color:var(--primary);}
-.sound-btn.muted{background:rgba(239,68,68,0.07);border-color:rgba(239,68,68,0.25);color:#ef4444;}
-.sound-btn.muted:hover{background:rgba(239,68,68,0.13);border-color:rgba(239,68,68,0.5);}
-.sound-btn-label{font-size:10px;letter-spacing:1px;text-transform:uppercase;}
-
-/* ── SIGN IN BUTTON — pill ── */
-.nav-login-btn{
-  height:34px;padding:0 16px;border-radius:20px;flex-shrink:0;
-  background:rgba(var(--pr),0.1);border:1px solid var(--border);
-  color:var(--primary);cursor:pointer;font-size:11px;font-weight:700;
-  letter-spacing:1px;text-transform:uppercase;transition:var(--trans);
-  white-space:nowrap;
-}
-.nav-login-btn:hover{background:rgba(var(--pr),0.18);border-color:var(--border-h);transform:translateY(-1px);}
-
-/* ── USER BUTTON — pill with avatar ── */
-.nav-user-btn{
-  display:flex;align-items:center;gap:7px;
-  height:34px;padding:0 12px 0 4px;border-radius:20px;flex-shrink:0;
-  background:rgba(var(--pr),0.08);border:1px solid var(--border);
-  color:var(--text);cursor:pointer;transition:var(--trans);
-  font-size:12px;font-weight:600;white-space:nowrap;max-width:200px;
-}
-.nav-user-btn:hover{border-color:var(--border-h);background:rgba(var(--pr),0.15);transform:translateY(-1px);}
-.nav-rank{font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:2px 6px;border-radius:4px;white-space:nowrap;flex-shrink:0;}
-.nav-avatar{width:26px;height:26px;border-radius:50%;flex-shrink:0;background:linear-gradient(135deg,var(--primary),var(--accent));display:flex;align-items:center;justify-content:center;font-size:11px;}
-
-/* ── NOTIFICATION BELL ── */
-.notif-wrap{position:relative;display:none;flex-shrink:0;}
-.notif-btn{width:34px;height:34px;border-radius:8px;background:rgba(var(--pr),0.07);border:1px solid var(--border);color:var(--dim);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:15px;transition:var(--trans);position:relative;}
-.notif-btn:hover{color:var(--primary);border-color:var(--border-h);background:rgba(var(--pr),0.14);transform:translateY(-1px);}
-.notif-dot{position:absolute;top:5px;right:5px;width:8px;height:8px;border-radius:50%;background:#ef4444;border:2px solid var(--bg);display:none;}
-.notif-dot.show{display:block;animation:notifPulse 2s infinite;}
-@keyframes notifPulse{0%,100%{transform:scale(1);}50%{transform:scale(1.4);}}
-.notif-panel{position:absolute;top:calc(100% + 10px);right:0;width:290px;background:var(--bg2);border:1px solid var(--border);border-radius:14px;box-shadow:0 20px 60px rgba(0,0,0,0.4);opacity:0;visibility:hidden;transform:translateY(-8px);transition:all .25s ease;z-index:9999;overflow:hidden;}
-.notif-panel.open{opacity:1;visibility:visible;transform:translateY(0);}
-.notif-head{padding:13px 16px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;}
-.notif-head-title{font-family:'Orbitron',monospace;font-size:10px;font-weight:700;letter-spacing:2px;color:var(--primary);}
-.notif-clear{font-size:10px;color:var(--dim);cursor:pointer;font-family:'Rajdhani',sans-serif;letter-spacing:1px;}
-.notif-clear:hover{color:var(--primary);}
-.notif-list{max-height:260px;overflow-y:auto;}
-.notif-item{padding:12px 16px;border-bottom:1px solid rgba(var(--pr),0.06);display:flex;gap:10px;align-items:flex-start;}
-.notif-item:last-child{border-bottom:none;}
-.notif-item:hover{background:rgba(var(--pr),0.04);}
-.notif-icon{font-size:18px;flex-shrink:0;}
-.notif-text-title{font-size:12px;font-weight:700;color:var(--text);margin-bottom:2px;}
-.notif-text-sub{font-size:11px;color:var(--dim);line-height:1.5;}
-.notif-time{font-size:10px;color:var(--faint);margin-top:3px;}
-.notif-empty{padding:28px;text-align:center;color:var(--dim);font-size:13px;}
-
-/* ── RESPONSIVE — collapse nav earlier at 1080px ── */
-@media(max-width:1200px){
-  .sound-btn-label{display:none;}
-  .sound-btn{width:34px;padding:0;justify-content:center;}
-}
-@media(max-width:1080px){
-  .nav-discord-btn{display:none;}
-}
-@media(max-width:960px){
-  nav{overflow:visible;}
+.settings-btn:hover{color:var(--primary);border-color:var(--border-h);background:rgba(var(--pr),0.14);}
+.mob-btn{
+  display:none;background:rgba(var(--pr),0.08);border:1px solid var(--border);
+  color:var(--primary);padding:7px 11px;border-radius:6px;font-size:18px;cursor:pointer;
 }
 
 /* ═══════════════════════════════════════
@@ -1260,13 +436,6 @@ body.theme-red .hero-title-main,body.theme-white .hero-title-main{
   display:block;font-size:.4em;letter-spacing:9px;font-weight:400;
   color:var(--dim);-webkit-text-fill-color:var(--dim);margin-top:12px;
 }
-.tw-cursor{
-  display:inline-block;width:2px;height:0.8em;
-  background:var(--primary);margin-left:2px;
-  vertical-align:middle;border-radius:1px;
-  animation:twBlink .65s step-end infinite;
-}
-@keyframes twBlink{0%,100%{opacity:1;}50%{opacity:0;}}
 .hero-quote{
   font-family:'Inter',sans-serif;font-size:14px;font-style:italic;font-weight:300;
   color:var(--dim);letter-spacing:.4px;margin-bottom:20px;
@@ -1487,20 +656,14 @@ body.theme-red .card:hover,body.theme-white .card:hover{box-shadow:0 12px 48px r
   color:var(--primary);white-space:nowrap;letter-spacing:.5px;
   animation:badgeFloat 5s ease-in-out infinite;
 }
-/* Top */
-.ab1{top:-22px;left:50%;transform:translateX(-50%);animation-delay:0s;}
-/* Bottom */
-.ab2{bottom:-22px;left:50%;transform:translateX(-50%);animation-delay:1s;animation-name:badgeFloat2;}
-/* Left */
-.ab3{top:50%;left:-100px;transform:translateY(-50%);animation-delay:2s;animation-name:badgeFloat3;}
-/* Right */
-.ab4{top:50%;right:-110px;transform:translateY(-50%);animation-delay:0.5s;animation-name:badgeFloat3;}
-/* Top right */
-.ab5{top:5px;right:-95px;animation-delay:1.5s;}
-@keyframes badgeFloat{0%,100%{transform:translateX(-50%) translateY(0);}50%{transform:translateX(-50%) translateY(-6px);}}
-@keyframes badgeFloat2{0%,100%{transform:translateX(-50%) translateY(0);}50%{transform:translateX(-50%) translateY(6px);}}
+.ab1{top:10px;right:-30px;animation-delay:0s;}
+.ab2{bottom:30px;right:-20px;animation-delay:1.5s;}
+.ab3{top:50%;left:-20px;transform:translateY(-50%);animation-delay:3s;}
+@keyframes badgeFloat{0%,100%{transform:translateY(0);}50%{transform:translateY(-6px);}}
+.ab2{animation-name:badgeFloat2;}
+.ab3{animation-name:badgeFloat3;}
+@keyframes badgeFloat2{0%,100%{transform:translateY(0);}50%{transform:translateY(6px);}}
 @keyframes badgeFloat3{0%,100%{transform:translateY(-50%);}50%{transform:translateY(calc(-50% - 6px));}}
-
 
 /* MISSION STRIP */
 .mission-strip{
@@ -1805,14 +968,6 @@ nav.scrolled {
   .lb-hero { padding: 100px 20px 40px; }
 }
 
-
-@media(max-width:960px){
-  #page-godk section { padding:100px 20px 40px !important; }
-  #page-godk [style*="grid-template-columns:repeat(4"] { grid-template-columns:1fr 1fr !important; }
-  #page-godk [style*="grid-template-columns:1fr 1fr"] { grid-template-columns:1fr !important; }
-  #adminPanel [style*="grid-template-columns:1fr 1fr"] { grid-template-columns:1fr !important; }
-}
-
 /* QUOTE */
 .kin-quote{
   font-family:'Inter',sans-serif;font-size:18px;font-style:italic;font-weight:300;
@@ -1896,16 +1051,13 @@ footer{border-top:1px solid var(--border);padding:32px 56px;display:flex;align-i
 /* ═══════════════════════════════════════
    RESPONSIVE
 ═══════════════════════════════════════ */
-@media(max-width:1200px){
+@media(max-width:960px){
   nav{padding:0 20px;}
-  .mob-btn{display:flex;}
-  .nav-links{display:none;position:absolute;top:68px;left:12px;right:12px;flex-direction:column;background:var(--nav-bg);backdrop-filter:blur(28px);padding:14px;border:1px solid var(--border);border-radius:12px;gap:2px;z-index:9998;}
+  .mob-btn{display:block;}
+  .nav-links{display:none;position:absolute;top:68px;left:12px;right:12px;flex-direction:column;background:var(--nav-bg);backdrop-filter:blur(28px);padding:14px;border:1px solid var(--border);border-radius:12px;gap:2px;}
   .nav-links.open{display:flex;}
   .nav-links a{padding:10px 14px;width:100%;}
   .user-dropdown{right:16px;}
-}
-@media(max-width:960px){
-  nav{padding:0 16px;}
   section{padding:56px 20px;}
   .sec-div{margin:0 20px;}
   .dc-banner{margin:0 20px 40px;}
@@ -1927,299 +1079,12 @@ footer{border-top:1px solid var(--border);padding:32px 56px;display:flex;align-i
   .hero-title{font-size:clamp(34px,9vw,56px);}
   .team-grid{grid-template-columns:1fr 1fr;}
 }
-
-/* ═══════════════════════════════════════
-   PLAYER PROFILE MODAL
-═══════════════════════════════════════ */
-.player-modal-overlay{
-  position:fixed;inset:0;z-index:60000;
-  background:rgba(0,0,0,0.72);backdrop-filter:blur(10px);
-  display:flex;align-items:center;justify-content:center;
-  padding:20px;opacity:0;visibility:hidden;transition:opacity .25s ease,visibility .25s ease;
-}
-.player-modal-overlay.open{opacity:1;visibility:visible;}
-.player-modal{
-  background:var(--bg2);border:1px solid var(--border);
-  border-radius:20px;padding:36px 28px 28px;
-  width:100%;max-width:360px;position:relative;
-  box-shadow:0 32px 80px rgba(0,0,0,0.6),0 0 0 1px rgba(var(--pr),0.1);
-  transform:scale(0.92) translateY(16px);
-  transition:transform .3s cubic-bezier(.16,1,.3,1);
-  text-align:center;
-}
-.player-modal-overlay.open .player-modal{transform:scale(1) translateY(0);}
-
-/* X close button top-right */
-.pm-close{
-  position:absolute;top:14px;right:14px;
-  width:28px;height:28px;border-radius:50%;
-  background:rgba(var(--pr),0.07);border:1px solid var(--border);
-  color:var(--dim);cursor:pointer;font-size:12px;
-  display:flex;align-items:center;justify-content:center;
-  transition:var(--trans);line-height:1;
-}
-.pm-close:hover{background:rgba(239,68,68,.12);border-color:rgba(239,68,68,.4);color:#ef4444;}
-
-.pm-avatar{
-  width:80px;height:80px;border-radius:50%;margin:0 auto 14px;
-  background:linear-gradient(135deg,var(--primary),var(--accent));
-  display:flex;align-items:center;justify-content:center;
-  font-size:30px;font-weight:900;color:#fff;
-  border:3px solid rgba(var(--pr),0.3);
-  box-shadow:0 0 24px rgba(var(--pr),0.2);
-  overflow:hidden;
-}
-.pm-name{
-  font-family:'Orbitron',monospace;font-size:18px;font-weight:700;
-  color:var(--text);margin-bottom:4px;
-}
-.pm-tag{
-  font-size:11px;letter-spacing:2px;text-transform:uppercase;
-  color:var(--primary);margin-bottom:20px;
-}
-.pm-stats{
-  display:flex;gap:0;border:1px solid var(--border);
-  border-radius:12px;overflow:hidden;margin-bottom:16px;
-}
-.pm-stat{
-  flex:1;padding:12px 8px;text-align:center;
-  border-right:1px solid var(--border);
-  background:rgba(var(--pr),0.03);
-}
-.pm-stat:last-child{border-right:none;}
-.pm-stat-val{
-  font-family:'Orbitron',monospace;font-size:20px;font-weight:900;
-  color:var(--primary);line-height:1;
-}
-.pm-stat-lbl{
-  font-size:9px;letter-spacing:2px;text-transform:uppercase;
-  color:var(--dim);margin-top:4px;
-}
-.pm-badges{
-  display:flex;flex-wrap:wrap;gap:6px;justify-content:center;
-  margin-bottom:20px;min-height:8px;
-}
-
-/* Share row inside modal — minimal icon buttons only */
-.pm-share-row{
-  display:flex;gap:8px;justify-content:center;align-items:center;
-  padding-top:16px;border-top:1px solid var(--border);
-}
-.pm-share-label{
-  font-size:10px;letter-spacing:2px;text-transform:uppercase;
-  color:var(--dim);margin-right:4px;
-}
-.pm-share-btn{
-  width:34px;height:34px;border-radius:10px;border:1px solid var(--border);
-  background:rgba(var(--pr),0.06);color:var(--dim);
-  cursor:pointer;display:flex;align-items:center;justify-content:center;
-  font-size:15px;transition:var(--trans);
-}
-.pm-share-btn:hover{background:rgba(var(--pr),0.14);border-color:var(--border-h);transform:translateY(-2px);}
-.pm-share-btn.wa:hover{background:rgba(37,211,102,.1);border-color:rgba(37,211,102,.4);}
-.pm-share-btn.tw:hover{background:rgba(29,161,242,.1);border-color:rgba(29,161,242,.4);}
-.pm-share-btn.cp:hover{background:rgba(var(--ac),.1);border-color:rgba(var(--ac),.4);}
-
-/* Leaderboard share bar below table — clean minimal version */
-.share-bar{
-  display:flex;flex-wrap:wrap;gap:8px;align-items:center;
-  justify-content:center;margin-top:6px;
-}
-.share-btn{
-  display:flex;align-items:center;gap:6px;padding:7px 14px;
-  border-radius:8px;border:1px solid var(--border);
-  background:rgba(var(--pr),0.06);color:var(--dim);
-  cursor:pointer;font-size:12px;font-weight:600;
-  font-family:'Rajdhani',sans-serif;letter-spacing:.5px;
-  transition:var(--trans);
-}
-.share-btn:hover{border-color:var(--border-h);color:var(--text);background:rgba(var(--pr),0.12);transform:translateY(-1px);}
-.share-btn.whatsapp:hover{background:rgba(37,211,102,.1);border-color:rgba(37,211,102,.4);color:#25d366;}
-.share-btn.twitter:hover{background:rgba(29,161,242,.1);border-color:rgba(29,161,242,.4);color:#1da1f2;}
-.share-btn.discord:hover{background:rgba(88,101,242,.1);border-color:rgba(88,101,242,.4);color:#7289da;}
-.share-btn.copy:hover{background:rgba(var(--ac),.1);border-color:rgba(var(--ac),.4);color:var(--accent);}
-/* ═══ MARQUEE STRIP ═══ */
-.marquee-section{padding:32px 0;overflow:hidden;border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
-.marquee-label{text-align:center;font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--dim);margin-bottom:18px;}
-.marquee-track{display:flex;width:max-content;animation:marqueeScroll 32s linear infinite;}
-.marquee-track:hover{animation-play-state:paused;}
-.marquee-item{display:flex;align-items:center;gap:10px;padding:10px 32px;white-space:nowrap;font-family:'Rajdhani',sans-serif;font-size:14px;font-weight:700;letter-spacing:1px;color:var(--dim);transition:color .3s;cursor:default;}
-.marquee-item:hover{color:var(--primary);}
-.marquee-item span{font-size:22px;}
-.marquee-sep{width:1px;height:20px;background:var(--border);flex-shrink:0;margin:0 8px;}
-.marquee-disclaimer{text-align:center;font-size:10px;color:var(--dim);margin-top:14px;opacity:0.5;}
-@keyframes marqueeScroll{from{transform:translateX(0);}to{transform:translateX(-50%);}}
-
-/* ═══ GAME CARDS ═══ */
-.games-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(175px,1fr));gap:16px;}
-.game-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:28px 16px;text-align:center;transition:var(--trans);position:relative;overflow:hidden;cursor:default;}
-.game-card::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 50% at 50% 0%,rgba(var(--pr),0.12),transparent 70%);opacity:0;transition:opacity .3s;}
-.game-card:hover::before{opacity:1;}
-.game-card:hover{border-color:var(--border-h);transform:translateY(-6px);box-shadow:0 16px 40px rgba(var(--pr),0.15);}
-.game-card-emoji{font-size:44px;display:block;margin-bottom:12px;transition:transform .3s;}
-.game-card:hover .game-card-emoji{transform:scale(1.15);}
-.game-card-name{font-family:'Orbitron',monospace;font-size:12px;font-weight:700;margin-bottom:5px;color:var(--text);}
-.game-card-tag{font-size:11px;color:var(--dim);}
-.game-card-badge{position:absolute;top:10px;right:10px;font-size:9px;letter-spacing:1px;text-transform:uppercase;padding:3px 7px;border-radius:4px;font-weight:700;}
-.badge-active{background:rgba(34,197,94,0.12);color:#22c55e;border:1px solid rgba(34,197,94,0.25);}
-.badge-soon{background:rgba(var(--pr),0.1);color:var(--primary);border:1px solid var(--border);}
-.games-disclaimer{text-align:center;margin-top:16px;font-size:10px;color:var(--dim);opacity:0.5;}
-/* ═══ TOAST NOTIFICATIONS ═══ */
-#toast-container{
-  position:fixed;bottom:28px;right:24px;
-  z-index:99998;display:flex;flex-direction:column;
-  gap:10px;align-items:flex-end;pointer-events:none;
-}
-.toast{
-  display:flex;align-items:flex-start;gap:12px;
-  min-width:280px;max-width:360px;
-  background:var(--bg2);border:1px solid var(--border);
-  border-radius:14px;padding:14px 16px;
-  box-shadow:0 8px 32px rgba(0,0,0,0.4);
-  pointer-events:all;cursor:default;
-  animation:toastIn .35s cubic-bezier(.34,1.56,.64,1) both;
-  transition:opacity .35s,transform .35s;
-  position:relative;overflow:hidden;
-}
-.toast::before{
-  content:'';position:absolute;left:0;top:0;bottom:0;
-  width:3px;border-radius:14px 0 0 14px;
-}
-.toast.success::before{background:#22c55e;}
-.toast.info::before{background:var(--primary);}
-.toast.achievement::before{background:#f59e0b;}
-.toast.out{opacity:0;transform:translateX(110%);}
-.toast-icon{font-size:22px;flex-shrink:0;margin-top:1px;}
-.toast-body{flex:1;min-width:0;}
-.toast-title{font-family:'Orbitron',monospace;font-size:11px;font-weight:700;letter-spacing:1px;margin-bottom:3px;color:var(--text);}
-.toast-msg{font-size:12px;color:var(--dim);line-height:1.5;}
-.toast-close{
-  position:absolute;top:10px;right:10px;
-  font-size:12px;color:var(--faint);cursor:pointer;
-  width:18px;height:18px;display:flex;align-items:center;justify-content:center;
-  border-radius:4px;transition:var(--trans);
-}
-.toast-close:hover{color:var(--text);background:rgba(var(--pr),0.1);}
-@keyframes toastIn{from{opacity:0;transform:translateX(110%);}to{opacity:1;transform:translateX(0);}}
-
-/* Achievement special style */
-.toast.achievement{
-  background:linear-gradient(135deg,var(--bg2),rgba(245,158,11,0.06));
-  border-color:rgba(245,158,11,0.3);
-}
-.toast.achievement .toast-title{color:#f59e0b;}
-
-/* ═══ 1 HOUR BUDDY ACHIEVEMENT ═══ */
-.ft-signup{margin-top:14px;}
-.ft-signup-label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);margin-bottom:8px;}
-.ft-signup-row{display:flex;gap:6px;flex-wrap:wrap;}
-.ft-signup-input{
-  flex:1;min-width:160px;height:34px;padding:0 12px;
-  background:rgba(var(--pr),0.06);border:1px solid var(--border);
-  border-radius:8px;color:var(--text);font-family:'Rajdhani',sans-serif;
-  font-size:13px;outline:none;transition:var(--trans);
-}
-.ft-signup-input:focus{border-color:var(--border-h);background:rgba(var(--pr),0.1);}
-.ft-signup-input::placeholder{color:var(--faint);}
-.ft-signup-btn{
-  height:34px;padding:0 16px;border-radius:8px;flex-shrink:0;
-  background:rgba(var(--pr),0.15);border:1px solid var(--border);
-  color:var(--primary);font-family:'Rajdhani',sans-serif;
-  font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;
-  cursor:pointer;transition:var(--trans);white-space:nowrap;
-}
-.ft-signup-btn:hover{background:rgba(var(--pr),0.25);border-color:var(--border-h);}
-/* ═══ CHANGELOG PAGE ═══ */
-.changelog-timeline{position:relative;max-width:760px;margin:0 auto;padding:20px 0;}
-.changelog-timeline::before{
-  content:'';position:absolute;left:28px;top:0;bottom:0;
-  width:2px;background:linear-gradient(to bottom,var(--primary),rgba(var(--pr),0.1));
-  border-radius:2px;
-}
-.changelog-entry{
-  position:relative;padding:0 0 48px 72px;
-}
-.changelog-dot{
-  position:absolute;left:18px;top:6px;
-  width:22px;height:22px;border-radius:50%;
-  background:var(--bg);border:2px solid var(--primary);
-  display:flex;align-items:center;justify-content:center;
-  font-size:10px;z-index:1;
-  box-shadow:0 0 12px rgba(var(--pr),0.4);
-}
-.changelog-card{
-  background:var(--surface);border:1px solid var(--border);
-  border-radius:16px;padding:28px;transition:var(--trans);
-}
-.changelog-card:hover{border-color:var(--border-h);box-shadow:0 8px 32px rgba(var(--pr),0.1);transform:translateX(4px);}
-.changelog-version{
-  display:inline-flex;align-items:center;gap:8px;
-  font-family:'Orbitron',monospace;font-size:10px;font-weight:700;
-  letter-spacing:2px;color:var(--primary);text-transform:uppercase;
-  margin-bottom:6px;
-}
-.changelog-tag{
-  font-size:9px;padding:2px 8px;border-radius:4px;letter-spacing:1px;
-  background:rgba(var(--pr),0.1);border:1px solid var(--border);color:var(--dim);
-}
-.changelog-name{
-  font-family:'Orbitron',monospace;font-size:17px;font-weight:700;
-  color:var(--text);margin-bottom:6px;line-height:1.3;
-}
-.changelog-date{font-size:11px;color:var(--faint);margin-bottom:16px;letter-spacing:1px;}
-.changelog-desc{font-size:14px;color:var(--dim);line-height:1.8;margin-bottom:18px;}
-.changelog-items{list-style:none;display:flex;flex-direction:column;gap:8px;}
-.changelog-items li{
-  display:flex;align-items:flex-start;gap:10px;
-  font-size:13px;color:var(--dim);line-height:1.6;
-}
-.changelog-items li::before{
-  content:'';width:6px;height:6px;border-radius:50%;
-  background:var(--primary);flex-shrink:0;margin-top:7px;
-}
-@media(max-width:600px){
-  .changelog-timeline::before{left:16px;}
-  .changelog-entry{padding-left:48px;}
-  .changelog-dot{left:6px;}
-}
-
-/* ── PERF BUTTON ── */
-.perf-btn{position:relative;height:34px;padding:0 13px;border-radius:20px;flex-shrink:0;background:rgba(var(--pr),0.07);border:1px solid var(--border);color:var(--dim);cursor:pointer;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;transition:var(--trans);display:flex;align-items:center;gap:5px;white-space:nowrap;overflow:hidden;}
-.perf-btn:hover{border-color:var(--border-h);background:rgba(var(--pr),0.13);transform:translateY(-1px);}
-.perf-btn .perf-icon{font-size:14px;transition:transform 0.4s ease;display:inline-block;}
-.perf-btn.on{background:linear-gradient(135deg,rgba(34,197,94,.15),rgba(16,185,129,.1));border-color:rgba(34,197,94,.5);color:#22c55e;box-shadow:0 0 12px rgba(34,197,94,.2);}
-.perf-btn.on .perf-icon{transform:rotate(20deg) scale(1.2);filter:drop-shadow(0 0 4px #22c55e);}
-@keyframes perfEngage{0%{box-shadow:0 0 0 rgba(34,197,94,0)}60%{box-shadow:0 0 22px rgba(34,197,94,.8)}100%{box-shadow:0 0 12px rgba(34,197,94,.2)}}
-.perf-btn.engaging{animation:perfEngage .65s ease forwards;pointer-events:none;}
-.perf-btn::after{content:'';position:absolute;top:0;left:-100%;width:60%;height:100%;background:linear-gradient(90deg,transparent,rgba(34,197,94,.3),transparent);pointer-events:none;}
-@keyframes perfSweep{0%{left:-60%}100%{left:160%}}
-.perf-btn.engaging::after{animation:perfSweep .65s ease forwards;}
-body.perf-mode .orb1,body.perf-mode .orb2,body.perf-mode .orb3,body.perf-mode #pts,body.perf-mode #cur,body.perf-mode #cur-ring{display:none!important;}
-body.perf-mode .card{backdrop-filter:none!important;-webkit-backdrop-filter:none!important;}
-body.perf-mode .feature-card:hover,body.perf-mode .t-card:hover{transform:none!important;}
-@media(max-width:1200px){.perf-label{display:none;}}
-/* ── ONLINE DOT ── */
-.lb-player{position:relative;}
-.online-dot{position:absolute;bottom:0;left:26px;width:9px;height:9px;background:#22c55e;border-radius:50%;border:2px solid var(--bg);box-shadow:0 0 6px rgba(34,197,94,.7);animation:onlinePulse 2s ease-in-out infinite;}
-@keyframes onlinePulse{0%,100%{box-shadow:0 0 4px rgba(34,197,94,.6)}50%{box-shadow:0 0 10px rgba(34,197,94,.9)}}
-/* ── CEZZY EASTER EGG ── */
-#cezzyModal{display:none;position:fixed;inset:0;z-index:9999;align-items:center;justify-content:center;background:rgba(0,0,0,.6);backdrop-filter:blur(6px);opacity:0;transition:opacity .35s;}
-#cezzyModal.cezzy-show{opacity:1;}
-#cezzyModal.cezzy-show .cezzy-box{transform:scale(1) translateY(0);}
-.cezzy-box{background:linear-gradient(135deg,#011a1a,#012a2a);border:1px solid rgba(45,212,191,.4);border-radius:20px;padding:48px 40px;text-align:center;max-width:340px;width:90%;transform:scale(.85) translateY(20px);transition:transform .4s cubic-bezier(.34,1.56,.64,1);box-shadow:0 0 60px rgba(45,212,191,.15),0 20px 60px rgba(0,0,0,.5);}
-.cezzy-glow{font-size:52px;margin-bottom:16px;filter:drop-shadow(0 0 12px rgba(45,212,191,.8));animation:cezzyFloat 3s ease-in-out infinite;}
-@keyframes cezzyFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
-@keyframes cezzyPulse{0%,100%{box-shadow:0 0 10px rgba(45,212,191,.6),0 0 20px rgba(45,212,191,.3)}50%{box-shadow:0 0 18px rgba(45,212,191,.9),0 0 35px rgba(45,212,191,.5)}}
-.cezzy-name{font-family:'Orbitron',monospace;font-size:28px;font-weight:900;background:linear-gradient(135deg,#2dd4bf,#06b6d4,#67e8f9);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:8px;}
-.cezzy-title{font-family:'Orbitron',monospace;font-size:11px;letter-spacing:4px;text-transform:uppercase;color:rgba(45,212,191,.6);margin-bottom:10px;}
-.cezzy-sub{font-size:12px;color:rgba(45,212,191,.5);letter-spacing:2px;text-transform:uppercase;margin-bottom:28px;}
-.cezzy-close{background:rgba(45,212,191,.1);border:1px solid rgba(45,212,191,.3);color:rgba(45,212,191,.8);border-radius:8px;padding:8px 24px;cursor:pointer;font-size:12px;transition:all .2s;}
 </style>
 </head>
 <body>
 
 <!-- LOADER -->
-<div id="loader" style="transition:opacity 0.8s ease,visibility 0.8s ease;">
+<div id="loader">
   <div class="ld-glow"></div>
   <div class="ld-ring"></div>
   <div class="ld-logo">KINDUSTRY</div>
@@ -2229,10 +1094,6 @@ body.perf-mode .feature-card:hover,body.perf-mode .t-card:hover{transform:none!i
 
 <!-- PARTICLES -->
 <div id="pts"></div>
-<div id="cezzyModal" onclick="if(event.target===this)closeCezzyEgg()"><div class="cezzy-box"><div class="cezzy-glow">🌊</div><div class="cezzy-title">Made by</div><div class="cezzy-name">CEZZY</div><div class="cezzy-sub">Kindustry · Teal Theme</div><button class="cezzy-close" onclick="closeCezzyEgg()">Close</button></div></div>
-<div id="toast-container"></div>
-<div id="konami-overlay"></div>
-<div id="konami-msg"></div>
 
 <!-- CURSOR -->
 <div id="cur"></div>
@@ -2299,10 +1160,8 @@ body.perf-mode .feature-card:hover,body.perf-mode .t-card:hover{transform:none!i
 <!-- ════ SETTINGS ════ -->
 <div class="set-overlay" id="setOverlay" onclick="outsideSet(event)">
   <div class="set-panel">
-    <div class="set-title" style="display:flex;align-items:center;justify-content:space-between;">
-      <span>⚙ Customize</span>
-      <span style="font-size:10px;letter-spacing:1px;color:var(--dim);font-family:'Rajdhani',sans-serif;cursor:pointer;padding:4px 10px;border:1px solid var(--border);border-radius:20px;transition:var(--trans);" onclick="closeSet()" onmouseover="this.style.color='var(--primary)';this.style.borderColor='var(--border-h)'" onmouseout="this.style.color='var(--dim)';this.style.borderColor='var(--border)'">ESC ✕</span>
-    </div>
+    <button class="set-close" onclick="closeSet()">✕</button>
+    <div class="set-title">⚙ Customize</div>
     <span class="set-label">Theme</span>
     <div class="theme-grid">
       <button class="th-btn on" id="tb-dark" onclick="setTheme('dark')">
@@ -2311,7 +1170,7 @@ body.perf-mode .feature-card:hover,body.perf-mode .t-card:hover{transform:none!i
       </button>
       <button class="th-btn" id="tb-red" onclick="setTheme('red')">
         <div class="th-swatch" style="background:linear-gradient(135deg,#fff5f5,#dc2626 60%,#b91c1c);border:1px solid rgba(220,38,38,.4);"></div>
-        <div class="th-label">Crimson</div>
+        <div class="th-label">White + Red</div>
       </button>
       <button class="th-btn" id="tb-cyber" onclick="setTheme('cyber')">
         <div class="th-swatch" style="background:linear-gradient(135deg,#000,#00e676 60%,#e040fb);border:1px solid rgba(0,230,118,.4);"></div>
@@ -2321,25 +1180,9 @@ body.perf-mode .feature-card:hover,body.perf-mode .t-card:hover{transform:none!i
         <div class="th-swatch" style="background:linear-gradient(135deg,#eef2ff,#2563eb 60%,#7c3aed);border:1px solid rgba(37,99,235,.4);"></div>
         <div class="th-label">White Pro</div>
       </button>
-      <button class="th-btn" id="tb-glass" onclick="setTheme('glass')">
-        <div class="th-swatch" style="background:linear-gradient(145deg,rgba(255,255,255,0.5),rgba(200,210,255,0.3),rgba(255,255,255,0.4));border:1px solid rgba(255,255,255,0.8);box-shadow:inset 0 1.5px 0 rgba(255,255,255,0.9),0 4px 12px rgba(91,110,245,0.1);backdrop-filter:blur(10px);backdrop-filter:blur(10px);outline:1px solid rgba(180,190,255,0.3);"></div>
-        <div class="th-label">Glass</div>
-      </button>
-      <button class="th-btn" id="tb-candy" onclick="setTheme('candy')">
-        <div class="th-swatch" style="background:linear-gradient(135deg,#fce7f3,#e8449a 55%,#c026d3);border:1px solid rgba(232,68,154,0.4);"></div>
-        <div class="th-label">Cotton Candy</div>
-      </button>
       <button class="th-btn" id="tb-gold" onclick="setTheme('gold')">
         <div class="th-swatch" style="background:linear-gradient(135deg,#08060a,#f59e0b 60%,#dc2626);border:1px solid rgba(245,158,11,.4);"></div>
         <div class="th-label">Championship</div>
-      </button>
-      <button class="th-btn" id="tb-venom" onclick="setTheme('venom')">
-        <div class="th-swatch" style="background:linear-gradient(135deg,#050505 0%,#1a1a1a 50%,#ff2d2d 100%);border:1px solid rgba(255,255,255,0.15);"></div>
-        <div class="th-label">Venom</div>
-      </button>
-      <button class="th-btn" id="tb-teal" onclick="setTheme('teal')">
-        <div class="th-swatch" style="background:linear-gradient(135deg,#010f0f,#032020 50%,#2dd4bf);border:1px solid rgba(45,212,191,0.3);box-shadow:0 0 12px rgba(45,212,191,0.2);"></div>
-        <div class="th-label">Deep Teal</div>
       </button>
     </div>
     <div class="set-div"></div>
@@ -2347,35 +1190,7 @@ body.perf-mode .feature-card:hover,body.perf-mode .t-card:hover{transform:none!i
     <a href="https://discord.gg/CBqWUKScfF" target="_blank" class="set-link" style="background:rgba(88,101,242,.1);border-color:rgba(88,101,242,.3);color:#7289da;">💬 Join Discord</a>
     <a href="https://youtube.com/@officialkindustry" target="_blank" class="set-link" style="background:rgba(239,68,68,.08);border-color:rgba(239,68,68,.25);color:#ef4444;">▶ Kindustry YouTube</a>
     <div class="set-div"></div>
-    <span class="set-label">Settings</span>
-    <div class="set-toggle-row">
-      <span class="set-toggle-label">🔊 Sound Effects</span>
-      <div class="toggle-switch on" id="soundToggle" onclick="toggleSound()"></div>
-    </div>
-    <div class="set-div"></div>
-    <div style="font-size:11px;color:var(--dim);line-height:1.7;">More options coming — font size, UI preferences.</div>
-  </div>
-</div>
-
-<!-- PLAYER PROFILE MODAL -->
-<div class="player-modal-overlay" id="playerModal" onclick="closePlayerModal(event)">
-  <div class="player-modal">
-    <button class="pm-close" onclick="closePlayerModal()" title="Close">✕</button>
-    <div class="pm-avatar" id="pm-av">👤</div>
-    <div class="pm-name" id="pm-name">—</div>
-    <div class="pm-tag"  id="pm-tag">Member</div>
-    <div class="pm-stats">
-      <div class="pm-stat"><div class="pm-stat-val" id="pm-wins">0</div><div class="pm-stat-lbl">Wins</div></div>
-      <div class="pm-stat"><div class="pm-stat-val" id="pm-tours">0</div><div class="pm-stat-lbl">Played</div></div>
-      <div class="pm-stat"><div class="pm-stat-val" id="pm-rank">—</div><div class="pm-stat-lbl">Rank</div></div>
-    </div>
-    <div class="pm-badges" id="pm-badges"></div>
-    <div class="pm-share-row">
-      <span class="pm-share-label">Share</span>
-      <button class="pm-share-btn tw" onclick="sharePlayer('twitter')" title="Share on X / Twitter">𝕏</button>
-      <button class="pm-share-btn wa" onclick="sharePlayer('whatsapp')" title="Share on WhatsApp">📱</button>
-      <button class="pm-share-btn cp" onclick="sharePlayer('copy')" title="Copy link">🔗</button>
-    </div>
+    <div style="font-size:11px;color:var(--dim);line-height:1.7;">More options coming — effects toggles, font size, UI preferences.</div>
   </div>
 </div>
 
@@ -2388,13 +1203,8 @@ body.perf-mode .feature-card:hover,body.perf-mode .t-card:hover{transform:none!i
     <a href="#" onclick="showPage('tournaments');closeMobDrawerDirect();return false;" id="md-tournaments"><span class="mob-drawer-icon">🏆</span>Tournaments</a>
     <a href="#" onclick="showPage('giveaways');closeMobDrawerDirect();return false;" id="md-giveaways"><span class="mob-drawer-icon">🎁</span>Giveaways</a>
     <a href="#" onclick="showPage('leaderboard');closeMobDrawerDirect();return false;" id="md-leaderboard"><span class="mob-drawer-icon">📊</span>Leaderboard</a>
-    <a href="#" onclick="showPage('godk');closeMobDrawerDirect();return false;" id="md-godk"><span class="mob-drawer-icon">⚔️</span>GODK Team</a>
-    <a href="#" onclick="showPage('announcements');closeMobDrawerDirect();return false;" id="md-announcements"><span class="mob-drawer-icon">📢</span>News</a>
-    <a href="#" onclick="showPage('register');closeMobDrawerDirect();return false;" id="md-register"><span class="mob-drawer-icon">📝</span>Register</a>
     <a href="#" onclick="showPage('about');closeMobDrawerDirect();return false;" id="md-about"><span class="mob-drawer-icon">⚔️</span>About</a>
     <a href="#" onclick="showPage('contact');closeMobDrawerDirect();return false;" id="md-contact"><span class="mob-drawer-icon">📧</span>Contact</a>
-    <a href="#" onclick="showPage('privacy');closeMobDrawerDirect();return false;" id="md-privacy" style="display:none;"><span class="mob-drawer-icon">🔒</span>Privacy</a>
-    <a href="#" onclick="showPage('terms');closeMobDrawerDirect();return false;" id="md-terms" style="display:none;"><span class="mob-drawer-icon">📜</span>Terms</a>
     <div style="margin-top:auto;padding-top:20px;border-top:1px solid var(--border);">
       <a href="https://discord.gg/CBqWUKScfF" target="_blank" style="background:linear-gradient(135deg,#5865F2,#7289da);color:white;-webkit-text-fill-color:white;justify-content:center;box-shadow:0 4px 14px rgba(88,101,242,.4);">💬 Join Discord</a>
     </div>
@@ -2410,37 +1220,14 @@ body.perf-mode .feature-card:hover,body.perf-mode .t-card:hover{transform:none!i
     <li><a href="#" onclick="showPage('tournaments');return false;"  id="nl-tournaments"  >Tournaments</a></li>
     <li><a href="#" onclick="showPage('giveaways');return false;"    id="nl-giveaways"    >Giveaways</a></li>
     <li><a href="#" onclick="showPage('leaderboard');return false;" id="nl-leaderboard"  >Leaderboard</a></li>
-    <li><a href="#" onclick="showPage('godk');return false;"         id="nl-godk-nav"      >GODK</a></li>
     <li><a href="#" onclick="showPage('about');return false;"        id="nl-about"        >About</a></li>
     <li><a href="#" onclick="showPage('contact');return false;"      id="nl-contact"      >Contact</a></li>
-    <li><a href="#" onclick="showPage('godk');return false;"          id="nl-godk"          style="display:none;">GODK</a></li>
-    <li><a href="#" onclick="showPage('admin');return false;"         id="nl-admin"         style="display:none;">Admin</a></li>
-    <li><a href="#" onclick="showPage('privacy');return false;"       id="nl-privacy"       style="display:none;">Privacy</a></li>
-    <li><a href="#" onclick="showPage('terms');return false;"         id="nl-terms"         style="display:none;">Terms</a></li>
     <li><a href="https://discord.gg/CBqWUKScfF" target="_blank" class="nav-discord-btn">💬 Discord</a></li>
   </ul>
   <div class="nav-right">
     <div id="navAuthArea">
       <button class="nav-login-btn" onclick="openAuth()">Sign In</button>
     </div>
-    <div class="notif-wrap" id="notifWrap">
-      <button class="notif-btn" onclick="toggleNotifPanel()" title="Notifications">
-        🔔<div class="notif-dot" id="notifDot"></div>
-      </button>
-      <div class="notif-panel" id="notifPanel">
-        <div class="notif-head">
-          <span class="notif-head-title">NOTIFICATIONS</span>
-          <span class="notif-clear" onclick="clearNotifs()">Clear all</span>
-        </div>
-        <div class="notif-list" id="notifList">
-          <div class="notif-item"><div class="notif-icon">🏆</div><div><div class="notif-text-title">Roblox Parkour Cup #1</div><div class="notif-text-sub">Registration is open! Join Discord to sign up.</div><div class="notif-time">2 days ago</div></div></div>
-          <div class="notif-item"><div class="notif-icon">🎁</div><div><div class="notif-text-title">Launch Giveaway Active</div><div class="notif-text-sub">3 winners! Ends May 31. Enter on Discord.</div><div class="notif-time">5 days ago</div></div></div>
-        </div>
-      </div>
-    </div>
-    <button class="theme-toggle-btn" id="themeToggleBtn" onclick="quickThemeToggle()" title="Toggle Dark/Light">🌙</button>
-    <button class="sound-btn" id="soundBtn" onclick="toggleSound()" title="Toggle Sound"><span id="soundBtnIcon">🔊</span><span id="soundBtnLabel" class="sound-btn-label">Sound</span></button>
-    <button class="perf-btn" id="perfBtn" onclick="togglePerfMode()" title="Toggle Performance Mode"><span class="perf-icon">⚡</span><span class="perf-label">Boost</span></button>
     <button class="settings-btn" onclick="openSet()">⚙</button>
     <button class="mob-btn" onclick="openMobDrawer()">☰</button>
   </div>
@@ -2456,7 +1243,7 @@ body.perf-mode .feature-card:hover,body.perf-mode .t-card:hover{transform:none!i
       <div class="hero-eyebrow"><div class="hero-eyebrow-dot"></div>The Gaming Universe</div>
       <h1 class="hero-title">
         <span class="hero-title-main">KINDUSTRY</span>
-        <span class="hero-title-sub"><span id="twText">Play. Compete. Dominate.</span><span class="tw-cursor"></span></span>
+        <span class="hero-title-sub">Play. Compete. Dominate.</span>
       </h1>
       <p class="hero-quote">"Kindustry — <b>where everything forges into greatness.</b>"</p>
       <p class="hero-desc">Your gateway to competitive gaming, exclusive tournaments, epic giveaways, and a community built for those who live to play.</p>
@@ -2473,7 +1260,6 @@ body.perf-mode .feature-card:hover,body.perf-mode .t-card:hover{transform:none!i
       <div class="pillar"><div class="pillar-icon">⚡</div><div class="pillar-lbl">24/7 Active</div></div>
     </div>
     <div class="scroll-hint"><div class="scroll-track"><div class="scroll-thumb"></div></div>Scroll</div>
-    <button id="cezzyEgg" onclick="triggerCezzyEgg()" title="..." style="display:none;position:absolute;bottom:28px;right:32px;width:12px;height:12px;border-radius:50%;background:rgba(45,212,191,0.55);border:1px solid rgba(45,212,191,0.8);cursor:pointer;padding:0;box-shadow:0 0 10px rgba(45,212,191,0.6),0 0 20px rgba(45,212,191,0.3);z-index:10;" onmouseover="this.style.boxShadow='0 0 18px rgba(45,212,191,0.9),0 0 35px rgba(45,212,191,0.6)'" onmouseout="this.style.boxShadow='0 0 10px rgba(45,212,191,0.6),0 0 20px rgba(45,212,191,0.3)'"></button>
   </div>
 
   <section>
@@ -2484,59 +1270,12 @@ body.perf-mode .feature-card:hover,body.perf-mode .t-card:hover{transform:none!i
       <a class="feature-card card reveal" href="#" onclick="showPage('store');return false;"><div class="fc-arrow">↗</div><span class="fc-icon">🛒</span><div class="fc-title">Kindustry Store</div><p class="fc-text">Exclusive merch, Discord roles, and limited drops. Online and real-life store coming soon.</p></a>
       <a class="feature-card card reveal" href="https://discord.gg/CBqWUKScfF" target="_blank"><div class="fc-arrow">↗</div><span class="fc-icon">🎮</span><div class="fc-title">Gaming Community</div><p class="fc-text">Find teammates, share clips, get news, and be part of something bigger on our Discord.</p></a>
       <a class="feature-card card reveal" href="https://youtube.com/@officialkindustry" target="_blank"><div class="fc-arrow">↗</div><span class="fc-icon">📺</span><div class="fc-title">YouTube Content</div><p class="fc-text">Tournament VODs, highlights, and gaming content on our official Kindustry channel.</p></a>
-      <a class="feature-card card reveal" href="#" onclick="showPage('announcements');return false;"><div class="fc-arrow">↗</div><span class="fc-icon">📢</span><div class="fc-title">News & Updates</div><p class="fc-text">Stay up to date with the latest tournament announcements, giveaway results, and Kindustry news.</p></a>
-      <a class="feature-card card reveal" href="#" onclick="showPage('godk');return false;"><div class="fc-arrow">↗</div><span class="fc-icon">⚔️</span><div class="fc-title">Esports Team — GODK</div><p class="fc-text">Our competitive esports team GODK is forming. Tryouts coming — think you have what it takes?</p></a>
+      <a class="feature-card card reveal" href="#" onclick="showPage('about');return false;"><div class="fc-arrow">↗</div><span class="fc-icon">⚔️</span><div class="fc-title">Esports Team — GODK</div><p class="fc-text">Our competitive esports team GODK is forming. Tryouts coming — think you have what it takes?</p></a>
     </div>
   </section>
 
   <section style="padding-top:0;padding-bottom:40px;">
     <div class="kin-quote reveal">"Kindustry — <b>where everything forges into greatness.</b>"</div>
-  </section>
-
-  <!-- GAMES MARQUEE -->
-  <div class="marquee-section reveal">
-    <div class="marquee-label">Our Battlegrounds</div>
-    <div style="overflow:hidden;">
-      <div class="marquee-track">
-        <div class="marquee-item"><span>🌐</span> Roblox</div><div class="marquee-sep"></div>
-        <div class="marquee-item"><span>⛏️</span> Minecraft</div><div class="marquee-sep"></div>
-        <div class="marquee-item"><span>🌿</span> Terraria</div><div class="marquee-sep"></div>
-        <div class="marquee-item"><span>🚀</span> Rocket League</div><div class="marquee-sep"></div>
-        <div class="marquee-item"><span>🗡️</span> Shadow Fight</div><div class="marquee-sep"></div>
-        <div class="marquee-item"><span>🎮</span> Asphalt Racing</div><div class="marquee-sep"></div>
-        <div class="marquee-item"><span>🚗</span> GTA V</div><div class="marquee-sep"></div>
-        <div class="marquee-item"><span>🏆</span> More Coming</div><div class="marquee-sep"></div>
-        <!-- Duplicate for seamless loop -->
-        <div class="marquee-item"><span>🌐</span> Roblox</div><div class="marquee-sep"></div>
-        <div class="marquee-item"><span>⛏️</span> Minecraft</div><div class="marquee-sep"></div>
-        <div class="marquee-item"><span>🌿</span> Terraria</div><div class="marquee-sep"></div>
-        <div class="marquee-item"><span>🚀</span> Rocket League</div><div class="marquee-sep"></div>
-        <div class="marquee-item"><span>🗡️</span> Shadow Fight</div><div class="marquee-sep"></div>
-        <div class="marquee-item"><span>🎮</span> Asphalt Racing</div><div class="marquee-sep"></div>
-        <div class="marquee-item"><span>🚗</span> GTA V</div><div class="marquee-sep"></div>
-        <div class="marquee-item"><span>🏆</span> More Coming</div><div class="marquee-sep"></div>
-      </div>
-    </div>
-    <div class="marquee-disclaimer">Kindustry is an independent community — not affiliated with any game publishers.</div>
-  </div>
-
-  <!-- GAME CARDS -->
-  <section>
-    <div class="sec-hdr reveal">
-      <div class="sec-ey">Where We Play</div>
-      <h2 class="sec-title">Games We Tournament</h2>
-      <p style="color:var(--dim);font-size:14px;max-width:500px;margin:8px auto 0;line-height:1.7;">Find teammates, compete in tournaments and connect with players across all these games in our Discord.</p>
-    </div>
-    <div class="games-grid reveal">
-      <div class="game-card"><span class="game-card-badge badge-active">Active</span><span class="game-card-emoji">🌐</span><div class="game-card-name">Roblox</div><div class="game-card-tag">Parkour · Tournaments</div></div>
-      <div class="game-card"><span class="game-card-badge badge-active">Active</span><span class="game-card-emoji">⛏️</span><div class="game-card-name">Minecraft</div><div class="game-card-tag">Survival · PvP</div></div>
-      <div class="game-card"><span class="game-card-badge badge-active">Active</span><span class="game-card-emoji">🌿</span><div class="game-card-name">Terraria</div><div class="game-card-tag">Adventure · Building</div></div>
-      <div class="game-card"><span class="game-card-badge badge-soon">Soon</span><span class="game-card-emoji">🚀</span><div class="game-card-name">Rocket League</div><div class="game-card-tag">Racing · Esports</div></div>
-      <div class="game-card"><span class="game-card-badge badge-soon">Soon</span><span class="game-card-emoji">🗡️</span><div class="game-card-name">Shadow Fight</div><div class="game-card-tag">Fighting · Strategy</div></div>
-      <div class="game-card"><span class="game-card-badge badge-soon">Soon</span><span class="game-card-emoji">🎮</span><div class="game-card-name">Asphalt Racing</div><div class="game-card-tag">Platform · Action</div></div>
-      <div class="game-card"><span class="game-card-badge badge-soon">Soon</span><span class="game-card-emoji">🚗</span><div class="game-card-name">GTA V</div><div class="game-card-tag">Open World · Races</div></div>
-    </div>
-    <div class="games-disclaimer reveal">Kindustry is an independent community — not affiliated with any game publishers.</div>
   </section>
 
   <div class="dc-banner reveal">
@@ -2558,13 +1297,6 @@ body.perf-mode .feature-card:hover,body.perf-mode .t-card:hover{transform:none!i
         <a href="https://youtube.com/@godkteam" target="_blank" class="ft-yt">▶ God K Team</a>
         <a href="https://youtube.com/@khushalbosspro" target="_blank" class="ft-yt">▶ KhushalBossPro</a>
       </div>
-      <div class="ft-signup">
-        <div class="ft-signup-label">🔔 Stay Updated</div>
-        <div class="ft-signup-row">
-          <input type="email" class="ft-signup-input" id="ftEmailInput" placeholder="your@email.com">
-          <button class="ft-signup-btn" onclick="ftEmailSignup()">Notify Me</button>
-        </div>
-      </div>
     </div>
     <div class="ft-links">
       <div class="ft-nav">
@@ -2572,11 +1304,6 @@ body.perf-mode .feature-card:hover,body.perf-mode .t-card:hover{transform:none!i
         <a href="#" onclick="showPage('tournaments');return false;">Tournaments</a>
         <a href="https://discord.gg/CBqWUKScfF" target="_blank">Discord</a>
         <a href="#" onclick="showPage('contact');return false;">Contact</a>
-      </div>
-      <div class="ft-links-legal" style="display:flex;gap:14px;margin-bottom:6px;">
-        <a href="#" onclick="showPage('privacy');return false;" style="font-size:11px;color:var(--dim);text-decoration:none;transition:color .2s;" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--dim)'">Privacy Policy</a>
-        <a href="#" onclick="showPage('terms');return false;" style="font-size:11px;color:var(--dim);text-decoration:none;transition:color .2s;" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--dim)'">Terms of Service</a>
-        <a href="#" onclick="showPage('changelog');return false;" style="font-size:11px;color:var(--dim);text-decoration:none;transition:color .2s;" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--dim)'">Update Catalog</a>
       </div>
       <div class="ft-copy">© 2026 Kindustry. All rights reserved.</div>
     </div>
@@ -2742,8 +1469,6 @@ body.perf-mode .feature-card:hover,body.perf-mode .t-card:hover{transform:none!i
           <div class="av-float-badge ab1">🏆 Esports</div>
           <div class="av-float-badge ab2">🎁 Giveaways</div>
           <div class="av-float-badge ab3">💬 Community</div>
-          <div class="av-float-badge ab4">🛠️ Game Dev</div>
-          <div class="av-float-badge ab5">🤖 Discord Bot</div>
         </div>
       </div>
     </div>
@@ -2898,13 +1623,6 @@ body.perf-mode .feature-card:hover,body.perf-mode .t-card:hover{transform:none!i
       <div class="lb-stat-card card reveal"><div class="lb-stat-val">🔥</div><div class="lb-stat-lbl">Season 1</div></div>
     </div>
 
-    <!-- Search -->
-    <div class="search-bar-wrap reveal">
-      <span class="search-icon">🔍</span>
-      <input type="text" class="search-bar" id="lbSearch" placeholder="Search players by username..." oninput="lbSearchPlayers(this.value)">
-      <div class="search-results" id="lbSearchResults"></div>
-    </div>
-
     <!-- Filters -->
     <div class="lb-filters">
       <button class="lb-filter-btn on" onclick="lbFilter(this,'all')">All Players</button>
@@ -2930,16 +1648,9 @@ body.perf-mode .feature-card:hover,body.perf-mode .t-card:hover{transform:none!i
     <div style="text-align:center;margin-top:40px;" class="reveal">
       <div style="font-family:'Orbitron',monospace;font-size:18px;font-weight:700;margin-bottom:10px;">Want to appear here?</div>
       <p style="color:var(--dim);margin-bottom:20px;font-size:14px;">Sign in, join a tournament, and compete your way to the top!</p>
-      <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:20px;">
+      <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
         <button class="btn btn-p" onclick="openAuth()">Sign In to Join</button>
         <a href="https://discord.gg/CBqWUKScfF" target="_blank" class="btn btn-dc">💬 Register on Discord</a>
-      </div>
-      <div class="share-bar" style="justify-content:center;">
-        <div style="width:100%;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);margin-bottom:6px;">Share Leaderboard</div>
-        <button class="share-btn twitter"  onclick="sharePage('twitter','leaderboard')">🐦 Twitter</button>
-        <button class="share-btn whatsapp" onclick="sharePage('whatsapp','leaderboard')">💬 WhatsApp</button>
-        <button class="share-btn discord"  onclick="sharePage('discord','leaderboard')">💬 Discord</button>
-        <button class="share-btn copy"     onclick="sharePage('copy','leaderboard')">🔗 Copy</button>
       </div>
     </div>
   </div>
@@ -2995,12 +1706,12 @@ body.perf-mode .feature-card:hover,body.perf-mode .t-card:hover{transform:none!i
 
       <div class="ptab-content" id="pt-achievements">
         <div class="achiev-grid">
-          <div class="achiev card" data-id="first-login" style="padding:16px;text-align:center;"><span class="achiev-icon">🎮</span><div class="achiev-name">First Login</div><div class="achiev-desc">Joined Kindustry</div></div>
-          <div class="achiev card locked" data-id="registered" style="padding:16px;text-align:center;"><span class="achiev-icon">📝</span><div class="achiev-name">Competitor</div><div class="achiev-desc">Register for a tournament</div></div>
-          <div class="achiev card locked" data-id="champion" style="padding:16px;text-align:center;"><span class="achiev-icon">🏆</span><div class="achiev-name">Champion</div><div class="achiev-desc">Win a tournament</div></div>
-          <div class="achiev card locked" data-id="lucky" style="padding:16px;text-align:center;"><span class="achiev-icon">🎁</span><div class="achiev-name">Lucky One</div><div class="achiev-desc">Win a giveaway</div></div>
-          <div class="achiev card locked" data-id="konami" style="padding:16px;text-align:center;"><span class="achiev-icon">🕹️</span><div class="achiev-name">Konami Master</div><div class="achiev-desc">Find the secret code</div></div>
-          <div class="achiev card locked" data-id="godk" style="padding:16px;text-align:center;"><span class="achiev-icon">⚔️</span><div class="achiev-name">GODK</div><div class="achiev-desc">Join the esports team</div></div>
+          <div class="achiev card" style="padding:16px;text-align:center;"><span class="achiev-icon">🎮</span><div class="achiev-name">First Login</div><div class="achiev-desc">Joined Kindustry</div></div>
+          <div class="achiev card locked" style="padding:16px;text-align:center;"><span class="achiev-icon">🏆</span><div class="achiev-name">Competitor</div><div class="achiev-desc">Enter a tournament</div></div>
+          <div class="achiev card locked" style="padding:16px;text-align:center;"><span class="achiev-icon">👑</span><div class="achiev-name">Champion</div><div class="achiev-desc">Win a tournament</div></div>
+          <div class="achiev card locked" style="padding:16px;text-align:center;"><span class="achiev-icon">🎁</span><div class="achiev-name">Lucky One</div><div class="achiev-desc">Win a giveaway</div></div>
+          <div class="achiev card locked" style="padding:16px;text-align:center;"><span class="achiev-icon">💎</span><div class="achiev-name">VIP</div><div class="achiev-desc">Get VIP role</div></div>
+          <div class="achiev card locked" style="padding:16px;text-align:center;"><span class="achiev-icon">⚔️</span><div class="achiev-name">GODK</div><div class="achiev-desc">Join the esports team</div></div>
         </div>
       </div>
 
@@ -3021,577 +1732,637 @@ body.perf-mode .feature-card:hover,body.perf-mode .t-card:hover{transform:none!i
   </div>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-// Supabase loader with timeout fallback
-window._supabaseReady = false;
+'use strict';
+
+/* ════ SUPABASE ════ */
+const SUPA_URL = 'https://uzrfmnzgiulesfqfueft.supabase.co';
+const SUPA_KEY = 'sb_publishable_ITrJ9r2tTxWZVEvCQB6V-w_rPFgTaim';
+const supa = supabase.createClient(SUPA_URL, SUPA_KEY);
+
+/* ════ STAR CANVAS (About page) ════ */
+function initAboutStars() {
+  const canvas = document.getElementById('aboutStars');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let W, H, stars = [], animId;
+
+  function resize() {
+    W = canvas.width  = canvas.offsetWidth;
+    H = canvas.height = canvas.offsetHeight;
+  }
+
+  function makeStar() {
+    return {
+      x: Math.random() * W,
+      y: Math.random() * H,
+      r: Math.random() * 1.4 + 0.2,
+      o: Math.random(),
+      speed: Math.random() * 0.4 + 0.1,
+      twinkleSpeed: Math.random() * 0.02 + 0.005,
+      twinkleDir: 1
+    };
+  }
+
+  function init() {
+    resize();
+    stars = [];
+    for (let i = 0; i < 160; i++) stars.push(makeStar());
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    stars.forEach(s => {
+      s.o += s.twinkleSpeed * s.twinkleDir;
+      if (s.o >= 1 || s.o <= 0.1) s.twinkleDir *= -1;
+      s.y -= s.speed * 0.3;
+      if (s.y < -2) { s.y = H + 2; s.x = Math.random() * W; }
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(255,255,255,${s.o * 0.9})`;
+      ctx.shadowBlur = 4;
+      ctx.shadowColor = 'rgba(150,180,255,0.8)';
+      ctx.fill();
+    });
+    animId = requestAnimationFrame(draw);
+  }
+
+  window.addEventListener('resize', () => { resize(); });
+  init();
+  draw();
+}
+
+/* Run stars when about page is shown */
+document.addEventListener('DOMContentLoaded', () => {
+  if (document.getElementById('page-about').classList.contains('active')) initAboutStars();
+});
+
+/* ════ LOADER ════ */
+window.addEventListener('load', () => {
+  setTimeout(() => document.getElementById('loader').classList.add('out'), 2400);
+});
+
+/* ════ PARTICLES ════ */
+(function(){
+  const c = document.getElementById('pts');
+  for(let i=0;i<30;i++){
+    const p = document.createElement('div');
+    p.className = 'pt';
+    const s = 1.5 + Math.random()*2;
+    p.style.cssText = `left:${Math.random()*100}vw;width:${s}px;height:${s}px;background:rgba(var(--pr),.4);animation-duration:${10+Math.random()*14}s;animation-delay:${Math.random()*14}s;`;
+    c.appendChild(p);
+  }
+})();
+
+/* ════ CURSOR ════ */
+const $c = document.getElementById('cur');
+const $r = document.getElementById('cur-ring');
+let mX=window.innerWidth/2, mY=window.innerHeight/2, rX=mX, rY=mY;
+
+if(window.matchMedia('(pointer:fine)').matches){
+  document.addEventListener('mousemove', e => { mX=e.clientX; mY=e.clientY; });
+  (function loop(){
+    rX += (mX-rX)*.12; rY += (mY-rY)*.12;
+    $c.style.transform = `translate(${mX}px,${mY}px) translate(-50%,-50%)`;
+    $r.style.transform = `translate(${rX}px,${rY}px) translate(-50%,-50%)`;
+    requestAnimationFrame(loop);
+  })();
+  document.addEventListener('mouseenter', e => {
+    if(e.target.closest('a,button,input,textarea,.feature-card,.card')){$c.classList.add('big');$r.classList.add('big');}
+  }, true);
+  document.addEventListener('mouseleave', e => {
+    if(e.target.closest('a,button,input,textarea,.feature-card,.card')){$c.classList.remove('big');$r.classList.remove('big');}
+  }, true);
+}
+
+/* ════ 3D TILT ════ */
+if(window.matchMedia('(pointer:fine)').matches){
+  document.querySelectorAll('.feature-card,.t-card').forEach(el => {
+    el.addEventListener('mousemove', e => {
+      const r=el.getBoundingClientRect();
+      const x=((e.clientX-r.left)/r.width-.5)*8;
+      const y=((e.clientY-r.top)/r.height-.5)*-8;
+      el.style.transform = `perspective(800px) rotateX(${y}deg) rotateY(${x}deg) translateY(-5px)`;
+    });
+    el.addEventListener('mouseleave', () => { el.style.transform=''; });
+  });
+}
+
+/* ════ RADIAL LIGHT ════ */
+document.querySelectorAll('.feature-card,.t-card').forEach(el => {
+  el.addEventListener('mousemove', e => {
+    const r=el.getBoundingClientRect();
+    el.style.background = `radial-gradient(circle at ${e.clientX-r.left}px ${e.clientY-r.top}px, rgba(var(--pr),.1), var(--surface) 55%)`;
+  });
+  el.addEventListener('mouseleave', () => { el.style.background=''; });
+});
+
+/* ════ AUTH STATE ════ */
+
+
+async function getSupaUser() {
+  const { data } = await supa.auth.getSession();
+  return data?.session?.user || null;
+}
+
+function getSavedUsername() {
+  const keys = Object.keys(localStorage).filter(k=>k.startsWith('kin_uname_')); return keys.length ? localStorage.getItem(keys[0]) || '' : '';
+}
+
+async function updateNavAuth() {
+  const u = await getSupaUser();
+  const area = document.getElementById('navAuthArea');
+  if (u) {
+    const userKey = `kin_uname_${u.id}`;
+    const uname = localStorage.getItem(userKey) || u.email?.split('@')[0] || 'Gamer';
+    area.innerHTML = `<div class="nav-user-btn" onclick="toggleDropdown()"><div class="nav-avatar">👤</div>${uname}</div>`;
+    document.getElementById('dd-name').textContent = uname;
+    document.getElementById('dd-tag').textContent = u.app_metadata?.provider ? `via ${u.app_metadata.provider}` : 'Kindustry Member';
+    document.getElementById('profileName').textContent = uname;
+    const d = new Date(u.created_at || Date.now());
+    document.getElementById('profileSince').textContent = `Member since ${d.toLocaleDateString('en-US',{month:'long',year:'numeric'})}`;
+    const inp = document.getElementById('profileUnameInput');
+    if (inp) inp.value = uname;
+  } else {
+    area.innerHTML = `<button class="nav-login-btn" onclick="openAuth()">Sign In</button>`;
+  }
+}
+
+/* AUTH MODAL */
+function openAuth() {
+  document.getElementById('authModal').classList.add('open');
+  document.getElementById('authStep1').style.display = 'block';
+  document.getElementById('authStep2').style.display = 'none';
+}
+function closeAuth() { document.getElementById('authModal').classList.remove('open'); }
+document.getElementById('authModal').addEventListener('click', e => {
+  if (e.target === document.getElementById('authModal')) closeAuth();
+});
+
+/* REAL SUPABASE OAUTH */
+async function doLogin(provider) {
+  const providerMap = { Google:'google', Facebook:'facebook', Discord:'discord', Twitter:'twitter' };
+  const p = providerMap[provider];
+  if (!p) return;
+  // Always redirect back to the domain the user is currently on
+  const redirectTo = window.location.origin;
+  const { error } = await supa.auth.signInWithOAuth({
+    provider: p,
+    options: { redirectTo }
+  });
+  if (error) {
+    alert(`Login failed: ${error.message}\n\nMake sure ${provider} is enabled in your Supabase Auth settings.`);
+  }
+}
+
+/* USERNAME PICKER */
+const BAD_WORDS = ['niger','nigger','nigga','nigg','rapist','rape','raping','hitler','nazi','porn','porno','sex','fuck','fucker','fucking','shit','shitter','ass','arse','bitch','cunt','dick','pussy','whore','fag','faggot','retard','retarded','kill','killing','killme','suicide','slave','racist','n1gg','n1gger','f4g','sh1t','fuk','phuck','b1tch','d1ck','cum','jizz','penis','vagina','nonce','pedo','pedophile','terrorist','jihad','bastard'];
+
+function containsBadWord(val) {
+  const lower = val.toLowerCase().replace(/[^a-z0-9]/g,'');
+  return BAD_WORDS.some(w => lower.includes(w));
+}
+
+function validateUname() {
+  const v = document.getElementById('unameInput').value;
+  const ok = /^[a-zA-Z0-9]{1,12}$/.test(v);
+  const err = document.getElementById('unameErr');
+  const btn = document.getElementById('unameSubmit');
+  if (v.length === 0) { err.style.display='none'; btn.disabled=true; return; }
+  if (!ok) { err.textContent='Only letters and numbers allowed (max 12).'; err.style.display='block'; btn.disabled=true; return; }
+  if (containsBadWord(v)) { err.textContent='This username is not allowed.'; err.style.display='block'; btn.disabled=true; return; }
+  err.style.display='none'; btn.disabled=false;
+}
+
+async function submitUsername() {
+  const v = document.getElementById('unameInput').value.trim();
+  if (!/^[a-zA-Z0-9]{1,12}$/.test(v)) return;
+  if (containsBadWord(v)) { document.getElementById('unameErr').textContent='This username is not allowed.'; document.getElementById('unameErr').style.display='block'; return; }
+  const btn = document.getElementById('unameSubmit');
+  btn.textContent = 'Checking...'; btn.disabled = true;
+  // Check uniqueness in Supabase
+  try {
+    const { data, error } = await supa.from('usernames').select('username').eq('username', v.toLowerCase()).maybeSingle();
+    if (data) {
+      document.getElementById('unameErr').textContent = 'Username already taken — choose another.';
+      document.getElementById('unameErr').style.display = 'block';
+      btn.textContent = 'Claim Username →'; btn.disabled = false;
+      return;
+    }
+  } catch(e) { console.log('Username check skipped:', e); }
+  const u2 = await getSupaUser();
+  if (u2) {
+    // Save to Supabase usernames table
+    try {
+      await supa.from('usernames').upsert({ username: v.toLowerCase(), user_id: u2.id });
+    } catch(e) { console.log('Username save skipped:', e); }
+    localStorage.setItem('kin_uname_' + u2.id, v);
+  }
+  btn.textContent = 'Claim Username →'; btn.disabled = false;
+  closeAuth();
+  await updateNavAuth();
+  showPage('profile');
+}
+
+/* DROPDOWN */
+function toggleDropdown() { document.getElementById('userDropdown').classList.toggle('open'); }
+function closeDropdown()  { document.getElementById('userDropdown').classList.remove('open'); }
+document.addEventListener('click', e => {
+  if (!e.target.closest('.nav-user-btn') && !e.target.closest('#userDropdown')) closeDropdown();
+});
+
+async function signOut() {
+  if (!confirm('Sign out of Kindustry?')) return;
+  closeDropdown();
+  await supa.auth.signOut({ scope: 'global' });
+  Object.keys(localStorage).filter(k=>k.startsWith('kin_uname_')).forEach(k=>localStorage.removeItem(k));
+  window.location.reload();
+}
+
+async function deleteAccount() {
+  // First confirmation
+  const first = confirm('⚠️ Are you sure you want to delete your Kindustry account?\n\nThis will permanently remove your profile and cannot be undone.');
+  if (!first) return;
+  // Second confirmation — type DELETE
+  const modal = document.createElement('div');
+  modal.style.cssText = 'position:fixed;inset:0;z-index:99999;background:rgba(0,0,0,0.8);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;padding:20px;';
+  modal.innerHTML = `
+    <div style="background:var(--bg2);border:1px solid rgba(239,68,68,.4);border-radius:16px;padding:36px;max-width:400px;width:100%;text-align:center;">
+      <div style="font-size:40px;margin-bottom:14px;">⚠️</div>
+      <div style="font-family:'Orbitron',monospace;font-size:18px;font-weight:700;color:#ef4444;margin-bottom:10px;">Delete Account</div>
+      <p style="color:var(--dim);font-size:13px;line-height:1.6;margin-bottom:20px;">This will permanently delete your account and all your data. Type <strong style="color:#ef4444;letter-spacing:2px;">DELETE</strong> to confirm.</p>
+      <input type="text" id="deleteConfirmInput" placeholder="Type DELETE here" class="delete-confirm-input">
+      <div style="display:flex;gap:12px;justify-content:center;margin-top:8px;">
+        <button onclick="this.closest('div[style]').remove()" style="padding:10px 24px;border-radius:7px;border:1px solid var(--border);background:transparent;color:var(--dim);cursor:pointer;font-family:'Rajdhani',sans-serif;font-weight:700;font-size:13px;">Cancel</button>
+        <button id="confirmDeleteBtn" onclick="confirmDelete(this)" style="padding:10px 24px;border-radius:7px;border:none;background:rgba(239,68,68,.2);color:#ef4444;cursor:pointer;font-family:'Rajdhani',sans-serif;font-weight:700;font-size:13px;border:1px solid rgba(239,68,68,.4);">Confirm Delete</button>
+      </div>
+    </div>`;
+  document.body.appendChild(modal);
+  closeDropdown();
+}
+
+async function confirmDelete(btn) {
+  const val = document.getElementById('deleteConfirmInput').value.trim();
+  if (val !== 'DELETE') {
+    document.getElementById('deleteConfirmInput').style.borderColor = '#ef4444';
+    document.getElementById('deleteConfirmInput').placeholder = 'Must type DELETE exactly';
+    return;
+  }
+  btn.closest('div[style*="position:fixed"]').remove();
+  await supa.auth.signOut({ scope: 'global' });
+  Object.keys(localStorage).filter(k=>k.startsWith('kin_uname_')).forEach(k=>localStorage.removeItem(k));
+  window.location.reload();
+}
+
+async function saveUname() {
+  const v = document.getElementById('profileUnameInput').value.trim();
+  if (!/^[a-zA-Z0-9]{1,12}$/.test(v)) { alert('Username must be 1–12 letters or numbers only.'); return; }
+  const u2 = await getSupaUser();
+  if (u2) localStorage.setItem('kin_uname_' + u2.id, v);
+  await updateNavAuth();
+  alert('Username updated!');
+}
+
+/* PROFILE TABS */
+function pTab(btn, id){
+  document.querySelectorAll('.ptab').forEach(b=>b.classList.remove('on'));
+  document.querySelectorAll('.ptab-content').forEach(c=>c.classList.remove('on'));
+  btn.classList.add('on');
+  document.getElementById('pt-'+id).classList.add('on');
+}
+
+/* ════ SETTINGS ════ */
+function openSet(){ document.getElementById('setOverlay').classList.add('open'); }
+function closeSet(){ document.getElementById('setOverlay').classList.remove('open'); }
+function outsideSet(e){ if(e.target===document.getElementById('setOverlay')) closeSet(); }
+
+/* ════ THEME ════ */
+function setTheme(t){
+  document.body.classList.remove('theme-red','theme-cyber','theme-white','theme-gold');
+  if(t !== 'dark') document.body.classList.add('theme-'+t);
+  localStorage.setItem('kin-theme', t);
+  document.querySelectorAll('.th-btn').forEach(b=>b.classList.remove('on'));
+  const btn = document.getElementById('tb-'+t);
+  if(btn) btn.classList.add('on');
+}
+(function(){ setTheme(localStorage.getItem('kin-theme') || 'dark'); })();
+
+/* ════ PAGE NAV ════ */
+async function showPage(name) {
+  const u = await getSupaUser();
+  if (name === 'profile' && !u) { openAuth(); return; }
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+  document.getElementById('page-' + name).classList.add('active');
+  const el = document.getElementById('nl-' + name);
+  if (el) el.classList.add('active');
+  // Update mobile drawer active state
+  document.querySelectorAll('.mob-drawer a').forEach(a => a.classList.remove('active'));
+  const md = document.getElementById('md-' + name);
+  if (md) md.classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  document.getElementById('navLinks').classList.remove('open');
+  setTimeout(observeReveals, 50);
+  if (name === 'about') setTimeout(initAboutStars, 100);
+  if (name === 'leaderboard') setTimeout(() => renderLeaderboard('all'), 100);
+  // Update pfp on profile
+  if (name === 'profile' && u) {
+    const pfp = getUserPfp(u.id);
+    const av = document.getElementById('profileAv');
+    if (pfp && av) av.innerHTML = `<img src="${pfp}" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">`;
+  }
+}
+
+/* ════ MOBILE NAV ════ */
+function toggleNav(){ document.getElementById('navLinks').classList.toggle('open'); }
+
+/* ════ STORE TABS ════ */
+function storeTab(btn, tab){
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('store-online').style.display  = tab==='online' ? 'block' : 'none';
+  document.getElementById('store-reallife').style.display = tab==='reallife' ? 'block' : 'none';
+}
+
+/* ════ SCROLL REVEAL ════ */
+let ro;
+function observeReveals(){
+  if(ro) ro.disconnect();
+  ro = new IntersectionObserver(entries => {
+    entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('vis'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal:not(.vis)').forEach(el => ro.observe(el));
+}
+observeReveals();
+
+/* ════ CONTACT FORM ════ */
+async function submitForm() {
+  const name = document.querySelector('.fi[placeholder="GamerTag or real name"]')?.value?.trim();
+  const email = document.querySelector('.fi[placeholder="your@email.com"]')?.value?.trim();
+  const subject = document.querySelector('.fi[placeholder="Partnership, Support, Collab..."]')?.value?.trim();
+  const message = document.querySelector('.ft')?.value?.trim();
+  if (!name || !email || !message) { alert('Please fill in your name, email and message.'); return; }
+  const btn = document.querySelector('button[onclick="submitForm()"]');
+  const origText = btn.textContent;
+  btn.textContent = 'Sending...'; btn.disabled = true;
+  try {
+    const res = await fetch('https://formspree.io/f/xykovjky', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({ name, email, subject, message })
+    });
+    if (res.ok) {
+      btn.textContent = '✅ Message Sent!';
+      btn.style.background = 'linear-gradient(135deg,#22c55e,#16a34a)';
+      document.querySelectorAll('.fi,.ft').forEach(i => i.value = '');
+      setTimeout(() => { btn.textContent = origText; btn.style.background = ''; btn.disabled = false; }, 4000);
+    } else {
+      throw new Error('Failed');
+    }
+  } catch(e) {
+    alert('Message failed to send. Please email us at officialkindustry@gmail.com or contact us on Discord!');
+    btn.textContent = origText; btn.disabled = false;
+  }
+}
+
+/* ════ SCROLLING FLOATING NAV ════ */
+window.addEventListener('scroll', () => {
+  const n = document.querySelector('nav');
+  if (window.scrollY > 60) n.classList.add('scrolled');
+  else n.classList.remove('scrolled');
+}, { passive: true });
+
+/* ════ MOBILE DRAWER ════ */
+function openMobDrawer() { document.getElementById('mobDrawer').classList.add('open'); }
+function closeMobDrawerDirect() { document.getElementById('mobDrawer').classList.remove('open'); }
+function closeMobDrawer(e) { if(e.target===document.getElementById('mobDrawer')) closeMobDrawerDirect(); }
+
+/* ════ EMAIL LOGIN ════ */
+let emailMode = 'login'; // or 'signup'
+
+function toggleEmailMode() {
+  const passInput = document.getElementById('passwordInput');
+  const forgotLink = document.getElementById('forgotLink');
+  const btn = document.getElementById('emailLoginBtn');
+  const toggle = document.getElementById('emailModeToggle');
+  if (emailMode === 'login') {
+    emailMode = 'signup';
+    passInput.style.display = 'block';
+    forgotLink.style.display = 'none';
+    btn.textContent = 'Create Account';
+    toggle.textContent = 'Already have an account? Sign in';
+  } else {
+    emailMode = 'login';
+    passInput.style.display = 'none';
+    forgotLink.style.display = 'block';
+    btn.textContent = 'Sign in with Email';
+    toggle.textContent = "Don't have an account? Sign up";
+  }
+}
+
+// Show password field when email typed
+document.addEventListener('DOMContentLoaded', () => {
+  const ei = document.getElementById('emailInput');
+  if (ei) ei.addEventListener('input', () => {
+    if (emailMode === 'login') {
+      const pf = document.getElementById('passwordInput');
+      const fl = document.getElementById('forgotLink');
+      if (ei.value.length > 3) { pf.style.display='block'; fl.style.display='block'; }
+    }
+  });
+});
+
+async function doEmailLogin() {
+  const email = document.getElementById('emailInput').value.trim();
+  const pass  = document.getElementById('passwordInput').value;
+  if (!email) { alert('Please enter your email.'); return; }
+  if (!pass)  { alert('Please enter your password.'); return; }
+
+  if (emailMode === 'signup') {
+    const { error } = await supa.auth.signUp({ email, password: pass });
+    if (error) { alert('Sign up failed: ' + error.message); return; }
+    alert('✅ Account created! Check your email to confirm your account, then sign in.');
+  } else {
+    const { error } = await supa.auth.signInWithPassword({ email, password: pass });
+    if (error) { alert('Sign in failed: ' + error.message); return; }
+    closeAuth();
+    await updateNavAuth();
+  }
+}
+
+async function forgotPassword() {
+  const email = document.getElementById('emailInput').value.trim();
+  if (!email) { alert('Enter your email first, then click Forgot Password.'); return; }
+  const { error } = await supa.auth.resetPasswordForEmail(email, {
+    redirectTo: window.location.origin
+  });
+  if (error) alert('Error: ' + error.message);
+  else alert('✅ Password reset email sent! Check your inbox.');
+}
+
+/* ════ PFP UPLOAD ════ */
+async function uploadPfp(input) {
+  const file = input.files[0];
+  if (!file) return;
+  if (file.size > 2 * 1024 * 1024) { alert('Image must be under 2MB'); return; }
+  const u = await getSupaUser();
+  if (!u) { alert('Please sign in first.'); return; }
+
+  // Show preview immediately while uploading
+  const reader = new FileReader();
+  reader.onload = async (e) => {
+    const preview = e.target.result;
+    const av = document.getElementById('profileAv');
+    if (av) av.innerHTML = `<img src="${preview}" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">`;
+
+    // Try Supabase Storage upload
+    try {
+      const ext = file.name.split('.').pop();
+      const path = `${u.id}.${ext}`;
+      const { data, error } = await supa.storage.from('avatars').upload(path, file, { upsert: true, contentType: file.type });
+      if (!error) {
+        const { data: urlData } = supa.storage.from('avatars').getPublicUrl(path);
+        const publicUrl = urlData.publicUrl + '?t=' + Date.now();
+        localStorage.setItem(`kin_pfp_${u.id}`, publicUrl);
+        if (av) av.innerHTML = `<img src="${publicUrl}" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">`;
+        // Update leaderboard table with pfp url
+        await supa.from('leaderboard').update({ pfp_url: publicUrl }).eq('username', localStorage.getItem('kin_uname_' + u.id));
+        console.log('✅ PFP uploaded to Supabase Storage');
+      } else {
+        // Fall back to localStorage base64
+        localStorage.setItem(`kin_pfp_${u.id}`, preview);
+        console.log('Storage upload failed, saved locally:', error.message);
+      }
+    } catch(e) {
+      localStorage.setItem(`kin_pfp_${u.id}`, preview);
+      console.log('Storage error, saved locally:', e);
+    }
+    updateLeaderboardAvatars();
+  };
+  reader.readAsDataURL(file);
+}
+
+function getUserPfp(userId) {
+  return localStorage.getItem(`kin_pfp_${userId}`) || null;
+}
+
+function updateLeaderboardAvatars() {
+  // Refresh leaderboard to show new pfp
+  renderLeaderboard(currentLbFilter);
+}
+
+/* ════ LEADERBOARD ════ */
+let currentLbFilter = 'all';
+
+// Demo data — in production this comes from Supabase database
+const lbDemoData = [
+  { rank:1, name:'KhushalBossPro', tag:'Founder & CEO', tournaments:2, wins:2, badges:['champ','active'], pfp:null },
+  { rank:2, name:'ProGamer99',     tag:'Elite Member',   tournaments:2, wins:1, badges:['active'],         pfp:null },
+  { rank:3, name:'NightWolf',      tag:'Competitor',     tournaments:1, wins:0, badges:['new'],            pfp:null },
+  { rank:4, name:'StarPlayer',     tag:'Member',         tournaments:1, wins:0, badges:['new'],            pfp:null },
+  { rank:5, name:'GhostRider',     tag:'Member',         tournaments:1, wins:0, badges:['active'],         pfp:null },
+];
+
+async function renderLeaderboard(filter) {
+  currentLbFilter = filter;
+  const body = document.getElementById('lbBody');
+  if (!body) return;
+  body.innerHTML = '<div class="lb-empty"><span class="lb-empty-icon">⏳</span><div class="lb-empty-title">Loading...</div></div>';
+
+  let data = [];
+  // Try Supabase first
+  try {
+    let query = supa.from('leaderboard').select('*').order('wins', { ascending: false }).order('tournaments', { ascending: false });
+    const { data: lbData, error } = await query;
+    if (!error && lbData && lbData.length > 0) {
+      data = lbData.map((p, i) => ({
+        rank: i + 1,
+        name: p.username,
+        tag: p.tag || 'Member',
+        tournaments: p.tournaments || 0,
+        wins: p.wins || 0,
+        badges: p.badges || [],
+        pfp: p.pfp_url || null
+      }));
+    }
+  } catch(e) { console.log('Leaderboard DB fetch failed, using demo data'); }
+
+  // Fall back to demo data if Supabase empty or failed
+  if (data.length === 0) data = lbDemoData.map((p,i) => ({...p}));
+
+  // Apply filters
+  if (filter === 'champions') data = data.filter(p => p.badges.includes('champ'));
+  if (filter === 'active')    data = data.sort((a,b) => b.tournaments - a.tournaments);
+
+  const totalEl = document.getElementById('lb-total-players');
+  if (totalEl) totalEl.textContent = data.length;
+
+  if (data.length === 0) {
+    body.innerHTML = '<div class="lb-empty"><span class="lb-empty-icon">🏆</span><div class="lb-empty-title">No players yet</div><div style="color:var(--dim);font-size:13px;">Be the first to compete!</div></div>';
+    return;
+  }
+
+  const rowClass = ['','gold-row','silver-row','bronze-row'];
+  const rankClass = ['','r1','r2','r3'];
+  const medals = ['','🥇','🥈','🥉'];
+
+  body.innerHTML = data.map((p, i) => {
+    const rank = p.rank || (i+1);
+    const rc = rowClass[rank] || '';
+    const rkc = rankClass[rank] || '';
+    const medal = medals[rank] || rank;
+    const pfpHtml = p.pfp
+      ? `<img src="${p.pfp}" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">`
+      : p.name.charAt(0).toUpperCase();
+    const badgesHtml = (p.badges||[]).map(b => `<span class="lb-badge ${b}">${b}</span>`).join('');
+    return `<div class="lb-row ${rc}">
+      <div class="lb-rank ${rkc}">${medal}</div>
+      <div class="lb-player">
+        <div class="lb-avatar">${pfpHtml}</div>
+        <div><div class="lb-name">${p.name}</div><div class="lb-tag">${p.tag}</div></div>
+      </div>
+      <div class="lb-stat">${p.tournaments}</div>
+      <div class="lb-stat">${p.wins}</div>
+      <div class="lb-badge-wrap">${badgesHtml}</div>
+    </div>`;
+  }).join('');
+}
+
+function lbFilter(btn, filter) {
+  document.querySelectorAll('.lb-filter-btn').forEach(b => b.classList.remove('on'));
+  btn.classList.add('on');
+  renderLeaderboard(filter);
+}
+
+/* ════ INIT ════ */
+(async function init() {
+  await supa.auth.getSession();
+  await updateNavAuth();
+  observeReveals();
+
+  supa.auth.onAuthStateChange(async (event, session) => {
+    if (event === 'SIGNED_IN') {
+      const userId = session?.user?.id;
+      if (userId) {
+        const userKey = `kin_uname_${userId}`;
+        const savedUname = localStorage.getItem(userKey);
+        if (!savedUname) {
+          document.getElementById('authModal').classList.add('open');
+          document.getElementById('authStep1').style.display = 'none';
+          document.getElementById('authStep2').style.display = 'block';
+          document.getElementById('unameInput').value = '';
+          document.getElementById('unameErr').style.display = 'none';
+          document.getElementById('unameSubmit').disabled = true;
+        }
+      }
+      await updateNavAuth();
+    } else if (event === 'SIGNED_OUT') {
+      await updateNavAuth();
+    }
+  });
+})();
+
 </script>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" 
-  onload="window._supabaseReady=true;"
-  onerror="console.warn('Supabase CDN failed, auth features unavailable');">
-</script>
-
-<div class="page" id="page-privacy">
-  <section style="padding-top:110px;max-width:860px;">
-    <div class="sec-hdr reveal">
-      <div class="sec-ey">Legal</div>
-      <h2 class="sec-title">Privacy Policy</h2>
-    </div>
-    <div style="font-size:12px;color:var(--dim);margin-bottom:32px;">Last updated: May 2026</div>
-
-    <div class="card reveal" style="padding:32px;margin-bottom:20px;">
-      <h3 style="font-family:'Orbitron',monospace;font-size:15px;font-weight:700;color:var(--primary);margin-bottom:14px;">1. Who We Are</h3>
-      <p style="color:var(--dim);font-size:14px;line-height:1.8;">Kindustry is a gaming community platform operating at <strong style="color:var(--text);">kindustry.in</strong>. We provide gaming tournaments, giveaways, community features, and a store. You can contact us at <a href="mailto:officialkindustry@gmail.com" style="color:var(--primary);">officialkindustry@gmail.com</a>.</p>
-    </div>
-
-    <div class="card reveal" style="padding:32px;margin-bottom:20px;">
-      <h3 style="font-family:'Orbitron',monospace;font-size:15px;font-weight:700;color:var(--primary);margin-bottom:14px;">2. What Information We Collect</h3>
-      <p style="color:var(--dim);font-size:14px;line-height:1.8;margin-bottom:12px;">When you create an account we collect:</p>
-      <ul style="color:var(--dim);font-size:14px;line-height:2;padding-left:20px;">
-        <li>Your email address (via Google or email login)</li>
-        <li>Your chosen username</li>
-        <li>Your profile picture (if you upload one)</li>
-        <li>Your tournament participation and win history</li>
-        <li>Basic usage data (pages visited, time on site) for improving our services</li>
-      </ul>
-      <p style="color:var(--dim);font-size:14px;line-height:1.8;margin-top:12px;">We do <strong style="color:var(--text);">not</strong> collect payment information, phone numbers, or physical addresses.</p>
-    </div>
-
-    <div class="card reveal" style="padding:32px;margin-bottom:20px;">
-      <h3 style="font-family:'Orbitron',monospace;font-size:15px;font-weight:700;color:var(--primary);margin-bottom:14px;">3. How We Use Your Information</h3>
-      <ul style="color:var(--dim);font-size:14px;line-height:2;padding-left:20px;">
-        <li>To create and manage your account</li>
-        <li>To display your profile and stats on the leaderboard</li>
-        <li>To contact you about tournaments, giveaways, and updates</li>
-        <li>To improve our website and services</li>
-        <li>To prevent abuse and enforce our community rules</li>
-      </ul>
-    </div>
-
-    <div class="card reveal" style="padding:32px;margin-bottom:20px;">
-      <h3 style="font-family:'Orbitron',monospace;font-size:15px;font-weight:700;color:var(--primary);margin-bottom:14px;">4. Data Storage & Security</h3>
-      <p style="color:var(--dim);font-size:14px;line-height:1.8;">Your data is stored securely using enterprise-grade infrastructure with row-level security and industry-standard encryption for all data in transit and at rest. We never sell your data to third parties. Authentication is powered by <strong style="color:var(--text);">Google Sign-In</strong> and <strong style="color:var(--text);">Discord</strong> — trusted industry-standard providers.</p>
-    </div>
-
-    <div class="card reveal" style="padding:32px;margin-bottom:20px;">
-      <h3 style="font-family:'Orbitron',monospace;font-size:15px;font-weight:700;color:var(--primary);margin-bottom:14px;">5. Third Party Services</h3>
-      <p style="color:var(--dim);font-size:14px;line-height:1.8;margin-bottom:10px;">We use the following third-party services:</p>
-      <ul style="color:var(--dim);font-size:14px;line-height:2;padding-left:20px;">
-        <li>Authentication services for secure login</li>
-        <li>Database and storage services for your account data</li>
-        <li>Website hosting and security services</li>
-        <li>Anonymous usage analytics to improve user experience</li>
-        <li>Contact form processing services</li>
-      </ul>
-    </div>
-
-    <div class="card reveal" style="padding:32px;margin-bottom:20px;">
-      <h3 style="font-family:'Orbitron',monospace;font-size:15px;font-weight:700;color:var(--primary);margin-bottom:14px;">6. Your Rights</h3>
-      <p style="color:var(--dim);font-size:14px;line-height:1.8;margin-bottom:10px;">You have the right to:</p>
-      <ul style="color:var(--dim);font-size:14px;line-height:2;padding-left:20px;">
-        <li>Access your personal data</li>
-        <li>Correct inaccurate data</li>
-        <li>Delete your account and all associated data</li>
-        <li>Withdraw consent at any time</li>
-      </ul>
-      <p style="color:var(--dim);font-size:14px;line-height:1.8;margin-top:12px;">To delete your account, go to your <strong style="color:var(--text);">Profile → Settings → Delete Account</strong>. To request data deletion contact us at <a href="mailto:officialkindustry@gmail.com" style="color:var(--primary);">officialkindustry@gmail.com</a>.</p>
-    </div>
-
-    <div class="card reveal" style="padding:32px;margin-bottom:20px;">
-      <h3 style="font-family:'Orbitron',monospace;font-size:15px;font-weight:700;color:var(--primary);margin-bottom:14px;">7. Cookies</h3>
-      <p style="color:var(--dim);font-size:14px;line-height:1.8;">We use essential cookies only — for authentication sessions. We do not use advertising cookies or sell cookie data.</p>
-    </div>
-
-    <div class="card reveal" style="padding:32px;margin-bottom:40px;">
-      <h3 style="font-family:'Orbitron',monospace;font-size:15px;font-weight:700;color:var(--primary);margin-bottom:14px;">8. Contact</h3>
-      <p style="color:var(--dim);font-size:14px;line-height:1.8;">For any privacy questions contact us at <a href="mailto:officialkindustry@gmail.com" style="color:var(--primary);">officialkindustry@gmail.com</a> or through our <a href="https://discord.gg/CBqWUKScfF" target="_blank" style="color:var(--primary);">Discord server</a>.</p>
-    </div>
-  </section>
-  <div class="sec-div"></div>
-  <footer><div class="ft-brand"><a href="#" onclick="showPage('home');return false;">KINDUSTRY</a><div class="ft-quote">"where everything forges into greatness"</div></div><div class="ft-links"><div class="ft-nav"><a href="#" onclick="showPage('home');return false;">Home</a><a href="#" onclick="showPage('terms');return false;">Terms</a><a href="https://discord.gg/CBqWUKScfF" target="_blank">Discord</a></div><div class="ft-copy">© 2026 Kindustry. All rights reserved.</div></div></footer>
-</div>
-
-<!-- ════════════════════ TERMS OF SERVICE ════════════════════ -->
-<div class="page" id="page-terms">
-  <section style="padding-top:110px;max-width:860px;">
-    <div class="sec-hdr reveal">
-      <div class="sec-ey">Legal</div>
-      <h2 class="sec-title">Terms of Service</h2>
-    </div>
-    <div style="font-size:12px;color:var(--dim);margin-bottom:32px;">Last updated: May 2026</div>
-
-    <div class="card reveal" style="padding:32px;margin-bottom:20px;">
-      <h3 style="font-family:'Orbitron',monospace;font-size:15px;font-weight:700;color:var(--primary);margin-bottom:14px;">1. Acceptance of Terms</h3>
-      <p style="color:var(--dim);font-size:14px;line-height:1.8;">By accessing or using Kindustry (<strong style="color:var(--text);">kindustry.in</strong>), you agree to be bound by these Terms of Service. If you do not agree, please do not use our platform.</p>
-    </div>
-
-    <div class="card reveal" style="padding:32px;margin-bottom:20px;">
-      <h3 style="font-family:'Orbitron',monospace;font-size:15px;font-weight:700;color:var(--primary);margin-bottom:14px;">2. Eligibility</h3>
-      <p style="color:var(--dim);font-size:14px;line-height:1.8;">You must be <strong style="color:var(--text);">13 or older</strong> to create an account or make any purchases on Kindustry. This requirement exists to comply with data protection laws regarding personal information. Players of all ages are welcome to browse the site and participate in free community activities with parental permission. Users under 18 should have parental awareness and consent when participating in tournaments or community events.</p>
-    </div>
-
-    <div class="card reveal" style="padding:32px;margin-bottom:20px;">
-      <h3 style="font-family:'Orbitron',monospace;font-size:15px;font-weight:700;color:var(--primary);margin-bottom:14px;">3. Account Rules</h3>
-      <ul style="color:var(--dim);font-size:14px;line-height:2;padding-left:20px;">
-        <li>You are responsible for keeping your account secure</li>
-        <li>One account per person — no duplicate accounts</li>
-        <li>You must not share your account with others</li>
-        <li>Usernames must not contain offensive, hateful, or inappropriate language</li>
-        <li>You must not impersonate Kindustry staff or other users</li>
-      </ul>
-    </div>
-
-    <div class="card reveal" style="padding:32px;margin-bottom:20px;">
-      <h3 style="font-family:'Orbitron',monospace;font-size:15px;font-weight:700;color:var(--primary);margin-bottom:14px;">4. Community Rules</h3>
-      <ul style="color:var(--dim);font-size:14px;line-height:2;padding-left:20px;">
-        <li>No harassment, bullying, or hate speech of any kind</li>
-        <li>No cheating, exploiting, or using unfair advantages in tournaments</li>
-        <li>No spam, scamming, or misleading other users</li>
-        <li>No sharing of illegal content</li>
-        <li>Treat all community members with respect</li>
-      </ul>
-      <p style="color:var(--dim);font-size:14px;line-height:1.8;margin-top:12px;">Violations may result in account suspension or permanent ban without refund.</p>
-    </div>
-
-    <div class="card reveal" style="padding:32px;margin-bottom:20px;">
-      <h3 style="font-family:'Orbitron',monospace;font-size:15px;font-weight:700;color:var(--primary);margin-bottom:14px;">5. Tournaments & Giveaways</h3>
-      <ul style="color:var(--dim);font-size:14px;line-height:2;padding-left:20px;">
-        <li>Tournament results are final as decided by Kindustry staff</li>
-        <li>Prizes will be distributed within 7 days of tournament completion</li>
-        <li>Kindustry reserves the right to cancel or modify tournaments</li>
-        <li>Giveaway winners are selected fairly and randomly</li>
-        <li>Prize values cannot be exchanged for cash unless stated</li>
-      </ul>
-    </div>
-
-    <div class="card reveal" style="padding:32px;margin-bottom:20px;">
-      <h3 style="font-family:'Orbitron',monospace;font-size:15px;font-weight:700;color:var(--primary);margin-bottom:14px;">6. Store & Purchases</h3>
-      <p style="color:var(--dim);font-size:14px;line-height:1.8;">All purchases are final. Refunds may be issued at Kindustry's discretion within 7 days of purchase for digital items that have not been used. Physical merchandise follows standard return policies stated at time of purchase.</p>
-    </div>
-
-    <div class="card reveal" style="padding:32px;margin-bottom:20px;">
-      <h3 style="font-family:'Orbitron',monospace;font-size:15px;font-weight:700;color:var(--primary);margin-bottom:14px;">7. Intellectual Property</h3>
-      <p style="color:var(--dim);font-size:14px;line-height:1.8;">All Kindustry branding, logos, and content are owned by Kindustry. You may not reproduce or use our materials without written permission.</p>
-    </div>
-
-    <div class="card reveal" style="padding:32px;margin-bottom:20px;">
-      <h3 style="font-family:'Orbitron',monospace;font-size:15px;font-weight:700;color:var(--primary);margin-bottom:14px;">8. Limitation of Liability</h3>
-      <p style="color:var(--dim);font-size:14px;line-height:1.8;">Kindustry is provided "as is". We are not liable for any damages arising from use of our platform, including loss of data or tournament prizes due to technical issues beyond our control.</p>
-    </div>
-
-    <div class="card reveal" style="padding:32px;margin-bottom:20px;">
-      <h3 style="font-family:'Orbitron',monospace;font-size:15px;font-weight:700;color:var(--primary);margin-bottom:14px;">9. Changes to Terms</h3>
-      <p style="color:var(--dim);font-size:14px;line-height:1.8;">We may update these terms at any time. Continued use of Kindustry after changes means you accept the new terms. We will notify users of major changes via Discord.</p>
-    </div>
-
-    <div class="card reveal" style="padding:32px;margin-bottom:40px;">
-      <h3 style="font-family:'Orbitron',monospace;font-size:15px;font-weight:700;color:var(--primary);margin-bottom:14px;">10. Contact</h3>
-      <p style="color:var(--dim);font-size:14px;line-height:1.8;">For any questions about these terms contact us at <a href="mailto:officialkindustry@gmail.com" style="color:var(--primary);">officialkindustry@gmail.com</a></p>
-    </div>
-  </section>
-  <div class="sec-div"></div>
-  <footer><div class="ft-brand"><a href="#" onclick="showPage('home');return false;">KINDUSTRY</a><div class="ft-quote">"where everything forges into greatness"</div></div><div class="ft-links"><div class="ft-nav"><a href="#" onclick="showPage('home');return false;">Home</a><a href="#" onclick="showPage('privacy');return false;">Privacy</a><a href="https://discord.gg/CBqWUKScfF" target="_blank">Discord</a></div><div class="ft-copy">© 2026 Kindustry. All rights reserved.</div></div></footer>
-</div>
-
-
-<!-- ════════════════════ CHANGELOG ════════════════════ -->
-<div class="page" id="page-changelog">
-  <section style="padding-top:110px;max-width:900px;">
-    <div class="sec-hdr reveal">
-      <div class="sec-ey">History</div>
-      <h2 class="sec-title">Update Catalog</h2>
-      <p style="color:var(--dim);font-size:14px;max-width:520px;margin:8px auto 0;line-height:1.7;">Every update, improvement and milestone we've shipped — from day one to now.</p>
-    </div>
-
-    <div class="changelog-timeline">
-
-      <!-- UPDATE 3 -->
-      <div class="changelog-entry reveal">
-        <div class="changelog-dot">✦</div>
-        <div class="changelog-card">
-          <div class="changelog-version">v0.3 <span class="changelog-tag">Latest</span></div>
-          <div class="changelog-name">Operation Polished — The UI Overhaul</div>
-          <div class="changelog-date">May 2026</div>
-          <div class="changelog-desc">A full quality pass across the board. Fixed login bugs, enhanced every theme visually, improved animations and overhauled the overall user experience to feel more premium and smooth.</div>
-          <ul class="changelog-items">
-            <li>Fixed Discord OAuth login flow — users can now sign in with Discord reliably</li>
-            <li>Refined all 6 existing themes with better contrast, glows and card styles</li>
-            <li>Enhanced navbar with floating pill design and scroll animations</li>
-            <li>Improved achievement toasts and notification system</li>
-            <li>Fixed various UI inconsistencies across pages</li>
-            <li>Performance improvements and general polish across the board</li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- UPDATE 2 -->
-      <div class="changelog-entry reveal">
-        <div class="changelog-dot">✦</div>
-        <div class="changelog-card">
-          <div class="changelog-version">v0.2 <span class="changelog-tag">Milestone</span></div>
-          <div class="changelog-name">Identity Expansion — Themes & Authentication</div>
-          <div class="changelog-date">April 2026</div>
-          <div class="changelog-desc">Kindustry got its identity. We launched our full authentication system letting players create accounts and pick usernames, and introduced four new visual themes giving everyone a way to make Kindustry feel personal.</div>
-          <ul class="changelog-items">
-            <li>Launched full login system — Google OAuth, Discord OAuth and Email sign in</li>
-            <li>Username picker with bad word filter, uniqueness check and 12 character limit</li>
-            <li>Added Cyber RGB theme — animated rainbow border cycling effect</li>
-            <li>Added White Pro theme — clean minimal light mode</li>
-            <li>Added Championship Gold theme — black and gold esports aesthetic</li>
-            <li>Fixed Google OAuth callback and session persistence bugs</li>
-            <li>Profile page with achievements, stats and settings tab</li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- UPDATE 1 -->
-      <div class="changelog-entry reveal">
-        <div class="changelog-dot">✦</div>
-        <div class="changelog-card">
-          <div class="changelog-version">v0.1 <span class="changelog-tag">Origin</span></div>
-          <div class="changelog-name">Genesis — Where It All Started</div>
-          <div class="changelog-date">March 2026</div>
-          <div class="changelog-desc">The very first version of Kindustry. Built from scratch as a single HTML file, this was the foundation — the spark that started everything. Two themes, a homepage and a dream to build the ultimate gaming community.</div>
-          <ul class="changelog-items">
-            <li>Launched Kindustry.in — the gaming community website goes live</li>
-            <li>Built the core Dark Neon theme — deep blues, neon purples and glowing cards</li>
-            <li>Added Crimson theme — dark red esports energy aesthetic</li>
-            <li>Home page with hero section, features grid and Discord banner</li>
-            <li>Tournaments page with registration form and secure cloud database backend</li>
-            <li>Leaderboard page with live real-time database connection</li>
-            <li>Contact page with secure form submission integration</li>
-          </ul>
-        </div>
-      </div>
-
-    </div>
-  </section>
-  <div class="sec-div"></div>
-  <footer>
-    <div class="ft-brand">
-      <a href="#" onclick="showPage('home');return false;">KINDUSTRY</a>
-      <div class="ft-quote">"where everything forges into greatness"</div>
-    </div>
-    <div class="ft-links">
-      <div class="ft-nav">
-        <a href="#" onclick="showPage('home');return false;">Home</a>
-        <a href="#" onclick="showPage('privacy');return false;">Privacy</a>
-        <a href="#" onclick="showPage('terms');return false;">Terms</a>
-      </div>
-      <div class="ft-copy">© 2026 Kindustry. All rights reserved.</div>
-    </div>
-  </footer>
-</div>
-
-<!-- ════════════════════ GODK ESPORTS ════════════════════ -->
-<div class="page" id="page-godk">
-  <div style="position:relative;min-height:100vh;overflow:hidden;">
-    <!-- ANIMATED BG -->
-    <div style="position:absolute;inset:0;background:radial-gradient(ellipse 80% 55% at 50% -5%,rgba(220,38,38,0.15),transparent 65%),radial-gradient(ellipse 55% 70% at 85% 55%,rgba(245,158,11,0.1),transparent 55%),var(--bg);"></div>
-    <div style="position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:64px 64px;animation:gridDrift 25s linear infinite;mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black 20%,transparent 75%);"></div>
-    <div style="position:absolute;width:500px;height:500px;top:-100px;right:-100px;background:rgba(220,38,38,0.1);border-radius:50%;filter:blur(90px);animation:orbDrift 10s ease-in-out infinite;"></div>
-    <div style="position:absolute;width:300px;height:300px;bottom:-50px;left:-50px;background:rgba(245,158,11,0.08);border-radius:50%;filter:blur(90px);animation:orbDrift 10s ease-in-out infinite;animation-delay:4s;"></div>
-
-    <section style="padding-top:130px;position:relative;z-index:2;max-width:1100px;margin:0 auto;">
-
-      <!-- HERO -->
-      <div style="text-align:center;margin-bottom:60px;" class="reveal">
-        <div style="font-size:11px;letter-spacing:4px;text-transform:uppercase;color:#dc2626;margin-bottom:16px;display:flex;align-items:center;justify-content:center;gap:12px;">
-          <span style="width:30px;height:1px;background:#dc2626;display:inline-block;"></span>
-          Kindustry Esports Division
-          <span style="width:30px;height:1px;background:#dc2626;display:inline-block;"></span>
-        </div>
-        <h1 style="font-family:'Orbitron',monospace;font-size:clamp(52px,10vw,110px);font-weight:900;line-height:1;letter-spacing:-2px;background:linear-gradient(135deg,#fff 0%,#dc2626 50%,#f59e0b 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:16px;">GOD K</h1>
-        <div style="font-family:'Orbitron',monospace;font-size:14px;letter-spacing:8px;color:var(--dim);margin-bottom:28px;">ESPORTS TEAM</div>
-        <div style="display:inline-block;background:rgba(220,38,38,0.12);border:1px solid rgba(220,38,38,0.35);border-radius:100px;padding:8px 24px;font-size:12px;letter-spacing:3px;text-transform:uppercase;color:#dc2626;">⚔️ Forming — Season 1</div>
-      </div>
-
-      <!-- COMING SOON MAIN CARD -->
-      <div class="card reveal" style="padding:56px;text-align:center;margin-bottom:32px;background:linear-gradient(135deg,rgba(220,38,38,0.08),rgba(245,158,11,0.06));border-color:rgba(220,38,38,0.25);position:relative;overflow:hidden;">
-        <div style="position:absolute;font-size:200px;opacity:0.03;top:-20px;right:-20px;pointer-events:none;">⚔️</div>
-        <div style="font-size:64px;margin-bottom:20px;animation:gwFloat 4s ease-in-out infinite;display:inline-block;">⚔️</div>
-        <h2 style="font-family:'Orbitron',monospace;font-size:clamp(24px,4vw,40px);font-weight:900;margin-bottom:14px;background:linear-gradient(135deg,var(--text),#dc2626);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;">Roster Reveal Coming Soon</h2>
-        <p style="color:var(--dim);font-size:16px;line-height:1.8;max-width:600px;margin:0 auto 28px;">God K is Kindustry's competitive esports team. We are currently scouting and assembling our founding roster. The best players will represent Kindustry on the national stage.</p>
-        <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
-          <a href="https://discord.gg/CBqWUKScfF" target="_blank" class="btn btn-dc">💬 Get Notified on Discord</a>
-          <a href="#" onclick="showPage('home');return false;" class="btn btn-ol">← Back to Home</a>
-        </div>
-      </div>
-
-      <!-- STATS ROW -->
-      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:32px;" class="reveal">
-        <div class="card" style="padding:24px;text-align:center;">
-          <div style="font-family:'Orbitron',monospace;font-size:28px;font-weight:900;color:#dc2626;">TBA</div>
-          <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);margin-top:4px;">Roster Size</div>
-        </div>
-        <div class="card" style="padding:24px;text-align:center;">
-          <div style="font-family:'Orbitron',monospace;font-size:28px;font-weight:900;color:#f59e0b;">TBA</div>
-          <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);margin-top:4px;">Games</div>
-        </div>
-        <div class="card" style="padding:24px;text-align:center;">
-          <div style="font-family:'Orbitron',monospace;font-size:28px;font-weight:900;color:var(--primary);">S1</div>
-          <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);margin-top:4px;">Season</div>
-        </div>
-        <div class="card" style="padding:24px;text-align:center;">
-          <div style="font-family:'Orbitron',monospace;font-size:28px;font-weight:900;color:#22c55e;">OPEN</div>
-          <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);margin-top:4px;">Tryouts</div>
-        </div>
-      </div>
-
-      <!-- TRYOUTS CARD -->
-      <div class="card reveal" style="padding:36px;margin-bottom:32px;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;">
-        <div>
-          <div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#dc2626;margin-bottom:12px;">Tryouts</div>
-          <h3 style="font-family:'Orbitron',monospace;font-size:22px;font-weight:700;margin-bottom:12px;">Think You Have What It Takes?</h3>
-          <p style="color:var(--dim);font-size:14px;line-height:1.8;margin-bottom:20px;">God K is looking for dedicated, skilled players who are committed to competing at the highest level. All skill levels welcome to apply.</p>
-          <a href="https://discord.gg/CBqWUKScfF" target="_blank" class="btn btn-p">Apply via Discord →</a>
-        </div>
-        <div style="display:flex;flex-direction:column;gap:12px;">
-          <div class="card" style="padding:16px;display:flex;align-items:center;gap:14px;"><span style="font-size:22px;">🎮</span><div><div style="font-weight:700;font-size:14px;">Skill</div><div style="font-size:12px;color:var(--dim);">Must be competitive level</div></div></div>
-          <div class="card" style="padding:16px;display:flex;align-items:center;gap:14px;"><span style="font-size:22px;">🏆</span><div><div style="font-weight:700;font-size:14px;">Dedication</div><div style="font-size:12px;color:var(--dim);">Consistent practice & availability</div></div></div>
-          <div class="card" style="padding:16px;display:flex;align-items:center;gap:14px;"><span style="font-size:22px;">💬</span><div><div style="font-weight:700;font-size:14px;">Discord</div><div style="font-size:12px;color:var(--dim);">Active community member</div></div></div>
-        </div>
-      </div>
-
-    </section>
-  </div>
-  <div class="sec-div"></div>
-  <footer><div class="ft-brand"><a href="#" onclick="showPage('home');return false;">KINDUSTRY</a><div class="ft-quote">"where everything forges into greatness"</div></div><div class="ft-links"><div class="ft-nav"><a href="#" onclick="showPage('home');return false;">Home</a><a href="https://discord.gg/CBqWUKScfF" target="_blank">Discord</a></div><div class="ft-copy">© 2026 Kindustry. All rights reserved.</div></div></footer>
-</div>
-
-<!-- ════════════════════ ADMIN PANEL ════════════════════ -->
-<div class="page" id="page-admin">
-  <section style="padding-top:110px;max-width:1100px;margin:0 auto;">
-    <div class="sec-hdr">
-      <div class="sec-ey">Staff Only</div>
-      <h2 class="sec-title">Admin Panel</h2>
-    </div>
-
-    <!-- AUTH CHECK -->
-    <div id="adminLocked" class="card" style="padding:48px;text-align:center;margin-bottom:24px;">
-      <div style="font-size:48px;margin-bottom:16px;">🔐</div>
-      <h3 style="font-family:'Orbitron',monospace;font-size:20px;font-weight:700;margin-bottom:10px;">Admin Access Required</h3>
-      <p style="color:var(--dim);margin-bottom:24px;font-size:14px;">Enter the admin password to access the control panel.</p>
-      <div style="max-width:300px;margin:0 auto;">
-        <input type="password" id="adminPassInput" class="fi" placeholder="Enter secret code" style="margin-bottom:12px;" onkeydown="if(event.key==='Enter')checkAdminPass()">
-        <button id="adminUnlockBtn" class="btn btn-p" style="width:100%;justify-content:center;" onclick="checkAdminPass()">Unlock Admin</button>
-      </div>
-    </div>
-
-    <div id="adminPanel" style="display:none;">
-      <!-- QUICK STATS -->
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:24px;">
-        <div class="card" style="padding:18px;text-align:center;"><div style="font-family:'Orbitron',monospace;font-size:22px;font-weight:900;color:var(--primary);" id="adminTotalUsers">—</div><div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);margin-top:4px;">Users</div></div>
-        <div class="card" style="padding:18px;text-align:center;"><div style="font-family:'Orbitron',monospace;font-size:22px;font-weight:900;color:#f59e0b;" id="adminTotalLB">—</div><div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);margin-top:4px;">Leaderboard</div></div>
-        <div class="card" style="padding:18px;text-align:center;"><div style="font-family:'Orbitron',monospace;font-size:22px;font-weight:900;color:#22c55e;" id="adminTotalRegs">—</div><div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);margin-top:4px;">Registrations</div></div>
-      </div>
-      <!-- TOURNAMENT MANAGEMENT -->
-      <div class="card" style="padding:28px;margin-bottom:20px;">
-        <h3 style="font-family:'Orbitron',monospace;font-size:15px;font-weight:700;color:#a78bfa;margin-bottom:20px;">🏆 Tournament Management</h3>
-        <div style="background:rgba(167,139,250,.06);border:1px solid rgba(167,139,250,.2);border-radius:10px;padding:18px;margin-bottom:18px;">
-          <div style="font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#a78bfa;margin-bottom:14px;">Create New Tournament</div>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;">
-            <div><label class="fl">Tournament Name</label><input type="text" class="fi" id="at-name" placeholder="Roblox Cup #2" maxlength="60"></div>
-            <div><label class="fl">Game</label><input type="text" class="fi" id="at-game" placeholder="Roblox, BGMI..." maxlength="40"></div>
-            <div><label class="fl">Max Players</label><input type="number" class="fi" id="at-max" value="32" min="2" max="1000"></div>
-            <div><label class="fl">Prize</label><input type="text" class="fi" id="at-prize" placeholder="Nitro + Title" maxlength="80"></div>
-          </div>
-          <div style="margin-bottom:12px;"><label class="fl">Description</label><input type="text" class="fi" id="at-desc" placeholder="Short description..." maxlength="200"></div>
-          <div style="display:flex;gap:12px;align-items:flex-end;">
-            <div style="flex:1;"><label class="fl">Status</label><select class="select-field" id="at-status"><option value="open">Open</option><option value="upcoming">Upcoming</option><option value="closed">Closed</option></select></div>
-            <button class="btn btn-p" id="at-btn" onclick="adminCreateTournament()" style="white-space:nowrap;padding:10px 18px;">Create Tournament</button>
-          </div>
-        </div>
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
-          <span style="font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--dim);">All Tournaments</span>
-          <button class="btn btn-ol" style="padding:5px 12px;font-size:10px;" onclick="adminLoadTournaments()">Refresh</button>
-        </div>
-        <div id="adminTournamentList" style="font-size:13px;color:var(--dim);">Loading...</div>
-      </div>
-      <!-- ADD TO LEADERBOARD -->
-      <div class="card" style="padding:28px;margin-bottom:20px;">
-        <h3 style="font-family:'Orbitron',monospace;font-size:15px;font-weight:700;color:var(--primary);margin-bottom:20px;">🏆 Add Player to Leaderboard</h3>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;">
-          <div><label class="fl">Username</label><input type="text" class="fi" id="a-username" placeholder="PlayerName" maxlength="12"></div>
-          <div><label class="fl">Tag / Title</label><input type="text" class="fi" id="a-tag" placeholder="Tournament Winner"></div>
-          <div><label class="fl">Tournaments Played</label><input type="number" class="fi" id="a-tournaments" placeholder="2" min="0"></div>
-          <div><label class="fl">Wins</label><input type="number" class="fi" id="a-wins" placeholder="1" min="0"></div>
-        </div>
-        <div style="margin-bottom:14px;"><label class="fl">Badges (comma separated)</label><input type="text" class="fi" id="a-badges" placeholder="champ, active, new"></div>
-        <button class="btn btn-p" onclick="adminAddPlayer()">Add Player</button>
-        <div id="a-msg" style="margin-top:10px;font-size:13px;color:#22c55e;display:none;"></div>
-      </div>
-
-      <!-- PLAYERS & SUSPENSIONS -->
-      <div class="card" style="padding:28px;margin-bottom:20px;">
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
-          <h3 style="font-family:'Orbitron',monospace;font-size:15px;font-weight:700;color:var(--primary);">📊 Players & Suspensions</h3>
-          <button class="btn btn-ol" style="padding:7px 16px;font-size:11px;" onclick="adminLoadPlayers()">Refresh</button>
-        </div>
-        <div id="adminPlayerList" style="font-size:13px;color:var(--dim);">Loading...</div>
-      </div>
-
-      <!-- VIEW REGISTRATIONS -->
-      <div class="card" style="padding:28px;margin-bottom:20px;">
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
-          <h3 style="font-family:'Orbitron',monospace;font-size:15px;font-weight:700;color:var(--primary);">📝 Tournament Registrations</h3>
-          <button class="btn btn-ol" style="padding:7px 16px;font-size:11px;" onclick="adminLoadRegistrations()">Load</button>
-        </div>
-        <div id="adminRegList" style="font-size:13px;color:var(--dim);">Click Load to view registrations...</div>
-      </div>
-
-      <!-- VIEW USERS -->
-      <div class="card" style="padding:28px;margin-bottom:20px;">
-        <h3 style="font-family:'Orbitron',monospace;font-size:15px;font-weight:700;color:var(--primary);margin-bottom:16px;">👥 Registered Users</h3>
-        <div id="adminUserList" style="font-size:13px;color:var(--dim);">
-          <button class="btn btn-ol" style="padding:7px 16px;font-size:11px;" onclick="adminLoadUsers()">Load Users</button>
-        </div>
-      </div>
-
-      <!-- QUICK STATS -->
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:20px;">
-        <div class="card" style="padding:20px;text-align:center;">
-          <div style="font-family:'Orbitron',monospace;font-size:24px;font-weight:900;color:var(--primary);" id="adminTotalUsers">—</div>
-          <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);margin-top:4px;">Total Users</div>
-        </div>
-        <div class="card" style="padding:20px;text-align:center;">
-          <div style="font-family:'Orbitron',monospace;font-size:24px;font-weight:900;color:#f59e0b;" id="adminTotalLB">—</div>
-          <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);margin-top:4px;">Leaderboard</div>
-        </div>
-        <div class="card" style="padding:20px;text-align:center;">
-          <div style="font-family:'Orbitron',monospace;font-size:24px;font-weight:900;color:#22c55e;">✅</div>
-          <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);margin-top:4px;">System OK</div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <div class="sec-div"></div>
-  <footer><div class="ft-brand"><a href="#" onclick="showPage('home');return false;">KINDUSTRY</a></div><div class="ft-links"><div class="ft-nav"><a href="#" onclick="showPage('home');return false;">Home</a></div><div class="ft-copy">© 2026 Kindustry.</div></div></footer>
-</div>
-
-<!-- ════════════════════ ANNOUNCEMENTS ════════════════════ -->
-<div class="page" id="page-announcements">
-  <section style="padding-top:110px;">
-    <div class="sec-hdr reveal">
-      <div class="sec-ey">Latest Updates</div>
-      <h2 class="sec-title">News & Announcements</h2>
-    </div>
-
-    <!-- FEATURED ANNOUNCEMENT -->
-    <div class="announce-hero reveal">
-      <div style="font-size:48px;flex-shrink:0;">📢</div>
-      <div>
-        <div class="announce-badge new">Latest</div>
-        <div class="announce-title" style="font-family:'Orbitron',monospace;font-size:20px;font-weight:700;margin-bottom:8px;">Kindustry is Live!</div>
-        <div class="announce-body">Welcome to Kindustry — the home of competitive gaming, epic giveaways, and a community built for those who live to play. Our first tournament is coming soon. Stay tuned and join our Discord for real-time updates!</div>
-      </div>
-    </div>
-
-    <div class="announce-grid">
-      <div class="announce-card card reveal">
-        <div class="announce-badge tourney">Tournament</div>
-        <div class="announce-title">Roblox Parkour Cup #1 — Coming June 2026</div>
-        <div class="announce-date">📅 May 17, 2026</div>
-        <div class="announce-body">Our first official tournament is confirmed! Roblox Parkour Cup #1 will feature 32 players competing for the Kindustry champion title. Registration opens on Discord — join now to secure your spot.</div>
-      </div>
-
-      <div class="announce-card card reveal">
-        <div class="announce-badge gw">Giveaway</div>
-        <div class="announce-title">Launch Giveaway — 3 Winners!</div>
-        <div class="announce-date">📅 May 15, 2026</div>
-        <div class="announce-body">To celebrate our launch we are giving away Discord Nitro + VIP role to 3 lucky community members. Enter by joining our Discord and following our YouTube channel. Ends May 31!</div>
-      </div>
-
-      <div class="announce-card card reveal">
-        <div class="announce-badge update">Update</div>
-        <div class="announce-title">Website V1 — Full Launch</div>
-        <div class="announce-date">📅 May 14, 2026</div>
-        <div class="announce-body">Kindustry website is officially live at kindustry.in! Features include Google & Discord login, leaderboard, profile system, store, and 7 beautiful themes. More features dropping every week.</div>
-      </div>
-
-      <div class="announce-card card reveal">
-        <div class="announce-badge tourney">Esports</div>
-        <div class="announce-title">Team GODK — Roster Forming</div>
-        <div class="announce-date">📅 May 13, 2026</div>
-        <div class="announce-body">Kindustry esports team GODK is officially forming! We are scouting skilled and dedicated players for Season 1. Apply through our Discord server. Tryout details coming soon.</div>
-      </div>
-    </div>
-
-    <div style="text-align:center;margin-top:40px;" class="reveal">
-      <p style="color:var(--dim);margin-bottom:16px;font-size:14px;">Want real-time announcements? Join our Discord — all updates posted there first!</p>
-      <a href="https://discord.gg/CBqWUKScfF" target="_blank" class="btn btn-dc">Join Discord for Updates</a>
-    </div>
-  </section>
-  <div class="sec-div"></div>
-  <footer><div class="ft-brand"><a href="#" onclick="showPage('home');return false;">KINDUSTRY</a><div class="ft-quote">"where everything forges into greatness"</div></div><div class="ft-links"><div class="ft-nav"><a href="#" onclick="showPage('home');return false;">Home</a><a href="https://discord.gg/CBqWUKScfF" target="_blank">Discord</a></div><div class="ft-copy">© 2026 Kindustry. All rights reserved.</div></div></footer>
-</div>
-
-<!-- ════════════════════ TOURNAMENT REGISTRATION ════════════════════ -->
-<div class="page" id="page-register">
-  <section style="padding-top:110px;">
-    <div class="sec-hdr reveal">
-      <div class="sec-ey">Compete</div>
-      <h2 class="sec-title">Tournament Registration</h2>
-    </div>
-
-    <!-- ACTIVE TOURNAMENT BANNER -->
-    <div id="activeTournamentBanner" style="background:linear-gradient(135deg,rgba(var(--pr),.08),rgba(var(--ac),.06));border:1px solid var(--border);border-radius:14px;padding:28px 32px;margin-bottom:36px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px;" class="reveal">
-      <div>
-        <div style="font-size:10px;letter-spacing:3px;color:var(--accent);text-transform:uppercase;margin-bottom:6px;">Now Open</div>
-        <div style="font-family:'Orbitron',monospace;font-size:20px;font-weight:700;margin-bottom:4px;">Roblox Parkour Cup #1</div>
-        <div style="font-size:13px;color:var(--dim);">🟥 Roblox · June 2026 · 32 Players · Free Entry</div>
-      </div>
-      <div class="t-badge open" style="font-size:11px;padding:6px 16px;">Registration Open</div>
-    </div>
-
-    <div class="reg-split">
-      <!-- FORM -->
-      <div class="reg-form card reveal">
-        <h3 style="font-family:'Orbitron',monospace;font-size:16px;font-weight:700;margin-bottom:22px;color:var(--primary);">📝 Register Now</h3>
-        <div class="fg"><label class="fl">Your Username</label><input type="text" class="fi" id="reg-username" placeholder="Your Kindustry username" maxlength="12"></div>
-        <div class="fg"><label class="fl">Discord Tag</label><input type="text" class="fi" id="reg-discord" placeholder="YourName#0000 or @username"></div>
-        <div class="fg"><label class="fl">Email Address <span style="color:#ef4444;">*</span></label><input type="email" class="fi" id="reg-email" placeholder="you@email.com — for tournament updates"></div>
-        <div class="fg"><label class="fl">Select Tournament</label>
-          <select class="select-field" id="reg-tournament">
-            <option value="">Choose a tournament...</option>
-            <option value="roblox-parkour-1">Roblox Parkour Cup #1 — June 2026</option>
-            <option value="minecraft-survival-1">Minecraft Survival Games — July 2026</option>
-          </select>
-        </div>
-        <div class="fg"><label class="fl">Your Game Username / ID</label><input type="text" class="fi" id="reg-gameid" placeholder="Your in-game name or ID"></div>
-        <div class="fg"><label class="fl">Extra Notes (optional)</label><textarea class="ft" id="reg-notes" placeholder="Anything you want us to know..." style="height:80px;"></textarea></div>
-        <button class="btn btn-p" style="width:100%;justify-content:center;" onclick="submitRegistration()">Register for Tournament →</button>
-        <div style="background:rgba(88,101,242,.08);border:1px solid rgba(88,101,242,.25);border-radius:8px;padding:10px 14px;margin-top:10px;display:flex;align-items:center;gap:10px;"><span style="font-size:18px;flex-shrink:0;">💬</span><div style="font-size:11px;color:var(--dim);"><strong style="color:#7289da;">Discord required to participate.</strong> Join our server to compete. <a href="https://discord.gg/CBqWUKScfF" target="_blank" style="color:#7289da;text-decoration:underline;">Join Discord →</a></div></div>
-      </div>
-
-      <!-- INFO CARDS -->
-      <div class="reg-info reveal">
-        <div class="reg-info-card card">
-          <div class="reg-info-icon">🏆</div>
-          <div><div class="reg-info-title">Free Entry</div><div class="reg-info-desc">All Kindustry tournaments are completely free to enter. No entry fees ever.</div></div>
-        </div>
-        <div class="reg-info-card card">
-          <div class="reg-info-icon">💬</div>
-          <div><div class="reg-info-title">Discord Required</div><div class="reg-info-desc">You must be in our Discord server to participate. Join at discord.gg/CBqWUKScfF</div></div>
-        </div>
-        <div class="reg-info-card card">
-          <div class="reg-info-icon">📅</div>
-          <div><div class="reg-info-title">Confirmation</div><div class="reg-info-desc">You will receive a confirmation message on Discord within 24 hours of registering.</div></div>
-        </div>
-        <div class="reg-info-card card">
-          <div class="reg-info-icon">🎮</div>
-          <div><div class="reg-info-title">Fair Play</div><div class="reg-info-desc">Cheating or unsportsmanlike conduct results in immediate disqualification.</div></div>
-        </div>
-        <div style="padding:18px 20px;text-align:center;" class="card">
-          <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);margin-bottom:10px;">Questions?</div>
-          <a href="https://discord.gg/CBqWUKScfF" target="_blank" class="btn btn-dc" style="width:100%;justify-content:center;font-size:12px;padding:10px;">Ask on Discord</a>
-        </div>
-      </div>
-    </div>
-  </section>
-  <div class="sec-div"></div>
-  <footer><div class="ft-brand"><a href="#" onclick="showPage('home');return false;">KINDUSTRY</a><div class="ft-quote">"where everything forges into greatness"</div></div><div class="ft-links"><div class="ft-nav"><a href="#" onclick="showPage('tournaments');return false;">Tournaments</a><a href="https://discord.gg/CBqWUKScfF" target="_blank">Discord</a></div><div class="ft-copy">© 2026 Kindustry. All rights reserved.</div></div></footer>
-</div>
-
-
 </body>
 </html>
