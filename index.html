@@ -3029,961 +3029,569 @@ window._supabaseReady = false;
   onload="window._supabaseReady=true;"
   onerror="console.warn('Supabase CDN failed, auth features unavailable');">
 </script>
-<script>
-'use strict';
 
-/* ════ SUPABASE ════ */
-const SUPA_URL = 'https://uzrfmnzgiulesfqfueft.supabase.co';
-const SUPA_KEY = 'sb_publishable_ITrJ9r2tTxWZVEvCQB6V-w_rPFgTaim';
-const supa = supabase.createClient(SUPA_URL, SUPA_KEY);
+<div class="page" id="page-privacy">
+  <section style="padding-top:110px;max-width:860px;">
+    <div class="sec-hdr reveal">
+      <div class="sec-ey">Legal</div>
+      <h2 class="sec-title">Privacy Policy</h2>
+    </div>
+    <div style="font-size:12px;color:var(--dim);margin-bottom:32px;">Last updated: May 2026</div>
 
-/* ════ STAR CANVAS (About page) ════ */
-function initAboutStars() {
-  const canvas = document.getElementById('aboutStars');
-  if (!canvas) return;
-  const ctx = canvas.getContext('2d');
-  let W, H, stars = [], animId;
+    <div class="card reveal" style="padding:32px;margin-bottom:20px;">
+      <h3 style="font-family:'Orbitron',monospace;font-size:15px;font-weight:700;color:var(--primary);margin-bottom:14px;">1. Who We Are</h3>
+      <p style="color:var(--dim);font-size:14px;line-height:1.8;">Kindustry is a gaming community platform operating at <strong style="color:var(--text);">kindustry.in</strong>. We provide gaming tournaments, giveaways, community features, and a store. You can contact us at <a href="mailto:officialkindustry@gmail.com" style="color:var(--primary);">officialkindustry@gmail.com</a>.</p>
+    </div>
 
-  function resize() {
-    W = canvas.width  = canvas.offsetWidth;
-    H = canvas.height = canvas.offsetHeight;
-  }
+    <div class="card reveal" style="padding:32px;margin-bottom:20px;">
+      <h3 style="font-family:'Orbitron',monospace;font-size:15px;font-weight:700;color:var(--primary);margin-bottom:14px;">2. What Information We Collect</h3>
+      <p style="color:var(--dim);font-size:14px;line-height:1.8;margin-bottom:12px;">When you create an account we collect:</p>
+      <ul style="color:var(--dim);font-size:14px;line-height:2;padding-left:20px;">
+        <li>Your email address (via Google or email login)</li>
+        <li>Your chosen username</li>
+        <li>Your profile picture (if you upload one)</li>
+        <li>Your tournament participation and win history</li>
+        <li>Basic usage data (pages visited, time on site) for improving our services</li>
+      </ul>
+      <p style="color:var(--dim);font-size:14px;line-height:1.8;margin-top:12px;">We do <strong style="color:var(--text);">not</strong> collect payment information, phone numbers, or physical addresses.</p>
+    </div>
 
-  function makeStar() {
-    return {
-      x: Math.random() * W,
-      y: Math.random() * H,
-      r: Math.random() * 1.4 + 0.2,
-      o: Math.random(),
-      speed: Math.random() * 0.4 + 0.1,
-      twinkleSpeed: Math.random() * 0.02 + 0.005,
-      twinkleDir: 1
-    };
-  }
+    <div class="card reveal" style="padding:32px;margin-bottom:20px;">
+      <h3 style="font-family:'Orbitron',monospace;font-size:15px;font-weight:700;color:var(--primary);margin-bottom:14px;">3. How We Use Your Information</h3>
+      <ul style="color:var(--dim);font-size:14px;line-height:2;padding-left:20px;">
+        <li>To create and manage your account</li>
+        <li>To display your profile and stats on the leaderboard</li>
+        <li>To contact you about tournaments, giveaways, and updates</li>
+        <li>To improve our website and services</li>
+        <li>To prevent abuse and enforce our community rules</li>
+      </ul>
+    </div>
 
-  function init() {
-    resize();
-    stars = [];
-    for (let i = 0; i < 160; i++) stars.push(makeStar());
-  }
+    <div class="card reveal" style="padding:32px;margin-bottom:20px;">
+      <h3 style="font-family:'Orbitron',monospace;font-size:15px;font-weight:700;color:var(--primary);margin-bottom:14px;">4. Data Storage & Security</h3>
+      <p style="color:var(--dim);font-size:14px;line-height:1.8;">Your data is stored securely using enterprise-grade infrastructure with row-level security and industry-standard encryption for all data in transit and at rest. We never sell your data to third parties. Authentication is powered by <strong style="color:var(--text);">Google Sign-In</strong> and <strong style="color:var(--text);">Discord</strong> — trusted industry-standard providers.</p>
+    </div>
 
-  function draw() {
-    ctx.clearRect(0, 0, W, H);
-    stars.forEach(s => {
-      s.o += s.twinkleSpeed * s.twinkleDir;
-      if (s.o >= 1 || s.o <= 0.1) s.twinkleDir *= -1;
-      s.y -= s.speed * 0.3;
-      if (s.y < -2) { s.y = H + 2; s.x = Math.random() * W; }
-      ctx.beginPath();
-      ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(255,255,255,${s.o * 0.9})`;
-      ctx.shadowBlur = 4;
-      ctx.shadowColor = 'rgba(150,180,255,0.8)';
-      ctx.fill();
-    });
-    animId = requestAnimationFrame(draw);
-  }
+    <div class="card reveal" style="padding:32px;margin-bottom:20px;">
+      <h3 style="font-family:'Orbitron',monospace;font-size:15px;font-weight:700;color:var(--primary);margin-bottom:14px;">5. Third Party Services</h3>
+      <p style="color:var(--dim);font-size:14px;line-height:1.8;margin-bottom:10px;">We use the following third-party services:</p>
+      <ul style="color:var(--dim);font-size:14px;line-height:2;padding-left:20px;">
+        <li>Authentication services for secure login</li>
+        <li>Database and storage services for your account data</li>
+        <li>Website hosting and security services</li>
+        <li>Anonymous usage analytics to improve user experience</li>
+        <li>Contact form processing services</li>
+      </ul>
+    </div>
 
-  window.addEventListener('resize', () => { resize(); });
-  init();
-  draw();
-}
+    <div class="card reveal" style="padding:32px;margin-bottom:20px;">
+      <h3 style="font-family:'Orbitron',monospace;font-size:15px;font-weight:700;color:var(--primary);margin-bottom:14px;">6. Your Rights</h3>
+      <p style="color:var(--dim);font-size:14px;line-height:1.8;margin-bottom:10px;">You have the right to:</p>
+      <ul style="color:var(--dim);font-size:14px;line-height:2;padding-left:20px;">
+        <li>Access your personal data</li>
+        <li>Correct inaccurate data</li>
+        <li>Delete your account and all associated data</li>
+        <li>Withdraw consent at any time</li>
+      </ul>
+      <p style="color:var(--dim);font-size:14px;line-height:1.8;margin-top:12px;">To delete your account, go to your <strong style="color:var(--text);">Profile → Settings → Delete Account</strong>. To request data deletion contact us at <a href="mailto:officialkindustry@gmail.com" style="color:var(--primary);">officialkindustry@gmail.com</a>.</p>
+    </div>
 
-/* Run stars when about page is shown */
-document.addEventListener('DOMContentLoaded', () => {
-  if (document.getElementById('page-about').classList.contains('active')) initAboutStars();
-});
+    <div class="card reveal" style="padding:32px;margin-bottom:20px;">
+      <h3 style="font-family:'Orbitron',monospace;font-size:15px;font-weight:700;color:var(--primary);margin-bottom:14px;">7. Cookies</h3>
+      <p style="color:var(--dim);font-size:14px;line-height:1.8;">We use essential cookies only — for authentication sessions. We do not use advertising cookies or sell cookie data.</p>
+    </div>
 
-/* ════ LOADER ════ */
-function hideLoader() {
-  const l = document.getElementById('loader');
-  if(l) l.classList.add('out');
-}
-// Primary: after page load
-window.addEventListener('load', () => setTimeout(hideLoader, 2200));
-// Fallback 1: if load event never fires (CDN fail)
-setTimeout(hideLoader, 4000);
-// Fallback 2: on any user interaction
-document.addEventListener('click', hideLoader, { once: true });
-document.addEventListener('keydown', hideLoader, { once: true });
-document.addEventListener('touchstart', hideLoader, { once: true });
+    <div class="card reveal" style="padding:32px;margin-bottom:40px;">
+      <h3 style="font-family:'Orbitron',monospace;font-size:15px;font-weight:700;color:var(--primary);margin-bottom:14px;">8. Contact</h3>
+      <p style="color:var(--dim);font-size:14px;line-height:1.8;">For any privacy questions contact us at <a href="mailto:officialkindustry@gmail.com" style="color:var(--primary);">officialkindustry@gmail.com</a> or through our <a href="https://discord.gg/CBqWUKScfF" target="_blank" style="color:var(--primary);">Discord server</a>.</p>
+    </div>
+  </section>
+  <div class="sec-div"></div>
+  <footer><div class="ft-brand"><a href="#" onclick="showPage('home');return false;">KINDUSTRY</a><div class="ft-quote">"where everything forges into greatness"</div></div><div class="ft-links"><div class="ft-nav"><a href="#" onclick="showPage('home');return false;">Home</a><a href="#" onclick="showPage('terms');return false;">Terms</a><a href="https://discord.gg/CBqWUKScfF" target="_blank">Discord</a></div><div class="ft-copy">© 2026 Kindustry. All rights reserved.</div></div></footer>
+</div>
 
-/* ════ PARTICLES ════ */
-(function(){
-  const c = document.getElementById('pts');
-  for(let i=0;i<30;i++){
-    const p = document.createElement('div');
-    p.className = 'pt';
-    const s = 1.5 + Math.random()*2;
-    p.style.cssText = `left:${Math.random()*100}vw;width:${s}px;height:${s}px;background:rgba(var(--pr),.4);animation-duration:${10+Math.random()*14}s;animation-delay:${Math.random()*14}s;`;
-    c.appendChild(p);
-  }
-})();
+<!-- ════════════════════ TERMS OF SERVICE ════════════════════ -->
+<div class="page" id="page-terms">
+  <section style="padding-top:110px;max-width:860px;">
+    <div class="sec-hdr reveal">
+      <div class="sec-ey">Legal</div>
+      <h2 class="sec-title">Terms of Service</h2>
+    </div>
+    <div style="font-size:12px;color:var(--dim);margin-bottom:32px;">Last updated: May 2026</div>
 
-/* ════ CURSOR ════ */
-const $c = document.getElementById('cur');
-const $r = document.getElementById('cur-ring');
-let mX=window.innerWidth/2, mY=window.innerHeight/2, rX=mX, rY=mY;
+    <div class="card reveal" style="padding:32px;margin-bottom:20px;">
+      <h3 style="font-family:'Orbitron',monospace;font-size:15px;font-weight:700;color:var(--primary);margin-bottom:14px;">1. Acceptance of Terms</h3>
+      <p style="color:var(--dim);font-size:14px;line-height:1.8;">By accessing or using Kindustry (<strong style="color:var(--text);">kindustry.in</strong>), you agree to be bound by these Terms of Service. If you do not agree, please do not use our platform.</p>
+    </div>
 
-if(window.matchMedia('(pointer:fine)').matches){
-  document.addEventListener('mousemove', e => { mX=e.clientX; mY=e.clientY; });
-  (function loop(){
-    rX += (mX-rX)*.12; rY += (mY-rY)*.12;
-    $c.style.transform = `translate(${mX}px,${mY}px) translate(-50%,-50%)`;
-    $r.style.transform = `translate(${rX}px,${rY}px) translate(-50%,-50%)`;
-    requestAnimationFrame(loop);
-  })();
-  document.addEventListener('mouseover', e => {
-    try {
-      const el = e.target;
-      if(el && el.nodeType === 1 && typeof el.closest === 'function') {
-        if(el.closest('a,button,input,textarea,.feature-card,.card,.btn,.sm,.auth-btn,.tab-btn,.lb-filter-btn,.th-btn,.ud-item')) {
-          $c.classList.add('big'); $r.classList.add('big');
-        }
-      }
-    } catch(err){}
-  }, true);
-  document.addEventListener('mouseout', e => {
-    try { $c.classList.remove('big'); $r.classList.remove('big'); } catch(err){}
-  }, true);
-}
+    <div class="card reveal" style="padding:32px;margin-bottom:20px;">
+      <h3 style="font-family:'Orbitron',monospace;font-size:15px;font-weight:700;color:var(--primary);margin-bottom:14px;">2. Eligibility</h3>
+      <p style="color:var(--dim);font-size:14px;line-height:1.8;">You must be <strong style="color:var(--text);">13 or older</strong> to create an account or make any purchases on Kindustry. This requirement exists to comply with data protection laws regarding personal information. Players of all ages are welcome to browse the site and participate in free community activities with parental permission. Users under 18 should have parental awareness and consent when participating in tournaments or community events.</p>
+    </div>
 
-/* ════ 3D TILT ════ */
-if(window.matchMedia('(pointer:fine)').matches){
-  document.querySelectorAll('.feature-card,.t-card').forEach(el => {
-    el.addEventListener('mousemove', e => {
-      const r=el.getBoundingClientRect();
-      const x=((e.clientX-r.left)/r.width-.5)*8;
-      const y=((e.clientY-r.top)/r.height-.5)*-8;
-      el.style.transform = `perspective(800px) rotateX(${y}deg) rotateY(${x}deg) translateY(-5px)`;
-    });
-    el.addEventListener('mouseleave', () => { el.style.transform=''; });
-  });
-}
+    <div class="card reveal" style="padding:32px;margin-bottom:20px;">
+      <h3 style="font-family:'Orbitron',monospace;font-size:15px;font-weight:700;color:var(--primary);margin-bottom:14px;">3. Account Rules</h3>
+      <ul style="color:var(--dim);font-size:14px;line-height:2;padding-left:20px;">
+        <li>You are responsible for keeping your account secure</li>
+        <li>One account per person — no duplicate accounts</li>
+        <li>You must not share your account with others</li>
+        <li>Usernames must not contain offensive, hateful, or inappropriate language</li>
+        <li>You must not impersonate Kindustry staff or other users</li>
+      </ul>
+    </div>
 
-/* ════ RADIAL LIGHT ════ */
-document.querySelectorAll('.feature-card,.t-card').forEach(el => {
-  el.addEventListener('mousemove', e => {
-    const r=el.getBoundingClientRect();
-    el.style.background = `radial-gradient(circle at ${e.clientX-r.left}px ${e.clientY-r.top}px, rgba(var(--pr),.1), var(--surface) 55%)`;
-  });
-  el.addEventListener('mouseleave', () => { el.style.background=''; });
-});
+    <div class="card reveal" style="padding:32px;margin-bottom:20px;">
+      <h3 style="font-family:'Orbitron',monospace;font-size:15px;font-weight:700;color:var(--primary);margin-bottom:14px;">4. Community Rules</h3>
+      <ul style="color:var(--dim);font-size:14px;line-height:2;padding-left:20px;">
+        <li>No harassment, bullying, or hate speech of any kind</li>
+        <li>No cheating, exploiting, or using unfair advantages in tournaments</li>
+        <li>No spam, scamming, or misleading other users</li>
+        <li>No sharing of illegal content</li>
+        <li>Treat all community members with respect</li>
+      </ul>
+      <p style="color:var(--dim);font-size:14px;line-height:1.8;margin-top:12px;">Violations may result in account suspension or permanent ban without refund.</p>
+    </div>
 
-/* ════ AUTH STATE ════ */
+    <div class="card reveal" style="padding:32px;margin-bottom:20px;">
+      <h3 style="font-family:'Orbitron',monospace;font-size:15px;font-weight:700;color:var(--primary);margin-bottom:14px;">5. Tournaments & Giveaways</h3>
+      <ul style="color:var(--dim);font-size:14px;line-height:2;padding-left:20px;">
+        <li>Tournament results are final as decided by Kindustry staff</li>
+        <li>Prizes will be distributed within 7 days of tournament completion</li>
+        <li>Kindustry reserves the right to cancel or modify tournaments</li>
+        <li>Giveaway winners are selected fairly and randomly</li>
+        <li>Prize values cannot be exchanged for cash unless stated</li>
+      </ul>
+    </div>
+
+    <div class="card reveal" style="padding:32px;margin-bottom:20px;">
+      <h3 style="font-family:'Orbitron',monospace;font-size:15px;font-weight:700;color:var(--primary);margin-bottom:14px;">6. Store & Purchases</h3>
+      <p style="color:var(--dim);font-size:14px;line-height:1.8;">All purchases are final. Refunds may be issued at Kindustry's discretion within 7 days of purchase for digital items that have not been used. Physical merchandise follows standard return policies stated at time of purchase.</p>
+    </div>
+
+    <div class="card reveal" style="padding:32px;margin-bottom:20px;">
+      <h3 style="font-family:'Orbitron',monospace;font-size:15px;font-weight:700;color:var(--primary);margin-bottom:14px;">7. Intellectual Property</h3>
+      <p style="color:var(--dim);font-size:14px;line-height:1.8;">All Kindustry branding, logos, and content are owned by Kindustry. You may not reproduce or use our materials without written permission.</p>
+    </div>
+
+    <div class="card reveal" style="padding:32px;margin-bottom:20px;">
+      <h3 style="font-family:'Orbitron',monospace;font-size:15px;font-weight:700;color:var(--primary);margin-bottom:14px;">8. Limitation of Liability</h3>
+      <p style="color:var(--dim);font-size:14px;line-height:1.8;">Kindustry is provided "as is". We are not liable for any damages arising from use of our platform, including loss of data or tournament prizes due to technical issues beyond our control.</p>
+    </div>
+
+    <div class="card reveal" style="padding:32px;margin-bottom:20px;">
+      <h3 style="font-family:'Orbitron',monospace;font-size:15px;font-weight:700;color:var(--primary);margin-bottom:14px;">9. Changes to Terms</h3>
+      <p style="color:var(--dim);font-size:14px;line-height:1.8;">We may update these terms at any time. Continued use of Kindustry after changes means you accept the new terms. We will notify users of major changes via Discord.</p>
+    </div>
+
+    <div class="card reveal" style="padding:32px;margin-bottom:40px;">
+      <h3 style="font-family:'Orbitron',monospace;font-size:15px;font-weight:700;color:var(--primary);margin-bottom:14px;">10. Contact</h3>
+      <p style="color:var(--dim);font-size:14px;line-height:1.8;">For any questions about these terms contact us at <a href="mailto:officialkindustry@gmail.com" style="color:var(--primary);">officialkindustry@gmail.com</a></p>
+    </div>
+  </section>
+  <div class="sec-div"></div>
+  <footer><div class="ft-brand"><a href="#" onclick="showPage('home');return false;">KINDUSTRY</a><div class="ft-quote">"where everything forges into greatness"</div></div><div class="ft-links"><div class="ft-nav"><a href="#" onclick="showPage('home');return false;">Home</a><a href="#" onclick="showPage('privacy');return false;">Privacy</a><a href="https://discord.gg/CBqWUKScfF" target="_blank">Discord</a></div><div class="ft-copy">© 2026 Kindustry. All rights reserved.</div></div></footer>
+</div>
 
 
-let _cachedUser = null;
+<!-- ════════════════════ CHANGELOG ════════════════════ -->
+<div class="page" id="page-changelog">
+  <section style="padding-top:110px;max-width:900px;">
+    <div class="sec-hdr reveal">
+      <div class="sec-ey">History</div>
+      <h2 class="sec-title">Update Catalog</h2>
+      <p style="color:var(--dim);font-size:14px;max-width:520px;margin:8px auto 0;line-height:1.7;">Every update, improvement and milestone we've shipped — from day one to now.</p>
+    </div>
 
-async function getSupaUser() {
-  try {
-    const { data } = await supa.auth.getSession();
-    _cachedUser = data?.session?.user || null;
-    return _cachedUser;
-  } catch(e) {
-    return _cachedUser;
-  }
-}
+    <div class="changelog-timeline">
 
-function getSavedUsername() {
-  const keys = Object.keys(localStorage).filter(k=>k.startsWith('kin_uname_')); return keys.length ? localStorage.getItem(keys[0]) || '' : '';
-}
-
-async function updateNavAuth() {
-  const u = await getSupaUser();
-  const area = document.getElementById('navAuthArea');
-  const notifWrap = document.getElementById('notifWrap');
-  if (u) {
-    const userKey = `kin_uname_${u.id}`;
-    const uname = localStorage.getItem(userKey) || u.email?.split('@')[0] || 'Gamer';
-
-    // Fetch wins from leaderboard for rank badge
-    let wins = 0;
-    try {
-      const { data } = await supa.from('leaderboard').select('wins').eq('username', uname).single();
-      if(data) wins = data.wins || 0;
-    } catch(e) {}
-
-    // Rank badge based on wins
-    let rankHTML = '';
-    if(wins >= 10)     rankHTML = `<span class="nav-rank" style="background:rgba(245,158,11,0.15);color:#f59e0b;border:1px solid rgba(245,158,11,0.3);">👑 Champion</span>`;
-    else if(wins >= 5) rankHTML = `<span class="nav-rank" style="background:rgba(168,85,247,0.15);color:#a855f7;border:1px solid rgba(168,85,247,0.3);">⚡ Elite</span>`;
-    else if(wins >= 1) rankHTML = `<span class="nav-rank" style="background:rgba(34,197,94,0.12);color:#22c55e;border:1px solid rgba(34,197,94,0.25);">🏅 Winner</span>`;
-    else               rankHTML = `<span class="nav-rank" style="background:rgba(var(--pr),0.08);color:var(--dim);border:1px solid var(--border);">🎮 Member</span>`;
-
-    area.innerHTML = `<div class="nav-user-btn" onclick="toggleDropdown()"><div class="nav-avatar">👤</div>${uname}${rankHTML}</div>`;
-    document.getElementById('dd-name').textContent = uname;
-    document.getElementById('dd-tag').textContent = u.app_metadata?.provider ? `via ${u.app_metadata.provider}` : 'Kindustry Member';
-    document.getElementById('profileName').textContent = uname;
-    const d = new Date(u.created_at || Date.now());
-    document.getElementById('profileSince').textContent = `Member since ${d.toLocaleDateString('en-US',{month:'long',year:'numeric'})}`;
-    const inp = document.getElementById('profileUnameInput');
-    if (inp) inp.value = uname;
-    if(notifWrap) notifWrap.style.display = 'block';
-    if(localStorage.getItem('kin_notif_read') !== '1'){
-      const dot = document.getElementById('notifDot');
-      if(dot) dot.classList.add('show');
-    }
-    startPresence();
-    loadPfpFromDb(u.id).then(pfpUrl => {
-      if (!pfpUrl) return;
-      const navAv = document.querySelector('.nav-avatar');
-      if (navAv) navAv.innerHTML = '<img src="' + pfpUrl + '" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">';
-    });
-  } else {
-    area.innerHTML = '<button class="nav-login-btn" onclick="openAuth()">Sign In</button>';
-    if(notifWrap) notifWrap.style.display = 'none';
-    stopPresence();
-  }
-}
-
-/* AUTH MODAL */
-function openAuth() {
-  document.getElementById('authModal').classList.add('open');
-  document.getElementById('authStep1').style.display = 'block';
-  document.getElementById('authStep2').style.display = 'none';
-}
-function closeAuth() { document.getElementById('authModal').classList.remove('open'); }
-document.getElementById('authModal').addEventListener('click', e => {
-  if (e.target === document.getElementById('authModal')) closeAuth();
-});
-
-/* REAL SUPABASE OAUTH */
-async function doLogin(provider) {
-  const providerMap = { Google:'google', Facebook:'facebook', Discord:'discord', Twitter:'twitter' };
-  const p = providerMap[provider];
-  if (!p) return;
-  // Always redirect back to the domain the user is currently on
-  const redirectTo = window.location.origin;
-  const { error } = await supa.auth.signInWithOAuth({
-    provider: p,
-    options: { redirectTo }
-  });
-  if (error) {
-    alert(`Login failed: ${error.message}\n\nMake sure ${provider} is enabled in your Supabase Auth settings.`);
-  }
-}
-
-/* USERNAME PICKER */
-const BAD_WORDS = ['niger','nigger','nigga','nigg','rapist','rape','raping','hitler','nazi','porn','porno','sex','fuck','fucker','fucking','shit','shitter','ass','arse','bitch','cunt','dick','pussy','whore','fag','faggot','retard','retarded','kill','killing','killme','suicide','slave','racist','n1gg','n1gger','f4g','sh1t','fuk','phuck','b1tch','d1ck','cum','jizz','penis','vagina','nonce','pedo','pedophile','terrorist','jihad','bastard'];
-
-function containsBadWord(val) {
-  const lower = val.toLowerCase().replace(/[^a-z0-9]/g,'');
-  return BAD_WORDS.some(w => lower.includes(w));
-}
-
-function validateUname() {
-  const v = document.getElementById('unameInput').value;
-  const ok = /^[a-zA-Z0-9]{1,12}$/.test(v);
-  const err = document.getElementById('unameErr');
-  const btn = document.getElementById('unameSubmit');
-  if (v.length === 0) { err.style.display='none'; btn.disabled=true; return; }
-  if (!ok) { err.textContent='Only letters and numbers allowed (max 12).'; err.style.display='block'; btn.disabled=true; return; }
-  if (containsBadWord(v)) { err.textContent='This username is not allowed.'; err.style.display='block'; btn.disabled=true; return; }
-  err.style.display='none'; btn.disabled=false;
-}
-
-async function submitUsername() {
-  const v = document.getElementById('unameInput').value.trim();
-  if (!/^[a-zA-Z0-9]{1,12}$/.test(v)) return;
-  if (containsBadWord(v)) { document.getElementById('unameErr').textContent='This username is not allowed.'; document.getElementById('unameErr').style.display='block'; return; }
-  const btn = document.getElementById('unameSubmit');
-  btn.textContent = 'Checking...'; btn.disabled = true;
-  // Check uniqueness in Supabase
-  try {
-    const { data, error } = await supa.from('usernames').select('username').eq('username', v.toLowerCase()).maybeSingle();
-    if (data) {
-      document.getElementById('unameErr').textContent = 'Username already taken — choose another.';
-      document.getElementById('unameErr').style.display = 'block';
-      btn.textContent = 'Claim Username →'; btn.disabled = false;
-      return;
-    }
-  } catch(e) { console.log('Username check skipped:', e); }
-  const u2 = await getSupaUser();
-  if (u2) {
-    // Save to Supabase usernames table
-    try {
-      await supa.from('usernames').upsert({ username: v.toLowerCase(), user_id: u2.id });
-    } catch(e) { console.log('Username save skipped:', e); }
-    localStorage.setItem('kin_uname_' + u2.id, v);
-  }
-  btn.textContent = 'Claim Username →'; btn.disabled = false;
-  closeAuth();
-  await updateNavAuth();
-  showPage('profile');
-}
-
-/* DROPDOWN */
-function toggleDropdown() { document.getElementById('userDropdown').classList.toggle('open'); }
-function closeDropdown()  { document.getElementById('userDropdown').classList.remove('open'); }
-document.addEventListener('click', e => {
-  try {
-    if(e.target && e.target.nodeType === 1 && typeof e.target.closest === 'function') {
-      if(!e.target.closest('.nav-user-btn') && !e.target.closest('#userDropdown')) closeDropdown();
-    }
-  } catch(err){}
-});
-
-async function signOut() {
-  if (!confirm('Sign out of Kindustry?')) return;
-  closeDropdown();
-  try { await supa.auth.signOut({ scope: 'global' }); } catch(e) {}
-  _cachedUser = null;
-  try { Object.keys(localStorage).filter(k=>k.startsWith('kin_uname_')).forEach(k=>localStorage.removeItem(k)); } catch(e){}
-  setTimeout(() => window.location.href = window.location.origin, 300);
-}
-
-async function deleteAccount() {
-  const first = confirm('⚠️ Are you sure you want to delete your Kindustry account?\n\nThis cannot be undone.');
-  if (!first) return;
-  const modal = document.createElement('div');
-  modal.id = 'deleteModal';
-  modal.style.cssText = 'position:fixed;inset:0;z-index:99999;background:rgba(0,0,0,0.85);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;padding:20px;';
-  modal.innerHTML = `
-    <div style="background:var(--bg2);border:1px solid rgba(239,68,68,.4);border-radius:16px;padding:36px;max-width:400px;width:100%;text-align:center;">
-      <div style="font-size:40px;margin-bottom:14px;">⚠️</div>
-      <div style="font-family:'Orbitron',monospace;font-size:18px;font-weight:700;color:#ef4444;margin-bottom:10px;">Delete Account</div>
-      <p style="color:var(--dim);font-size:13px;line-height:1.6;margin-bottom:20px;">This will permanently delete your account and all your data. Type <strong style="color:#ef4444;letter-spacing:2px;">DELETE</strong> to confirm.</p>
-      <input type="text" id="deleteConfirmInput" placeholder="Type DELETE here" class="delete-confirm-input">
-      <div style="display:flex;gap:12px;justify-content:center;margin-top:8px;">
-        <button onclick="document.getElementById('deleteModal').remove()" style="padding:10px 24px;border-radius:7px;border:1px solid var(--border);background:transparent;color:var(--dim);cursor:pointer;font-family:'Rajdhani',sans-serif;font-weight:700;font-size:13px;">Cancel</button>
-        <button id="confirmDeleteBtn" onclick="confirmDelete(this)" style="padding:10px 24px;border-radius:7px;border:none;background:rgba(239,68,68,.2);color:#ef4444;cursor:pointer;font-family:'Rajdhani',sans-serif;font-weight:700;font-size:13px;border:1px solid rgba(239,68,68,.4);">Confirm Delete</button>
+      <!-- UPDATE 3 -->
+      <div class="changelog-entry reveal">
+        <div class="changelog-dot">✦</div>
+        <div class="changelog-card">
+          <div class="changelog-version">v0.3 <span class="changelog-tag">Latest</span></div>
+          <div class="changelog-name">Operation Polished — The UI Overhaul</div>
+          <div class="changelog-date">May 2026</div>
+          <div class="changelog-desc">A full quality pass across the board. Fixed login bugs, enhanced every theme visually, improved animations and overhauled the overall user experience to feel more premium and smooth.</div>
+          <ul class="changelog-items">
+            <li>Fixed Discord OAuth login flow — users can now sign in with Discord reliably</li>
+            <li>Refined all 6 existing themes with better contrast, glows and card styles</li>
+            <li>Enhanced navbar with floating pill design and scroll animations</li>
+            <li>Improved achievement toasts and notification system</li>
+            <li>Fixed various UI inconsistencies across pages</li>
+            <li>Performance improvements and general polish across the board</li>
+          </ul>
+        </div>
       </div>
-    </div>`;
-  document.body.appendChild(modal);
-  closeDropdown();
-}
 
-async function confirmDelete(btn) {
-  const inp = document.getElementById('deleteConfirmInput');
-  if (!inp) return;
-  const val = inp.value.trim();
-  if (val !== 'DELETE') {
-    inp.style.borderColor = '#ef4444';
-    inp.placeholder = 'Must type DELETE exactly!';
-    inp.value = '';
-    setTimeout(() => { inp.style.borderColor=''; inp.placeholder='Type DELETE here'; }, 2000);
-    return;
-  }
-  const overlay = document.getElementById('deleteModal');
-  if (overlay) overlay.remove();
-  try { await supa.auth.signOut({ scope: 'global' }); } catch(e) {}
-  _cachedUser = null;
-  try { Object.keys(localStorage).forEach(k => localStorage.removeItem(k)); } catch(e) {}
-  setTimeout(() => window.location.href = window.location.origin, 300);
-}
-
-async function saveUname() {
-  const v = document.getElementById('profileUnameInput').value.trim();
-  if (!/^[a-zA-Z0-9]{1,12}$/.test(v)) { alert('Username must be 1-12 letters/numbers only.'); return; }
-  if (containsBadWord(v)) { alert('That username is not allowed.'); return; }
-  const u2 = await getSupaUser();
-  if (!u2) { alert('You must be signed in.'); return; }
-  const cur = localStorage.getItem('kin_uname_' + u2.id);
-  if (cur && cur.toLowerCase() === v.toLowerCase()) { alert('That is already your username!'); return; }
-  try {
-    const { data: row } = await supa.from('usernames').select('username_changed_at').eq('user_id', u2.id).maybeSingle();
-    if (row && row.username_changed_at) {
-      const days = (Date.now() - new Date(row.username_changed_at).getTime()) / (1000*60*60*24);
-      if (days < 14) { alert('You can change your username again in ' + Math.ceil(14-days) + ' day(s).'); return; }
-    }
-  } catch(e) {}
-  try {
-    const { data: taken } = await supa.from('usernames').select('user_id').eq('username', v).maybeSingle();
-    if (taken && taken.user_id !== u2.id) { alert('That username is already taken!'); return; }
-  } catch(e) {}
-  try { await supa.from('usernames').upsert({ user_id: u2.id, username: v, username_changed_at: new Date().toISOString() }, { onConflict: 'user_id' }); } catch(e) {}
-  try { if (cur) await supa.from('leaderboard').update({ username: v }).eq('username', cur); } catch(e) {}
-  try { await supa.from('presence').upsert({ user_id: u2.id, username: v }, { onConflict: 'user_id' }); } catch(e) {}
-  localStorage.setItem('kin_uname_' + u2.id, v);
-  await updateNavAuth();
-  alert('Username updated! You can change it again in 14 days.');
-}
-
-/* PROFILE TABS */
-function pTab(btn, id){
-  const profilePage = document.getElementById('page-profile');
-  if(profilePage){
-    profilePage.querySelectorAll('.ptab').forEach(b=>b.classList.remove('on'));
-    profilePage.querySelectorAll('.ptab-content').forEach(cont=>cont.classList.remove('on'));
-  }
-  btn.classList.add('on');
-  const target = document.getElementById('pt-'+id);
-  if(target) target.classList.add('on');
-  if(id === 'achievements') refreshAchievements();
-}
-
-/* ════ SETTINGS ════ */
-function openSet(){ document.getElementById('setOverlay').classList.add('open'); }
-function closeSet(){ document.getElementById('setOverlay').classList.remove('open'); }
-function outsideSet(e){ if(e.target===document.getElementById('setOverlay')) closeSet(); }
-
-/* ════ THEME ════ */
-function setTheme(t){
-  document.body.classList.remove('theme-red','theme-cyber','theme-white','theme-gold','theme-glass','theme-candy','theme-venom','theme-teal');
-  if(t !== 'dark') document.body.classList.add('theme-'+t);
-  localStorage.setItem('kin-theme', t);
-  document.querySelectorAll('.th-btn').forEach(b=>b.classList.remove('on'));
-  const btn = document.getElementById('tb-'+t);
-  if(btn) btn.classList.add('on');
-  const egg = document.getElementById('cezzyEgg');
-  if (egg) egg.style.display = (t === 'teal') ? 'block' : 'none';
-}
-(function(){ setTheme(localStorage.getItem('kin-theme') || 'dark'); })();
-
-function triggerCezzyEgg() {
-  const m = document.getElementById('cezzyModal');
-  if (!m) return;
-  m.style.display = 'flex';
-  setTimeout(() => m.classList.add('cezzy-show'), 10);
-}
-function closeCezzyEgg() {
-  const m = document.getElementById('cezzyModal');
-  if (!m) return;
-  m.classList.remove('cezzy-show');
-  setTimeout(() => m.style.display = 'none', 350);
-}
-
-/* ════ PERFORMANCE MODE ════ */
-let _perfMode = localStorage.getItem('kin-perf') === '1';
-function applyPerfMode(on, animate) {
-  const btn = document.getElementById('perfBtn');
-  const label = btn ? btn.querySelector('.perf-label') : null;
-  if (on) {
-    document.body.classList.add('perf-mode');
-    ['pts','cur','cur-ring'].forEach(id => { const el=document.getElementById(id); if(el) el.style.display='none'; });
-    if (btn) {
-      if (animate) { btn.classList.add('engaging'); setTimeout(()=>btn.classList.remove('engaging'),700); }
-      setTimeout(()=>{ btn.classList.add('on'); if(label) label.textContent='Boosted'; }, animate?400:0);
-    }
-  } else {
-    document.body.classList.remove('perf-mode');
-    const pts=document.getElementById('pts'); if(pts) pts.style.display='';
-    if (window.matchMedia('(pointer:fine)').matches) {
-      ['cur','cur-ring'].forEach(id=>{ const el=document.getElementById(id); if(el) el.style.display=''; });
-    }
-    if (btn) {
-      if (animate) { btn.classList.add('disengaging'); setTimeout(()=>btn.classList.remove('disengaging'),550); }
-      btn.classList.remove('on');
-      if (label) label.textContent='Boost';
-    }
-  }
-}
-function togglePerfMode() {
-  _perfMode = !_perfMode;
-  localStorage.setItem('kin-perf', _perfMode?'1':'0');
-  applyPerfMode(_perfMode, true);
-}
-(function(){ if (_perfMode) applyPerfMode(true, false); })();
-
-/* ════ PAGE NAV ════ */
-let _presenceInterval = null;
-async function pingPresence() {
-  const u = await getSupaUser(); if (!u) return;
-  const uname = localStorage.getItem('kin_uname_' + u.id) || null;
-  try { await supa.from('presence').upsert({ user_id: u.id, username: uname, last_seen: new Date().toISOString(), is_online: true }, { onConflict: 'user_id' }); } catch(e) {}
-}
-async function setOffline() {
-  const u = await getSupaUser(); if (!u) return;
-  try { await supa.from('presence').update({ is_online: false, last_seen: new Date().toISOString() }).eq('user_id', u.id); } catch(e) {}
-}
-function startPresence() {
-  pingPresence();
-  if (_presenceInterval) clearInterval(_presenceInterval);
-  _presenceInterval = setInterval(pingPresence, 90000);
-}
-function stopPresence() {
-  if (_presenceInterval) { clearInterval(_presenceInterval); _presenceInterval = null; }
-  setOffline();
-}
-window.addEventListener('beforeunload', () => stopPresence());
-document.addEventListener('visibilitychange', () => { if (document.hidden) setOffline(); else pingPresence(); });
-
-function showPage(name) {
-  // Get cached session synchronously to avoid freezing nav
-  const cachedUser = _cachedUser;
-  if (name === 'profile' && !cachedUser) { openAuth(); return; }
-  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
-  const pg = document.getElementById('page-' + name);
-  if (!pg) return;
-  pg.classList.add('active');
-  const el = document.getElementById('nl-' + name);
-  if (el) el.classList.add('active');
-  document.querySelectorAll('.mob-drawer a').forEach(a => a.classList.remove('active'));
-  const md = document.getElementById('md-' + name);
-  if (md) md.classList.add('active');
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-  const nav = document.getElementById('navLinks');
-  if (nav) nav.classList.remove('open');
-  setTimeout(observeReveals, 50);
-  if (name === 'about') setTimeout(initAboutStars, 100);
-  if (name === 'leaderboard') { setTimeout(() => renderLeaderboard('all'), 100); setTimeout(() => refreshLbDataForSearch(), 500); }
-  if (name === 'register') { setTimeout(() => loadTournamentsForReg(), 100); }
-  if (name === 'profile' && cachedUser) {
-    const pfp = getUserPfp(cachedUser.id);
-    const av = document.getElementById('profileAv');
-    if (pfp && av) av.innerHTML = `<img src="${pfp}" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">`;
-  }
-}
-
-/* ════ MOBILE NAV ════ */
-function toggleNav(){ document.getElementById('navLinks').classList.toggle('open'); }
-
-/* ════ STORE TABS ════ */
-function storeTab(btn, tab){
-  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
-  btn.classList.add('active');
-  document.getElementById('store-online').style.display  = tab==='online' ? 'block' : 'none';
-  document.getElementById('store-reallife').style.display = tab==='reallife' ? 'block' : 'none';
-}
-
-/* ════ SCROLL REVEAL ════ */
-let ro;
-function observeReveals(){
-  if(ro) ro.disconnect();
-  ro = new IntersectionObserver(entries => {
-    entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('vis'); });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.reveal:not(.vis)').forEach(el => ro.observe(el));
-}
-observeReveals();
-
-/* ════ CONTACT FORM ════ */
-async function submitForm() {
-  const name = document.querySelector('.fi[placeholder="GamerTag or real name"]')?.value?.trim();
-  const email = document.querySelector('.fi[placeholder="your@email.com"]')?.value?.trim();
-  const subject = document.querySelector('.fi[placeholder="Partnership, Support, Collab..."]')?.value?.trim();
-  const message = document.querySelector('.ft')?.value?.trim();
-  if (!name || !email || !message) { alert('Please fill in your name, email and message.'); return; }
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!emailRegex.test(email)) {
-    alert('Please enter a valid email address.\nExample: yourname@gmail.com');
-    return;
-  }
-  const btn = document.querySelector('button[onclick="submitForm()"]');
-  const origText = btn.textContent;
-  btn.textContent = 'Sending...'; btn.disabled = true;
-  try {
-    const res = await fetch('https://formspree.io/f/xykovjky', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify({ name, email, subject, message })
-    });
-    if (res.ok) {
-      btn.textContent = '✅ Message Sent!';
-      btn.style.background = 'linear-gradient(135deg,#22c55e,#16a34a)';
-      document.querySelectorAll('.fi,.ft').forEach(i => i.value = '');
-      setTimeout(() => { btn.textContent = origText; btn.style.background = ''; btn.disabled = false; }, 4000);
-    } else {
-      throw new Error('Failed');
-    }
-  } catch(e) {
-    alert('Message failed to send. Please email us at officialkindustry@gmail.com or contact us on Discord!');
-    btn.textContent = origText; btn.disabled = false;
-  }
-}
-
-/* ════ SCROLLING FLOATING NAV ════ */
-window.addEventListener('scroll', () => {
-  const n = document.querySelector('nav');
-  if (window.scrollY > 60) n.classList.add('scrolled');
-  else n.classList.remove('scrolled');
-}, { passive: true });
-
-/* ════ MOBILE DRAWER ════ */
-function openMobDrawer() { document.getElementById('mobDrawer').classList.add('open'); }
-function closeMobDrawerDirect() { document.getElementById('mobDrawer').classList.remove('open'); }
-function closeMobDrawer(e) { if(e.target===document.getElementById('mobDrawer')) closeMobDrawerDirect(); }
-
-/* ════ EMAIL LOGIN ════ */
-let emailMode = 'login'; // or 'signup'
-
-function toggleEmailMode() {
-  const passInput = document.getElementById('passwordInput');
-  const forgotLink = document.getElementById('forgotLink');
-  const btn = document.getElementById('emailLoginBtn');
-  const toggle = document.getElementById('emailModeToggle');
-  if (emailMode === 'login') {
-    emailMode = 'signup';
-    passInput.style.display = 'block';
-    forgotLink.style.display = 'none';
-    btn.textContent = 'Create Account';
-    toggle.textContent = 'Already have an account? Sign in';
-  } else {
-    emailMode = 'login';
-    passInput.style.display = 'none';
-    forgotLink.style.display = 'block';
-    btn.textContent = 'Sign in with Email';
-    toggle.textContent = "Don't have an account? Sign up";
-  }
-}
-
-// Show password field when email typed
-document.addEventListener('DOMContentLoaded', () => {
-  const ei = document.getElementById('emailInput');
-  if (ei) ei.addEventListener('input', () => {
-    if (emailMode === 'login') {
-      const pf = document.getElementById('passwordInput');
-      const fl = document.getElementById('forgotLink');
-      if (ei.value.length > 3) { pf.style.display='block'; fl.style.display='block'; }
-    }
-  });
-});
-
-async function doEmailLogin() {
-  const email = document.getElementById('emailInput').value.trim();
-  const pass  = document.getElementById('passwordInput').value;
-  if (!email) { alert('Please enter your email.'); return; }
-  if (!pass)  { alert('Please enter your password.'); return; }
-
-  if (emailMode === 'signup') {
-    const { error } = await supa.auth.signUp({ email, password: pass });
-    if (error) { alert('Sign up failed: ' + error.message); return; }
-    alert('✅ Account created! Check your email to confirm your account, then sign in.');
-  } else {
-    const { error } = await supa.auth.signInWithPassword({ email, password: pass });
-    if (error) { alert('Sign in failed: ' + error.message); return; }
-    closeAuth();
-    await updateNavAuth();
-  }
-}
-
-async function forgotPassword() {
-  const email = document.getElementById('emailInput').value.trim();
-  if (!email) { alert('Enter your email first, then click Forgot Password.'); return; }
-  const { error } = await supa.auth.resetPasswordForEmail(email, {
-    redirectTo: window.location.origin
-  });
-  if (error) alert('Error: ' + error.message);
-  else alert('✅ Password reset email sent! Check your inbox.');
-}
-
-/* ════ PFP UPLOAD — Cloudinary ════ */
-const CLOUDINARY_CLOUD = 'dvkchlrgs';
-const CLOUDINARY_PRESET = 'kindustry_pfp';
-
-async function uploadPfp(input) {
-  const file = input.files[0];
-  if (!file) return;
-  const u = await getSupaUser();
-  if (!u) { alert('You must be signed in to upload a profile picture.'); input.value=''; return; }
-  if (file.size > 3*1024*1024) { alert('Image must be under 3MB.'); input.value=''; return; }
-  if (!file.type.startsWith('image/')) { alert('Please upload an image file.'); input.value=''; return; }
-  const av = document.getElementById('profileAv');
-  const reader = new FileReader();
-  reader.onload = async (e) => {
-    const preview = e.target.result;
-    if (av) av.innerHTML = `<img src="${preview}" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">`;
-    const hint = document.querySelector('.pfp-upload-hint');
-    if (hint) { hint.textContent = 'Uploading...'; hint.style.color = 'var(--primary)'; }
-    try {
-      const fd = new FormData();
-      fd.append('file', file);
-      fd.append('upload_preset', CLOUDINARY_PRESET);
-      fd.append('public_id', 'avatars/' + u.id);
-      fd.append('transformation', 'c_fill,w_400,h_400,q_auto,f_auto');
-      const res = await fetch('https://api.cloudinary.com/v1_1/' + CLOUDINARY_CLOUD + '/image/upload', { method:'POST', body:fd });
-      if (!res.ok) throw new Error('Upload failed: ' + res.status);
-      const data = await res.json();
-      if (data.error) throw new Error(data.error.message);
-      const url = data.secure_url;
-      localStorage.setItem('kin_pfp_' + u.id, url);
-      try { await supa.from('profiles').upsert({ user_id: u.id, pfp_url: url }, { onConflict: 'user_id' }); } catch(e2) {}
-      try { const un = localStorage.getItem('kin_uname_' + u.id); if (un) await supa.from('leaderboard').update({ pfp_url: url }).eq('username', un); } catch(e2) {}
-      if (av) av.innerHTML = `<img src="${url}" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">`;
-      if (hint) { hint.textContent = '✅ Photo saved!'; hint.style.color = '#22c55e'; setTimeout(() => { hint.textContent = 'Click to change photo'; hint.style.color = ''; }, 3000); }
-    } catch(err) {
-      localStorage.setItem('kin_pfp_' + u.id, preview);
-      const h2 = document.querySelector('.pfp-upload-hint');
-      if (h2) { h2.textContent = 'Saved locally'; h2.style.color = '#f59e0b'; setTimeout(() => { h2.textContent = 'Click to change photo'; h2.style.color = ''; }, 3000); }
-    }
-    updateLeaderboardAvatars();
-  };
-  reader.readAsDataURL(file);
-}
-
-async function loadPfpFromDb(userId) {
-  const cached = localStorage.getItem('kin_pfp_' + userId);
-  if (cached) return cached;
-  try {
-    const { data } = await supa.from('profiles').select('pfp_url').eq('user_id', userId).maybeSingle();
-    if (data && data.pfp_url) { localStorage.setItem('kin_pfp_' + userId, data.pfp_url); return data.pfp_url; }
-  } catch(e) {}
-  return null;
-}
-
-function getUserPfp(userId) {
-  return localStorage.getItem('kin_pfp_' + userId) || null;
-}
-
-function updateLeaderboardAvatars() {
-  // Refresh leaderboard to show new pfp
-  renderLeaderboard(currentLbFilter);
-}
-
-/* ════ LEADERBOARD ════ */
-let currentLbFilter = 'all';
-
-// Demo data — in production this comes from Supabase database
-const lbDemoData = [
-  { rank:1, name:'KhushalBossPro', tag:'Founder & CEO', tournaments:2, wins:2, badges:['champ','active'], pfp:null },
-  { rank:2, name:'ProGamer99',     tag:'Elite Member',   tournaments:2, wins:1, badges:['active'],         pfp:null },
-  { rank:3, name:'NightWolf',      tag:'Competitor',     tournaments:1, wins:0, badges:['new'],            pfp:null },
-  { rank:4, name:'StarPlayer',     tag:'Member',         tournaments:1, wins:0, badges:['new'],            pfp:null },
-  { rank:5, name:'GhostRider',     tag:'Member',         tournaments:1, wins:0, badges:['active'],         pfp:null },
-];
-
-async function renderLeaderboard(filter) {
-  currentLbFilter = filter;
-  const body = document.getElementById('lbBody');
-  if (!body) return;
-  body.innerHTML = '<div class="lb-empty"><span class="lb-empty-icon">⏳</span><div class="lb-empty-title">Loading...</div></div>';
-
-  let data = [];
-  // Try Supabase first
-  try {
-    let query = supa.from('leaderboard').select('*').order('wins', { ascending: false }).order('tournaments', { ascending: false });
-    const { data: lbData, error } = await query;
-    if (!error && lbData && lbData.length > 0) {
-      data = lbData.map((p, i) => ({
-        rank: i + 1,
-        name: p.username,
-        tag: p.tag || 'Member',
-        tournaments: p.tournaments || 0,
-        wins: p.wins || 0,
-        badges: p.badges || [],
-        pfp: p.pfp_url || null
-      }));
-    }
-  } catch(e) { console.log('Leaderboard DB fetch failed, using demo data'); }
-
-  // Fall back to demo data if Supabase empty or failed
-  if (data.length === 0) data = lbDemoData.map((p,i) => ({...p}));
-
-  // Apply filters
-  if (filter === 'champions') data = data.filter(p => p.badges.includes('champ'));
-  if (filter === 'active')    data = data.sort((a,b) => b.tournaments - a.tournaments);
-
-  const totalEl = document.getElementById('lb-total-players');
-  if (totalEl) totalEl.textContent = data.length;
-
-  if (data.length === 0) {
-    body.innerHTML = '<div class="lb-empty"><span class="lb-empty-icon">🏆</span><div class="lb-empty-title">No players yet</div><div style="color:var(--dim);font-size:13px;">Be the first to compete!</div></div>';
-    return;
-  }
-
-  const rowClass = ['','gold-row','silver-row','bronze-row'];
-  const rankClass = ['','r1','r2','r3'];
-  const medals = ['','🥇','🥈','🥉'];
-
-  body.innerHTML = data.map((p, i) => {
-    const rank = p.rank || (i+1);
-    const rc = rowClass[rank] || '';
-    const rkc = rankClass[rank] || '';
-    const medal = medals[rank] || rank;
-    const pfpHtml = p.pfp
-      ? `<img src="${p.pfp}" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">`
-      : p.name.charAt(0).toUpperCase();
-    const badgesHtml = (p.badges||[]).map(b => `<span class="lb-badge ${b}">${b}</span>`).join('');
-    return `<div class="lb-row ${rc}" onclick="openPlayerModal(${JSON.stringify(p).replace(/'/g,'&apos;')})" style="cursor:pointer;">
-      <div class="lb-rank ${rkc}">${medal}</div>
-      <div class="lb-player">
-        <div class="lb-avatar">${pfpHtml}</div>
-        <div><div class="lb-name">${p.name}</div><div class="lb-tag">${p.tag}</div></div>
+      <!-- UPDATE 2 -->
+      <div class="changelog-entry reveal">
+        <div class="changelog-dot">✦</div>
+        <div class="changelog-card">
+          <div class="changelog-version">v0.2 <span class="changelog-tag">Milestone</span></div>
+          <div class="changelog-name">Identity Expansion — Themes & Authentication</div>
+          <div class="changelog-date">April 2026</div>
+          <div class="changelog-desc">Kindustry got its identity. We launched our full authentication system letting players create accounts and pick usernames, and introduced four new visual themes giving everyone a way to make Kindustry feel personal.</div>
+          <ul class="changelog-items">
+            <li>Launched full login system — Google OAuth, Discord OAuth and Email sign in</li>
+            <li>Username picker with bad word filter, uniqueness check and 12 character limit</li>
+            <li>Added Cyber RGB theme — animated rainbow border cycling effect</li>
+            <li>Added White Pro theme — clean minimal light mode</li>
+            <li>Added Championship Gold theme — black and gold esports aesthetic</li>
+            <li>Fixed Google OAuth callback and session persistence bugs</li>
+            <li>Profile page with achievements, stats and settings tab</li>
+          </ul>
+        </div>
       </div>
-      <div class="lb-stat">${p.tournaments}</div>
-      <div class="lb-stat">${p.wins}</div>
-      <div class="lb-badge-wrap">${badgesHtml}</div>
-    </div>`;
-  }).join('');
-}
 
-function lbFilter(btn, filter) {
-  document.querySelectorAll('.lb-filter-btn').forEach(b => b.classList.remove('on'));
-  btn.classList.add('on');
-  renderLeaderboard(filter);
-}
+      <!-- UPDATE 1 -->
+      <div class="changelog-entry reveal">
+        <div class="changelog-dot">✦</div>
+        <div class="changelog-card">
+          <div class="changelog-version">v0.1 <span class="changelog-tag">Origin</span></div>
+          <div class="changelog-name">Genesis — Where It All Started</div>
+          <div class="changelog-date">March 2026</div>
+          <div class="changelog-desc">The very first version of Kindustry. Built from scratch as a single HTML file, this was the foundation — the spark that started everything. Two themes, a homepage and a dream to build the ultimate gaming community.</div>
+          <ul class="changelog-items">
+            <li>Launched Kindustry.in — the gaming community website goes live</li>
+            <li>Built the core Dark Neon theme — deep blues, neon purples and glowing cards</li>
+            <li>Added Crimson theme — dark red esports energy aesthetic</li>
+            <li>Home page with hero section, features grid and Discord banner</li>
+            <li>Tournaments page with registration form and secure cloud database backend</li>
+            <li>Leaderboard page with live real-time database connection</li>
+            <li>Contact page with secure form submission integration</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+  <div class="sec-div"></div>
+  <footer>
+    <div class="ft-brand">
+      <a href="#" onclick="showPage('home');return false;">KINDUSTRY</a>
+      <div class="ft-quote">"where everything forges into greatness"</div>
+    </div>
+    <div class="ft-links">
+      <div class="ft-nav">
+        <a href="#" onclick="showPage('home');return false;">Home</a>
+        <a href="#" onclick="showPage('privacy');return false;">Privacy</a>
+        <a href="#" onclick="showPage('terms');return false;">Terms</a>
+      </div>
+      <div class="ft-copy">© 2026 Kindustry. All rights reserved.</div>
+    </div>
+  </footer>
+</div>
+
+<!-- ════════════════════ GODK ESPORTS ════════════════════ -->
+<div class="page" id="page-godk">
+  <div style="position:relative;min-height:100vh;overflow:hidden;">
+    <!-- ANIMATED BG -->
+    <div style="position:absolute;inset:0;background:radial-gradient(ellipse 80% 55% at 50% -5%,rgba(220,38,38,0.15),transparent 65%),radial-gradient(ellipse 55% 70% at 85% 55%,rgba(245,158,11,0.1),transparent 55%),var(--bg);"></div>
+    <div style="position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:64px 64px;animation:gridDrift 25s linear infinite;mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black 20%,transparent 75%);"></div>
+    <div style="position:absolute;width:500px;height:500px;top:-100px;right:-100px;background:rgba(220,38,38,0.1);border-radius:50%;filter:blur(90px);animation:orbDrift 10s ease-in-out infinite;"></div>
+    <div style="position:absolute;width:300px;height:300px;bottom:-50px;left:-50px;background:rgba(245,158,11,0.08);border-radius:50%;filter:blur(90px);animation:orbDrift 10s ease-in-out infinite;animation-delay:4s;"></div>
+
+    <section style="padding-top:130px;position:relative;z-index:2;max-width:1100px;margin:0 auto;">
+
+      <!-- HERO -->
+      <div style="text-align:center;margin-bottom:60px;" class="reveal">
+        <div style="font-size:11px;letter-spacing:4px;text-transform:uppercase;color:#dc2626;margin-bottom:16px;display:flex;align-items:center;justify-content:center;gap:12px;">
+          <span style="width:30px;height:1px;background:#dc2626;display:inline-block;"></span>
+          Kindustry Esports Division
+          <span style="width:30px;height:1px;background:#dc2626;display:inline-block;"></span>
+        </div>
+        <h1 style="font-family:'Orbitron',monospace;font-size:clamp(52px,10vw,110px);font-weight:900;line-height:1;letter-spacing:-2px;background:linear-gradient(135deg,#fff 0%,#dc2626 50%,#f59e0b 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:16px;">GOD K</h1>
+        <div style="font-family:'Orbitron',monospace;font-size:14px;letter-spacing:8px;color:var(--dim);margin-bottom:28px;">ESPORTS TEAM</div>
+        <div style="display:inline-block;background:rgba(220,38,38,0.12);border:1px solid rgba(220,38,38,0.35);border-radius:100px;padding:8px 24px;font-size:12px;letter-spacing:3px;text-transform:uppercase;color:#dc2626;">⚔️ Forming — Season 1</div>
+      </div>
+
+      <!-- COMING SOON MAIN CARD -->
+      <div class="card reveal" style="padding:56px;text-align:center;margin-bottom:32px;background:linear-gradient(135deg,rgba(220,38,38,0.08),rgba(245,158,11,0.06));border-color:rgba(220,38,38,0.25);position:relative;overflow:hidden;">
+        <div style="position:absolute;font-size:200px;opacity:0.03;top:-20px;right:-20px;pointer-events:none;">⚔️</div>
+        <div style="font-size:64px;margin-bottom:20px;animation:gwFloat 4s ease-in-out infinite;display:inline-block;">⚔️</div>
+        <h2 style="font-family:'Orbitron',monospace;font-size:clamp(24px,4vw,40px);font-weight:900;margin-bottom:14px;background:linear-gradient(135deg,var(--text),#dc2626);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;">Roster Reveal Coming Soon</h2>
+        <p style="color:var(--dim);font-size:16px;line-height:1.8;max-width:600px;margin:0 auto 28px;">God K is Kindustry's competitive esports team. We are currently scouting and assembling our founding roster. The best players will represent Kindustry on the national stage.</p>
+        <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
+          <a href="https://discord.gg/CBqWUKScfF" target="_blank" class="btn btn-dc">💬 Get Notified on Discord</a>
+          <a href="#" onclick="showPage('home');return false;" class="btn btn-ol">← Back to Home</a>
+        </div>
+      </div>
+
+      <!-- STATS ROW -->
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:32px;" class="reveal">
+        <div class="card" style="padding:24px;text-align:center;">
+          <div style="font-family:'Orbitron',monospace;font-size:28px;font-weight:900;color:#dc2626;">TBA</div>
+          <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);margin-top:4px;">Roster Size</div>
+        </div>
+        <div class="card" style="padding:24px;text-align:center;">
+          <div style="font-family:'Orbitron',monospace;font-size:28px;font-weight:900;color:#f59e0b;">TBA</div>
+          <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);margin-top:4px;">Games</div>
+        </div>
+        <div class="card" style="padding:24px;text-align:center;">
+          <div style="font-family:'Orbitron',monospace;font-size:28px;font-weight:900;color:var(--primary);">S1</div>
+          <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);margin-top:4px;">Season</div>
+        </div>
+        <div class="card" style="padding:24px;text-align:center;">
+          <div style="font-family:'Orbitron',monospace;font-size:28px;font-weight:900;color:#22c55e;">OPEN</div>
+          <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);margin-top:4px;">Tryouts</div>
+        </div>
+      </div>
+
+      <!-- TRYOUTS CARD -->
+      <div class="card reveal" style="padding:36px;margin-bottom:32px;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;">
+        <div>
+          <div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#dc2626;margin-bottom:12px;">Tryouts</div>
+          <h3 style="font-family:'Orbitron',monospace;font-size:22px;font-weight:700;margin-bottom:12px;">Think You Have What It Takes?</h3>
+          <p style="color:var(--dim);font-size:14px;line-height:1.8;margin-bottom:20px;">God K is looking for dedicated, skilled players who are committed to competing at the highest level. All skill levels welcome to apply.</p>
+          <a href="https://discord.gg/CBqWUKScfF" target="_blank" class="btn btn-p">Apply via Discord →</a>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <div class="card" style="padding:16px;display:flex;align-items:center;gap:14px;"><span style="font-size:22px;">🎮</span><div><div style="font-weight:700;font-size:14px;">Skill</div><div style="font-size:12px;color:var(--dim);">Must be competitive level</div></div></div>
+          <div class="card" style="padding:16px;display:flex;align-items:center;gap:14px;"><span style="font-size:22px;">🏆</span><div><div style="font-weight:700;font-size:14px;">Dedication</div><div style="font-size:12px;color:var(--dim);">Consistent practice & availability</div></div></div>
+          <div class="card" style="padding:16px;display:flex;align-items:center;gap:14px;"><span style="font-size:22px;">💬</span><div><div style="font-weight:700;font-size:14px;">Discord</div><div style="font-size:12px;color:var(--dim);">Active community member</div></div></div>
+        </div>
+      </div>
+
+    </section>
+  </div>
+  <div class="sec-div"></div>
+  <footer><div class="ft-brand"><a href="#" onclick="showPage('home');return false;">KINDUSTRY</a><div class="ft-quote">"where everything forges into greatness"</div></div><div class="ft-links"><div class="ft-nav"><a href="#" onclick="showPage('home');return false;">Home</a><a href="https://discord.gg/CBqWUKScfF" target="_blank">Discord</a></div><div class="ft-copy">© 2026 Kindustry. All rights reserved.</div></div></footer>
+</div>
+
+<!-- ════════════════════ ADMIN PANEL ════════════════════ -->
+<div class="page" id="page-admin">
+  <section style="padding-top:110px;max-width:1100px;margin:0 auto;">
+    <div class="sec-hdr">
+      <div class="sec-ey">Staff Only</div>
+      <h2 class="sec-title">Admin Panel</h2>
+    </div>
+
+    <!-- AUTH CHECK -->
+    <div id="adminLocked" class="card" style="padding:48px;text-align:center;margin-bottom:24px;">
+      <div style="font-size:48px;margin-bottom:16px;">🔐</div>
+      <h3 style="font-family:'Orbitron',monospace;font-size:20px;font-weight:700;margin-bottom:10px;">Admin Access Required</h3>
+      <p style="color:var(--dim);margin-bottom:24px;font-size:14px;">Enter the admin password to access the control panel.</p>
+      <div style="max-width:300px;margin:0 auto;">
+        <input type="password" id="adminPassInput" class="fi" placeholder="Enter secret code" style="margin-bottom:12px;" onkeydown="if(event.key==='Enter')checkAdminPass()">
+        <button id="adminUnlockBtn" class="btn btn-p" style="width:100%;justify-content:center;" onclick="checkAdminPass()">Unlock Admin</button>
+      </div>
+    </div>
+
+    <div id="adminPanel" style="display:none;">
+      <!-- QUICK STATS -->
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:24px;">
+        <div class="card" style="padding:18px;text-align:center;"><div style="font-family:'Orbitron',monospace;font-size:22px;font-weight:900;color:var(--primary);" id="adminTotalUsers">—</div><div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);margin-top:4px;">Users</div></div>
+        <div class="card" style="padding:18px;text-align:center;"><div style="font-family:'Orbitron',monospace;font-size:22px;font-weight:900;color:#f59e0b;" id="adminTotalLB">—</div><div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);margin-top:4px;">Leaderboard</div></div>
+        <div class="card" style="padding:18px;text-align:center;"><div style="font-family:'Orbitron',monospace;font-size:22px;font-weight:900;color:#22c55e;" id="adminTotalRegs">—</div><div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);margin-top:4px;">Registrations</div></div>
+      </div>
+      <!-- TOURNAMENT MANAGEMENT -->
+      <div class="card" style="padding:28px;margin-bottom:20px;">
+        <h3 style="font-family:'Orbitron',monospace;font-size:15px;font-weight:700;color:#a78bfa;margin-bottom:20px;">🏆 Tournament Management</h3>
+        <div style="background:rgba(167,139,250,.06);border:1px solid rgba(167,139,250,.2);border-radius:10px;padding:18px;margin-bottom:18px;">
+          <div style="font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#a78bfa;margin-bottom:14px;">Create New Tournament</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;">
+            <div><label class="fl">Tournament Name</label><input type="text" class="fi" id="at-name" placeholder="Roblox Cup #2" maxlength="60"></div>
+            <div><label class="fl">Game</label><input type="text" class="fi" id="at-game" placeholder="Roblox, BGMI..." maxlength="40"></div>
+            <div><label class="fl">Max Players</label><input type="number" class="fi" id="at-max" value="32" min="2" max="1000"></div>
+            <div><label class="fl">Prize</label><input type="text" class="fi" id="at-prize" placeholder="Nitro + Title" maxlength="80"></div>
+          </div>
+          <div style="margin-bottom:12px;"><label class="fl">Description</label><input type="text" class="fi" id="at-desc" placeholder="Short description..." maxlength="200"></div>
+          <div style="display:flex;gap:12px;align-items:flex-end;">
+            <div style="flex:1;"><label class="fl">Status</label><select class="select-field" id="at-status"><option value="open">Open</option><option value="upcoming">Upcoming</option><option value="closed">Closed</option></select></div>
+            <button class="btn btn-p" id="at-btn" onclick="adminCreateTournament()" style="white-space:nowrap;padding:10px 18px;">Create Tournament</button>
+          </div>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+          <span style="font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--dim);">All Tournaments</span>
+          <button class="btn btn-ol" style="padding:5px 12px;font-size:10px;" onclick="adminLoadTournaments()">Refresh</button>
+        </div>
+        <div id="adminTournamentList" style="font-size:13px;color:var(--dim);">Loading...</div>
+      </div>
+      <!-- ADD TO LEADERBOARD -->
+      <div class="card" style="padding:28px;margin-bottom:20px;">
+        <h3 style="font-family:'Orbitron',monospace;font-size:15px;font-weight:700;color:var(--primary);margin-bottom:20px;">🏆 Add Player to Leaderboard</h3>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;">
+          <div><label class="fl">Username</label><input type="text" class="fi" id="a-username" placeholder="PlayerName" maxlength="12"></div>
+          <div><label class="fl">Tag / Title</label><input type="text" class="fi" id="a-tag" placeholder="Tournament Winner"></div>
+          <div><label class="fl">Tournaments Played</label><input type="number" class="fi" id="a-tournaments" placeholder="2" min="0"></div>
+          <div><label class="fl">Wins</label><input type="number" class="fi" id="a-wins" placeholder="1" min="0"></div>
+        </div>
+        <div style="margin-bottom:14px;"><label class="fl">Badges (comma separated)</label><input type="text" class="fi" id="a-badges" placeholder="champ, active, new"></div>
+        <button class="btn btn-p" onclick="adminAddPlayer()">Add Player</button>
+        <div id="a-msg" style="margin-top:10px;font-size:13px;color:#22c55e;display:none;"></div>
+      </div>
+
+      <!-- PLAYERS & SUSPENSIONS -->
+      <div class="card" style="padding:28px;margin-bottom:20px;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+          <h3 style="font-family:'Orbitron',monospace;font-size:15px;font-weight:700;color:var(--primary);">📊 Players & Suspensions</h3>
+          <button class="btn btn-ol" style="padding:7px 16px;font-size:11px;" onclick="adminLoadPlayers()">Refresh</button>
+        </div>
+        <div id="adminPlayerList" style="font-size:13px;color:var(--dim);">Loading...</div>
+      </div>
+
+      <!-- VIEW REGISTRATIONS -->
+      <div class="card" style="padding:28px;margin-bottom:20px;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+          <h3 style="font-family:'Orbitron',monospace;font-size:15px;font-weight:700;color:var(--primary);">📝 Tournament Registrations</h3>
+          <button class="btn btn-ol" style="padding:7px 16px;font-size:11px;" onclick="adminLoadRegistrations()">Load</button>
+        </div>
+        <div id="adminRegList" style="font-size:13px;color:var(--dim);">Click Load to view registrations...</div>
+      </div>
+
+      <!-- VIEW USERS -->
+      <div class="card" style="padding:28px;margin-bottom:20px;">
+        <h3 style="font-family:'Orbitron',monospace;font-size:15px;font-weight:700;color:var(--primary);margin-bottom:16px;">👥 Registered Users</h3>
+        <div id="adminUserList" style="font-size:13px;color:var(--dim);">
+          <button class="btn btn-ol" style="padding:7px 16px;font-size:11px;" onclick="adminLoadUsers()">Load Users</button>
+        </div>
+      </div>
+
+      <!-- QUICK STATS -->
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:20px;">
+        <div class="card" style="padding:20px;text-align:center;">
+          <div style="font-family:'Orbitron',monospace;font-size:24px;font-weight:900;color:var(--primary);" id="adminTotalUsers">—</div>
+          <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);margin-top:4px;">Total Users</div>
+        </div>
+        <div class="card" style="padding:20px;text-align:center;">
+          <div style="font-family:'Orbitron',monospace;font-size:24px;font-weight:900;color:#f59e0b;" id="adminTotalLB">—</div>
+          <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);margin-top:4px;">Leaderboard</div>
+        </div>
+        <div class="card" style="padding:20px;text-align:center;">
+          <div style="font-family:'Orbitron',monospace;font-size:24px;font-weight:900;color:#22c55e;">✅</div>
+          <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);margin-top:4px;">System OK</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="sec-div"></div>
+  <footer><div class="ft-brand"><a href="#" onclick="showPage('home');return false;">KINDUSTRY</a></div><div class="ft-links"><div class="ft-nav"><a href="#" onclick="showPage('home');return false;">Home</a></div><div class="ft-copy">© 2026 Kindustry.</div></div></footer>
+</div>
+
+<!-- ════════════════════ ANNOUNCEMENTS ════════════════════ -->
+<div class="page" id="page-announcements">
+  <section style="padding-top:110px;">
+    <div class="sec-hdr reveal">
+      <div class="sec-ey">Latest Updates</div>
+      <h2 class="sec-title">News & Announcements</h2>
+    </div>
+
+    <!-- FEATURED ANNOUNCEMENT -->
+    <div class="announce-hero reveal">
+      <div style="font-size:48px;flex-shrink:0;">📢</div>
+      <div>
+        <div class="announce-badge new">Latest</div>
+        <div class="announce-title" style="font-family:'Orbitron',monospace;font-size:20px;font-weight:700;margin-bottom:8px;">Kindustry is Live!</div>
+        <div class="announce-body">Welcome to Kindustry — the home of competitive gaming, epic giveaways, and a community built for those who live to play. Our first tournament is coming soon. Stay tuned and join our Discord for real-time updates!</div>
+      </div>
+    </div>
+
+    <div class="announce-grid">
+      <div class="announce-card card reveal">
+        <div class="announce-badge tourney">Tournament</div>
+        <div class="announce-title">Roblox Parkour Cup #1 — Coming June 2026</div>
+        <div class="announce-date">📅 May 17, 2026</div>
+        <div class="announce-body">Our first official tournament is confirmed! Roblox Parkour Cup #1 will feature 32 players competing for the Kindustry champion title. Registration opens on Discord — join now to secure your spot.</div>
+      </div>
+
+      <div class="announce-card card reveal">
+        <div class="announce-badge gw">Giveaway</div>
+        <div class="announce-title">Launch Giveaway — 3 Winners!</div>
+        <div class="announce-date">📅 May 15, 2026</div>
+        <div class="announce-body">To celebrate our launch we are giving away Discord Nitro + VIP role to 3 lucky community members. Enter by joining our Discord and following our YouTube channel. Ends May 31!</div>
+      </div>
+
+      <div class="announce-card card reveal">
+        <div class="announce-badge update">Update</div>
+        <div class="announce-title">Website V1 — Full Launch</div>
+        <div class="announce-date">📅 May 14, 2026</div>
+        <div class="announce-body">Kindustry website is officially live at kindustry.in! Features include Google & Discord login, leaderboard, profile system, store, and 7 beautiful themes. More features dropping every week.</div>
+      </div>
+
+      <div class="announce-card card reveal">
+        <div class="announce-badge tourney">Esports</div>
+        <div class="announce-title">Team GODK — Roster Forming</div>
+        <div class="announce-date">📅 May 13, 2026</div>
+        <div class="announce-body">Kindustry esports team GODK is officially forming! We are scouting skilled and dedicated players for Season 1. Apply through our Discord server. Tryout details coming soon.</div>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:40px;" class="reveal">
+      <p style="color:var(--dim);margin-bottom:16px;font-size:14px;">Want real-time announcements? Join our Discord — all updates posted there first!</p>
+      <a href="https://discord.gg/CBqWUKScfF" target="_blank" class="btn btn-dc">Join Discord for Updates</a>
+    </div>
+  </section>
+  <div class="sec-div"></div>
+  <footer><div class="ft-brand"><a href="#" onclick="showPage('home');return false;">KINDUSTRY</a><div class="ft-quote">"where everything forges into greatness"</div></div><div class="ft-links"><div class="ft-nav"><a href="#" onclick="showPage('home');return false;">Home</a><a href="https://discord.gg/CBqWUKScfF" target="_blank">Discord</a></div><div class="ft-copy">© 2026 Kindustry. All rights reserved.</div></div></footer>
+</div>
+
+<!-- ════════════════════ TOURNAMENT REGISTRATION ════════════════════ -->
+<div class="page" id="page-register">
+  <section style="padding-top:110px;">
+    <div class="sec-hdr reveal">
+      <div class="sec-ey">Compete</div>
+      <h2 class="sec-title">Tournament Registration</h2>
+    </div>
+
+    <!-- ACTIVE TOURNAMENT BANNER -->
+    <div id="activeTournamentBanner" style="background:linear-gradient(135deg,rgba(var(--pr),.08),rgba(var(--ac),.06));border:1px solid var(--border);border-radius:14px;padding:28px 32px;margin-bottom:36px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px;" class="reveal">
+      <div>
+        <div style="font-size:10px;letter-spacing:3px;color:var(--accent);text-transform:uppercase;margin-bottom:6px;">Now Open</div>
+        <div style="font-family:'Orbitron',monospace;font-size:20px;font-weight:700;margin-bottom:4px;">Roblox Parkour Cup #1</div>
+        <div style="font-size:13px;color:var(--dim);">🟥 Roblox · June 2026 · 32 Players · Free Entry</div>
+      </div>
+      <div class="t-badge open" style="font-size:11px;padding:6px 16px;">Registration Open</div>
+    </div>
+
+    <div class="reg-split">
+      <!-- FORM -->
+      <div class="reg-form card reveal">
+        <h3 style="font-family:'Orbitron',monospace;font-size:16px;font-weight:700;margin-bottom:22px;color:var(--primary);">📝 Register Now</h3>
+        <div class="fg"><label class="fl">Your Username</label><input type="text" class="fi" id="reg-username" placeholder="Your Kindustry username" maxlength="12"></div>
+        <div class="fg"><label class="fl">Discord Tag</label><input type="text" class="fi" id="reg-discord" placeholder="YourName#0000 or @username"></div>
+        <div class="fg"><label class="fl">Email Address <span style="color:#ef4444;">*</span></label><input type="email" class="fi" id="reg-email" placeholder="you@email.com — for tournament updates"></div>
+        <div class="fg"><label class="fl">Select Tournament</label>
+          <select class="select-field" id="reg-tournament">
+            <option value="">Choose a tournament...</option>
+            <option value="roblox-parkour-1">Roblox Parkour Cup #1 — June 2026</option>
+            <option value="minecraft-survival-1">Minecraft Survival Games — July 2026</option>
+          </select>
+        </div>
+        <div class="fg"><label class="fl">Your Game Username / ID</label><input type="text" class="fi" id="reg-gameid" placeholder="Your in-game name or ID"></div>
+        <div class="fg"><label class="fl">Extra Notes (optional)</label><textarea class="ft" id="reg-notes" placeholder="Anything you want us to know..." style="height:80px;"></textarea></div>
+        <button class="btn btn-p" style="width:100%;justify-content:center;" onclick="submitRegistration()">Register for Tournament →</button>
+        <div style="background:rgba(88,101,242,.08);border:1px solid rgba(88,101,242,.25);border-radius:8px;padding:10px 14px;margin-top:10px;display:flex;align-items:center;gap:10px;"><span style="font-size:18px;flex-shrink:0;">💬</span><div style="font-size:11px;color:var(--dim);"><strong style="color:#7289da;">Discord required to participate.</strong> Join our server to compete. <a href="https://discord.gg/CBqWUKScfF" target="_blank" style="color:#7289da;text-decoration:underline;">Join Discord →</a></div></div>
+      </div>
+
+      <!-- INFO CARDS -->
+      <div class="reg-info reveal">
+        <div class="reg-info-card card">
+          <div class="reg-info-icon">🏆</div>
+          <div><div class="reg-info-title">Free Entry</div><div class="reg-info-desc">All Kindustry tournaments are completely free to enter. No entry fees ever.</div></div>
+        </div>
+        <div class="reg-info-card card">
+          <div class="reg-info-icon">💬</div>
+          <div><div class="reg-info-title">Discord Required</div><div class="reg-info-desc">You must be in our Discord server to participate. Join at discord.gg/CBqWUKScfF</div></div>
+        </div>
+        <div class="reg-info-card card">
+          <div class="reg-info-icon">📅</div>
+          <div><div class="reg-info-title">Confirmation</div><div class="reg-info-desc">You will receive a confirmation message on Discord within 24 hours of registering.</div></div>
+        </div>
+        <div class="reg-info-card card">
+          <div class="reg-info-icon">🎮</div>
+          <div><div class="reg-info-title">Fair Play</div><div class="reg-info-desc">Cheating or unsportsmanlike conduct results in immediate disqualification.</div></div>
+        </div>
+        <div style="padding:18px 20px;text-align:center;" class="card">
+          <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);margin-bottom:10px;">Questions?</div>
+          <a href="https://discord.gg/CBqWUKScfF" target="_blank" class="btn btn-dc" style="width:100%;justify-content:center;font-size:12px;padding:10px;">Ask on Discord</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="sec-div"></div>
+  <footer><div class="ft-brand"><a href="#" onclick="showPage('home');return false;">KINDUSTRY</a><div class="ft-quote">"where everything forges into greatness"</div></div><div class="ft-links"><div class="ft-nav"><a href="#" onclick="showPage('tournaments');return false;">Tournaments</a><a href="https://discord.gg/CBqWUKScfF" target="_blank">Discord</a></div><div class="ft-copy">© 2026 Kindustry. All rights reserved.</div></div></footer>
+</div>
 
 
-/* ════ ADMIN PANEL ════ */
-async function checkAdminPass() {
-  const btn = document.getElementById('adminUnlockBtn');
-  const inp = document.getElementById('adminPassInput');
-  if (btn) { btn.textContent = 'Checking...'; btn.disabled = true; }
-  function deny(msg) {
-    if (btn) { btn.textContent = 'Unlock Admin'; btn.disabled = false; }
-    if (inp) { inp.style.borderColor = '#ef4444'; inp.value = ''; inp.placeholder = msg; }
-    setTimeout(() => { if (inp) { inp.style.borderColor = ''; inp.placeholder = 'Enter secret code'; } }, 2500);
-  }
-  const u = await getSupaUser();
-  if (!u || !u.email) { deny('Sign in first!'); return; }
-  const typed = inp ? inp.value.trim() : '';
-  const SECRET = 'GODK' + new Date().getFullYear();
-  if (typed !== SECRET) { deny('Wrong code!'); return; }
-  try {
-    const { data, error } = await supa.from('admins').select('email').eq('email', u.email).maybeSingle();
-    if (data && !error) {
-      document.getElementById('adminLocked').style.display = 'none';
-      document.getElementById('adminPanel').style.display = 'block';
-      if (inp) inp.value = '';
-      adminLoadPlayers();
-      adminLoadTournaments();
-      adminLoadRegistrations();
-      adminLoadStats();
-    } else { deny('Access denied!'); }
-  } catch(e) { if (btn) { btn.textContent = 'Unlock Admin'; btn.disabled = false; } }
-}
-
-async function adminAddPlayer() {
-  const username = document.getElementById('a-username').value.trim();
-  const tag = document.getElementById('a-tag').value.trim() || 'Member';
-  const tournaments = parseInt(document.getElementById('a-tournaments').value) || 0;
-  const wins = parseInt(document.getElementById('a-wins').value) || 0;
-  const badgesRaw = document.getElementById('a-badges').value.trim();
-  const badges = badgesRaw ? badgesRaw.split(',').map(b => b.trim()).filter(Boolean) : [];
-
-  if (!username) { alert('Username required'); return; }
-
-  const { error } = await supa.from('leaderboard').upsert({
-    username, tag, tournaments, wins, badges
-  }, { onConflict: 'username' });
-
-  const msg = document.getElementById('a-msg');
-  if (error) {
-    msg.style.color = '#ef4444';
-    msg.textContent = '❌ Error: ' + error.message;
-  } else {
-    msg.style.color = '#22c55e';
-    msg.textContent = '✅ Player added/updated successfully!';
-    document.getElementById('a-username').value = '';
-    document.getElementById('a-tag').value = '';
-    document.getElementById('a-tournaments').value = '';
-    document.getElementById('a-wins').value = '';
-    document.getElementById('a-badges').value = '';
-    adminLoadPlayers();
-    adminLoadStats();
-  }
-  msg.style.display = 'block';
-  setTimeout(() => msg.style.display = 'none', 4000);
-}
-
-async function adminLoadPlayers() {
-  const el = document.getElementById('adminPlayerList');
-  if (!el) return;
-  el.innerHTML = '<div style="color:var(--dim);font-size:13px;">Loading...</div>';
-  const { data, error } = await supa.from('leaderboard').select('*').order('wins', { ascending: false });
-  if (error || !data || data.length === 0) { el.innerHTML = '<span style="color:var(--dim);font-size:13px;">No players yet.</span>'; return; }
-  let bannedIds = new Set();
-  try { const { data: bans } = await supa.from('banned_users').select('user_id'); if (bans) bans.forEach(b => bannedIds.add(b.user_id)); } catch(e) {}
-  el.innerHTML = data.map(p => {
-    const ib = bannedIds.has(p.user_id);
-    const banBtn = !ib
-      ? '<button onclick="adminBanPlayer(\''+p.id+'\',\''+(p.user_id||'')+'\',\''+p.username+'\')" style="background:rgba(245,158,11,.1);border:1px solid rgba(245,158,11,.3);color:#f59e0b;border-radius:4px;padding:3px 10px;cursor:pointer;font-size:10px;">Suspend</button>'
-      : '<button onclick="adminUnbanPlayer(\''+(p.user_id||'')+'\',\''+p.username+'\')" style="background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.3);color:#22c55e;border-radius:4px;padding:3px 10px;cursor:pointer;font-size:10px;">Unban</button>';
-    const delBtn = '<button onclick="adminDeletePlayer(\''+p.id+'\',\''+p.username+'\')" style="background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.3);color:#ef4444;border-radius:4px;padding:3px 10px;cursor:pointer;font-size:10px;">Remove</button>';
-    return '<div style="display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--border);gap:8px;flex-wrap:wrap;">' +
-      '<div style="display:flex;align-items:center;gap:8px;">' +
-      (ib ? '<span style="font-size:10px;background:rgba(239,68,68,.15);color:#ef4444;border:1px solid rgba(239,68,68,.3);border-radius:4px;padding:2px 6px;">BANNED</span>' : '') +
-      '<strong style="color:var(--text);">' + p.username + '</strong><span style="color:var(--dim);font-size:11px;">' + (p.tag||'') + '</span></div>' +
-      '<div style="display:flex;gap:8px;align-items:center;font-size:12px;flex-wrap:wrap;">' +
-      '<span style="color:var(--dim);">🏆 ' + (p.wins||0) + '</span><span style="color:var(--dim);">🎮 ' + (p.tournaments||0) + '</span>' +
-      banBtn + delBtn + '</div></div>';
-  }).join('');
-  if (document.getElementById('adminTotalLB')) document.getElementById('adminTotalLB').textContent = data.length;
-}
-
-async function adminDeletePlayer(id, name) {
-  if (!confirm('Remove ' + name + ' from leaderboard?')) return;
-  await supa.from('leaderboard').delete().eq('id', id);
-  adminLoadPlayers();
-}
-
-async function adminBanPlayer(lbId, userId, name) {
-  const reason = prompt('Reason for suspending ' + name + '?');
-  if (reason === null) return;
-  try {
-    if (userId) await supa.from('banned_users').upsert({ user_id: userId, username: name, reason: reason||'No reason', banned_at: new Date().toISOString() }, { onConflict: 'user_id' });
-    adminLoadPlayers();
-    showToast('🚫','Player Suspended', name + ' suspended.','info');
-  } catch(e) { alert('Failed: ' + e.message); }
-}
-
-async function adminUnbanPlayer(userId, name) {
-  if (!confirm('Lift suspension for ' + name + '?')) return;
-  try {
-    await supa.from('banned_users').delete().eq('user_id', userId);
-    adminLoadPlayers();
-    showToast('✅','Player Unbanned', name + ' reinstated.','success');
-  } catch(e) { alert('Failed: ' + e.message); }
-}
-
-async function adminLoadUsers() {
-  const el = document.getElementById('adminUserList');
-  if (!el) return;
-  el.innerHTML = '<div style="color:var(--dim);font-size:13px;">Loading...</div>';
-  const { data, error } = await supa.from('usernames').select('*').order('created_at', { ascending: false });
-  if (error || !data || data.length === 0) { el.innerHTML = '<span style="color:var(--dim);">No registered users yet.</span>'; return; }
-  el.innerHTML = data.map(u => '<div style="display:flex;align-items:center;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border);"><strong style="color:var(--text);font-size:13px;">' + u.username + '</strong><span style="font-size:11px;color:var(--dim);">' + new Date(u.created_at).toLocaleDateString() + '</span></div>').join('');
-  if (document.getElementById('adminTotalUsers')) document.getElementById('adminTotalUsers').textContent = data.length;
-}
-
-async function adminLoadRegistrations() {
-  const el = document.getElementById('adminRegList');
-  if(!el) return;
-  try {
-    const { data, error } = await supa.from('registrations').select('*').order('registered_at',{ascending:false});
-    if(error || !data || data.length === 0) { el.innerHTML = '<span style="color:var(--dim);">No registrations yet.</span>'; return; }
-    el.innerHTML = data.map(r => `
-      <div style="padding:10px 0;border-bottom:1px solid var(--border);display:grid;grid-template-columns:1fr 1fr;gap:8px;">
-        <div><strong style="color:var(--text);">${r.username}</strong> <span style="color:var(--dim);font-size:11px;">${r.discord_tag||''}</span></div>
-        <div style="text-align:right;font-size:11px;color:var(--dim);">${r.tournament||''} · ${new Date(r.registered_at).toLocaleDateString()}</div>
-        ${r.game_id?'<div style="font-size:11px;color:var(--dim);">Game ID: '+r.game_id+'</div>':''}
-        ${r.notes?'<div style="font-size:11px;color:var(--dim);">Note: '+r.notes+'</div>':''}
-      </div>`).join('');
-  } catch(e) { el.innerHTML = '<span style="color:var(--dim);">Run the registrations SQL first.</span>'; }
-}
-
-
-/* ════ TOURNAMENT MANAGEMENT ════ */
-async function adminLoadTournaments() {
-  const el = document.getElementById('adminTournamentList');
-  if (!el) return;
-  el.innerHTML = '<div style="color:var(--dim);font-size:13px;">Loading...</div>';
-  const { data } = await supa.from('tournaments').select('*').order('created_at',{ascending:false});
-  if (!data || data.length === 0) { el.innerHTML = '<span style="color:var(--dim);font-size:13px;">No tournaments yet.</span>'; return; }
-  const sc = {open:'#22c55e',closed:'#ef4444',upcoming:'#f59e0b',completed:'#9ca3af'};
-  el.innerHTML = '';
-  data.forEach(t => {
-    const div = document.createElement('div');
-    div.style.cssText = 'padding:14px;border:1px solid var(--border);border-radius:10px;margin-bottom:10px;background:var(--bg2);';
-    const color = sc[t.status] || 'var(--dim)';
-    div.innerHTML =
-      '<div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:8px;">' +
-      '<div><strong style="color:var(--text);font-size:14px;">' + t.name + '</strong>' +
-      '<span style="color:var(--dim);font-size:11px;margin-left:8px;">' + t.game + '</span></div>' +
-      '<span style="font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:' + color + ';border:1px solid ' + color + ';padding:2px 10px;border-radius:20px;">' + t.status + '</span></div>' +
-      '<div style="font-size:12px;color:var(--dim);margin-bottom:10px;">' + (t.description||'') + ' · Max: ' + t.max_players + ' · Prize: ' + (t.prize||'TBA') + '</div>' +
-      '<div class="tour-btns" style="display:flex;gap:8px;flex-wrap:wrap;"></div>';
-    const btnWrap = div.querySelector('.tour-btns');
-    const mkBtn = (label, bg, border, color2, fn) => {
-      const b = document.createElement('button');
-      b.textContent = label;
-      b.style.cssText = 'background:' + bg + ';border:1px solid ' + border + ';color:' + color2 + ';border-radius:4px;padding:4px 10px;cursor:pointer;font-size:10px;';
-      b.onclick = fn;
-      btnWrap.appendChild(b);
-    };
-    if (t.status!=='open')      mkBtn('Open Reg',     'rgba(34,197,94,.1)',  'rgba(34,197,94,.3)',  '#22c55e', () => adminSetTournamentStatus(t.id,'open'));
-    if (t.status!=='closed')    mkBtn('Close Reg',    'rgba(239,68,68,.1)',  'rgba(239,68,68,.3)',  '#ef4444', () => adminSetTournamentStatus(t.id,'closed'));
-    if (t.status!=='upcoming')  mkBtn('Set Upcoming', 'rgba(245,158,11,.1)', 'rgba(245,158,11,.3)', '#f59e0b', () => adminSetTournamentStatus(t.id,'upcoming'));
-    if (t.status!=='completed') mkBtn('Mark Done',    'rgba(156,163,175,.1)','rgba(156,163,175,.3)','#9ca3af', () => adminSetTournamentStatus(t.id,'completed'));
-    mkBtn('Delete', 'rgba(239,68,68,.07)', 'rgba(239,68,68,.2)', '#ef4444', () => adminDeleteTournament(t.id, t.name));
-    mkBtn('📣 Notify All',      'rgba(99,102,241,.1)', 'rgba(99,102,241,.3)', '#818cf8', () => broadcastTournamentNotif(t.name,'new'));
-    mkBtn('⚡ Notify Starting', 'rgba(245,158,11,.08)','rgba(245,158,11,.25)','#f59e0b', () => broadcastTournamentNotif(t.name,'starting'));
-    el.appendChild(div);
-  });
-  const sel = document.getElementById('reg-tournament');
-  if (sel) sel.innerHTML = '<option value="">Choose a tournament...</option>' +
-    data.filter(t=>t.status==='open').map(t=>'<option value="'+t.name+'">'+t.name+' — '+t.game+'</option>').join('');
-  if (document.getElementById('adminTotalTourneys')) document.getElementById('adminTotalTourneys').textContent = data.length;
-}
+</body>
+</html>
