@@ -1886,11 +1886,12 @@ nav {
 }
 nav.scrolled {
   top: 8px;
-  left: 16px;
-  right: 16px;
+  left: 12px;
+  right: 12px;
   border-radius: 16px;
   border: 1px solid var(--border);
   box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+  padding: 0 20px;
 }
 
 /* ═══ LEADERBOARD PAGE ═══ */
@@ -4029,6 +4030,10 @@ const BAD_WORDS = [
   'cock',
   'cum','jizz','penis','vagina','clit','dildo','anal','porn','porno','hentai','nude','nudes','nsfw',
   'sex','sexy','sexting',
+  // Anatomical misuse as usernames
+  'nipple','nipples','boob','boobs','tits','tit','titty','titties','ass','asses','anus','butt','butthole',
+  'boner','erection','orgasm','horny','kinky','fetish','masturbate','masturbation','ejaculate',
+  'bigboobs','bigass','bigtits','hotass','sexygirl','sexyguy','nakedgirl','nakedguy','nakedboy',
   // Hate
   'hitler','nazi','kkk','whore','slut','slag','rape','rapist','raping','raped','molest','pedophile','pedo','nonce',
   'terrorist','jihad','isis','faggot','fag','dyke','tranny',
@@ -4065,7 +4070,9 @@ const EXACT_MATCH_WORDS = [
   'kkk','kys','kms','fag','sex','cum','fck','sht','btch','pedo','isis','fap',
   // Causes too many false positives as substrings
   'anal','cock','dick','shit','coon','dyke','gook','nigg','ngga','negg','fuk','dikk','jizz',
-  'slag','nig','neg','nga','dik','jiz','con'
+  'slag','nig','neg','nga','dik','jiz','con',
+  // Anatomical — fine as exact username, false-positives as substrings
+  'ass','tit','anus','butt'
 ];
 
 function containsBadWord(val) {
@@ -4130,9 +4137,13 @@ async function submitUsername() {
   } catch(e) { console.log('Username check skipped:', e); }
   const u2 = await getSupaUser();
   if (u2) {
-    // Save to Supabase usernames table
+    // Save to Supabase usernames table — set username_changed_at on first claim too
     try {
-      await supa.from('usernames').upsert({ username: v.toLowerCase(), user_id: u2.id });
+      await supa.from('usernames').upsert({
+        username: v.toLowerCase(),
+        user_id: u2.id,
+        username_changed_at: new Date().toISOString()
+      });
     } catch(e) { console.log('Username save skipped:', e); }
     // Add to leaderboard so new user appears immediately
     try {
@@ -4329,10 +4340,12 @@ async function saveUname() {
   if (currentUname && currentUname.toLowerCase() === v.toLowerCase()) { alert('That is already your username!'); return; }
 
   // Check 14 day cooldown from Supabase
+  // Falls back to created_at so first-claim users can't immediately change their name again
   try {
-    const { data: unameRow } = await supa.from('usernames').select('username_changed_at').eq('user_id', u2.id).maybeSingle();
-    if (unameRow?.username_changed_at) {
-      const lastChange = new Date(unameRow.username_changed_at);
+    const { data: unameRow } = await supa.from('usernames').select('username_changed_at, created_at').eq('user_id', u2.id).maybeSingle();
+    const cooldownAnchor = unameRow?.username_changed_at || unameRow?.created_at;
+    if (cooldownAnchor) {
+      const lastChange = new Date(cooldownAnchor);
       const daysSince = (Date.now() - lastChange.getTime()) / (1000 * 60 * 60 * 24);
       if (daysSince < 14) {
         const daysLeft = Math.ceil(14 - daysSince);
@@ -4642,9 +4655,10 @@ async function showUnameCooldown() {
   const el = document.getElementById('unameChangeDaysLeft');
   if (!el) return;
   try {
-    const { data } = await supa.from('usernames').select('username_changed_at').eq('user_id', u.id).maybeSingle();
-    if (data?.username_changed_at) {
-      const daysSince = (Date.now() - new Date(data.username_changed_at).getTime()) / (1000 * 60 * 60 * 24);
+    const { data } = await supa.from('usernames').select('username_changed_at, created_at').eq('user_id', u.id).maybeSingle();
+    const cooldownAnchor = data?.username_changed_at || data?.created_at;
+    if (cooldownAnchor) {
+      const daysSince = (Date.now() - new Date(cooldownAnchor).getTime()) / (1000 * 60 * 60 * 24);
       if (daysSince < 14) {
         const daysLeft = Math.ceil(14 - daysSince);
         el.textContent = `Next change available in ${daysLeft} day${daysLeft === 1 ? '' : 's'}`;
@@ -4913,6 +4927,7 @@ function showPage(name) {
   if (nav) nav.classList.remove('open');
   setTimeout(observeReveals, 50);
   if (name === 'about') setTimeout(initAboutStars, 100);
+  if (name === 'godk') setTimeout(() => unlockAchievement('godk','⚔️','GODK','Discovered the GODK esports team!'), 800);
   if (name === 'leaderboard') { setTimeout(() => renderLeaderboard('all'), 100); setTimeout(() => refreshLbDataForSearch(), 500); }
   if (name === 'register') { setTimeout(async () => { loadTournamentsForReg(); const u = await getSupaUser(); const notice = document.getElementById('regGuestNotice'); if(notice) notice.style.display = u ? 'none' : 'block'; }, 100); }
   if (name === 'tournaments') { setTimeout(() => loadTournamentRegCounts(), 300); }
@@ -7051,7 +7066,7 @@ function buildWinnerSlots(count, title) {
   slotsEl.style.display = 'block';
 }
 
-function gwPickSlot(slotIndex) {
+async function gwPickSlot(slotIndex) {
   if (!_gwEntryPool.length) return;
   // Pool excluding already picked user_ids
   const pickedIds = new Set(Object.values(_gwPickedIds));
@@ -7074,6 +7089,16 @@ function gwPickSlot(slotIndex) {
   if (tagEl)  { tagEl.textContent = gwSanitize(winner.profiles?.discord_tag||'', 30); tagEl.style.display = winner.profiles?.discord_tag ? 'block' : 'none'; }
   if (slotEl) { slotEl.style.borderColor = 'rgba(34,197,94,.4)'; slotEl.style.background = 'rgba(34,197,94,.05)'; }
   if (btnEl)  { btnEl.textContent = '↺ Repick'; btnEl.style.background = 'linear-gradient(135deg,#6b7280,#4b5563)'; }
+  // Send lucky achievement notification to the winner
+  try {
+    await supa.from('notifications').insert({
+      user_id: winner.user_id,
+      title: '🎁 You Won a Giveaway!',
+      body: 'Congratulations! You were picked as a winner. Check Discord for prize details.',
+      type: 'giveaway',
+      link: '#giveaways'
+    });
+  } catch(e) {}
 }
 
 /* ════ TOURNAMENT REGISTRATION COUNTS ════ */
@@ -7142,6 +7167,39 @@ create policy "Authenticated users can register" on registrations for insert wit
 create policy "Admin can view registrations" on registrations for select using (true);
 ═══════════════════════════════════════════ */
 /* ════ INIT ════ */
+// Checks whether the signed-in user has a username on file in the real database.
+// If not, forces the non-dismissible username modal open. Called both from the
+// SIGNED_IN event AND on initial page load — mobile OAuth redirects can fire
+// SIGNED_IN before this listener is attached, so the event alone isn't reliable.
+async function enforceUsernameIfMissing(userId) {
+  if (!userId) return;
+  let hasUsername = false;
+  try {
+    const { data } = await supa.from('usernames').select('username').eq('user_id', userId).maybeSingle();
+    if (data && data.username) {
+      hasUsername = true;
+      localStorage.setItem('kin_uname_' + userId, data.username);
+    }
+  } catch(e) {}
+  if (!hasUsername) {
+    const modal = document.getElementById('authModal');
+    const s1 = document.getElementById('authStep1');
+    const s2 = document.getElementById('authStep2');
+    const ui = document.getElementById('unameInput');
+    const ue = document.getElementById('unameErr');
+    const ub = document.getElementById('unameSubmit');
+    const closeBtn = document.getElementById('authModalCloseBtn');
+    if(modal) modal.classList.add('open');
+    if(s1) s1.style.display = 'none';
+    if(s2) { s2.style.display = 'block'; s2.dataset.forced = '1'; }
+    if(ui) ui.value = '';
+    if(ue) ue.style.display = 'none';
+    if(ub) ub.disabled = true;
+    if(closeBtn) closeBtn.style.display = 'none';
+  }
+  return hasUsername;
+}
+
 (async function init() {
   // Safety: if supabase didn't load, still show the site
   if(typeof supa === 'undefined' || typeof supa.auth === 'undefined') {
@@ -7156,6 +7214,12 @@ create policy "Admin can view registrations" on registrations for select using (
   try { await updateNavAuth(); } catch(e) {}
   observeReveals();
 
+  // Safety net for mobile OAuth redirects: if the page loaded already signed in
+  // (SIGNED_IN may have fired before this listener was attached), check right now.
+  if (_cachedUser) {
+    try { await enforceUsernameIfMissing(_cachedUser.id); } catch(e) {}
+  }
+
   supa.auth.onAuthStateChange(async (event, session) => {
     _cachedUser = session?.user || null;
     if (event === 'SIGNED_IN') {
@@ -7163,36 +7227,11 @@ create policy "Admin can view registrations" on registrations for select using (
       if (userId) {
         // Unlock first login achievement
         setTimeout(() => unlockAchievement('first-login','🎮','First Login','Joined the Kindustry community!'), 1500);
-        // Check the REAL database — not localStorage — so this works across devices
-        // and can't be skipped by closing the browser mid-signup.
-        let hasUsername = false;
-        try {
-          const { data } = await supa.from('usernames').select('username').eq('user_id', userId).maybeSingle();
-          if (data && data.username) {
-            hasUsername = true;
-            localStorage.setItem('kin_uname_' + userId, data.username); // keep cache in sync
-          }
-        } catch(e) {}
-        if (!hasUsername) {
-          // No username on file — username claim is REQUIRED, modal cannot be dismissed
-          setTimeout(() => playSound('signup'), 400);
-          const modal = document.getElementById('authModal');
-          const s1 = document.getElementById('authStep1');
-          const s2 = document.getElementById('authStep2');
-          const ui = document.getElementById('unameInput');
-          const ue = document.getElementById('unameErr');
-          const ub = document.getElementById('unameSubmit');
-          const closeBtn = document.getElementById('authModalCloseBtn');
-          if(modal) modal.classList.add('open');
-          if(s1) s1.style.display = 'none';
-          if(s2) { s2.style.display = 'block'; s2.dataset.forced = '1'; }
-          if(ui) ui.value = '';
-          if(ue) ue.style.display = 'none';
-          if(ub) ub.disabled = true;
-          if(closeBtn) closeBtn.style.display = 'none';
-        } else {
-          // Returning user with a username already on file — straight in, no prompt
+        const hasUsername = await enforceUsernameIfMissing(userId);
+        if (hasUsername) {
           setTimeout(() => playSound('login'), 300);
+        } else {
+          setTimeout(() => playSound('signup'), 400);
         }
       }
       await updateNavAuth();
@@ -7228,6 +7267,10 @@ async function loadNotifs() {
       return;
     }
     const unread = data.filter(n => !n.is_read);
+    // Auto-unlock lucky achievement if user has a giveaway win notification
+    if (data.some(n => n.type === 'giveaway' && n.title && n.title.includes('Won'))) {
+      unlockAchievement('lucky','🎁','Lucky One','Won a Kindustry giveaway!');
+    }
     list.innerHTML = data.map(n => `
       <div class="notif-item${n.is_read ? '' : ' notif-unread'}" style="cursor:pointer;${n.is_read ? '' : 'background:rgba(var(--pr),.07);'}"
            onclick="markNotifRead('${n.id}','${n.action_page||''}',this)">
