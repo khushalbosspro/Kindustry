@@ -1388,7 +1388,7 @@ body.perf-mode .hero-bg-anim, body.perf-mode .orb1, body.perf-mode .orb2 { anima
   .nav-rank{display:none;}
   .nav-uname{max-width:60px;}
 }
-@media(max-width:1180px){
+@media(max-width:1340px){
   .nav-discord-btn{display:none;}
 }
 @media(max-width:960px){
@@ -1748,6 +1748,12 @@ body.theme-red .card:hover,body.theme-white .card:hover{box-shadow:0 12px 48px r
 .contact-form-wrap{padding:30px;}
 .fg{margin-bottom:15px;}
 .fl{display:block;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);margin-bottom:7px;font-weight:600;}
+.toggle-switch{position:relative;display:inline-block;width:42px;height:24px;flex-shrink:0;}
+.toggle-switch input{opacity:0;width:0;height:0;}
+.toggle-slider{position:absolute;cursor:pointer;top:0;left:0;right:0;bottom:0;background:var(--border);border-radius:24px;transition:var(--trans);}
+.toggle-slider::before{position:absolute;content:"";height:18px;width:18px;left:3px;bottom:3px;background:white;border-radius:50%;transition:var(--trans);}
+.toggle-switch input:checked + .toggle-slider{background:var(--primary);}
+.toggle-switch input:checked + .toggle-slider::before{transform:translateX(18px);}
 .fi,.ft{width:100%;background:var(--input-bg);border:1px solid var(--border);border-radius:6px;padding:11px 14px;color:var(--text);font-family:'Rajdhani',sans-serif;font-size:14px;outline:none;transition:var(--trans);}
 .fi:focus,.ft:focus{border-color:var(--primary);box-shadow:0 0 0 3px rgba(var(--pr),.1);}
 .ft{height:110px;resize:vertical;}
@@ -2766,7 +2772,7 @@ footer{border-top:1px solid var(--border);padding:32px 56px;display:flex;align-i
       <div class="modal-title">Choose Your Username</div>
       <div class="modal-sub">Pick a unique username for your Kindustry profile. This is how other players will find you.</div>
       <input type="text" class="uname-input" id="unameInput" placeholder="GamerTag123" maxlength="16" oninput="validateUname()">
-      <div class="uname-hint">Up to 12 characters. Letters and numbers only.</div>
+      <div class="uname-hint">Up to 16 characters. Letters and numbers only.</div>
       <div class="uname-err" id="unameErr">Username can only contain letters and numbers.</div>
       <button class="btn btn-p" style="width:100%;justify-content:center;" id="unameSubmit" onclick="submitUsername()" disabled>Claim Username →</button>
     </div>
@@ -3717,6 +3723,36 @@ footer{border-top:1px solid var(--border);padding:32px 56px;display:flex;align-i
             <button class="btn btn-p" style="margin-top:4px;" onclick="saveSocialLinks()">Save Social Links</button>
           </div>
 
+          <!-- SOUND SETTINGS -->
+          <div style="border-top:1px solid var(--border);padding-top:20px;margin-bottom:20px;">
+            <label class="fl" style="margin-bottom:12px;">🔊 Sound Settings</label>
+
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:12px 14px;background:rgba(var(--pr),0.05);border:1px solid var(--border);border-radius:10px;margin-bottom:10px;">
+              <div>
+                <div style="font-size:13px;font-weight:600;color:var(--text);">Sound Pack</div>
+                <div style="font-size:11px;color:var(--dim);">Choose the style of sounds used across the site</div>
+              </div>
+              <select id="soundPackSelect" class="fi" style="width:auto;padding:8px 12px;font-size:12px;" onchange="saveSoundPack()">
+                <option value="default">Default (Built-in)</option>
+                <option value="enhanced" disabled>Enhanced — coming soon</option>
+                <option value="candy" disabled>Candy SFX — coming soon</option>
+              </select>
+            </div>
+
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:12px 14px;background:rgba(var(--pr),0.05);border:1px solid var(--border);border-radius:10px;margin-bottom:10px;">
+              <div>
+                <div style="font-size:13px;font-weight:600;color:var(--text);">Keyboard Sounds</div>
+                <div style="font-size:11px;color:var(--dim);">Play a sound every time you press a key on the site</div>
+              </div>
+              <label class="toggle-switch">
+                <input type="checkbox" id="keyboardSoundToggle" onchange="saveKeyboardSoundPref()">
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+
+            <div id="soundComingSoonNote" style="font-size:11px;color:var(--dim);font-style:italic;padding:0 4px;">More sound packs and effects are on the way. This panel is ready for them — nothing to set up yet.</div>
+          </div>
+
           <!-- DANGER ZONE -->
           <div style="border-top:1px solid var(--border);padding-top:20px;margin-top:4px;">
             <h4 style="font-family:'Orbitron',monospace;font-size:12px;font-weight:700;color:#ef4444;margin-bottom:8px;">Danger Zone</h4>
@@ -4002,9 +4038,18 @@ async function doLogin(provider) {
   if (!p) return;
   // Always redirect back to the domain the user is currently on
   const redirectTo = window.location.origin;
+  // For Google specifically: force the account chooser every time.
+  // Without this, if the browser still has an active Google session,
+  // Google can silently sign back in as whichever account it last used —
+  // even right after the user explicitly signed out of Kindustry — instead
+  // of letting them pick the account they actually want.
+  const options = { redirectTo };
+  if (p === 'google') {
+    options.queryParams = { prompt: 'select_account' };
+  }
   const { error } = await supa.auth.signInWithOAuth({
     provider: p,
-    options: { redirectTo }
+    options
   });
   if (error) {
     alert(`Login failed: ${error.message}\n\nMake sure ${provider} is enabled in your Supabase Auth settings.`);
@@ -4070,16 +4115,40 @@ const EXACT_MATCH_WORDS = [
   'kkk','kys','kms','fag','sex','cum','fck','sht','btch','pedo','isis','fap',
   // Causes too many false positives as substrings
   'anal','cock','dick','shit','coon','dyke','gook','nigg','ngga','negg','fuk','dikk','jizz',
-  'slag','nig','neg','nga','dik','jiz','con',
-  // Anatomical — fine as exact username, false-positives as substrings
-  'ass','tit','anus','butt'
+  'slag','nig','neg','nga','dik','jiz','con'
 ];
+
+// Common legitimate words that happen to contain "ass" — never block these
+const ASS_ALLOWLIST = [
+  'bass','class','glass','mass','pass','grass','brass','sassy','cassidy',
+  'assassin','massimo','massive','classic','compass','embassy','passport',
+  'password','ambassador','assist','assign','assess','asset','associate',
+  'passion','passive','harass','trespass'
+];
+
+// Phrases that are harassment/insults even without a single "bad word" match
+const HARASSMENT_PATTERNS = ['yourmom','urmom','yomama','yomomma','yomomas'];
 
 function containsBadWord(val) {
   if (!val) return false;
   const normalized = normalizeBadWord(val);
   const raw = val.toLowerCase().replace(/[^a-z0-9]/g,'');
   const spaceless = val.toLowerCase().replace(/\s+/g,'').replace(/[^a-z0-9]/g,'');
+
+  // Harassment phrases (e.g. "...yourmom") — checked independently of BAD_WORDS
+  if (HARASSMENT_PATTERNS.some(p => raw.includes(p) || spaceless.includes(p))) return true;
+
+  // "ass" gets special substring handling: block it inside any word UNLESS
+  // the username is a known legitimate word (or that word plus trailing digits)
+  if (raw.includes('ass') || spaceless.includes('ass')) {
+    const isAllowed = ASS_ALLOWLIST.some(w =>
+      raw === w || spaceless === w ||
+      (raw.startsWith(w) && /^[0-9]*$/.test(raw.slice(w.length))) ||
+      (spaceless.startsWith(w) && /^[0-9]*$/.test(spaceless.slice(w.length)))
+    );
+    if (!isAllowed) return true;
+  }
+
   return BAD_WORDS.some(w => {
     const nw = normalizeBadWord(w);
     // Short normalized words or words that substring-match legit names — exact only
@@ -4198,11 +4267,12 @@ async function submitUsername() {
     } catch(e) {}
 
     // Send welcome email — fire and forget
+    // Also logs the signup server-side (bypasses RLS timing issues right after OAuth redirect)
     if (u2.email) {
       fetch('https://uzrfmnzgiulesfqfueft.supabase.co/functions/v1/send-welcome-email', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: u2.email, username: v })
+        body: JSON.stringify({ email: u2.email, username: v, user_id: u2.id })
       }).catch(() => {});
     }
   }
@@ -4328,7 +4398,7 @@ async function confirmDelete(btn) {
 
 async function saveUname() {
   const v = document.getElementById('profileUnameInput').value.trim();
-  if (!/^[a-zA-Z0-9]{1,16}$/.test(v)) { alert('Username must be 1–12 letters/numbers only.'); return; }
+  if (!/^[a-zA-Z0-9]{1,16}$/.test(v)) { alert('Username must be 1–16 letters/numbers only.'); return; }
   if (containsBadWord(v)) { alert('That username is not allowed.'); return; }
 
   const u2 = await getSupaUser();
@@ -4710,6 +4780,9 @@ function pTab(btn, id){
       refreshAchievements();
     });
   }
+  if(id === 'settings-tab') {
+    loadSoundSettingsUI();
+  }
 }
 
 /* ════ SETTINGS ════ */
@@ -4935,7 +5008,7 @@ function showPage(name) {
   if (name === 'giveaways') { setTimeout(() => loadGiveaways(), 100); }
   if (name === 'profile')   { setTimeout(() => { if (!document.getElementById('gamePrefGrid')?.innerHTML) buildGamePrefGrid([]); }, 50); }
   if (name === 'admin' && document.getElementById('adminPanel') && document.getElementById('adminPanel').style.display !== 'none') {
-    setTimeout(() => { adminLoadPlayers(); adminLoadTournaments(); adminLoadRegistrations(); adminLoadStats(); adminLoadSignups(); }, 100);
+    setTimeout(() => { adminLoadPlayers(); adminLoadTournaments(); adminLoadRegistrations(); adminLoadStats(); adminLoadSignups(); loadPlayerDropdowns(); loadTournamentDropdownForResults(); }, 100);
   }
   if (name === 'profile' && cachedUser) {
     const pfp = getUserPfp(cachedUser.id);
@@ -5235,7 +5308,7 @@ async function renderLeaderboard(filter) {
   let data = [];
   // Try Supabase first
   try {
-    let query = supa.from('leaderboard').select('*').order('wins', { ascending: false }).order('tournaments', { ascending: false });
+    let query = supa.from('leaderboard').select('*').order('wins', { ascending: false }).order('tournaments', { ascending: false }).order('last_win_at', { ascending: true, nullsFirst: false });
     const { data: lbData, error } = await query;
     if (!error && lbData && lbData.length > 0) {
       data = lbData.map((p, i) => ({
@@ -5462,35 +5535,87 @@ function denyAdmin() {
   console.warn('[Kindustry] Unauthorized admin action blocked.');
 }
 
-async function adminAddPlayer() {
+// Populates the player dropdowns used by Record Result and Manage Badges.
+// Pulls from usernames table — the real signed-up players — not free text,
+// so admin actions can never be pointed at a name that doesn't actually exist.
+async function loadPlayerDropdowns() {
+  try {
+    const { data } = await supa.from('usernames').select('username').order('username', { ascending: true });
+    const options = (data || []).map(u => `<option value="${u.username}">${u.username}</option>`).join('');
+    const rrSel = document.getElementById('rr-username');
+    const bgSel = document.getElementById('bg-username');
+    if (rrSel) rrSel.innerHTML = `<option value="">Select player...</option>` + options;
+    if (bgSel) bgSel.innerHTML = `<option value="">Select player...</option>` + options;
+  } catch(e) {}
+}
+
+// Populates the tournament dropdown for Record Result, real tournaments only.
+async function loadTournamentDropdownForResults() {
+  try {
+    const { data } = await supa.from('tournaments').select('name').order('created_at', { ascending: false });
+    const sel = document.getElementById('rr-tournament');
+    if (sel) sel.innerHTML = `<option value="">Select tournament...</option>` + (data || []).map(t => `<option value="${t.name}">${t.name}</option>`).join('');
+  } catch(e) {}
+}
+
+// Records a tournament result safely. Always ADDS to a player's existing
+// stats rather than letting an admin type a raw final number and risk
+// accidentally erasing their real record. Winners get +1 win AND +1
+// tournament; non-winners get +1 tournament only. last_win_at is stamped
+// automatically on a win so leaderboard ties can be broken fairly by who
+// achieved that result first.
+async function recordTournamentResult(isWinner) {
   if (!await isAdmin()) { denyAdmin(); return; }
-  const tag = document.getElementById('a-tag').value.trim() || 'Member';
-  const tournaments = parseInt(document.getElementById('a-tournaments').value) || 0;
-  const wins = parseInt(document.getElementById('a-wins').value) || 0;
-  const badgesRaw = document.getElementById('a-badges').value.trim();
-  const badges = badgesRaw ? badgesRaw.split(',').map(b => b.trim()).filter(Boolean) : [];
-
-  if (!username) { alert('Username required'); return; }
-
-  const { error } = await supa.from('leaderboard').upsert({
-    username, tag, tournaments, wins, badges
-  }, { onConflict: 'username' });
-
-  const msg = document.getElementById('a-msg');
-  if (error) {
-    msg.style.color = '#ef4444';
-    msg.textContent = '❌ Error: ' + error.message;
-  } else {
-    msg.style.color = '#22c55e';
-    msg.textContent = '✅ Player added/updated successfully!';
-    document.getElementById('a-username').value = '';
-    document.getElementById('a-tag').value = '';
-    document.getElementById('a-tournaments').value = '';
-    document.getElementById('a-wins').value = '';
-    document.getElementById('a-badges').value = '';
-    adminLoadPlayers();
-    adminLoadStats();
+  const username = document.getElementById('rr-username').value;
+  const tournament = document.getElementById('rr-tournament').value;
+  const msg = document.getElementById('rr-msg');
+  if (!username || !tournament) {
+    msg.style.color = '#ef4444'; msg.textContent = '❌ Pick a player and a tournament first.'; msg.style.display = 'block';
+    setTimeout(() => msg.style.display = 'none', 4000);
+    return;
   }
+  try {
+    const { data: existing } = await supa.from('leaderboard').select('*').eq('username', username).maybeSingle();
+    const newTournaments = (existing?.tournaments || 0) + 1;
+    const newWins = (existing?.wins || 0) + (isWinner ? 1 : 0);
+    const payload = { username, tournaments: newTournaments, wins: newWins, tag: existing?.tag || 'Member', badges: existing?.badges || [] };
+    if (isWinner) payload.last_win_at = new Date().toISOString();
+    const { error } = await supa.from('leaderboard').upsert(payload, { onConflict: 'username' });
+    if (error) { msg.style.color = '#ef4444'; msg.textContent = '❌ ' + error.message; }
+    else {
+      msg.style.color = '#22c55e';
+      msg.textContent = `✅ ${username} now has ${newWins} win${newWins===1?'':'s'} across ${newTournaments} tournament${newTournaments===1?'':'s'}.`;
+      adminLoadStats();
+    }
+  } catch(e) { msg.style.color = '#ef4444'; msg.textContent = '❌ ' + e.message; }
+  msg.style.display = 'block';
+  setTimeout(() => msg.style.display = 'none', 5000);
+}
+
+// Badges are cosmetic and kept fully separate from wins/tournaments —
+// editing badges can never accidentally change a player's real stats.
+async function saveBadgesForPlayer() {
+  if (!await isAdmin()) { denyAdmin(); return; }
+  const username = document.getElementById('bg-username').value;
+  const badgesRaw = document.getElementById('bg-badges').value.trim();
+  const badges = badgesRaw ? badgesRaw.split(',').map(b => b.trim()).filter(Boolean) : [];
+  const msg = document.getElementById('bg-msg');
+  if (!username) {
+    msg.style.color = '#ef4444'; msg.textContent = '❌ Pick a player first.'; msg.style.display = 'block';
+    setTimeout(() => msg.style.display = 'none', 4000);
+    return;
+  }
+  try {
+    const { data: existing } = await supa.from('leaderboard').select('*').eq('username', username).maybeSingle();
+    const { error } = await supa.from('leaderboard').upsert({
+      username, badges,
+      tournaments: existing?.tournaments || 0,
+      wins: existing?.wins || 0,
+      tag: existing?.tag || 'Member'
+    }, { onConflict: 'username' });
+    if (error) { msg.style.color = '#ef4444'; msg.textContent = '❌ ' + error.message; }
+    else { msg.style.color = '#22c55e'; msg.textContent = `✅ Badges saved for ${username}.`; document.getElementById('bg-badges').value = ''; }
+  } catch(e) { msg.style.color = '#ef4444'; msg.textContent = '❌ ' + e.message; }
   msg.style.display = 'block';
   setTimeout(() => msg.style.display = 'none', 4000);
 }
@@ -6111,6 +6236,7 @@ async function submitRegistration() {
     return;
   }
   try {
+    // Check 1: has this exact account already registered for this tournament?
     const { data: existing } = await supa.from('registrations')
       .select('id').eq('user_id', u.id).eq('tournament', tournament).maybeSingle();
     if (existing) {
@@ -6120,6 +6246,20 @@ async function submitRegistration() {
       if (discordPrompt) discordPrompt.style.display = 'block';
       setTimeout(resetBtn, 5000);
       return;
+    }
+    // Check 2: has this same real Google-verified email already registered, on a different account?
+    // Uses u.email from the signed-in session, NOT the typed email field — the typed
+    // field can be faked or left blank, but u.email is verified by Google at sign-in,
+    // so this can't be bypassed by making throwaway accounts or typing someone else's address.
+    if (u.email) {
+      const { data: emailDupe } = await supa.from('registrations')
+        .select('id').ilike('user_email', u.email).eq('tournament', tournament).maybeSingle();
+      if (emailDupe) {
+        setStatus('⚠️', 'This account email is already registered for this tournament.', '#f59e0b');
+        showToast('⚠️','Already Registered','That email already has an entry for this tournament.','info',5000);
+        resetBtn();
+        return;
+      }
     }
   } catch(e) {}
 
@@ -6288,6 +6428,55 @@ function _updateSoundUI() {
   const st = document.getElementById('soundToggle');
   if(st) st.classList.toggle('on', soundEnabled);
 }
+
+/* ════ SOUND SETTINGS (Settings tab) — separate from the nav on/off button ════
+   These are structural placeholders for future sound packs. Only "default"
+   actually does anything right now since no extra audio files exist yet.
+   Built this way so adding real packs later is just filling in playSound()
+   logic — no changes needed to this settings UI or storage layer. */
+
+let soundPack = localStorage.getItem('kin-sound-pack') || 'default';
+let keyboardSoundsOn = localStorage.getItem('kin-keyboard-sound') === 'on';
+
+function saveSoundPack() {
+  const sel = document.getElementById('soundPackSelect');
+  if (!sel) return;
+  // Only "default" is selectable for now — others are disabled options in the
+  // dropdown itself, this is just a safety check in case that ever changes.
+  if (sel.value !== 'default') { sel.value = 'default'; return; }
+  soundPack = sel.value;
+  localStorage.setItem('kin-sound-pack', soundPack);
+  if (soundEnabled) playSound('click');
+}
+
+function saveKeyboardSoundPref() {
+  const toggle = document.getElementById('keyboardSoundToggle');
+  if (!toggle) return;
+  keyboardSoundsOn = toggle.checked;
+  localStorage.setItem('kin-keyboard-sound', keyboardSoundsOn ? 'on' : 'off');
+  if (soundEnabled) playSound('click');
+}
+
+// Loads saved sound settings into the Settings UI — called when the
+// Settings tab is opened so the dropdown/toggle reflect what's actually saved.
+function loadSoundSettingsUI() {
+  const sel = document.getElementById('soundPackSelect');
+  const toggle = document.getElementById('keyboardSoundToggle');
+  if (sel) sel.value = soundPack;
+  if (toggle) toggle.checked = keyboardSoundsOn;
+}
+
+// Keyboard sound listener — only plays if BOTH the master sound switch (nav
+// button) AND the keyboard sounds toggle (Settings) are on. Ignores key
+// repeats from holding a key down, and skips while typing in a real input
+// field so it doesn't interfere with typing usernames, bios, etc.
+document.addEventListener('keydown', (e) => {
+  if (!soundEnabled || !keyboardSoundsOn) return;
+  if (e.repeat) return;
+  const tag = e.target && e.target.tagName;
+  if (tag === 'INPUT' || tag === 'TEXTAREA' || (e.target && e.target.isContentEditable)) return;
+  try { playSound('click'); } catch(err) {}
+});
 
 // Init sound state on DOM ready
 document.addEventListener("DOMContentLoaded", function(){
@@ -7051,19 +7240,46 @@ function buildWinnerSlots(count, title) {
   _gwPickedIds = {};
   const medals = ['🥇','🥈','🥉'];
   container.innerHTML = Array.from({length: count}, (_,i) => `
-    <div id="gwSlot-${i}" style="display:flex;align-items:center;gap:10px;padding:12px 14px;border:1px solid var(--border);border-radius:10px;margin-bottom:8px;background:var(--bg2);">
+    <div id="gwSlot-${i}" style="display:flex;align-items:center;gap:10px;padding:12px 14px;border:1px solid var(--border);border-radius:10px;margin-bottom:8px;background:var(--bg2);flex-wrap:wrap;">
       <span style="font-size:20px;flex-shrink:0;">${medals[i]||'🏅'}</span>
-      <div style="flex:1;min-width:0;">
+      <div style="flex:1;min-width:140px;">
         <div style="font-size:9px;letter-spacing:2px;color:var(--dim);text-transform:uppercase;margin-bottom:2px;">${i===0?'1st':i===1?'2nd':i===2?'3rd':(i+1)+'th'} Place</div>
         <div id="gwSlotName-${i}" style="font-size:14px;font-weight:700;color:var(--dim);font-style:italic;">— not picked yet —</div>
         <div id="gwSlotTag-${i}" style="font-size:11px;color:var(--dim);display:none;"></div>
       </div>
+      <input type="text" id="gwSlotManual-${i}" placeholder="Type a real entrant's username to choose them..." class="fi" style="flex:1;min-width:180px;max-width:220px;font-size:12px;padding:7px 10px;" list="gwEntryNames">
+      <button onclick="gwAssignManual(${i})" class="btn" style="background:rgba(var(--pr),.12);border:1px solid rgba(var(--pr),.3);color:var(--primary);padding:7px 12px;font-size:11px;white-space:nowrap;">✓ Assign</button>
       <button id="gwSlotBtn-${i}" class="btn" onclick="gwPickSlot(${i})"
         style="background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff;border:none;padding:7px 14px;font-size:11px;white-space:nowrap;flex-shrink:0;">
-        🎲 Pick
+        🎲 Random
       </button>
     </div>`).join('');
+  // Datalist of real entrants so the manual box can only realistically match someone who actually entered
+  const dl = document.getElementById('gwEntryNames') || document.createElement('datalist');
+  dl.id = 'gwEntryNames';
+  dl.innerHTML = _gwEntryPool.map(e => `<option value="${(e.profiles?.username||'').replace(/"/g,'')}">`).join('');
+  if (!document.getElementById('gwEntryNames')) document.body.appendChild(dl);
   slotsEl.style.display = 'block';
+}
+
+// Lets the admin manually assign a specific real entrant to a specific slot,
+// e.g. slot 1 = a named person, slot 2 = stays random, slot 3 = another named
+// person. Only matches against people who ACTUALLY entered this giveaway —
+// typing a random name that never entered does nothing, so this can't be used
+// to fake a winner who was never a real participant.
+function gwAssignManual(slotIndex) {
+  const input = document.getElementById('gwSlotManual-' + slotIndex);
+  if (!input) return;
+  const typed = input.value.trim().toLowerCase();
+  if (!typed) { showToast('⚠️','Type a name first','Enter the username of a real entrant, or use Random instead.','info',3000); return; }
+  const pickedIds = new Set(Object.values(_gwPickedIds));
+  const match = _gwEntryPool.find(e => (e.profiles?.username||'').toLowerCase() === typed && !pickedIds.has(e.user_id));
+  if (!match) {
+    showToast('❌','Not Found','No matching entrant found, or they\'re already assigned to another slot.','error',3500);
+    return;
+  }
+  _gwPickedIds[slotIndex] = match.user_id;
+  _gwFillSlotUI(slotIndex, match);
 }
 
 async function gwPickSlot(slotIndex) {
@@ -7078,17 +7294,23 @@ async function gwPickSlot(slotIndex) {
   // Pick random
   const winner = available[Math.floor(Math.random() * available.length)];
   _gwPickedIds[slotIndex] = winner.user_id;
+  await _gwFillSlotUI(slotIndex, winner);
+}
 
-  // Fill the slot UI
+// Shared by both random pick and manual assign — fills the slot UI and
+// sends the winner their notification, so both paths behave identically.
+async function _gwFillSlotUI(slotIndex, winner) {
   const nameEl = document.getElementById('gwSlotName-' + slotIndex);
   const tagEl  = document.getElementById('gwSlotTag-'  + slotIndex);
   const btnEl  = document.getElementById('gwSlotBtn-'  + slotIndex);
   const slotEl = document.getElementById('gwSlot-'     + slotIndex);
+  const manualEl = document.getElementById('gwSlotManual-' + slotIndex);
 
   if (nameEl) { nameEl.style.color = 'var(--text)'; nameEl.style.fontStyle = 'normal'; nameEl.textContent = gwSanitize(winner.profiles?.username||'Unknown', 30); }
   if (tagEl)  { tagEl.textContent = gwSanitize(winner.profiles?.discord_tag||'', 30); tagEl.style.display = winner.profiles?.discord_tag ? 'block' : 'none'; }
   if (slotEl) { slotEl.style.borderColor = 'rgba(34,197,94,.4)'; slotEl.style.background = 'rgba(34,197,94,.05)'; }
   if (btnEl)  { btnEl.textContent = '↺ Repick'; btnEl.style.background = 'linear-gradient(135deg,#6b7280,#4b5563)'; }
+  if (manualEl) { manualEl.style.display = 'none'; }
   // Send lucky achievement notification to the winner
   try {
     await supa.from('notifications').insert({
@@ -7126,15 +7348,25 @@ async function loadTournamentRegCounts() {
   } catch(e) {}
 }
 
-/* ════ ADMIN SHORTCUT ════ */
-// Access admin by typing kindustry.in/#admin
-(function(){
-  if(window.location.hash === '#admin') {
-    setTimeout(() => showPage('admin'), 500);
+/* ════ DIRECT URL / DEEP LINK SUPPORT ════
+   Lets kindustry.in/#terms, #store, #tournaments etc. load that exact page
+   directly on a fresh page load — not just when clicked from inside the nav.
+   This matters for two real things: people sharing a direct link to a
+   specific page (e.g. a tournament link in Discord), and Google actually
+   being able to crawl and index these pages instead of seeing the homepage
+   every time it visits a hash URL fresh. */
+const VALID_DEEP_LINK_PAGES = ['home','store','tournaments','giveaways','leaderboard','news','announcements','godk','about','contact','profile','register','admin','privacy','terms','changelog'];
+
+function _handleDeepLink() {
+  const hash = window.location.hash.replace('#', '');
+  if (hash && VALID_DEEP_LINK_PAGES.includes(hash)) {
+    setTimeout(() => showPage(hash), 500);
   }
-  window.addEventListener('hashchange', () => {
-    if(window.location.hash === '#admin') showPage('admin');
-  });
+}
+
+(function(){
+  _handleDeepLink();
+  window.addEventListener('hashchange', _handleDeepLink);
 })();
 
 /* ══ RUN THIS SQL IN SUPABASE SQL EDITOR ══
@@ -7709,11 +7941,32 @@ function quickThemeToggle() {
 
     <div class="changelog-timeline">
 
+      <!-- UPDATE 6 -->
+      <div class="changelog-entry reveal">
+        <div class="changelog-dot">✦</div>
+        <div class="changelog-card">
+          <div class="changelog-version">v0.6 <span class="changelog-tag">Latest</span></div>
+          <div class="changelog-name">Operation Foundation — Reliability & Settings Overhaul</div>
+          <div class="changelog-date">June 2026</div>
+          <div class="changelog-desc">A big behind-the-scenes pass focused on making the site feel more solid and giving players more control. Mobile sign-in is smoother, the username system is more reliable, and a new Sound Settings panel lays the groundwork for sound packs and effects coming later.</div>
+          <ul class="changelog-items">
+            <li>Smoother, more reliable sign-in flow across mobile and desktop</li>
+            <li>Username system improvements — fewer edge cases, clearer 14-day change cooldown messaging</li>
+            <li>New Sound Settings panel in Profile → Settings — choose your sound pack and toggle keyboard sounds (more packs coming soon)</li>
+            <li>Tournament registration protections improved to keep entries fair for everyone</li>
+            <li>Achievements expanded — GODK page visit and Lucky Giveaway Winner achievements now unlock properly</li>
+            <li>Tournament card hover effect refined for a cleaner look</li>
+            <li>Username character limit corrected across the site (up to 16 characters)</li>
+            <li>General bug fixes and content filter improvements</li>
+          </ul>
+        </div>
+      </div>
+
       <!-- UPDATE 5 -->
       <div class="changelog-entry reveal">
         <div class="changelog-dot">✦</div>
         <div class="changelog-card">
-          <div class="changelog-version">v0.5 <span class="changelog-tag">Latest</span></div>
+          <div class="changelog-version">v0.5 <span class="changelog-tag">Milestone</span></div>
           <div class="changelog-name">Operation Community — Profiles, Identity & Launch Prep</div>
           <div class="changelog-date">June 2026</div>
           <div class="changelog-desc">The biggest profile update yet. Players can now fully express themselves with bios, game preferences and social links. The OG Member badge rewards the first 1000 players to ever join Kindustry — a permanent mark of being here from the start. The site now nudges incomplete profiles, tournament cards got a visual upgrade, and Ko-fi support landed in the nav. Beta Season 0 is loading.</div>
@@ -7992,19 +8245,47 @@ function quickThemeToggle() {
         <div id="adminTournamentList" style="font-size:13px;color:var(--dim);"><span class="skel skel-card"></span><span class="skel skel-card"></span></div>
       </div>
 
-      <!-- ADD TO LEADERBOARD -->
+      <!-- RECORD TOURNAMENT RESULT (safe, increment-based) -->
       <div class="card" style="padding:28px;margin-bottom:20px;">
-        <h3 style="font-family:'Orbitron',monospace;font-size:15px;font-weight:700;color:var(--primary);margin-bottom:20px;">➕ Add Player to Leaderboard</h3>
+        <h3 style="font-family:'Orbitron',monospace;font-size:15px;font-weight:700;color:var(--primary);margin-bottom:8px;">🏆 Record Tournament Result</h3>
+        <div style="font-size:12px;color:var(--dim);margin-bottom:20px;line-height:1.6;">Pick a real player and add their result. This safely adds +1 to their record instead of letting you accidentally overwrite their existing stats.</div>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;">
-          <div><label class="fl">Username</label><input type="text" class="fi" id="a-username" placeholder="PlayerName" maxlength="16"></div>
-          <div><label class="fl">Tag / Title</label><input type="text" class="fi" id="a-tag" placeholder="Tournament Winner"></div>
-          <div><label class="fl">Tournaments Played</label><input type="number" class="fi" id="a-tournaments" placeholder="2" min="0"></div>
-          <div><label class="fl">Wins</label><input type="number" class="fi" id="a-wins" placeholder="1" min="0"></div>
+          <div>
+            <label class="fl">Player</label>
+            <select class="fi" id="rr-username">
+              <option value="">Loading players...</option>
+            </select>
+          </div>
+          <div>
+            <label class="fl">Tournament</label>
+            <select class="fi" id="rr-tournament">
+              <option value="">Loading tournaments...</option>
+            </select>
+          </div>
         </div>
-        <div style="margin-bottom:14px;"><label class="fl">Badges (comma separated)</label><input type="text" class="fi" id="a-badges" placeholder="champ, active, new"></div>
-        <button class="btn btn-p" onclick="adminAddPlayer()">Add Player</button>
-        <div id="a-msg" style="margin-top:10px;font-size:13px;color:#22c55e;display:none;"></div>
+        <div style="display:flex;gap:10px;margin-bottom:14px;">
+          <button class="btn btn-p" style="flex:1;justify-content:center;" onclick="recordTournamentResult(true)">🏅 Mark as Winner (+1 win, +1 tournament)</button>
+          <button class="btn btn-ol" style="flex:1;justify-content:center;" onclick="recordTournamentResult(false)">Just Competed (+1 tournament)</button>
+        </div>
+        <div id="rr-msg" style="font-size:13px;display:none;"></div>
       </div>
+
+      <!-- BADGES (separate from wins/tournaments — safe to edit directly) -->
+      <div class="card" style="padding:28px;margin-bottom:20px;">
+        <h3 style="font-family:'Orbitron',monospace;font-size:15px;font-weight:700;color:var(--primary);margin-bottom:20px;">🎖 Manage Badges</h3>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;">
+          <div>
+            <label class="fl">Player</label>
+            <select class="fi" id="bg-username">
+              <option value="">Loading players...</option>
+            </select>
+          </div>
+          <div><label class="fl">Badges (comma separated)</label><input type="text" class="fi" id="bg-badges" placeholder="champ, active, new"></div>
+        </div>
+        <button class="btn btn-p" onclick="saveBadgesForPlayer()">Save Badges</button>
+        <div id="bg-msg" style="margin-top:10px;font-size:13px;display:none;"></div>
+      </div>
+
 
       <!-- PLAYERS & SUSPENSIONS -->
       <div class="card" style="padding:28px;margin-bottom:20px;">
