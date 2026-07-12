@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/favicon.png">
 <meta name="description" content="Kindustry is a free global gaming community where players worldwide compete in online tournaments, win giveaways, climb leaderboards, and connect on Discord. Join now at kindustry.in.">
 <meta name="keywords" content="Kindustry, gaming community, free online tournaments, esports, Roblox tournaments, Minecraft tournaments, gaming giveaways, competitive gaming, online gaming, kindustry.in, GODK">
 <meta name="author" content="Kindustry">
@@ -383,10 +385,13 @@ body.theme-teal .nav-links a.active{
   color:#2dd4bf !important;
   background:rgba(45,212,191,0.08) !important;
   text-shadow:0 0 12px rgba(45,212,191,0.5) !important;
+  border-radius:20px !important;
+  box-shadow:0 0 14px rgba(45,212,191,0.2) !important;
 }
 body.theme-teal .nav-links a:hover{
   color:#2dd4bf !important;
   text-shadow:0 0 10px rgba(45,212,191,0.4) !important;
+  border-radius:20px !important;
 }
 
 /* Section eyebrow */
@@ -678,6 +683,7 @@ body.theme-glass .nav-links a.active {
 body.theme-glass .nav-links a:hover {
   background: rgba(255,255,255,0.5) !important;
   color: #4f46e5 !important;
+  border-radius: 20px !important;
 }
 
 /* ── GLASS HERO EYEBROW ── */
@@ -875,6 +881,7 @@ body.theme-candy .nav-links a.active {
   color: #e8449a !important;
   background: rgba(232,68,154,0.08) !important;
   box-shadow: 0 0 14px rgba(232,68,154,0.2) !important;
+  border-radius: 20px !important;
 }
 body.theme-candy .nav-links a.active::after,
 body.theme-candy .nav-links a:hover::after {
@@ -1085,27 +1092,92 @@ body::after{
 ═══════════════════════════════════════ */
 #loader{
   position:fixed;inset:0;z-index:999999;
-  background:linear-gradient(135deg,#030508,#05070f);
+  background-image:
+    radial-gradient(ellipse 90% 70% at 50% 45%,#0a0202 0%,#050202 45%,#020101 100%),
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.05'/></svg>");
+  background-size:cover,160px 160px;
   display:flex;flex-direction:column;align-items:center;justify-content:center;
   overflow:hidden;
-  transition:opacity .8s ease,visibility .8s ease;
+  transition:opacity .9s ease,visibility .9s ease,transform .9s cubic-bezier(.4,0,.2,1);
 }
-#loader.out{opacity:0;visibility:hidden;pointer-events:none;}
-.ld-glow{position:absolute;width:700px;height:700px;background:radial-gradient(circle,rgba(79,142,247,.22),rgba(168,85,247,.08) 50%,transparent 70%);filter:blur(60px);animation:ldGlow 5s ease-in-out infinite;}
-.ld-ring{position:absolute;width:200px;height:200px;border:1px solid rgba(79,142,247,0.3);border-radius:50%;animation:ldSpin 5s linear infinite;}
-.ld-ring::before{content:'';position:absolute;top:-3px;left:50%;width:6px;height:6px;background:#4f8ef7;border-radius:50%;box-shadow:0 0 12px #4f8ef7,0 0 24px #4f8ef7;transform:translateX(-50%);}
+/* Zoom-out exit — loader pushes forward and fades as the real site reveals
+   behind it, instead of just a flat fade. */
+#loader.out{opacity:0;visibility:hidden;pointer-events:none;transform:scale(1.4);}
+
+/* Soft top-down key light, like a single light source above the scene,
+   plus a vignette darkening the edges so the center feels properly lit
+   instead of flat — the actual thing missing for a "cinematic" feel. */
+#loader::after{
+  content:'';position:absolute;inset:0;pointer-events:none;z-index:1;
+  background:
+    radial-gradient(ellipse 60% 45% at 50% 8%,rgba(255,255,255,0.05),transparent 60%),
+    radial-gradient(ellipse 120% 100% at 50% 50%,transparent 35%,rgba(0,0,0,0.55) 100%);
+}
+
+/* Fine film-grain texture for a more polished, less flat digital feel */
+/* Ambient floating light specks — small distant points drifting slowly,
+   giving the scene depth instead of an empty flat backdrop */
+.ld-spark{position:absolute;border-radius:50%;background:#fff;pointer-events:none;opacity:0;}
+.ld-spark.c-red{background:#ff6b6b;box-shadow:0 0 4px #ff2d2d;}
+.ld-spark.c-green{background:#7dffb0;box-shadow:0 0 4px #00e676;}
+.ld-spark.c-cyan{background:#7df0ff;box-shadow:0 0 4px #00e5ff;}
+.ld-spark{animation:ldSparkFloat linear infinite;}
+@keyframes ldSparkFloat{
+  0%{opacity:0;transform:translateY(0) translateX(0);}
+  10%{opacity:var(--spark-op,.5);}
+  90%{opacity:var(--spark-op,.5);}
+  100%{opacity:0;transform:translateY(-60px) translateX(var(--spark-drift,10px));}
+}
+
+/* Scanline texture, venom-tinted */
+#loader::before{
+  content:'';position:absolute;inset:0;pointer-events:none;opacity:.5;
+  background:repeating-linear-gradient(0deg,rgba(255,45,45,0.025) 0px,transparent 1px,transparent 3px);
+}
+
+/* Layered RGB-on-venom glow — white-red core (venom) with green/magenta/cyan
+   halo (cyber rgb) shimmering around it */
+.ld-glow{position:absolute;width:780px;height:780px;background:radial-gradient(circle,rgba(255,45,45,.22),rgba(0,230,118,.10) 40%,rgba(224,64,251,.08) 60%,rgba(0,229,255,.06) 75%,transparent 85%);filter:blur(75px);animation:ldGlow 5s ease-in-out infinite;}
+.ld-glow2{position:absolute;width:440px;height:440px;background:radial-gradient(circle,rgba(232,232,232,.14),transparent 70%);filter:blur(55px);animation:ldGlow2 6.5s ease-in-out infinite;}
+
+/* Triple ring, each carrying a different theme color, counter-rotating at
+   different speeds for a layered cyber feel */
+.ld-ring{position:absolute;width:200px;height:200px;border:1px solid rgba(255,45,45,0.4);border-radius:50%;animation:ldSpin 5s linear infinite;}
+.ld-ring::before{content:'';position:absolute;top:-3px;left:50%;width:6px;height:6px;background:#ff2d2d;border-radius:50%;box-shadow:0 0 12px #ff2d2d,0 0 26px #ff2d2d;transform:translateX(-50%);}
+.ld-ring2{position:absolute;width:250px;height:250px;border:1px solid rgba(0,230,118,0.3);border-radius:50%;animation:ldSpinRev 7s linear infinite;}
+.ld-ring2::before{content:'';position:absolute;top:-3px;left:50%;width:5px;height:5px;background:#00e676;border-radius:50%;box-shadow:0 0 10px #00e676,0 0 22px #00e676;transform:translateX(-50%);}
+.ld-ring3{position:absolute;width:300px;height:300px;border:1px solid rgba(0,229,255,0.2);border-radius:50%;animation:ldSpin 9s linear infinite;}
+.ld-ring3::before{content:'';position:absolute;top:-2px;left:50%;width:4px;height:4px;background:#00e5ff;border-radius:50%;box-shadow:0 0 9px #00e5ff,0 0 18px #00e5ff;transform:translateX(-50%);}
+
+/* Logo zooms in from far away while the RGB shimmer plays across it */
 .ld-logo{
   font-family:'Orbitron',monospace;font-size:clamp(34px,6vw,78px);font-weight:900;letter-spacing:10px;
-  background:linear-gradient(135deg,#fff,#4f8ef7,#a855f7);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
-  position:relative;z-index:2;filter:drop-shadow(0 0 28px rgba(79,142,247,.65));
-  animation:ldLogoIn 1.7s cubic-bezier(.16,1,.3,1) both;
+  background:linear-gradient(110deg,#ff2d2d,#00e676,#00e5ff,#e040fb,#ff2d2d);background-size:400% 100%;
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  position:relative;z-index:2;filter:drop-shadow(0 0 32px rgba(255,45,45,.5));
+  animation:ldZoomIn 1.9s cubic-bezier(.16,1,.3,1) both, ldRgbShift 4.5s linear infinite 1.9s;
 }
-.ld-sub{margin-top:18px;font-size:10px;letter-spacing:5px;color:#4a5270;animation:ldPulse 2s infinite;position:relative;z-index:2;}
-.ld-bar{position:absolute;bottom:60px;width:180px;height:2px;background:rgba(79,142,247,.15);border-radius:2px;overflow:hidden;}
-.ld-bar::after{content:'';display:block;height:100%;background:linear-gradient(90deg,#4f8ef7,#a855f7);border-radius:2px;animation:ldBar 2.1s ease both;}
-@keyframes ldGlow{0%,100%{transform:scale(1);}50%{transform:scale(1.1) translateY(-10px);}}
+.ld-sub{margin-top:18px;font-size:10px;letter-spacing:5px;color:#9a4a4a;animation:ldPulse 2s infinite;position:relative;z-index:2;}
+
+/* Progress bar with a glowing leading edge and live percentage readout */
+.ld-bar-wrap{position:absolute;bottom:58px;display:flex;flex-direction:column;align-items:center;gap:8px;z-index:2;}
+.ld-bar{position:relative;width:220px;height:3px;background:rgba(255,45,45,.15);border-radius:3px;overflow:hidden;}
+.ld-bar::after{content:'';display:block;height:100%;background:linear-gradient(90deg,#ff2d2d,#00e676,#00e5ff,#e040fb);border-radius:3px;animation:ldBar 2.4s ease both;box-shadow:0 0 10px rgba(255,45,45,.6);}
+.ld-pct{font-family:'Orbitron',monospace;font-size:11px;letter-spacing:2px;color:#c97a7a;}
+
+@keyframes ldGlow{0%,100%{transform:scale(1);}50%{transform:scale(1.14) translateY(-12px);}}
+@keyframes ldGlow2{0%,100%{transform:scale(1) translate(0,0);}50%{transform:scale(1.22) translate(20px,-15px);}}
 @keyframes ldSpin{to{transform:rotate(360deg);}}
-@keyframes ldLogoIn{from{opacity:0;letter-spacing:20px;filter:blur(20px) drop-shadow(0 0 0 transparent);}to{opacity:1;letter-spacing:10px;filter:drop-shadow(0 0 28px rgba(79,142,247,.65));}}
+@keyframes ldSpinRev{to{transform:rotate(-360deg);}}
+@keyframes ldZoomIn{
+  0%{opacity:0;transform:scale(2.4);letter-spacing:30px;filter:blur(25px) drop-shadow(0 0 0 transparent);}
+  60%{opacity:1;}
+  100%{opacity:1;transform:scale(1);letter-spacing:10px;filter:drop-shadow(0 0 32px rgba(255,45,45,.5));}
+}
+@keyframes ldRgbShift{from{background-position:0% 50%;}to{background-position:400% 50%;}}
+@keyframes ldPulse{0%,100%{opacity:1;}50%{opacity:.3;}}
+@keyframes ldBar{from{width:0%;}to{width:100%;}}
+@keyframes ldRgbShift{from{background-position:0% 50%;}to{background-position:300% 50%;}}
 @keyframes ldPulse{0%,100%{opacity:1;}50%{opacity:.3;}}
 @keyframes ldBar{from{width:0%;}to{width:100%;}}
 
@@ -1142,7 +1214,7 @@ nav{
 .nav-links a:hover,.nav-links a.active{
   color:var(--primary);
   background:rgba(var(--pr),0.1);
-  box-shadow:0 2px 12px rgba(var(--pr),0.15), inset 0 1px 0 rgba(255,255,255,0.08);
+  box-shadow:0 0 16px rgba(var(--pr),0.18), 0 2px 8px rgba(var(--pr),0.1), inset 0 1px 0 rgba(255,255,255,0.08);
 }
 .nav-links a::after{content:'';position:absolute;bottom:4px;left:13px;right:13px;height:1px;background:var(--primary);transform:scaleX(0);transform-origin:center;transition:transform .25s;}
 .nav-links a:hover::after,.nav-links a.active::after{transform:scaleX(1);}
@@ -1157,7 +1229,7 @@ nav{
 }
 .nav-discord-btn::after{display:none !important;}
 .nav-discord-btn:hover{box-shadow:0 4px 24px rgba(88,101,242,0.6) !important;transform:translateY(-2px);}
-.nav-right{display:flex;align-items:center;gap:4px;flex-shrink:0;}
+.nav-right{display:flex;align-items:center;gap:10px;flex-shrink:0;}
 
 /* ── NAV BUTTON BASE — single unified token ── */
 .nav-icon-btn,
@@ -1641,12 +1713,30 @@ section{padding:88px 56px;max-width:1280px;margin:0 auto;}
 
 .card{
   background:var(--surface);border:1px solid var(--border);border-radius:12px;
-  backdrop-filter:blur(16px);transition:var(--trans);position:relative;overflow:hidden;
+  backdrop-filter:blur(16px);transition:var(--trans);position:relative;
+  --card-angle:0deg;--card-proximity:0;
 }
-.card::before{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;background:linear-gradient(90deg,transparent,var(--primary),transparent);opacity:0;transition:opacity .3s;}
+.card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:1.5px;
+  background:linear-gradient(90deg,transparent,var(--primary),transparent);
+  opacity:0;transition:opacity .3s;pointer-events:none;z-index:2;
+}
+/* Cursor-tracked border glow — direct box-shadow approach, no masking tricks
+   so it actually shows up visibly across all browsers */
+.card::after{
+  content:'';position:absolute;inset:-1px;border-radius:inherit;
+  pointer-events:none;z-index:0;
+  box-shadow:
+    0 0 0 1px rgba(var(--pr), calc(var(--card-proximity) * 1)),
+    0 0 12px 2px rgba(var(--pr), calc(var(--card-proximity) * 0.7)),
+    0 0 30px 6px rgba(var(--pr), calc(var(--card-proximity) * 0.35)),
+    0 0 60px 10px rgba(var(--pr), calc(var(--card-proximity) * 0.15)),
+    inset 0 0 20px rgba(var(--pr), calc(var(--card-proximity) * 0.06));
+  transition:box-shadow .1s ease;
+}
 .card:hover{border-color:var(--border-h);box-shadow:var(--shadow);}
 .card:hover::before{opacity:1;}
-body.theme-red .card,.body.theme-white .card{box-shadow:0 4px 24px rgba(0,0,0,.06);}
+body.theme-red .card,body.theme-white .card{box-shadow:0 4px 24px rgba(0,0,0,.06);}
 body.theme-red .card:hover,body.theme-white .card:hover{box-shadow:0 12px 48px rgba(var(--pr),.15);}
 
 /* FEATURE CARDS */
@@ -1754,9 +1844,41 @@ body.theme-red .card:hover,body.theme-white .card:hover{box-shadow:0 12px 48px r
 .toggle-slider::before{position:absolute;content:"";height:18px;width:18px;left:3px;bottom:3px;background:white;border-radius:50%;transition:var(--trans);}
 .toggle-switch input:checked + .toggle-slider{background:var(--primary);}
 .toggle-switch input:checked + .toggle-slider::before{transform:translateX(18px);}
+/* Plain div version used by the Customize panel — toggled via an "on" class
+   through onclick, not a real checkbox input, since it's a quick-access panel
+   not a form. Drawn directly on .toggle-switch using ::before/::after since
+   there's no input element here to use a + sibling selector against. */
+.toggle-switch::before{position:absolute;content:"";top:0;left:0;right:0;bottom:0;background:var(--border);border-radius:24px;transition:var(--trans);}
+.toggle-switch::after{position:absolute;content:"";height:18px;width:18px;left:3px;bottom:3px;background:white;border-radius:50%;transition:var(--trans);z-index:1;}
+.toggle-switch.on::before{background:var(--primary);}
+.toggle-switch.on::after{transform:translateX(18px);}
 .fi,.ft{width:100%;background:var(--input-bg);border:1px solid var(--border);border-radius:6px;padding:11px 14px;color:var(--text);font-family:'Rajdhani',sans-serif;font-size:14px;outline:none;transition:var(--trans);}
 .fi:focus,.ft:focus{border-color:var(--primary);box-shadow:0 0 0 3px rgba(var(--pr),.1);}
 .ft{height:110px;resize:vertical;}
+
+/* select-field was referenced in HTML but never actually defined — these
+   dropdowns were rendering as fully unstyled native browser selects. */
+.select-field{width:100%;background:var(--input-bg);border:1px solid var(--border);border-radius:6px;padding:11px 14px;color:var(--text);font-family:'Rajdhani',sans-serif;font-size:14px;outline:none;transition:var(--trans);}
+.select-field:focus{border-color:var(--primary);box-shadow:0 0 0 3px rgba(var(--pr),.1);}
+
+/* Unified custom dropdown styling for EVERY <select> on the site (.fi and
+   .select-field both included) — replaces the default browser arrow with a
+   custom SVG chevron that recolors to match the active theme, since the
+   native arrow can't be recolored directly through CSS. Excludes the
+   leaderboard search dropdown by request — left exactly as-is. */
+select.fi,select.select-field{
+  appearance:none;-webkit-appearance:none;-moz-appearance:none;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'><path d='M1 1L5 5L9 1' stroke='%237a7498' stroke-width='1.6' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+  background-repeat:no-repeat;background-position:right 14px center;background-size:10px 6px;
+  padding-right:36px;cursor:pointer;
+}
+select.fi:hover,select.select-field:hover{border-color:var(--border-h);background-color:rgba(var(--pr),0.04);}
+select.fi:focus,select.select-field:focus{
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'><path d='M1 1L5 5L9 1' stroke='%23a78bfa' stroke-width='1.6' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+}
+/* Style the actual dropdown options list too, where browsers allow it */
+select.fi option,select.select-field option{background:#0d0d1a;color:#e8e4ff;padding:10px;}
+select.fi option:disabled,select.select-field option:disabled{color:#5a5878;font-style:italic;}
 
 /* DISCORD BANNER */
 .dc-banner{margin:0 56px 56px;border-radius:16px;padding:52px;text-align:center;position:relative;overflow:hidden;background:linear-gradient(135deg,rgba(88,101,242,.16),rgba(88,101,242,.08));border:1px solid rgba(88,101,242,.38);}
@@ -2271,7 +2393,7 @@ footer{border-top:1px solid var(--border);padding:32px 56px;display:flex;align-i
 @media(max-width:768px){
   .sound-btn{display:none !important;}
   .mob-btn{width:40px !important;height:40px !important;font-size:18px !important;}
-  .nav-right{gap:6px;}
+  .nav-right{gap:8px;}
   nav{padding:0 14px;}
   .scroll-hint{display:none;}
   .nav-rank{display:none !important;}
@@ -2703,12 +2825,27 @@ footer{border-top:1px solid var(--border);padding:32px 56px;display:flex;align-i
 </noscript>
 
 <!-- LOADER -->
-<div id="loader" style="transition:opacity 0.8s ease,visibility 0.8s ease;">
+<div id="loader" style="transition:opacity 0.9s ease,visibility 0.9s ease,transform 0.9s cubic-bezier(.4,0,.2,1);">
   <div class="ld-glow"></div>
+  <div class="ld-glow2"></div>
+  <div class="ld-ring3"></div>
+  <div class="ld-ring2"></div>
   <div class="ld-ring"></div>
+  <!-- Ambient sparks — scattered toward the sides, varied size/timing/drift -->
+  <div class="ld-spark" style="left:6%;top:18%;width:2px;height:2px;--spark-op:.4;animation-duration:7s;animation-delay:.2s;--spark-drift:14px;"></div>
+  <div class="ld-spark c-green" style="left:11%;top:62%;width:3px;height:3px;--spark-op:.55;animation-duration:9s;animation-delay:1.4s;--spark-drift:-10px;"></div>
+  <div class="ld-spark" style="left:3%;top:78%;width:1.5px;height:1.5px;--spark-op:.35;animation-duration:6.5s;animation-delay:.8s;--spark-drift:8px;"></div>
+  <div class="ld-spark c-cyan" style="left:17%;top:38%;width:2px;height:2px;--spark-op:.45;animation-duration:8s;animation-delay:2.1s;--spark-drift:-12px;"></div>
+  <div class="ld-spark c-red" style="right:6%;top:22%;width:2.5px;height:2.5px;--spark-op:.5;animation-duration:7.5s;animation-delay:.5s;--spark-drift:-14px;"></div>
+  <div class="ld-spark" style="right:10%;top:68%;width:2px;height:2px;--spark-op:.4;animation-duration:8.5s;animation-delay:1.8s;--spark-drift:10px;"></div>
+  <div class="ld-spark c-green" style="right:3%;top:48%;width:3px;height:3px;--spark-op:.55;animation-duration:6s;animation-delay:1.1s;--spark-drift:-9px;"></div>
+  <div class="ld-spark" style="right:16%;top:84%;width:1.5px;height:1.5px;--spark-op:.35;animation-duration:9.5s;animation-delay:2.6s;--spark-drift:13px;"></div>
   <div class="ld-logo">KINDUSTRY</div>
   <div class="ld-sub">INITIALIZING GAMING UNIVERSE...</div>
-  <div class="ld-bar"></div>
+  <div class="ld-bar-wrap">
+    <div class="ld-bar"></div>
+    <div class="ld-pct" id="ldPct">0%</div>
+  </div>
 </div>
 
 <!-- PARTICLES -->
@@ -2847,6 +2984,28 @@ footer{border-top:1px solid var(--border);padding:32px 56px;display:flex;align-i
       <span class="set-toggle-label">🔊 Sound Effects</span>
       <div class="toggle-switch on" id="soundToggle" onclick="toggleSound()"></div>
     </div>
+    <div style="margin-top:10px;">
+      <span style="font-size:10px;letter-spacing:1px;color:var(--dim);text-transform:uppercase;display:block;margin-bottom:6px;">Sound Pack</span>
+      <select id="soundPackSelectGlobal" class="fi" style="width:100%;padding:8px 12px;font-size:12px;" onchange="saveSoundPackGlobal()">
+        <option value="default">Default (Built-in)</option>
+        <option value="enhanced" disabled>Enhanced — coming soon</option>
+        <option value="candy" disabled>Candy SFX — coming soon</option>
+      </select>
+    </div>
+    <div class="set-toggle-row" style="margin-top:10px;">
+      <span class="set-toggle-label">⌨️ Keyboard Sounds</span>
+      <div class="toggle-switch" id="keyboardSoundToggleGlobal" onclick="toggleKeyboardSoundGlobal()"></div>
+    </div>
+    <div style="margin-top:8px;">
+      <span style="font-size:10px;letter-spacing:1px;color:var(--dim);text-transform:uppercase;display:block;margin-bottom:6px;">Keyboard Sound Style</span>
+      <select class="fi" style="width:100%;padding:8px 12px;font-size:12px;" disabled>
+        <option>Default Click</option>
+        <option disabled>Mechanical — coming soon</option>
+        <option disabled>Soft Tap — coming soon</option>
+        <option disabled>Arcade — coming soon</option>
+      </select>
+    </div>
+    <div style="font-size:10px;color:var(--dim);font-style:italic;margin-top:6px;">More sound packs coming soon. Works whether you're signed in or not.</div>
     <div class="set-div"></div>
     <div style="font-size:11px;color:var(--dim);line-height:1.7;">More options coming — font size, UI preferences.</div>
   </div>
@@ -3750,6 +3909,19 @@ footer{border-top:1px solid var(--border);padding:32px 56px;display:flex;align-i
               </label>
             </div>
 
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:12px 14px;background:rgba(var(--pr),0.05);border:1px solid var(--border);border-radius:10px;margin-bottom:10px;">
+              <div>
+                <div style="font-size:13px;font-weight:600;color:var(--text);">Keyboard Sound Style</div>
+                <div style="font-size:11px;color:var(--dim);">Pick a sound style for keyboard presses</div>
+              </div>
+              <select class="fi" style="width:auto;padding:8px 12px;font-size:12px;" disabled>
+                <option>Default Click</option>
+                <option disabled>Mechanical — coming soon</option>
+                <option disabled>Soft Tap — coming soon</option>
+                <option disabled>Arcade — coming soon</option>
+              </select>
+            </div>
+
             <div id="soundComingSoonNote" style="font-size:11px;color:var(--dim);font-style:italic;padding:0 4px;">More sound packs and effects are on the way. This panel is ready for them — nothing to set up yet.</div>
           </div>
 
@@ -3840,6 +4012,23 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /* ════ LOADER ════ */
+// Animates the loader's percentage readout from 0 to 100 over roughly the
+// same duration as the progress bar fill animation (2.4s), since text
+// content can't actually be animated through pure CSS keyframes.
+(function animateLoaderPct(){
+  const el = document.getElementById('ldPct');
+  if (!el) return;
+  const duration = 2400;
+  const start = performance.now();
+  function tick(now){
+    const elapsed = now - start;
+    const pct = Math.min(100, Math.round((elapsed / duration) * 100));
+    el.textContent = pct + '%';
+    if (pct < 100) requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+})();
+
 function hideLoader() {
   const l = document.getElementById('loader');
   if(l) l.classList.add('out');
@@ -4059,7 +4248,7 @@ async function doLogin(provider) {
 /* USERNAME PICKER */
 const BAD_WORDS = [
   // Racial slurs — direct, leet, spaced, and all sneaky variants
-  'nigger','nigga','nigg','niger','niga','nigar','n1gger','n1gga','n1gg','niqqer','niqqa','nigge','niggr',
+  'nigger','nigga','nigg','niger','niga','nigar','n1gger','n1gga','n1gg','niqqer','niqqa','niggr',
   'nword','nnigger','niqger','nlgger','nlgga','n1gg3r','niqqah','nigguh','niggah','niggaz',
   'negger','negga','negg','neger','nigr','niguh','nigu','ngga','ngger',
   // Other slurs
@@ -4070,7 +4259,7 @@ const BAD_WORDS = [
   'shit','shitter','sht',
   'bitch','btch',
   'cunt','cvnt',
-  'dick','dikk',
+  'dikk',
   'pussy','pvssy',
   'cock',
   'cum','jizz','penis','vagina','clit','dildo','anal','porn','porno','hentai','nude','nudes','nsfw',
@@ -4114,7 +4303,7 @@ const EXACT_MATCH_WORDS = [
   // Too short to safely substring-match
   'kkk','kys','kms','fag','sex','cum','fck','sht','btch','pedo','isis','fap',
   // Causes too many false positives as substrings
-  'anal','cock','dick','shit','coon','dyke','gook','nigg','ngga','negg','fuk','dikk','jizz',
+  'anal','cock','shit','coon','dyke','gook','nigg','ngga','negg','fuk','dikk','jizz',
   'slag','nig','neg','nga','dik','jiz','con'
 ];
 
@@ -4123,7 +4312,7 @@ const ASS_ALLOWLIST = [
   'bass','class','glass','mass','pass','grass','brass','sassy','cassidy',
   'assassin','massimo','massive','classic','compass','embassy','passport',
   'password','ambassador','assist','assign','assess','asset','associate',
-  'passion','passive','harass','trespass'
+  'passion','passive','harass','trespass','hassan','bassam','hassam'
 ];
 
 // Phrases that are harassment/insults even without a single "bad word" match
@@ -4139,21 +4328,22 @@ function containsBadWord(val) {
   if (HARASSMENT_PATTERNS.some(p => raw.includes(p) || spaceless.includes(p))) return true;
 
   // "ass" gets special substring handling: block it inside any word UNLESS
-  // the username is a known legitimate word (or that word plus trailing digits)
+  // the username CONTAINS a known legitimate word with "ass" in it — this
+  // catches real words like "harassed", "passable", "classical", "hassan",
+  // "bassam", not just an exact match or the word plus trailing digits.
   if (raw.includes('ass') || spaceless.includes('ass')) {
-    const isAllowed = ASS_ALLOWLIST.some(w =>
-      raw === w || spaceless === w ||
-      (raw.startsWith(w) && /^[0-9]*$/.test(raw.slice(w.length))) ||
-      (spaceless.startsWith(w) && /^[0-9]*$/.test(spaceless.slice(w.length)))
-    );
+    const isAllowed = ASS_ALLOWLIST.some(w => raw.includes(w) || spaceless.includes(w));
     if (!isAllowed) return true;
   }
 
   return BAD_WORDS.some(w => {
     const nw = normalizeBadWord(w);
-    // Short normalized words or words that substring-match legit names — exact only
+    // Short normalized words or words that substring-match legit names — exact only.
+    // Compare the NORMALIZED form (leet speak converted, repeats collapsed)
+    // on both sides — comparing raw text here let "sh1t" slip through since
+    // raw never gets leet-converted, only normalized does.
     if (EXACT_MATCH_WORDS.includes(w) || EXACT_MATCH_WORDS.includes(nw) || nw.length <= 3) {
-      return raw === nw || raw === w || spaceless === nw || spaceless === w;
+      return normalized === nw || raw === w || spaceless === nw || spaceless === w;
     }
     return normalized.includes(nw) || raw.includes(w) || spaceless.includes(nw);
   });
@@ -4786,7 +4976,7 @@ function pTab(btn, id){
 }
 
 /* ════ SETTINGS ════ */
-function openSet(){ document.getElementById('setOverlay').classList.add('open'); }
+function openSet(){ document.getElementById('setOverlay').classList.add('open'); loadGlobalSoundSettingsUI(); }
 function closeSet(){ document.getElementById('setOverlay').classList.remove('open'); }
 function outsideSet(e){ if(e.target===document.getElementById('setOverlay')) closeSet(); }
 
@@ -4967,6 +5157,7 @@ function showPage(name) {
     godk:          { title:'GODK — Kindustry Esports Team',                              desc:'GODK is the official esports team of Kindustry. Competing in Minecraft PvP, Roblox, and Chess. Follow the journey at kindustry.in.' },
     store:         { title:'Store — Kindustry Shop Coming Soon',                         desc:'The official Kindustry store is launching soon at kindustry.shop. Merch, gaming gear, VIP roles, and digital goods.' },
     about:         { title:'About Kindustry — Free Gaming Community',                    desc:'Learn about Kindustry — a free global gaming community built for Minecraft, Roblox, and Chess players. Founded to make esports accessible for everyone.' },
+    info:          { title:'Kindustry — Global Gaming Community & Tournament Platform',  desc:'Kindustry is a free global gaming platform with tournaments, giveaways, leaderboards and a growing international community. No fees, just gaming.' },
     contact:       { title:'Contact — Kindustry',                                        desc:'Contact the Kindustry team at official@kindustry.in or join our Discord community for support and questions.' },
     register:      { title:'Register for Tournaments — Kindustry',                       desc:'Sign up to compete in free Kindustry gaming tournaments. Minecraft, Roblox, and Chess competitions open to all skill levels.' },
     profile:       { title:'My Profile — Kindustry',                                     desc:'Manage your Kindustry profile, game preferences, social links, and tournament history.' },
@@ -5084,6 +5275,46 @@ window.addEventListener('scroll', () => {
   if (window.scrollY > 60) n.classList.add('scrolled');
   else n.classList.remove('scrolled');
 }, { passive: true });
+
+/* ════ CARD BORDER GLOW — cursor-tracked ════
+   Tracks the mouse position relative to each card and updates two CSS
+   variables on it:
+     --card-angle    → the angle from card center to cursor (degrees)
+     --card-proximity → 0 when cursor is far, 1 when right on the edge
+   These drive the conic-gradient border glow in the card::after rule. */
+document.addEventListener('mousemove', (e) => {
+  document.querySelectorAll('.card').forEach(card => {
+    const rect = card.getBoundingClientRect();
+    // Skip cards that are off-screen or not visible
+    if (rect.width === 0 || rect.height === 0) return;
+    const cx = rect.left + rect.width / 2;
+    const cy = rect.top  + rect.height / 2;
+    const dx = e.clientX - cx;
+    const dy = e.clientY - cy;
+    // Angle in degrees from card center to cursor
+    let angle = Math.atan2(dy, dx) * (180 / Math.PI) + 90;
+    if (angle < 0) angle += 360;
+    // Proximity: 1 when cursor is right at the edge, 0 when far away
+    // Uses the ratio of how close the cursor is to the card edge vs the
+    // half-width/height, clamped to 0–1 range
+    const halfW = rect.width  / 2 + 80;
+    const halfH = rect.height / 2 + 80;
+    const distX = Math.abs(dx) / halfW;
+    const distY = Math.abs(dy) / halfH;
+    const raw = Math.max(0, 1 - Math.max(distX, distY));
+    // Sharpen the curve so it only glows when actually close
+    const proximity = Math.pow(raw, 1.5);
+    card.style.setProperty('--card-angle', `${angle.toFixed(1)}deg`);
+    card.style.setProperty('--card-proximity', proximity.toFixed(3));
+  });
+});
+
+// Reset glow when mouse leaves the window entirely
+document.addEventListener('mouseleave', () => {
+  document.querySelectorAll('.card').forEach(card => {
+    card.style.setProperty('--card-proximity', '0');
+  });
+});
 
 /* ════ MOBILE DRAWER ════ */
 function openMobDrawer() { document.getElementById('mobDrawer').classList.add('open'); }
@@ -5974,6 +6205,21 @@ function unlockAchievement(id, icon, name, desc) {
   setTimeout(refreshAchievements, 900);
 }
 
+// Catches a click on ANY of the official Kindustry YouTube channel links,
+// no matter where on the site they appear (footer, about page, social page,
+// feature cards, etc.) — one listener instead of editing every single link
+// tag individually, so nothing gets missed and nothing else has to change.
+// Does NOT count a user's own personal YouTube link they add to their own
+// profile, since that's a different, unrelated input field.
+const OFFICIAL_YT_HANDLES = ['@officialkindustry', '@godkteam', '@khushalbosspro'];
+document.addEventListener('click', (e) => {
+  const link = e.target.closest('a');
+  if (!link || !link.href) return;
+  if (OFFICIAL_YT_HANDLES.some(handle => link.href.includes('youtube.com/' + handle))) {
+    unlockAchievement('subscriber', '📺', 'Subscriber', 'Checked out the Kindustry YouTube');
+  }
+});
+
 const ALL_ACHIEVEMENTS = [
   { id:'first-login', icon:'🎮', name:'First Login',    desc:'Joined the Kindustry community',     hint:'Sign in to unlock' },
   { id:'registered',  icon:'📝', name:'Competitor',     desc:'Registered for a tournament',        hint:'Register for any tournament' },
@@ -5984,6 +6230,7 @@ const ALL_ACHIEVEMENTS = [
   { id:'godk',           icon:'⚔️', name:'GODK',                desc:'Applied to the esports team',        hint:'Visit the GODK page' },
   { id:'writer',         icon:'✍️', name:'The Writer',           desc:'Reached out to Kindustry',           hint:'???', secret:true },
   { id:'theme-explorer', icon:'🎨', name:'Beyond Imagination',   desc:'Explored every Kindustry theme',     hint:'???', secret:true },
+  { id:'subscriber',     icon:'📺', name:'Subscriber',           desc:'Checked out the Kindustry YouTube',  hint:'Click the YouTube link on the site' },
 ];
 
 function refreshAchievements() {
@@ -6464,6 +6711,38 @@ function loadSoundSettingsUI() {
   const toggle = document.getElementById('keyboardSoundToggle');
   if (sel) sel.value = soundPack;
   if (toggle) toggle.checked = keyboardSoundsOn;
+}
+
+// Global Customize-panel versions — same idea as above, but for the gear
+// icon panel that's accessible WITHOUT signing in. Both panels read/write
+// the exact same localStorage keys, so changing it in one place keeps the
+// other in sync automatically — there's only one real source of truth.
+function saveSoundPackGlobal() {
+  const sel = document.getElementById('soundPackSelectGlobal');
+  if (!sel) return;
+  if (sel.value !== 'default') { sel.value = 'default'; return; }
+  soundPack = sel.value;
+  localStorage.setItem('kin-sound-pack', soundPack);
+  if (soundEnabled) playSound('click');
+}
+
+function toggleKeyboardSoundGlobal() {
+  keyboardSoundsOn = !keyboardSoundsOn;
+  localStorage.setItem('kin-keyboard-sound', keyboardSoundsOn ? 'on' : 'off');
+  const el = document.getElementById('keyboardSoundToggleGlobal');
+  if (el) el.classList.toggle('on', keyboardSoundsOn);
+  const profileEl = document.getElementById('keyboardSoundToggle');
+  if (profileEl) profileEl.checked = keyboardSoundsOn;
+  if (soundEnabled) playSound('click');
+}
+
+// Syncs the Customize panel's sound controls to whatever is actually saved —
+// called when the panel opens, so it's never stale even if changed elsewhere.
+function loadGlobalSoundSettingsUI() {
+  const sel = document.getElementById('soundPackSelectGlobal');
+  const toggle = document.getElementById('keyboardSoundToggleGlobal');
+  if (sel) sel.value = soundPack;
+  if (toggle) toggle.classList.toggle('on', keyboardSoundsOn);
 }
 
 // Keyboard sound listener — only plays if BOTH the master sound switch (nav
@@ -7355,7 +7634,7 @@ async function loadTournamentRegCounts() {
    specific page (e.g. a tournament link in Discord), and Google actually
    being able to crawl and index these pages instead of seeing the homepage
    every time it visits a hash URL fresh. */
-const VALID_DEEP_LINK_PAGES = ['home','store','tournaments','giveaways','leaderboard','news','announcements','godk','about','contact','profile','register','admin','privacy','terms','changelog'];
+const VALID_DEEP_LINK_PAGES = ['home','store','tournaments','giveaways','leaderboard','news','announcements','godk','about','contact','profile','register','admin','privacy','terms','changelog','info'];
 
 function _handleDeepLink() {
   const hash = window.location.hash.replace('#', '');
@@ -8084,6 +8363,134 @@ function quickThemeToggle() {
       <div class="ft-copy">© 2026 Kindustry. All rights reserved.</div>
     </div>
   </footer>
+</div>
+
+<!-- ════════════════════ INFO / KINDUSTRY.INFO LANDING ════════════════════ -->
+<!-- Hidden from nav — accessed via kindustry.in/#info or linked from kindustry.info -->
+<div class="page" id="page-info">
+  <section style="padding-top:110px;max-width:960px;">
+
+    <!-- Hero -->
+    <div style="text-align:center;margin-bottom:70px;" class="reveal">
+      <div style="font-size:10px;letter-spacing:4px;color:var(--accent);text-transform:uppercase;margin-bottom:12px;">KINDUSTRY.INFO</div>
+      <h1 style="font-family:'Orbitron',monospace;font-size:clamp(32px,5vw,60px);font-weight:900;line-height:1.1;margin-bottom:18px;">
+        The Gaming Universe<br>
+        <span style="background:linear-gradient(135deg,var(--primary),var(--accent));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;">Built for Everyone</span>
+      </h1>
+      <p style="color:var(--dim);font-size:16px;max-width:560px;margin:0 auto 32px;line-height:1.8;">Kindustry is a free global gaming community and tournament platform. No entry fees. No paywalls. Just pure competitive gaming.</p>
+      <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
+        <a href="#" onclick="showPage('home');return false;" class="btn btn-p">🌐 Visit Kindustry.in</a>
+        <a href="https://discord.gg/CBqWUKScfF" target="_blank" class="btn btn-dc">💬 Join Discord</a>
+      </div>
+    </div>
+
+    <!-- What is Kindustry -->
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;margin-bottom:60px;" class="reveal">
+      <div class="card" style="padding:28px;">
+        <div style="font-size:30px;margin-bottom:14px;">🏆</div>
+        <div style="font-family:'Orbitron',monospace;font-size:13px;font-weight:700;color:var(--primary);margin-bottom:8px;">Free Tournaments</div>
+        <p style="color:var(--dim);font-size:13px;line-height:1.7;">Monthly free-to-enter tournaments across Minecraft, Roblox and more. Zero entry fee, real glory.</p>
+      </div>
+      <div class="card" style="padding:28px;">
+        <div style="font-size:30px;margin-bottom:14px;">🎁</div>
+        <div style="font-family:'Orbitron',monospace;font-size:13px;font-weight:700;color:var(--primary);margin-bottom:8px;">Giveaways</div>
+        <p style="color:var(--dim);font-size:13px;line-height:1.7;">Regular community giveaways including Discord Nitro, gaming gear, VIP roles and more.</p>
+      </div>
+      <div class="card" style="padding:28px;">
+        <div style="font-size:30px;margin-bottom:14px;">📊</div>
+        <div style="font-family:'Orbitron',monospace;font-size:13px;font-weight:700;color:var(--primary);margin-bottom:8px;">Global Leaderboard</div>
+        <p style="color:var(--dim);font-size:13px;line-height:1.7;">Climb the global rankings. Earn your spot at the top through real tournament wins.</p>
+      </div>
+      <div class="card" style="padding:28px;">
+        <div style="font-size:30px;margin-bottom:14px;">🎮</div>
+        <div style="font-family:'Orbitron',monospace;font-size:13px;font-weight:700;color:var(--primary);margin-bottom:8px;">Community Driven</div>
+        <p style="color:var(--dim);font-size:13px;line-height:1.7;">Built by gamers for gamers. Every feature is designed to grow a real competitive community.</p>
+      </div>
+    </div>
+
+    <!-- Official Links -->
+    <div class="reveal" style="margin-bottom:60px;">
+      <div style="font-size:10px;letter-spacing:3px;color:var(--dim);text-transform:uppercase;margin-bottom:24px;">Official Links</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;">
+        <a href="https://kindustry.in" target="_blank" style="text-decoration:none;">
+          <div class="card" style="padding:18px 22px;display:flex;align-items:center;gap:14px;transition:var(--trans);" onmouseover="this.style.borderColor='rgba(var(--pr),.5)'" onmouseout="this.style.borderColor=''">
+            <span style="font-size:22px;">🌐</span>
+            <div>
+              <div style="font-weight:700;font-size:13px;color:var(--text);">kindustry.in</div>
+              <div style="font-size:11px;color:var(--dim);">Main platform</div>
+            </div>
+          </div>
+        </a>
+        <a href="https://discord.gg/CBqWUKScfF" target="_blank" style="text-decoration:none;">
+          <div class="card" style="padding:18px 22px;display:flex;align-items:center;gap:14px;transition:var(--trans);" onmouseover="this.style.borderColor='rgba(88,101,242,.5)'" onmouseout="this.style.borderColor=''">
+            <span style="font-size:22px;">💬</span>
+            <div>
+              <div style="font-weight:700;font-size:13px;color:var(--text);">Discord Server</div>
+              <div style="font-size:11px;color:var(--dim);">discord.gg/CBqWUKScfF</div>
+            </div>
+          </div>
+        </a>
+        <a href="https://youtube.com/@officialkindustry" target="_blank" style="text-decoration:none;">
+          <div class="card" style="padding:18px 22px;display:flex;align-items:center;gap:14px;transition:var(--trans);" onmouseover="this.style.borderColor='rgba(239,68,68,.5)'" onmouseout="this.style.borderColor=''">
+            <span style="font-size:22px;">▶</span>
+            <div>
+              <div style="font-weight:700;font-size:13px;color:var(--text);">YouTube</div>
+              <div style="font-size:11px;color:var(--dim);">@officialkindustry</div>
+            </div>
+          </div>
+        </a>
+        <a href="https://youtube.com/@godkteam" target="_blank" style="text-decoration:none;">
+          <div class="card" style="padding:18px 22px;display:flex;align-items:center;gap:14px;transition:var(--trans);" onmouseover="this.style.borderColor='rgba(239,68,68,.5)'" onmouseout="this.style.borderColor=''">
+            <span style="font-size:22px;">⚔️</span>
+            <div>
+              <div style="font-weight:700;font-size:13px;color:var(--text);">GODK Team</div>
+              <div style="font-size:11px;color:var(--dim);">@godkteam</div>
+            </div>
+          </div>
+        </a>
+        <a href="https://youtube.com/@khushalbosspro" target="_blank" style="text-decoration:none;">
+          <div class="card" style="padding:18px 22px;display:flex;align-items:center;gap:14px;transition:var(--trans);" onmouseover="this.style.borderColor='rgba(239,68,68,.5)'" onmouseout="this.style.borderColor=''">
+            <span style="font-size:22px;">👑</span>
+            <div>
+              <div style="font-weight:700;font-size:13px;color:var(--text);">KhushalBossPro</div>
+              <div style="font-size:11px;color:var(--dim);">@khushalbosspro</div>
+            </div>
+          </div>
+        </a>
+        <a href="mailto:official@kindustry.in" style="text-decoration:none;">
+          <div class="card" style="padding:18px 22px;display:flex;align-items:center;gap:14px;transition:var(--trans);" onmouseover="this.style.borderColor='rgba(var(--pr),.5)'" onmouseout="this.style.borderColor=''">
+            <span style="font-size:22px;">✉️</span>
+            <div>
+              <div style="font-weight:700;font-size:13px;color:var(--text);">Contact</div>
+              <div style="font-size:11px;color:var(--dim);">official@kindustry.in</div>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <!-- About the founder -->
+    <div class="card reveal" style="padding:32px;margin-bottom:60px;display:flex;gap:24px;align-items:flex-start;flex-wrap:wrap;">
+      <div style="font-size:48px;flex-shrink:0;">👤</div>
+      <div>
+        <div style="font-size:10px;letter-spacing:3px;color:var(--dim);text-transform:uppercase;margin-bottom:8px;">Founded by</div>
+        <div style="font-family:'Orbitron',monospace;font-size:18px;font-weight:800;color:var(--primary);margin-bottom:10px;">Khushal — KhushalBossPro</div>
+        <p style="color:var(--dim);font-size:13px;line-height:1.8;max-width:560px;">Kindustry was created to give competitive gamers a real home — a free global platform where skill matters more than money. Built from scratch, for the community.</p>
+        <div style="display:flex;gap:10px;margin-top:16px;flex-wrap:wrap;">
+          <a href="https://youtube.com/@khushalbosspro" target="_blank" class="sm sm-p">YouTube →</a>
+          <a href="https://discord.gg/CBqWUKScfF" target="_blank" class="sm sm-dc">Discord →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div style="text-align:center;padding:40px;border:1px solid var(--border);border-radius:20px;background:var(--card-glow);" class="reveal">
+      <div style="font-family:'Orbitron',monospace;font-size:20px;font-weight:800;margin-bottom:12px;">Ready to join?</div>
+      <p style="color:var(--dim);font-size:14px;margin-bottom:24px;line-height:1.7;">Create a free account on kindustry.in and start competing today. No fees. No barriers.</p>
+      <a href="#" onclick="showPage('home');return false;" class="btn btn-p">Get Started Free →</a>
+    </div>
+
+  </section>
 </div>
 
 <!-- ════════════════════ GODK ESPORTS ════════════════════ -->
