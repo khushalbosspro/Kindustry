@@ -1452,15 +1452,16 @@ body.perf-mode .hero-bg-anim, body.perf-mode .orb1, body.perf-mode .orb2 { anima
 }
 @keyframes cezzyRingSpin { 0%{opacity:0.4} 50%{opacity:1} 100%{opacity:0.4} }
 
-/* ── RESPONSIVE — collapse nav earlier at 1080px ── */
+/* ── RESPONSIVE — collapse nav earlier at 1200px ── */
 @media(max-width:1200px){
   .sound-btn-label{display:none;}
   .perf-label{display:none;}
   .sound-btn{width:34px;padding:0;justify-content:center;border-radius:10px;}
   .nav-rank{display:none;}
   .nav-uname{max-width:60px;}
+  .nav-links a{padding:7px 7px;font-size:10px;letter-spacing:1px;}
 }
-@media(max-width:1340px){
+@media(max-width:1440px){
   .nav-discord-btn{display:none;}
 }
 @media(max-width:960px){
@@ -2842,6 +2843,7 @@ footer{border-top:1px solid var(--border);padding:32px 56px;display:flex;align-i
   <div class="ld-spark" style="right:16%;top:84%;width:1.5px;height:1.5px;--spark-op:.35;animation-duration:9.5s;animation-delay:2.6s;--spark-drift:13px;"></div>
   <div class="ld-logo">KINDUSTRY</div>
   <div class="ld-sub">INITIALIZING GAMING UNIVERSE...</div>
+  <div class="ld-sub" style="font-size:11px;letter-spacing:1px;opacity:.55;margin-top:4px;">Free gaming tournaments, giveaways &amp; community</div>
   <div class="ld-bar-wrap">
     <div class="ld-bar"></div>
     <div class="ld-pct" id="ldPct">0%</div>
@@ -5147,6 +5149,16 @@ function dismissLiteBanner() {
 }
 
 function showPage(name) {
+  // Update the URL bar to a real path (e.g. /terms) instead of a hash fragment.
+  // This is what lets Google (and anyone sharing a link) treat each page as a
+  // distinct, indexable URL. Cloudflare's _redirects file serves this same
+  // HTML file for all these real paths — see repo root.
+  try {
+    const newPath = name === 'home' ? '/' : '/' + name;
+    if (window.location.pathname !== newPath) {
+      history.pushState(null, '', newPath);
+    }
+  } catch(e) {}
   // SEO — update title and meta description per page
   const PAGE_META = {
     home:          { title:'Kindustry — Free Gaming Tournaments & Community',            desc:'Free global gaming community. Compete in Minecraft, Roblox and other gaming tournaments, win giveaways, and climb the leaderboard. Join at kindustry.in.' },
@@ -7637,15 +7649,23 @@ async function loadTournamentRegCounts() {
 const VALID_DEEP_LINK_PAGES = ['home','store','tournaments','giveaways','leaderboard','news','announcements','godk','about','contact','profile','register','admin','privacy','terms','changelog','info'];
 
 function _handleDeepLink() {
+  // Real path (e.g. /terms) takes priority — this is what Google and shared
+  // links now use. Hash (#terms) is kept as a fallback for any old links
+  // still floating around out there.
+  const path = window.location.pathname.replace(/^\/+/, '').replace(/\/+$/, '');
   const hash = window.location.hash.replace('#', '');
-  if (hash && VALID_DEEP_LINK_PAGES.includes(hash)) {
-    setTimeout(() => showPage(hash), 500);
+  const page = VALID_DEEP_LINK_PAGES.includes(path) ? path
+             : VALID_DEEP_LINK_PAGES.includes(hash) ? hash
+             : null;
+  if (page) {
+    setTimeout(() => showPage(page), 500);
   }
 }
 
 (function(){
   _handleDeepLink();
   window.addEventListener('hashchange', _handleDeepLink);
+  window.addEventListener('popstate', _handleDeepLink);
 })();
 
 /* ══ RUN THIS SQL IN SUPABASE SQL EDITOR ══
@@ -8220,11 +8240,35 @@ function quickThemeToggle() {
 
     <div class="changelog-timeline">
 
+      <!-- UPDATE 7 -->
+      <div class="changelog-entry reveal">
+        <div class="changelog-dot">✦</div>
+        <div class="changelog-card">
+          <div class="changelog-version">v0.7 <span class="changelog-tag">Latest</span></div>
+          <div class="changelog-name">Operation Foothold — SEO, Security & Real URLs</div>
+          <div class="changelog-date">July 2026</div>
+          <div class="changelog-desc">A security and search-visibility focused update. Every page now has its own real, shareable URL instead of relying on hash links, custom branded email is live on our own domain, and a long list of backend protections went in to keep accounts, tournaments and giveaways fair and secure.</div>
+          <ul class="changelog-items">
+            <li>Every page now has a real, direct URL (e.g. kindustry.in/terms) instead of a hash link — easier to share, and properly crawlable by search engines</li>
+            <li>Custom branded email launched — official@kindustry.in, running on our own domain</li>
+            <li>New favicon and social share image (the preview card you see when a Kindustry link is shared)</li>
+            <li>Row-level security hardened further on registrations and banned player records</li>
+            <li>Tournament notification and registration emails now verified and rate-limited to stop abuse</li>
+            <li>Multi-account tournament registration protection — one verified account per player, enforced at the database level</li>
+            <li>Admin leaderboard panel rebuilt with a cleaner increment-based system and working dropdowns</li>
+            <li>Giveaway winner selection improved — winners can now be manually assigned per prize slot</li>
+            <li>Full loading screen visual rebuild with new animated ring and particle effects</li>
+            <li>Custom dropdown menus fixed and restyled across the site</li>
+            <li>General bug fixes, filter improvements and backend cleanup</li>
+          </ul>
+        </div>
+      </div>
+
       <!-- UPDATE 6 -->
       <div class="changelog-entry reveal">
         <div class="changelog-dot">✦</div>
         <div class="changelog-card">
-          <div class="changelog-version">v0.6 <span class="changelog-tag">Latest</span></div>
+          <div class="changelog-version">v0.6</div>
           <div class="changelog-name">Operation Foundation — Reliability & Settings Overhaul</div>
           <div class="changelog-date">June 2026</div>
           <div class="changelog-desc">A big behind-the-scenes pass focused on making the site feel more solid and giving players more control. Mobile sign-in is smoother, the username system is more reliable, and a new Sound Settings panel lays the groundwork for sound packs and effects coming later.</div>
